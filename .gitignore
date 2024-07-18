@@ -2,3 +2,6 @@
 data/vcf_files/*.vcf
 bin/*.Rproj*
 bin/.Rhistory
+.Rproj.user
+data/reference_genomes/Qlobata*
+data/reference_genomes/Qrob*
