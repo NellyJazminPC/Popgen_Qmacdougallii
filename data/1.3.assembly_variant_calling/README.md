@@ -27,7 +27,7 @@ Los parámetros que se modificaron son:
 
 ---
 
-- A los archivos VCF generados por los ensambles se les aplicó un filtro con TASSEL:
+- A los archivos VCF generados por los ensambles se les aplicó un filtro con TASSEL v5.2.93:
 
 > Filter > Filter Genotype Table Sites 
 
