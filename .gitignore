@@ -5,3 +5,5 @@ bin/.Rhistory
 .Rproj.user
 data/reference_genomes/Qlobata*
 data/reference_genomes/Qrob*
+data/1.3.assembly_variant_calling/*.vcf
+
