@@ -39,5 +39,27 @@ Los parámetros que se modificaron son:
 
 ---
 
-El número de SNPs que se identificaron para los 18 archivos VCF vario entre las modalidades de novo y con genoma de referencia, por lo que seguimos explorando los VCF obtenidos con los genomas de referencia.
+El número de SNPs que se identificaron para los 18 archivos VCF varió entre las modalidades de novo y con genoma de referencia, por lo que seguimos explorando los VCF obtenidos con los genomas de referencia.
 
+[**Archivo .CSV**](SNPs_18_VCF_ipyrad.csv)
+
+| VCF_SNPs | pipeline | mode          | input | ipyrad_branches    | wo_filter | 1rst_filter | 2nd_filter |
+|----------|----------|---------------|-------|--------------------|-----------|-------------|------------|
+| 1        | ipyRAD   | denovo        | trim01| denovo_trim01_1    | 4087      | 3471        | 3429       |
+| 2        | ipyRAD   | denovo        | trim02| denovo_trim02_1    | 986       | 638         | 628        |
+| 3        | ipyRAD   | denovo        | trim03| denovo_trim03_1    | 3582      | 3002        | 2965       |
+| 4        | ipyRAD   | denovo        | trim01| denovo_trim01_2    | 4087      | 3471        | 3429       |
+| 5        | ipyRAD   | denovo        | trim02| denovo_trim02_2    | 986       | 638         | 628        |
+| 6        | ipyRAD   | denovo        | trim03| denovo_trim03_2    | 3582      | 3002        | 2965       |
+| 7        | ipyRAD   | ref_gen_qlobata| trim01| ref_gen_qlob_trim01_1| 7559   | 5488        | 5415       |
+| 8        | ipyRAD   | ref_gen_qlobata| trim02| ref_gen_qlob_trim02_1| 1946   | 1094        | 1076       |
+| 9        | ipyRAD   | ref_gen_qlobata| trim03| ref_gen_qlob_trim03_1| 5487   | 4435        | 4374       |
+| 10       | ipyRAD   | ref_gen_qlobata| trim01| ref_gen_qlob_trim01_2| 7559   | 5488        | 5415       |
+| 11       | ipyRAD   | ref_gen_qlobata| trim02| ref_gen_qlob_trim02_2| 1946   | 1094        | 1076       |
+| 12       | ipyRAD   | ref_gen_qlobata| trim03| ref_gen_qlob_trim03_2| 5487   | 4435        | 4374       |
+| 13       | ipyRAD   | ref_gen_qrobur | trim01| ref_gen_qrob_trim01_1| 7611   | 5501        | 5426       |
+| 14       | ipyRAD   | ref_gen_qrobur | trim02| ref_gen_qrob_trim02_1| 1815   | 1048        | 1027       |
+| 15       | ipyRAD   | ref_gen_qrobur | trim03| ref_gen_qrob_trim03_1| 5382   | 4291        | 4230       |
+| 16       | ipyRAD   | ref_gen_qrobur | trim01| ref_gen_qrob_trim01_2| 7611   | 5501        | 5426       |
+| 17       | ipyRAD   | ref_gen_qrobur | trim02| ref_gen_qrob_trim02_2| 1815   | 1048        | 1027       |
+| 18       | ipyRAD   | ref_gen_qrobur | trim03| ref_gen_qrob_trim03_2| 5382   | 4291        | 4230       |
