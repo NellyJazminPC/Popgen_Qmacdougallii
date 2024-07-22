@@ -8,3 +8,5 @@ data/reference_genomes/Qrob*
 data/1.3.assembly_variant_calling/*.vcf
 bin/.RData
 bin/test_*.R
+archive/
+
