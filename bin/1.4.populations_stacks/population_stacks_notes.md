@@ -20,3 +20,11 @@ populations -V ../../data/1.3.assembly_variant_calling/ref_gen_qrob_trim01_1_sor
 
 Los resultados fueron similares pero seguimos con el archivo de **ref_gen_qrob**
 
+# UPDATE
+Correcciones en la línea de código - Febrero del 2025
+- se cambio `--fst_correction p_value --p_value_cutoff` por `--fst-correction --p-value-cutoff`.
+
+```sh
+populations -V ../../data/1.3.assembly_variant_calling/ref_gen_qrob_trim01_1_sorted.vcf -O ../../data/1.4.population_stacks/ref_gen_qrob_2pop_2zones -M popmap.txt -t 8 --min-maf 0.02 --hwe --fstats --fst-correction --p-value-cutoff 0.05 -k --genepop --structure --plink
+```
+

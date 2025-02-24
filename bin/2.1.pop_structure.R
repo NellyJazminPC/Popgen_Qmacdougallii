@@ -45,18 +45,13 @@ cgum_79_1_vcf_pop_genclone <- as.genclone(cgum_79_1_vcf_pop_genind)
 #pop(glfst) <- pop.data$POP
 #ploidy(glfst) <- 2
 
-############################# Distance matrices
-cgum_79_1.dist <- dist(cgum_79_1_vcf)
-cgum_79_1.dist.x <- poppr::bitwise.dist(cgum_79_1_vcf  , percent = T, euclidean = F, mat = T)
 
-
-
-
+# Asignacion de colores
 
 cols <- c("#7570B3", "#075277","#00B1E8","#1FC944",
           "#E6AB02", "#E7298A","#E07E34", "#F15858", "red")
 
-
+# PCA 
 cgum_79_1.pca <- glPca(cgum_79_1_vcf, nf=80)
 
 glPca(cgum_79_1_vcf)
@@ -65,10 +60,12 @@ sum(100*cgum_79_1.pca$eig/sum(cgum_79_1.pca$eig))
 (cgum_79_1.pca$eig[2]/sum(cgum_79_1.pca$eig))*100
 (cgum_79_1.pca$eig[3]/sum(cgum_79_1.pca$eig))*100
 (cgum_79_1.pca$eig[4]/sum(cgum_79_1.pca$eig))*100
+
 #Barplot de los eigenvalores
 barplot(100*cgum_79_1.pca$eig/sum(cgum_79_1.pca$eig), main="PCA Eigenvalores")
 title(ylab="Porcentaje de la varianza/explicada", line = 2)
 title(xlab="Eigenvalores", line = 1)
+
 #Reajustar los márgenes
 par("mar")
 par(mar=c(4,4,4,4))
@@ -106,4 +103,6 @@ p1 <- ggplot(cgum_79_1.pca.scores, aes(x=PC1, y=PC2, colour=as.factor(pop), shap
 
 # Mostrar el plot
 print(pca_ref_gen_qrob)
+
+
 
