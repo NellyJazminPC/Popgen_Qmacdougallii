@@ -169,7 +169,7 @@ pramx[2:6] # To detect the best number of PC retained based on the cross-validat
 # Plot the results
 # clabel= site names
 scatter(pramx$DAPC, cex = 2, col = cols, cell=1.3, cstar = 0, legend = F, mstree = TRUE, lwd = 2, lty = 2,
-        clabel = F, posi.leg = "topleft", scree.pca = F, scree.da = F,
+        clabel = T, posi.leg = "topleft", scree.pca = F, scree.da = F,
         posi.pca = "topright", posi.da = "bottomleft", cleg = 0.75, xax = 1, yax = 2, inset.solid = 1, pch=19)
 
 # Open a TIFF device to save the DAPC plot with high resolution
@@ -324,50 +324,3 @@ plot_poppr_msn(qmacd_genclone,
 # Close the TIFF device
 dev.off()
 
-
-
-
-
-
-# Open a TIFF device to save the combined plot with high resolution
-tiff("../results/combined_PCA_DAPC_MSN_plot.tiff", width = 8, height = 12, units = "in", res = 300, compression = "lzw")
-
-# Set up a 3-row, 1-column layout for the plots
-par(mfrow = c(3, 1), mar = c(4, 4, 2, 2))  # Adjust margins for each plot
-
-# Plot 1: PCA
-plot(qmacd_pca$scores[, 1], qmacd_pca$scores[, 2], 
-     col = cols[as.numeric(qmacd_pca_scores$pop)], 
-     pch = 19, cex = 1.5, 
-     xlab = paste("PC1 (", round(100 * qmacd_pca$eig[1] / sum(qmacd_pca$eig), 2), "%)", sep = ""),
-     ylab = paste("PC2 (", round(100 * qmacd_pca$eig[2] / sum(qmacd_pca$eig), 2), "%)", sep = ""),
-     main = "PCA of Quercus macdougallii")
-legend("topright", legend = levels(as.factor(qmacd_pca_scores$pop)), 
-       fill = cols, bty = "n", title = "Sites")
-
-# Plot 2: DAPC
-scatter(pramx$DAPC, col = cols, cex = 2, posi.pca = "topright", 
-        posi.da = "bottomleft", scree.da = FALSE, scree.pca = FALSE,
-        main = "DAPC of Quercus macdougallii")
-legend("topright", legend = levels(as.factor(pramx$DAPC$grp)), 
-       fill = cols, bty = "n", title = "Sites")
-
-# Plot 3: MSN
-plot_poppr_msn(qmacd_genclone,
-               min_span_net,
-               inds = "none",  # No mostrar nombres de individuos
-               mlg = FALSE,
-               gadj = 25,
-               nodescale = 51,
-               palette = cols,
-               cutoff = NULL,  # No aplicar cutoff
-               quantiles = FALSE,
-               beforecut = TRUE,
-               pop.leg = FALSE,  # Ocultar leyenda de poblaciones
-               size.leg = FALSE,  # Ocultar leyenda de sample/node
-               scale.leg = TRUE,
-               layfun = igraph::layout_with_kk,  # Usar Kamada-Kawai layout
-               main = "Minimum Spanning Network of Quercus macdougallii")
-
-# Close the TIFF device
-dev.off()
