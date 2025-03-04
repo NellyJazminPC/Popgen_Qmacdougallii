@@ -1,108 +1,112 @@
-# Populations genomics of Quercus macdougallii
-## MNS, PCA and DAPC analysis for population structure
-## Graphics of fastStructure and ADMIXTURE results
+# Population genomics of Quercus macdougallii
+## PCA, DAPC, and MNS analysis for population structure
+## Visualization of fastStructure and ADMIXTURE results
 ## Nelly J. Pacheco Cruz
 ## August 2024
 
-# Cargar bibliotecas
+# Load libraries
 library(vcfR)
+library(dartR)
+library(ggplot2)
 
-#Carga el archivo VCF en R
-VCF_ref_gen_qrob <- read.vcfR("../data/1.3.assembly_variant_calling/denovo_trim01_1_sorted.vcf")
+# Load the VCF file into R
+qmacd_vcf <- read.vcfR("../data/1.3.assembly_variant_calling/ref_gen_qrob_trim01_1_sorted.vcf")
 
-CGUM_79_1.VCF = VCF_ref_gen_qrob
+# Convert the VCF to a genlight object
+qmacd_genlight <- vcfR2genlight(qmacd_vcf)
 
-#Cargar el archivo de metadatos
+# Load the metadata file
 pop.metadata <- read.csv("../metadata/Qmacdougalli_79ind_.csv")
 head(pop.metadata)
 
-#Verifica que los nombres de los individuos en el VCF coincidan con los metadatos
-all(colnames(VCF_ref_gen_qrob@gt)[-1] == pop.metadata$ID)
+# Verify that the individual names in the VCF match the metadata
+all(colnames(qmacd_vcf@gt)[-1] == pop.metadata$ID)
 
-#Converting the dataset to a genlight object
-ref_gen_qrob <- vcfR2genlight(VCF_ref_gen_qrob)
-ref_gen_qrob_pop <- vcfR2genlight(VCF_ref_gen_qrob)
-#Ploidy
-ploidy(ref_gen_qrob) <- 2
-ref_gen_qrob@ploidy
+# Set ploidy
+ploidy(qmacd_genlight) <- 2
+qmacd_genlight@ploidy
 
+# Add population levels using SITE and ZONE metadata
+pop(qmacd_genlight) <- pop.metadata$SITE  # Assign SITE as population
+qmacd_genlight_pop <- qmacd_genlight  # Create a copy to use POP
+pop(qmacd_genlight_pop) <- pop.metadata$POP  # Assign POP as population
 
-#Agregar el nivel de pop con los metadatos de SITE y ZONE
-pop(cgum_79_1_vcf) <- pop.data$SITE
-pop(cgum_79_1_vcf_pop) <- pop.data$POP
-class(cgum_79_1_vcf_pop)
-###Convertir de genlight a genind y a genclone (DartR)
-cgum_79_1_genind <- gl2gi(cgum_79_1_vcf, v=1)
-cgum_79_1_genclone <- as.genclone(cgum_79_1_genind)
-#Para POP
-cgum_79_1_vcf_pop_genind <- gl2gi(cgum_79_1_vcf_pop, v=1)
-cgum_79_1_vcf_pop_genclone <- as.genclone(cgum_79_1_vcf_pop_genind)
-#
-#glfst_genind <- gl2gi(glfst, v=1)
-#glfst_genclone <- as.genclone(glfst_genind)
+# Convert from genlight to genind and genclone (DartR)
+qmacd_genind <- gl2gi(qmacd_genlight, v=1)
+qmacd_genclone <- as.genclone(qmacd_genind)
 
+# For POP
+qmacd_genind_pop <- gl2gi(qmacd_genlight_pop, v=1)
+qmacd_genclone_pop <- as.genclone(qmacd_genind_pop)
 
-#pop(glfst) <- pop.data$POP
-#ploidy(glfst) <- 2
-
-
-# Asignacion de colores
-
-cols <- c("#7570B3", "#075277","#00B1E8","#1FC944",
-          "#E6AB02", "#E7298A","#E07E34", "#F15858", "red")
+# Color assignment
+cols <- c("#7570B3", "#075277", "#00B1E8", "#1FC944",
+          "#E6AB02", "#E7298A", "#E07E34", "#F15858", "red")
 
 # PCA 
-cgum_79_1.pca <- glPca(cgum_79_1_vcf, nf=80)
+qmacd_pca <- glPca(qmacd_genlight, nf=80)
 
-glPca(cgum_79_1_vcf)
-sum(100*cgum_79_1.pca$eig/sum(cgum_79_1.pca$eig))
-(cgum_79_1.pca$eig[1]/sum(cgum_79_1.pca$eig))*100
-(cgum_79_1.pca$eig[2]/sum(cgum_79_1.pca$eig))*100
-(cgum_79_1.pca$eig[3]/sum(cgum_79_1.pca$eig))*100
-(cgum_79_1.pca$eig[4]/sum(cgum_79_1.pca$eig))*100
+# Summary of eigenvalues
+sum(100 * qmacd_pca$eig / sum(qmacd_pca$eig))
+(qmacd_pca$eig[1] / sum(qmacd_pca$eig)) * 100
+(qmacd_pca$eig[2] / sum(qmacd_pca$eig)) * 100
+(qmacd_pca$eig[3] / sum(qmacd_pca$eig)) * 100
+(qmacd_pca$eig[4] / sum(qmacd_pca$eig)) * 100
 
-#Barplot de los eigenvalores
-barplot(100*cgum_79_1.pca$eig/sum(cgum_79_1.pca$eig), main="PCA Eigenvalores")
-title(ylab="Porcentaje de la varianza/explicada", line = 2)
-title(xlab="Eigenvalores", line = 1)
+# Barplot of eigenvalues
+barplot(100 * qmacd_pca$eig / sum(qmacd_pca$eig), main="PCA Eigenvalues")
+title(ylab="Percentage of explained variance", line=2)
+title(xlab="Eigenvalues", line=1)
 
-#Reajustar los márgenes
-par("mar")
-par(mar=c(4,4,4,4))
-#Scores
-cgum_79_1.pca.scores <- as.data.frame(cgum_79_1.pca$scores)
-cgum_79_1.pca.scores$pop <- pop(cgum_79_1_vcf)
-cgum_79_1.pca.scores$zone <- pop(cgum_79_1_vcf_pop)
+# Adjust margins
+par(mar=c(4, 4, 4, 4))
 
-# PLOT PCA
-# Definir colores
-cols <- c("#00B1E8","#075277","#E7298A","#E07E34","#F15858","#E6AB02","#7570B3","#1FC944", "red")
+# PCA scores
+qmacd_pca_scores <- as.data.frame(qmacd_pca$scores)
+qmacd_pca_scores$pop <- pop(qmacd_genlight)  # Use SITE as population
+qmacd_pca_scores$zone <- pop(qmacd_genlight_pop)  # Use POP as zone
 
-# Asignar colores basados en las poblaciones
-colores <- cols[as.numeric(cgum_79_1.pca.scores$pop)]
+# Replace POP1 and POP2 with North and South in the zone column
+qmacd_pca_scores$zone <- ifelse(qmacd_pca_scores$zone == "POP1", "North", 
+                                ifelse(qmacd_pca_scores$zone == "POP2", "South", qmacd_pca_scores$zone))
 
-# Crear el plot
+# Crear un vector con los nombres de las poblaciones sin el número inicial
+pop_labels <- gsub("^[0-9]+", "", unique(qmacd_pca_scores$pop))
+
+# Asegurarse de que los nombres estén en el orden numérico original
+pop_labels <- pop_labels[order(unique(qmacd_pca_scores$pop))]
+
+# PCA PLOT
+# Define colors
+cols <- c("#00B1E8", "#075277", "#E7298A", "#E07E34", "#F15858", "#E6AB02", "#7570B3", "#1FC944", "red")
+
+# Create the plot
 set.seed(12345)
-p1 <- ggplot(cgum_79_1.pca.scores, aes(x=PC1, y=PC2, colour=as.factor(pop), shape=as.factor(zone), fill=as.factor(pop))) + 
+qmacd_PCA_plot <- ggplot(qmacd_pca_scores, aes(x=PC1, y=PC2, colour=as.factor(pop), shape=as.factor(zone), fill=as.factor(pop))) + 
   geom_point(size=4, alpha=0.7) + 
-  scale_color_manual(values = cols, name="Poblaciones") +
-  scale_fill_manual(values = cols, name="Poblaciones") +
-  scale_shape_manual(name = "Sitios", values = c(21, 24, 25)) + 
-  geom_hline(yintercept = 0) + 
-  geom_vline(xintercept = 0) + 
+  scale_color_manual(values=cols, name="Populations", labels=pop_labels) +  # Usar etiquetas editadas
+  scale_fill_manual(values=cols, name="Populations", labels=pop_labels) +  # Usar etiquetas editadas
+  scale_shape_manual(name="Zones", values=c(21, 24, 25), labels=c("North", "South")) +  # Cambiar etiquetas de la leyenda para zone
+  geom_hline(yintercept=0) + 
+  geom_vline(xintercept=0) + 
   theme_bw() +
-  theme(legend.title = element_blank(), 
-        legend.text = element_text(size = 18),
-        axis.title.x = element_text(size=20), 
-        axis.text.x = element_text(size=16),
-        axis.title.y = element_text(size=20), 
-        axis.text.y = element_text(size=16)) + 
+  theme(legend.title=element_blank(), 
+        legend.text=element_text(size=16),
+        axis.title.x=element_text(size=18), 
+        axis.text.x=element_text(size=14),
+        axis.title.y=element_text(size=18), 
+        axis.text.y=element_text(size=16)) + 
   xlab("PC1 %4.62") + 
-  ylab("PC2 %2.76") + 
-  geom_text(aes(label=cgum_79_1_vcf$ind.names), hjust=-0.4, vjust=0.8, size=5)
+  ylab("PC2 %2.76")
 
-# Mostrar el plot
-print(pca_ref_gen_qrob)
+# Display the plot
+print(qmacd_PCA_plot)
 
+# Save the plot in TIFF format (high resolution, widely accepted)
+ggsave("../results/qmacd_PCA_plot.tiff", qmacd_PCA_plot, width=10, height=8, dpi=300, compression="lzw")
+
+#################
+# DAPC Analysis
+################
 
 
