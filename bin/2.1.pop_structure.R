@@ -45,7 +45,9 @@ qmacd_genclone_pop <- as.genclone(qmacd_genind_pop)
 cols <- c("#7570B3", "#075277", "#00B1E8", "#1FC944",
           "#E6AB02", "#E7298A", "#E07E34", "#F15858", "red")
 
-# PCA 
+#################
+# PCA #
+#################
 qmacd_pca <- glPca(qmacd_genlight, nf=80)
 
 # Summary of eigenvalues
@@ -110,9 +112,6 @@ ggsave("../results/qmacd_PCA_plot.tiff", qmacd_PCA_plot, width=10, height=8, dpi
 #################
 # DAPC Analysis
 ################
-
-##### DAPC #####
-
 # With the find.clusters function of the adegenet package
 # These functions implement the clustering procedure used in Discriminant Analysis of Principal Components (DAPC, Jombart et al. 2010).
 # This procedure consists in running successive K-means with an increasing number of clusters (k), after transforming data using a principal component analysis (PCA). For each model, a statistical measure of goodness of fit (by default, BIC; Bayesian Information Criterion) is computed, which allows to choose the optimal k.
@@ -173,17 +172,26 @@ scatter(pramx$DAPC, cex = 2, col = cols, cell=1.3, cstar = 0, legend = F, mstree
         clabel = F, posi.leg = "topleft", scree.pca = F, scree.da = F,
         posi.pca = "topright", posi.da = "bottomleft", cleg = 0.75, xax = 1, yax = 2, inset.solid = 1, pch=19)
 
-# Plot the results of DAPC with enhanced visualization
+# Open a TIFF device to save the DAPC plot with high resolution
+tiff("../results/dapc_plot.tiff", width = 10, height = 8, units = "in", res = 300, compression = "lzw")
+
+# Remove the first number from the group names in pramx$DAPC$grp
+pramx$DAPC$grp <- gsub("^[0-9]+", "", pramx$DAPC$grp)
+
+# Convert pramx$DAPC$grp to a factor
+pramx$DAPC$grp <- as.factor(pramx$DAPC$grp)
+
+# Plot the DAPC results with small scree plots inside the main plot
 scatter(pramx$DAPC, cex = 2, col = cols, cell = 1.3, cstar = 0, legend = F, mstree = TRUE, 
-        lwd = 2, lty = 2, clabel = FALSE, posi.leg = "topleft", scree.pca = FALSE, scree.da = FALSE,
-        posi.pca = "topright", posi.da = "bottomleft", cleg = 0.75, xax = 1, yax = 2, inset.solid = 1, pch = 19)
+        lwd = 2, lty = 2, clabel = T, posi.leg = "topright", scree.pca = T, scree.da = T,
+        posi.pca = "topright", posi.da = "topleft", cleg = 0.2, xax = 1, yax = 2, inset.solid = 1, pch = 19,
+        ratio.pca = 0.2, ratio.da = 0.2)  # Adjust the size of scree plots
+
+# Close the TIFF device
+dev.off()
 
 
-# Add a legend for populations
-legend("topleft", legend = levels(as.factor(pramx$DAPC$grp)), fill = cols, bty = "n", title = "Sites")
 
-# Save the DAPC plot to a file
-ggsave("../results/dapc_plot.tiff", width = 10, height = 8, dpi = 300, compression = "lzw")
 
 # Analyze variable contributions
 # Extract the contribution of each SNP to the discriminant functions
@@ -209,16 +217,31 @@ write.csv(membership_probs, "../results/dapc_membership_probabilities.csv", row.
 
 # Plot membership probabilities
 # Create a barplot of membership probabilities
-barplot(t(as.matrix(membership_probs[, -c(1, 2)])), 
-        col = cols, 
-        main = "Membership Probabilities of Individuals",
-        xlab = "Individuals", 
-        ylab = "Membership Probability",
-        legend.text = colnames(membership_probs[, -c(1, 2)]), 
-        args.legend = list(x = "topright", bty = "n", title = "Clusters"))
 
-# Save the membership probabilities plot to a file
-ggsave("../results/dapc_membership_probabilities_plot.tiff", width = 12, height = 6, dpi = 300, compression = "lzw")
+
+# Open a TIFF device to save the membership probabilities plot
+tiff("../results/dapc_membership_probabilities_plot.tiff", width = 12, height = 6, units = "in", res = 300, compression = "lzw")
+
+# Adjust plot margins to make space for the rotated labels
+par(mar = c(10, 4, 4, 4))  # Bottom, Left, Top, Right margins
+
+# Create the barplot
+bp <- barplot(t(as.matrix(membership_probs[, -c(1, 2)])), 
+              col = cols, 
+              main = "Membership Probabilities of Individuals",
+              xlab = "",  # Remove default x-axis label
+              ylab = "Membership Probability",
+              las = 2,  # Rotate x-axis labels 90 degrees
+              cex.names = 0.7)  # Reduce the size of x-axis labels
+
+# Add a manual legend outside the plot area
+legend("topright", legend = colnames(membership_probs[, -c(1, 2)]), 
+       fill = cols, bty = "n", title = "Clusters", 
+       xpd = TRUE, inset = c(-0.2, 0))
+
+# Close the TIFF device
+dev.off()
+
 
 # Summary of DAPC results
 # Print a summary of the DAPC analysis
@@ -232,3 +255,119 @@ print(pramx$DAPC$eig)
 
 # Print the proportion of variance explained by each discriminant function
 print(pramx$DAPC$eig / sum(pramx$DAPC$eig) * 100)
+
+
+
+#######
+# Minimum Spanning Networks #
+#######
+
+# Load the igraph package (if not already loaded)
+library(igraph)
+
+##### Minimum Spanning Networks #####
+
+# Calculate genetic distance
+qmacd_dist <- bitwise.dist(qmacd_genclone)
+
+# Generate the Minimum Spanning Network (MSN)
+qmacd_msn <- poppr.msn(qmacd_genclone, qmacd_dist, showplot = FALSE, include.ties = TRUE)
+
+# Adjust node sizes using igraph functions
+node.size <- rep(2, times = nInd(qmacd_genclone))
+names(node.size) <- indNames(qmacd_genclone)
+V(qmacd_msn$graph)$size <- node.size  # Use V() from igraph to set vertex attributes
+
+# Plot the MSN
+set.seed(12345)
+plot_poppr_msn(qmacd_genclone, qmacd_msn, 
+               palette = cols,
+               gadj = 500)
+
+# Interactive mode (optional)
+# imsn()
+
+# Subset the data (if needed)
+qmacd_genclone_sub <- popsub(qmacd_genclone, exclude = character(0))
+
+# Handle missing data by imputing with mean
+qmacd_genclone_nomiss <- missingno(qmacd_genclone, type = 'mean')
+
+# Calculate Nei's genetic distance
+qmacd_genclone_dist <- nei.dist(qmacd_genclone_nomiss, warning = TRUE)
+
+# Generate another MSN with the subsetted data
+min_span_net <- poppr.msn(qmacd_genclone_sub, qmacd_genclone_dist, showplot = T, include.ties = TRUE)
+
+# Open a TIFF device to save the MSN plot with high resolution
+tiff("../results/msn_plot.tiff", width = 10, height = 8, units = "in", res = 300, compression = "lzw")
+
+# Plot the MSN with Kamada-Kawai layout
+set.seed(69)
+plot_poppr_msn(qmacd_genclone,
+               min_span_net,
+               inds = c("CR_01", "CR_02", "IT_01", "IT_02", "IT_03", 
+                        "CY_02", "CY_08", "MT_05", "MB_03", "MC_05", 
+                        "MT_06", "LS_01", "LS_02", "LS_03", "LS_04"),
+               mlg = FALSE,
+               gadj = 25,
+               nodescale = 51,
+               palette = cols,
+               cutoff = NULL,  # No aplicar cutoff
+               quantiles = FALSE,
+               beforecut = TRUE,
+               pop.leg = FALSE,  # Ocultar leyenda de poblaciones
+               size.leg = FALSE,  # Ocultar leyenda de sample/node
+               scale.leg = TRUE,
+               layfun = igraph::layout_with_kk)  # Usar Kamada-Kawai layout
+
+# Close the TIFF device
+dev.off()
+
+
+
+
+
+
+# Open a TIFF device to save the combined plot with high resolution
+tiff("../results/combined_PCA_DAPC_MSN_plot.tiff", width = 8, height = 12, units = "in", res = 300, compression = "lzw")
+
+# Set up a 3-row, 1-column layout for the plots
+par(mfrow = c(3, 1), mar = c(4, 4, 2, 2))  # Adjust margins for each plot
+
+# Plot 1: PCA
+plot(qmacd_pca$scores[, 1], qmacd_pca$scores[, 2], 
+     col = cols[as.numeric(qmacd_pca_scores$pop)], 
+     pch = 19, cex = 1.5, 
+     xlab = paste("PC1 (", round(100 * qmacd_pca$eig[1] / sum(qmacd_pca$eig), 2), "%)", sep = ""),
+     ylab = paste("PC2 (", round(100 * qmacd_pca$eig[2] / sum(qmacd_pca$eig), 2), "%)", sep = ""),
+     main = "PCA of Quercus macdougallii")
+legend("topright", legend = levels(as.factor(qmacd_pca_scores$pop)), 
+       fill = cols, bty = "n", title = "Sites")
+
+# Plot 2: DAPC
+scatter(pramx$DAPC, col = cols, cex = 2, posi.pca = "topright", 
+        posi.da = "bottomleft", scree.da = FALSE, scree.pca = FALSE,
+        main = "DAPC of Quercus macdougallii")
+legend("topright", legend = levels(as.factor(pramx$DAPC$grp)), 
+       fill = cols, bty = "n", title = "Sites")
+
+# Plot 3: MSN
+plot_poppr_msn(qmacd_genclone,
+               min_span_net,
+               inds = "none",  # No mostrar nombres de individuos
+               mlg = FALSE,
+               gadj = 25,
+               nodescale = 51,
+               palette = cols,
+               cutoff = NULL,  # No aplicar cutoff
+               quantiles = FALSE,
+               beforecut = TRUE,
+               pop.leg = FALSE,  # Ocultar leyenda de poblaciones
+               size.leg = FALSE,  # Ocultar leyenda de sample/node
+               scale.leg = TRUE,
+               layfun = igraph::layout_with_kk,  # Usar Kamada-Kawai layout
+               main = "Minimum Spanning Network of Quercus macdougallii")
+
+# Close the TIFF device
+dev.off()
