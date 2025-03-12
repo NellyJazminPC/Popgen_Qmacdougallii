@@ -10,3 +10,4 @@ bin/.RData
 bin/test_*.R
 archive/
 data/1.4.population_stacks/
+bin/software/admixture_macosx-1.3.0/

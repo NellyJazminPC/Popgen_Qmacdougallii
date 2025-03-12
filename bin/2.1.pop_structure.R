@@ -265,8 +265,6 @@ print(pramx$DAPC$eig / sum(pramx$DAPC$eig) * 100)
 # Load the igraph package (if not already loaded)
 library(igraph)
 
-##### Minimum Spanning Networks #####
-
 # Calculate genetic distance
 qmacd_dist <- bitwise.dist(qmacd_genclone)
 
@@ -323,4 +321,10 @@ plot_poppr_msn(qmacd_genclone,
 
 # Close the TIFF device
 dev.off()
+
+
+
+
+
+
 
