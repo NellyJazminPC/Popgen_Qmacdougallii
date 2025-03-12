@@ -63,3 +63,69 @@ Este comando ejecutará ADMIXTURE con validación cruzada para 3 grupos ancestra
 
 Para más información, consulta la [documentación oficial de ADMIXTURE](https://dalexander.github.io/admixture/).
 
+cv_error.sh
+
+```sh
+#!/bin/bash
+
+
+
+for K in 1 2 3 4 5 6 7 8 9 10; 
+do ./admixture --cv /media/nell/n311_pc/Quercus/Campos_Project_002_analisis/campos_002_BamHI-NsiI_4000000/output/Resources/admixture/var_filtro_4mill.bed  $K | tee log${K}.out; done
+```
+
+CV_error_per_sites_zones.sh
+
+```sh
+#!/bin/bash
+
+### Script para hacer los análisis de admixture y faststructure simple y logistic
+
+
+####################################################
+######################## ADMIXTURE  ################
+
+# -j número de procesadores
+# -s random seed
+
+
+ruta_bed=/home/nell/Bioinformatic/Qmacdougallii_genomics_and_environment/data/per_sites_and_zones
+
+# PZ.15
+
+for K in 1 2 3 4 5 6 7 8; 
+do ./admixture --cv /home/nell/Bioinformatic/Qmacdougallii_genomics_and_environment/data/per_sites_and_zones/PZ.15.plk.bed  $K | tee log${K}.out; done
+
+grep CV log*.out > PZ.15.chooseK.txt
+
+cat PZ.15.chooseK.txt
+
+# CR.10
+
+for K in 1 2 3 4 5 6 7 8; 
+do ./admixture --cv /home/nell/Bioinformatic/Qmacdougallii_genomics_and_environment/data/per_sites_and_zones/CR.10.plk.bed  $K | tee log${K}.out; done
+
+grep CV log*.out > CR.10.chooseK.txt
+
+cat CR.10.chooseK.txt
+```
+
+admixture_cv_error.sh
+
+```sh
+#!/bin/bash
+
+ruta_abs_bed=/home/nell/Bioinformatic/Qmacdougallii_genomics_and_environment/data/var.79.inds.sorted.bed
+
+# -j número de procesadores
+# -s random seed
+cd /home/nell/Bioinformatic/Qmacdougallii_genomics_and_environment/bin/admixture_linux-1.3.0
+
+for K in 1 2 3 4 5 6 7 8 9 10; 
+do ./admixture --cv $ruta_abs_bed  $K | tee log${K}.out; done
+
+grep CV log*.out >chooseK.txt
+
+cat chooseK.txt
+
+```
