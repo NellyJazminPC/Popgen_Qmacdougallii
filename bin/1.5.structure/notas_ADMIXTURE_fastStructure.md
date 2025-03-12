@@ -29,6 +29,45 @@
 
     Este comando convertirá los archivos `mydata.ped` y `mydata.map` en `mydata_converted.bed`, `mydata_converted.bim` y `mydata_converted.fam`.
 
+```
+#!/bin/bash 
+#############################
+#### Plink ####
+
+#Para convertir archivo en formato PLINK (.ped y .map) a .bed
+
+
+for i in CR.10.plk LS_04.plk MT_10.plk PZ.15.plk CY_10.plk MB_10.plk north.50.plk south.29.ind.plk CZ_10.plk MC_10.plk PZ_12.plk TZ_03.plk ; do
+
+
+~/programs_bioinf/plink-1.07-x86_64/plink --file $i --recodeAD --out $i
+
+
+~/programs_bioinf/plink-1.07-x86_64/plink --file $i --make-bed --out $i ;
+
+done
+```
+
+convert_plink.sh
+
+```
+#!/bin/bash 
+#############################
+#### Plink ####
+
+#Para convertir archivo en formato PLINK (.ped y .map) a .bed
+
+ruta_file=var.79.2.1.sorted.plk
+output_name=var.79.2.1.sorted
+
+~/programs_bioinf/plink-1.07-x86_64/plink --file $ruta_file --recodeAD --out $output_name
+
+
+~/programs_bioinf/plink-1.07-x86_64/plink --file $ruta_file --make-bed --out $output_name 
+```
+
+
+
 ## Comando básico
 
 ```bash
