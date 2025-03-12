@@ -62,3 +62,4 @@ Este comando ejecutará ADMIXTURE con validación cruzada para 3 grupos ancestra
 ## Referencias
 
 Para más información, consulta la [documentación oficial de ADMIXTURE](https://dalexander.github.io/admixture/).
+
