@@ -47,7 +47,7 @@ for i in CR.10.plk LS_04.plk MT_10.plk PZ.15.plk CY_10.plk MB_10.plk north.50.pl
 done
 ```
 
-## ADMMIXTURE
+## ADMIXTURE
 
 ## Comando básico
 
@@ -83,69 +83,88 @@ Este comando ejecutará ADMIXTURE con validación cruzada para 3 grupos ancestra
 
 Para más información, consulta la [documentación oficial de ADMIXTURE](https://dalexander.github.io/admixture/).
 
-cv_error.sh
+### [Script para ejecutar ADMIXTURE](../1.5.structure/admixture_qmacd.sh)
+
 
 ```sh
 #!/bin/bash
 
+# Este script ejecuta ADMIXTURE con validación cruzada para K=2 a K=10 y guarda los resultados en archivos de salida.
 
+# Definir rutas
+ruta_admixture=~/bioinfo/Popgen_Qmacdougallii/bin/software/admixture_linux-1.3.0
+ruta_bed=~/bioinfo/Popgen_Qmacdougallii/data/structure_formats
+ruta_output=~/bioinfo/Popgen_Qmacdougallii/data/1.5.structure
 
-for K in 1 2 3 4 5 6 7 8 9 10; 
-do ./admixture --cv /media/nell/n311_pc/Quercus/Campos_Project_002_analisis/campos_002_BamHI-NsiI_4000000/output/Resources/admixture/var_filtro_4mill.bed  $K | tee log${K}.out; done
+# Número de procesadores y semilla aleatoria
+num_procesadores=8
+semilla=12345
+
+# Cambiar al directorio de ADMIXTURE
+cd $ruta_admixture
+
+# Ejecutar ADMIXTURE con validación cruzada para K=2 a K=10
+for K in 2 3 4 5 6 7 8 9 10; 
+do ./admixture --cv -j$num_procesadores -s$semilla $ruta_bed/qmacd_ref_gen_rob.bed $K | tee $ruta_output/log${K}.out; done
+
+# Extraer los errores de validación cruzada
+grep CV $ruta_output/log*.out > $ruta_output/chooseK.txt
+
+# Mover los archivos .P y .Q generados a la ruta de salida
+mv $ruta_admixture/*.P $ruta_output/
+mv $ruta_admixture/*.Q $ruta_output/
+
+# Mostrar el archivo resultante
+cat $ruta_output/chooseK.txt
 ```
 
-CV_error_per_sites_zones.sh
+## fastStructure
 
+Instalación:
+
+#define NPY_NO_DEPRECATED_API NPY_1_7_API_VERSION
+
+
+Script
 ```sh
 #!/bin/bash
+# Para faststructure, structure prior= simple
 
-### Script para hacer los análisis de admixture y faststructure simple y logistic
+# Definir rutas
+ruta_faststructure=~/bioinfo/Popgen_Qmacdougallii/bin/software/fastStructure
+ruta_rel_bed=~/bioinfo/Popgen_Qmacdougallii/data/structure_formats
+ruta_output=~/bioinfo/Popgen_Qmacdougallii/data/1.5.structure
 
+# Número de procesadores
+num_procesadores=10
 
-####################################################
-######################## ADMIXTURE  ################
+# Activar el entorno virtual
+source $ruta_faststructure/venv/bin/activate
 
-# -j número de procesadores
-# -s random seed
+# Cambiar al directorio de fastStructure
+cd $ruta_faststructure
 
+##### S I M P L E  #######
 
-ruta_bed=/home/nell/Bioinformatic/Qmacdougallii_genomics_and_environment/data/per_sites_and_zones
+for i in {1..8}; 
+do 
+    python3 structure.py -K $i --input=$ruta_rel_bed/qmacd_ref_gen_rob --output=$ruta_output/qmacd_ref_gen_rob.simple --full --seed=20 --prior=simple --threads=$num_procesadores
+done
 
-# PZ.15
+python3 chooseK.py --input=$ruta_output/qmacd_ref_gen_rob.simple > $ruta_output/chooseK_qmacd_ref_gen_rob.simple.txt
 
-for K in 1 2 3 4 5 6 7 8; 
-do ./admixture --cv /home/nell/Bioinformatic/Qmacdougallii_genomics_and_environment/data/per_sites_and_zones/PZ.15.plk.bed  $K | tee log${K}.out; done
+cat $ruta_output/chooseK_qmacd_ref_gen_rob.simple.txt
 
-grep CV log*.out > PZ.15.chooseK.txt
+###### L O G I S T I C #######################
 
-cat PZ.15.chooseK.txt
+for i in {1..8}; 
+do 
+    python3 structure.py -K $i --input=$ruta_rel_bed/qmacd_ref_gen_rob --output=$ruta_output/qmacd_ref_gen_rob.logistic --full --seed=20 --prior=logistic --threads=$num_procesadores
+done
 
-# CR.10
+python3 chooseK.py --input=$ruta_output/qmacd_ref_gen_rob.logistic > $ruta_output/chooseK_qmacd_ref_gen_rob.logistic.txt
 
-for K in 1 2 3 4 5 6 7 8; 
-do ./admixture --cv /home/nell/Bioinformatic/Qmacdougallii_genomics_and_environment/data/per_sites_and_zones/CR.10.plk.bed  $K | tee log${K}.out; done
-
-grep CV log*.out > CR.10.chooseK.txt
-
-cat CR.10.chooseK.txt
-```
-
-admixture_cv_error.sh
-
-```sh
-#!/bin/bash
-
-ruta_abs_bed=/home/nell/Bioinformatic/Qmacdougallii_genomics_and_environment/data/var.79.inds.sorted.bed
-
-# -j número de procesadores
-# -s random seed
-cd /home/nell/Bioinformatic/Qmacdougallii_genomics_and_environment/bin/admixture_linux-1.3.0
-
-for K in 1 2 3 4 5 6 7 8 9 10; 
-do ./admixture --cv $ruta_abs_bed  $K | tee log${K}.out; done
-
-grep CV log*.out >chooseK.txt
-
-cat chooseK.txt
+cat $ruta_output/chooseK_qmacd_ref_gen_rob.logistic.txt
 
 ```
+
