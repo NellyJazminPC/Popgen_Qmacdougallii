@@ -1,4 +1,4 @@
-# Ejecución del programa ADMIXTURE 1.3.0
+# Ejecución del programa ADMIXTURE 1.3.0 en Ubuntu 24.04
 
 ## Requisitos previos
 
@@ -12,7 +12,7 @@
 
     ## Conversión de archivos `.ped` y `.map` a `.bed`, `.bim` y `.fam`
 
-    Para convertir archivos `.ped` y `.map` a `.bed`, `.bim` y `.fam` utilizando PLINK, puedes usar el siguiente comando:
+    Para convertir archivos `.ped` y `.map` a `.bed`, `.bim` y `.fam` utilizando [PLINK](https://zzz.bwh.harvard.edu/plink/download.shtml), puedes usar el siguiente comando:
 
     ```bash
     plink --file <input_file> --make-bed --out <output_file>
@@ -21,13 +21,12 @@
     - `<input_file>`: Nombre del archivo de entrada sin la extensión.
     - `<output_file>`: Nombre del archivo de salida sin la extensión.
 
-    ### Ejemplo de uso
+    ### [Script para ejecutar plink](../1.5.structure/convert2plinkformat.sh)
 
-    ```bash
-    plink --file mydata --make-bed --out mydata_converted
-    ```
 
-    Este comando convertirá los archivos `mydata.ped` y `mydata.map` en `mydata_converted.bed`, `mydata_converted.bim` y `mydata_converted.fam`.
+### EXTRA: script para hacer los archivos por sitio y por zona.
+
+Aunque para ello primero hay que separar el vcf en TASSEL.
 
 ```
 #!/bin/bash 
@@ -48,25 +47,7 @@ for i in CR.10.plk LS_04.plk MT_10.plk PZ.15.plk CY_10.plk MB_10.plk north.50.pl
 done
 ```
 
-convert_plink.sh
-
-```
-#!/bin/bash 
-#############################
-#### Plink ####
-
-#Para convertir archivo en formato PLINK (.ped y .map) a .bed
-
-ruta_file=var.79.2.1.sorted.plk
-output_name=var.79.2.1.sorted
-
-~/programs_bioinf/plink-1.07-x86_64/plink --file $ruta_file --recodeAD --out $output_name
-
-
-~/programs_bioinf/plink-1.07-x86_64/plink --file $ruta_file --make-bed --out $output_name 
-```
-
-
+## ADMMIXTURE
 
 ## Comando básico
 
