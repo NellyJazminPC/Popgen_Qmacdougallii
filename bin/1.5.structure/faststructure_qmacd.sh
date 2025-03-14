@@ -1,16 +1,17 @@
 #!/bin/bash
-# Para faststructure, structure prior= simple
+# This script runs fastStructure with two different priors (simple and logistic) for a range of K values (1 to 10).
+# It then selects the best K value using chooseK.py and moves the output files to a final output directory.
 
-# Definir rutas
+# Define paths
 ruta_faststructure=/fastStructure-1.0
 ruta_rel_bed=/workspace/data/structure_formats
 ruta_output=/workspace/data/1.5.structure
 ruta_final_output=/workspace/data/1.5.structure/faststructure_output
 
-# Número de procesadores
+# Number of processors
 num_procesadores=10
 
-# Cambiar al directorio de fastStructure
+# Change to the fastStructure directory
 cd $ruta_faststructure
 
 ##### S I M P L E  #######
@@ -35,9 +36,9 @@ python chooseK.py --input=$ruta_output/qmacd_ref_gen_rob.logistic > $ruta_output
 
 cat $ruta_output/chooseK_qmacd_ref_gen_rob.logistic.txt
 
-# Crear la carpeta de salida final si no existe
+# Create the final output directory if it does not exist
 mkdir -p $ruta_final_output
 
-# Mover todos los archivos de salida a la carpeta de salida final
+# Move all output files to the final output directory
 mv $ruta_output/*.simple* $ruta_final_output/
 mv $ruta_output/*.logistic* $ruta_final_output/

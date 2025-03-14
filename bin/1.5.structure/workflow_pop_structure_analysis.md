@@ -1,170 +1,154 @@
-# Ejecución del programa ADMIXTURE 1.3.0 en Ubuntu 24.04
+# Workflow to Run ADMIXTURE and fastStructure
 
-## Requisitos previos
+## 1. Conversion of PLINK Files
+First, convert the files in PLINK format (.ped and .map) to .bed, .bim, and .fam using the script `convert2plinkformat.sh`.
 
-1. Instalación de [ADMIXTURE 1.3.0.](https://dalexander.github.io/admixture/download.html) 
-2. Conversión de los datos en formato PLINK (.bed, .bim, .fam) 
-
-    2.1 Se convirtip a `.ped`y `.map` con TASSEL
-
-    2.2 Con el programa PLINK se convirtio a `.bed`, `.bim` y `.fam`
-
-
-    ## Conversión de archivos `.ped` y `.map` a `.bed`, `.bim` y `.fam`
-
-    Para convertir archivos `.ped` y `.map` a `.bed`, `.bim` y `.fam` utilizando [PLINK](https://zzz.bwh.harvard.edu/plink/download.shtml), puedes usar el siguiente comando:
-
-    ```bash
-    plink --file <input_file> --make-bed --out <output_file>
-    ```
-
-    - `<input_file>`: Nombre del archivo de entrada sin la extensión.
-    - `<output_file>`: Nombre del archivo de salida sin la extensión.
-
-    ### [Script para ejecutar plink](../1.5.structure/convert2plinkformat.sh)
-
-
-### EXTRA: script para hacer los archivos por sitio y por zona.
-
-Aunque para ello primero hay que separar el vcf en TASSEL.
-
-```
+```sh
 #!/bin/bash 
+# This script converts a file in PLINK format (.ped and .map) to .bed format.
+
 #############################
 #### Plink ####
 
-#Para convertir archivo en formato PLINK (.ped y .map) a .bed
+# To convert a file in PLINK format (.ped and .map) to .bed
 
+ruta_file=~/bioinfo/Popgen_Qmacdougallii/data/structure_formats/qmacd_ref_gen_rob.plk
+output_name=~/bioinfo/Popgen_Qmacdougallii/data/structure_formats/qmacd_ref_gen_rob
+ruta_plink=~/bioinfo/Popgen_Qmacdougallii/bin/software/plink-1.07-x86_64/plink
 
-for i in CR.10.plk LS_04.plk MT_10.plk PZ.15.plk CY_10.plk MB_10.plk north.50.plk south.29.ind.plk CZ_10.plk MC_10.plk PZ_12.plk TZ_03.plk ; do
+# The --noweb option is used to run PLINK without attempting to check for updates online
+$ruta_plink --file $ruta_file --noweb --recodeAD --out $output_name
 
-
-~/programs_bioinf/plink-1.07-x86_64/plink --file $i --recodeAD --out $i
-
-
-~/programs_bioinf/plink-1.07-x86_64/plink --file $i --make-bed --out $i ;
-
-done
+# Convert to .bed format
+$ruta_plink --file $ruta_file --noweb --make-bed --out $output_name
 ```
 
-## ADMIXTURE
-
-## Comando básico
-
-```bash
-admixture <input_file>.bed <K>
-```
-
-- `<input_file>`: Nombre del archivo de entrada sin la extensión.
-- `<K>`: Número de grupos ancestrales.
-
-## Ejemplo de uso
-
-```bash
-admixture mydata.bed 3
-```
-
-Este comando ejecutará ADMIXTURE en el archivo `mydata.bed` asumiendo 3 grupos ancestrales.
-
-## Opciones adicionales
-
-- `-B`: Realiza bootstrapping.
-- `--cv`: Realiza validación cruzada.
-
-### Ejemplo con validación cruzada
-
-```bash
-admixture --cv mydata.bed 3
-```
-
-Este comando ejecutará ADMIXTURE con validación cruzada para 3 grupos ancestrales.
-
-## Referencias
-
-Para más información, consulta la [documentación oficial de ADMIXTURE](https://dalexander.github.io/admixture/).
-
-### [Script para ejecutar ADMIXTURE](../1.5.structure/admixture_qmacd.sh)
-
+## 2. Running ADMIXTURE
+Run ADMIXTURE with cross-validation for K=2 to K=10 using the script `admixture_qmacd.sh`.
 
 ```sh
 #!/bin/bash
 
-# Este script ejecuta ADMIXTURE con validación cruzada para K=2 a K=10 y guarda los resultados en archivos de salida.
+# This script runs ADMIXTURE with cross-validation for K=2 to K=10 and saves the results in output files.
 
-# Definir rutas
+# Define paths
 ruta_admixture=~/bioinfo/Popgen_Qmacdougallii/bin/software/admixture_linux-1.3.0
 ruta_bed=~/bioinfo/Popgen_Qmacdougallii/data/structure_formats
 ruta_output=~/bioinfo/Popgen_Qmacdougallii/data/1.5.structure
+ruta_final_output=~/bioinfo/Popgen_Qmacdougallii/data/1.5.structure/admixture_output
 
-# Número de procesadores y semilla aleatoria
+# Number of processors and random seed
 num_procesadores=8
 semilla=12345
 
-# Cambiar al directorio de ADMIXTURE
+# Change to the ADMIXTURE directory
 cd $ruta_admixture
 
-# Ejecutar ADMIXTURE con validación cruzada para K=2 a K=10
-for K in 2 3 4 5 6 7 8 9 10; 
-do ./admixture --cv -j$num_procesadores -s$semilla $ruta_bed/qmacd_ref_gen_rob.bed $K | tee $ruta_output/log${K}.out; done
+# Run ADMIXTURE with cross-validation for K=2 to K=10
+for K in 1 2 3 4 5 6 7 8 9 10; 
+do 
+    ./admixture --cv -j$num_procesadores -s$semilla $ruta_bed/qmacd_ref_gen_rob.bed $K | tee $ruta_output/log${K}.out
+done
 
-# Extraer los errores de validación cruzada
+# Extract cross-validation errors
 grep CV $ruta_output/log*.out > $ruta_output/chooseK.txt
 
-# Mover los archivos .P y .Q generados a la ruta de salida
-mv $ruta_admixture/*.P $ruta_output/
-mv $ruta_admixture/*.Q $ruta_output/
+# Create the final output directory if it does not exist
+mkdir -p $ruta_final_output
 
-# Mostrar el archivo resultante
-cat $ruta_output/chooseK.txt
+# Move the generated .P and .Q files to the final output directory
+mv $ruta_admixture/*.P $ruta_final_output/
+mv $ruta_admixture/*.Q $ruta_final_output/
+mv $ruta_output/log*.out $ruta_final_output/
+mv $ruta_output/chooseK.txt $ruta_final_output/
+
+# Display the resulting file
+cat $ruta_final_output/chooseK.txt
 ```
 
-## fastStructure
+## 3. Running fastStructure
+Run fastStructure with two different priors (simple and logistic) for a range of K values using the script `faststructure_qmacd.sh`.
 
-Instalación:
-
-#define NPY_NO_DEPRECATED_API NPY_1_7_API_VERSION
-
-
-Script
 ```sh
 #!/bin/bash
-# Para faststructure, structure prior= simple
+# This script runs fastStructure with two different priors (simple and logistic) for a range of K values (1 to 10).
+# It then selects the best K value using chooseK.py and moves the output files to a final output directory.
 
-# Definir rutas
-ruta_faststructure=~/bioinfo/Popgen_Qmacdougallii/bin/software/fastStructure
-ruta_rel_bed=~/bioinfo/Popgen_Qmacdougallii/data/structure_formats
-ruta_output=~/bioinfo/Popgen_Qmacdougallii/data/1.5.structure
+# Define paths
+ruta_faststructure=/fastStructure-1.0
+ruta_rel_bed=/workspace/data/structure_formats
+ruta_output=/workspace/data/1.5.structure
+ruta_final_output=/workspace/data/1.5.structure/faststructure_output
 
-# Número de procesadores
+# Number of processors
 num_procesadores=10
 
-# Activar el entorno virtual
-source $ruta_faststructure/venv/bin/activate
-
-# Cambiar al directorio de fastStructure
+# Change to the fastStructure directory
 cd $ruta_faststructure
 
 ##### S I M P L E  #######
 
-for i in {1..8}; 
+for i in {1..10}; 
 do 
-    python3 structure.py -K $i --input=$ruta_rel_bed/qmacd_ref_gen_rob --output=$ruta_output/qmacd_ref_gen_rob.simple --full --seed=20 --prior=simple --threads=$num_procesadores
+    python structure.py -K $i --input=$ruta_rel_bed/qmacd_ref_gen_rob --output=$ruta_output/qmacd_ref_gen_rob.simple --full --seed=20 --prior=simple --format=bed
 done
 
-python3 chooseK.py --input=$ruta_output/qmacd_ref_gen_rob.simple > $ruta_output/chooseK_qmacd_ref_gen_rob.simple.txt
+python chooseK.py --input=$ruta_output/qmacd_ref_gen_rob.simple > $ruta_output/chooseK_qmacd_ref_gen_rob.simple.txt
 
 cat $ruta_output/chooseK_qmacd_ref_gen_rob.simple.txt
 
 ###### L O G I S T I C #######################
 
-for i in {1..8}; 
+for i in {1..10}; 
 do 
-    python3 structure.py -K $i --input=$ruta_rel_bed/qmacd_ref_gen_rob --output=$ruta_output/qmacd_ref_gen_rob.logistic --full --seed=20 --prior=logistic --threads=$num_procesadores
+    python structure.py -K $i --input=$ruta_rel_bed/qmacd_ref_gen_rob --output=$ruta_output/qmacd_ref_gen_rob.logistic --full --seed=20 --prior=logistic --format=bed
 done
 
-python3 chooseK.py --input=$ruta_output/qmacd_ref_gen_rob.logistic > $ruta_output/chooseK_qmacd_ref_gen_rob.logistic.txt
+python chooseK.py --input=$ruta_output/qmacd_ref_gen_rob.logistic > $ruta_output/chooseK_qmacd_ref_gen_rob.logistic.txt
 
 cat $ruta_output/chooseK_qmacd_ref_gen_rob.logistic.txt
 
+# Create the final output directory if it does not exist
+mkdir -p $ruta_final_output
+
+# Move all output files to the final output directory
+mv $ruta_output/*.simple* $ruta_final_output/
+mv $ruta_output/*.logistic* $ruta_final_output/
 ```
 
+## 3.1 Using fastStructure with Docker
+
+To use fastStructure with Docker, follow these steps:
+
+1. Pull the Docker image for fastStructure:
+
+    ```bash
+    docker pull fischuu/faststructure
+    ```
+
+2. Run the Docker container:
+
+    ```bash
+    docker run -v /path/to/your/data:/data fischuu/faststructure 
+    ```
+
+    Replace `/path/to/your/data` with the actual path to your data directory.
+
+3. To run fastStructure for multiple K values, you can execute the `faststructure_qmacd.sh` script within the Docker container:
+
+    ```sh
+    docker run -v /path/to/your/data:/data fischuu/faststructure /data/faststructure_qmacd.sh
+    ```
+
+## References
+
+- PLINK
+Purcell S, Neale B, Todd-Brown K, Thomas L, Ferreira MA, Bender D, Maller J, Sklar P, de Bakker PI, Daly MJ, Sham PC. PLINK: a tool set for whole-genome association and population-based linkage analyses. Am J Hum Genet. 2007 Sep;81(3):559-75. doi: 10.1086/519795. Epub 2007 Jul 25. PMID: 17701901; PMCID: PMC1950838.
+
+- ADMIXTURE
+Alexander DH, Novembre J, Lange K. Fast model-based estimation of ancestry in unrelated individuals. Genome Res. 2009 Sep;19(9):1655-64. doi: 10.1101/gr.094052.109. Epub 2009 Aug 4. PMID: 19648217; PMCID: PMC2752134.
+
+- fastStructure
+Raj A, Stephens M, Pritchard JK. fastSTRUCTURE: Variational Inference of Population Structure in Large SNP Data Sets. Genetics. 2014 Nov;197(2):573-89. doi: 10.1534/genetics.114.164350. Epub 2014 Sep 17. PMID: 25143593; PMCID: PMC4231593.
+
+- For more information, consult the [official ADMIXTURE documentation](https://dalexander.github.io/admixture/) and the [official fastStructure documentation](https://rajanil.github.io/fastStructure/).
