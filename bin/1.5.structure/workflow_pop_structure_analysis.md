@@ -120,7 +120,7 @@ mv $ruta_output/*.logistic* $ruta_final_output/
 
 To use fastStructure with Docker, follow these steps:
 
-1. Pull the Docker image for fastStructure:
+1. Pull the [Docker image for fastStructure](https://hub.docker.com/r/fischuu/faststructure):
 
     ```bash
     docker pull fischuu/faststructure
