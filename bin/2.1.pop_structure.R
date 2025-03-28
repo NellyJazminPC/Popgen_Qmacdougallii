@@ -2,7 +2,7 @@
 ## PCA, DAPC, and MNS analysis for population structure
 ## Visualization of fastStructure and ADMIXTURE results
 ## Nelly J. Pacheco Cruz
-## August 2024
+## January 2025
 
 # Load libraries
 library(vcfR)       # For handling VCF files
@@ -41,11 +41,9 @@ qmacd_genclone <- as.genclone(qmacd_genind)
 qmacd_genind_pop <- gl2gi(qmacd_genlight_pop, v=1)
 qmacd_genclone_pop <- as.genclone(qmacd_genind_pop)
 
-# Color assignment
-cols <- c("#7570B3", "#075277", "#00B1E8", "#1FC944",
-          "#E6AB02", "#E7298A", "#E07E34", "#F15858", "red")
+# Define a consistent color palette
+cols <- c("#00B1E8", "#075277", "#E7298A", "#E07E34", "#F15858", "#E6AB02", "#7570B3", "#1FC944", "red")
 
-#################
 # PCA #
 #################
 qmacd_pca <- glPca(qmacd_genlight, nf=80)
@@ -74,23 +72,20 @@ qmacd_pca_scores$zone <- pop(qmacd_genlight_pop)  # Use POP as zone
 qmacd_pca_scores$zone <- ifelse(qmacd_pca_scores$zone == "POP1", "North", 
                                 ifelse(qmacd_pca_scores$zone == "POP2", "South", qmacd_pca_scores$zone))
 
-# Crear un vector con los nombres de las poblaciones sin el número inicial
+# Create a vector with the population names without the initial number
 pop_labels <- gsub("^[0-9]+", "", unique(qmacd_pca_scores$pop))
 
-# Asegurarse de que los nombres estén en el orden numérico original
+# Ensure that the names are in the original numerical order
 pop_labels <- pop_labels[order(unique(qmacd_pca_scores$pop))]
 
 # PCA PLOT
-# Define colors
-cols <- c("#00B1E8", "#075277", "#E7298A", "#E07E34", "#F15858", "#E6AB02", "#7570B3", "#1FC944", "red")
-
 # Create the plot
 set.seed(12345)
 qmacd_PCA_plot <- ggplot(qmacd_pca_scores, aes(x=PC1, y=PC2, colour=as.factor(pop), shape=as.factor(zone), fill=as.factor(pop))) + 
   geom_point(size=4, alpha=0.7) + 
-  scale_color_manual(values=cols, name="Populations", labels=pop_labels) +  # Usar etiquetas editadas
-  scale_fill_manual(values=cols, name="Populations", labels=pop_labels) +  # Usar etiquetas editadas
-  scale_shape_manual(name="Zones", values=c(21, 24, 25), labels=c("North", "South")) +  # Cambiar etiquetas de la leyenda para zone
+  scale_color_manual(values=cols, name="Populations", labels=pop_labels) +  # Use edited labels
+  scale_fill_manual(values=cols, name="Populations", labels=pop_labels) +  # Use edited labels
+  scale_shape_manual(name="Zones", values=c(21, 24, 25), labels=c("North", "South")) +  # Change legend labels for zone
   geom_hline(yintercept=0) + 
   geom_vline(xintercept=0) + 
   theme_bw() +
@@ -113,9 +108,6 @@ ggsave("../results/qmacd_PCA_plot.tiff", qmacd_PCA_plot, width=10, height=8, dpi
 # DAPC Analysis
 ################
 # With the find.clusters function of the adegenet package
-# These functions implement the clustering procedure used in Discriminant Analysis of Principal Components (DAPC, Jombart et al. 2010).
-# This procedure consists in running successive K-means with an increasing number of clusters (k), after transforming data using a principal component analysis (PCA). For each model, a statistical measure of goodness of fit (by default, BIC; Bayesian Information Criterion) is computed, which allows to choose the optimal k.
-
 grp <- find.clusters(qmacd_genind, max.n.clust=8)
 
 # To obtain a graph with the proportions belonging to each of the two possible groups
@@ -166,20 +158,22 @@ system.time(pramx <- xvalDapc(tab(qmacd_genclone, NA.method = "mean"),
 names(pramx) # The first element are all the samples
 pramx[2:6] # To detect the best number of PC retained based on the cross-validation error
 
-# Plot the results
+######
+# DAPC plot scatter - 9 sites
+#####
 # clabel= site names
 scatter(pramx$DAPC, cex = 2, col = cols, cell=1.3, cstar = 0, legend = F, mstree = TRUE, lwd = 2, lty = 2,
         clabel = T, posi.leg = "topleft", scree.pca = F, scree.da = F,
         posi.pca = "topright", posi.da = "bottomleft", cleg = 0.75, xax = 1, yax = 2, inset.solid = 1, pch=19)
 
 # Open a TIFF device to save the DAPC plot with high resolution
-tiff("../results/dapc_plot.tiff", width = 10, height = 8, units = "in", res = 300, compression = "lzw")
+tiff("../results/dapc_plot_9sites.tiff", width = 10, height = 8, units = "in", res = 300, compression = "lzw")
 
 # Remove the first number from the group names in pramx$DAPC$grp
 pramx$DAPC$grp <- gsub("^[0-9]+", "", pramx$DAPC$grp)
 
 # Convert pramx$DAPC$grp to a factor
-pramx$DAPC$grp <- as.factor(pramx$DAPC$grp)
+pramx$DAPC$grp <- factor(pramx$DAPC$grp, levels = unique(pramx$DAPC$grp))
 
 # Plot the DAPC results with small scree plots inside the main plot
 scatter(pramx$DAPC, cex = 2, col = cols, cell = 1.3, cstar = 0, legend = F, mstree = TRUE, 
@@ -191,8 +185,179 @@ scatter(pramx$DAPC, cex = 2, col = cols, cell = 1.3, cstar = 0, legend = F, mstr
 dev.off()
 
 
+#######
+# DAPC plot en scatter - 2 pop - North and South
+#######
+# Define a consistent color palette for the 9 sites
+site_cols <- c("CZ" = "#FFA500",  # Orange for CZ
+               "MT" = "#FFA500",  # Orange for MT
+               "MC" = "#FFA500",  # Orange for MC
+               "MB" = "#FFA500",  # Orange for MB
+               "CY" = "#FFA500",  # Orange for CY
+               "LS" = "#008000",  # Green for LS
+               "PZ" = "#008000",  # Green for PZ
+               "CR" = "#008000",  # Green for CR
+               "IT" = "#008000")  # Green for IT
+
+# Ensure pramx$DAPC$grp is a factor
+pramx$DAPC$grp <- factor(pramx$DAPC$grp)
+
+# Map colors to the levels of pramx$DAPC$grp
+level_colors <- site_cols[levels(pramx$DAPC$grp)]
+
+# Debugging: Check the mapping of levels to colors
+print("Mapping of levels to colors:")
+print(levels(pramx$DAPC$grp))  # Verify the levels
+print(level_colors)  # Verify the color assignments
+
+# Open a TIFF device to save the DAPC plot with high resolution
+tiff("../results/dapc_plot_2pop.tiff", width = 10, height = 8, units = "in", res = 300, compression = "lzw")
+
+# Plot the DAPC results without mstree, centroids, and labels, and add a legend for sites
+scatter(pramx$DAPC, 
+        cex = 2, 
+        col = level_colors,  # Use the manually assigned colors
+        cell = 0,            # Remove background shading
+        cstar = 0,           # Remove centroids (circles)
+        legend = F,       # Add a legend for the sites
+        mstree = FALSE,      # Remove the minimum spanning tree
+        lwd = 2, 
+        lty = 2, 
+        clabel = F,      # Remove labels for the points
+        posi.leg = "topright",  # Position the legend in the top-right corner
+        scree.pca = T, 
+        scree.da = T,
+        posi.pca = "topright", 
+        posi.da = "topleft", 
+        cleg = 0.75,         # Adjust the size of the legend
+        xax = 1, 
+        yax = 2, 
+        inset.solid = 1, 
+        pch = 19,            # Use solid points
+        ratio.pca = 0.2, 
+        ratio.da = 0.2)
+# Close the TIFF device
+dev.off()
+
+#####
+# DAPC - circunferencias de distancias máximas - ggplot
+######
+# Load ggplot2 and ggforce
+library(ggplot2)
+library(ggforce)  # For geom_circle
+
+# Extract individual coordinates from the DAPC
+dapc_coords <- as.data.frame(pramx$DAPC$ind.coord)  # Extract individual coordinates
+dapc_coords$group <- ifelse(pramx$DAPC$grp %in% c("CZ", "MT", "MC", "MB", "CY"), "South", "North")  # Assign groups
+dapc_coords$site <- pramx$DAPC$grp  # Assign site information (e.g., CZ, MC, MB)
+
+# Calculate centroids for each group
+centroids <- aggregate(. ~ group, data = dapc_coords, FUN = mean)
+
+# Calculate the radius for each group as the maximum distance from the centroid
+dapc_coords <- merge(dapc_coords, centroids, by = "group", suffixes = c("", "_centroid"))
+dapc_coords$distance <- sqrt((dapc_coords$LD1 - dapc_coords$LD1_centroid)^2 + 
+                               (dapc_coords$LD2 - dapc_coords$LD2_centroid)^2)
+radius <- aggregate(distance ~ group, data = dapc_coords, FUN = max)
+centroids <- merge(centroids, radius, by = "group")  # Add radius to centroids
+
+# Define shapes for each site (filled shapes: 21-25)
+site_shapes <- c("CZ" = 21, "MT" = 22, "MC" = 23, "MB" = 24, "CY" = 25, 
+                 "LS" = 21, "PZ" = 22, "CR" = 23, "IT" = 24)
+
+# Create the DAPC plot with ggplot2
+dapc_plot <- ggplot(dapc_coords, aes(x = LD1, y = LD2, color = group, fill = group, shape = site)) +
+  # Add circunferences (borders only, no fill)
+  geom_circle(data = centroids, aes(x0 = LD1, y0 = LD2, r = distance, color = group), 
+              inherit.aes = FALSE, alpha = 1, fill = NA, size = 0.8) +  # Thinner border
+  # Plot individual points with shapes based on site
+  geom_point(size = 8, alpha = 0.5) +  # Larger and more translucent points
+  # Define colors for groups
+  scale_color_manual(values = c("South" = "#FFA500", "North" = "#008000"), 
+                     labels = c("South", "North")) +  # Update legend labels
+  scale_fill_manual(values = c("South" = "#FFA500", "North" = "#008000")) +  # Fill for shapes
+  # Define shapes for sites
+  scale_shape_manual(values = site_shapes) +
+  # Highlight X and Y axes at 0
+  geom_hline(yintercept = 0, linetype = "solid", color = "black", size = 1) +  # Highlight Y axis
+  geom_vline(xintercept = 0, linetype = "solid", color = "black", size = 1) +  # Highlight X axis
+  # Customize the theme
+  theme_bw() +  # Apply theme_bw()
+  theme(panel.grid = element_blank(),  # Remove internal grid lines
+        legend.title = element_blank(), 
+        legend.position = "right",  # Move the legend to the right
+        legend.text = element_text(size = 14),
+        axis.title.x = element_text(size = 16),
+        axis.text.x = element_text(size = 14),
+        axis.title.y = element_text(size = 16),
+        axis.text.y = element_text(size = 14),
+        plot.title = element_blank()) +  # Remove the title
+  labs(x = "LD1", y = "LD2")  # Add axis labels
+
+# Print the plot
+print(dapc_plot)
+
+# Save the DAPC plot in TIFF format (high resolution, widely accepted)
+ggsave("../results/qmacd_DAPC_plot_2pop_ggplot.tiff", dapc_plot, width = 10, height = 8, dpi = 300, compression = "lzw")
+
+# Save the DAPC plot in PNG format (high resolution, widely supported)
+ggsave("../results/qmacd_DAPC_plot_2pop_ggplot.png", dapc_plot, width = 10, height = 8, dpi = 300)
+
+#####
+# DAPC con Elipse de confianza (Confidence Ellipse) en ggplot
+#####
+# Load ggplot2
+library(ggplot2)
+
+# Extract individual coordinates from the DAPC
+dapc_coords <- as.data.frame(pramx$DAPC$ind.coord)  # Extract individual coordinates
+dapc_coords$group <- ifelse(pramx$DAPC$grp %in% c("CZ", "MT", "MC", "MB", "CY"), "South", "North")  # Assign groups
+dapc_coords$site <- pramx$DAPC$grp  # Assign site information (e.g., CZ, MC, MB)
+
+# Define shapes for each site (filled shapes: 21-25)
+site_shapes <- c("CZ" = 21, "MT" = 22, "MC" = 23, "MB" = 24, "CY" = 25, 
+                 "LS" = 21, "PZ" = 22, "CR" = 23, "IT" = 24)
+
+# Create the DAPC plot with ggplot2
+dapc_plot <- ggplot(dapc_coords, aes(x = LD1, y = LD2, color = group, fill = group)) +
+  # Add confidence ellipses with no fill and marked borders
+  stat_ellipse(aes(group = group), type = "norm", level = 0.95, 
+               geom = "path", size = 1, linetype = "solid") +  # No fill, only border
+  # Plot individual points with shapes based on site
+  geom_point(aes(shape = site), size = 4, alpha = 0.5) +  # Larger and more translucent points
+  # Define colors for groups
+  scale_color_manual(values = c("South" = "#FFA500", "North" = "#008000"), 
+                     labels = c("South", "North")) +  # Update legend labels
+  scale_fill_manual(values = c("South" = "#FFA500", "North" = "#008000")) +  # Fill for points
+  # Define shapes for sites
+  scale_shape_manual(values = site_shapes) +
+  # Highlight X and Y axes at 0
+  geom_hline(yintercept = 0, linetype = "solid", color = "black", size = 1) +  # Highlight Y axis
+  geom_vline(xintercept = 0, linetype = "solid", color = "black", size = 1) +  # Highlight X axis
+  # Customize the theme
+  theme_bw() +  # Apply theme_bw()
+  theme(panel.grid = element_blank(),  # Remove internal grid lines
+        legend.title = element_blank(), 
+        legend.position = "right",  # Move the legend to the right
+        legend.text = element_text(size = 14),
+        axis.title.x = element_text(size = 16),
+        axis.text.x = element_text(size = 14),
+        axis.title.y = element_text(size = 16),
+        axis.text.y = element_text(size = 14),
+        plot.title = element_blank()) +  # Remove the title
+  labs(x = "LD1", y = "LD2")  # Add axis labels
+
+# Print the plot
+print(dapc_plot)
+
+# Save the DAPC plot in TIFF format (high resolution, widely accepted)
+ggsave("../results/qmacd_DAPC_plot_with_ellipses_2pop_ggplot.tiff", dapc_plot, width = 10, height = 8, dpi = 300, compression = "lzw")
+
+# Save the DAPC plot in PNG format (high resolution, widely supported)
+ggsave("../results/qmacd_DAPC_plot_with_ellipses_2pop_ggplot.png", dapc_plot, width = 10, height = 8, dpi = 300)
 
 
+#####
 # Analyze variable contributions
 # Extract the contribution of each SNP to the discriminant functions
 var_contrib <- loadingplot(pramx$DAPC$var.contr, axis = 1, lab.jitter = 1, main = "Contributions of SNPs to DA1")
@@ -311,20 +476,173 @@ plot_poppr_msn(qmacd_genclone,
                gadj = 25,
                nodescale = 51,
                palette = cols,
-               cutoff = NULL,  # No aplicar cutoff
+               cutoff = NULL,  # Do not apply cutoff
                quantiles = FALSE,
                beforecut = TRUE,
-               pop.leg = FALSE,  # Ocultar leyenda de poblaciones
-               size.leg = FALSE,  # Ocultar leyenda de sample/node
+               pop.leg = FALSE,  # Hide population legend
+               size.leg = FALSE,  # Hide sample/node legend
                scale.leg = TRUE,
-               layfun = igraph::layout_with_kk)  # Usar Kamada-Kawai layout
+               layfun = igraph::layout_with_kk)  # Use Kamada-Kawai layout
 
 # Close the TIFF device
 dev.off()
 
+### TEST different colours
+
+# Define a consistent color palette with transparency
+cols_transparent <- adjustcolor(cols, alpha.f = 0.5)  # 50% transparency
+
+# Minimum Spanning Networks #
+#######
+
+# Load the igraph package (if not already loaded)
+library(igraph)
+
+# Calculate genetic distance
+qmacd_dist <- bitwise.dist(qmacd_genclone)
+
+# Generate the Minimum Spanning Network (MSN)
+qmacd_msn <- poppr.msn(qmacd_genclone, qmacd_dist, showplot = FALSE, include.ties = TRUE)
+
+# Adjust node sizes using igraph functions
+node.size <- rep(2, times = nInd(qmacd_genclone))
+names(node.size) <- indNames(qmacd_genclone)
+V(qmacd_msn$graph)$size <- node.size  # Use V() from igraph to set vertex attributes
+
+# Plot the MSN
+set.seed(12345)
+plot_poppr_msn(qmacd_genclone, qmacd_msn, 
+               palette = cols_transparent,
+               gadj = 500)
+
+# Interactive mode (optional)
+# imsn()
+
+# Subset the data (if needed)
+qmacd_genclone_sub <- popsub(qmacd_genclone, exclude = character(0))
+
+# Handle missing data by imputing with mean
+qmacd_genclone_nomiss <- missingno(qmacd_genclone, type = 'mean')
+
+# Calculate Nei's genetic distance
+qmacd_genclone_dist <- nei.dist(qmacd_genclone_nomiss, warning = TRUE)
+
+# Generate another MSN with the subsetted data
+min_span_net <- poppr.msn(qmacd_genclone_sub, qmacd_genclone_dist, showplot = T, include.ties = TRUE)
+
+# Open a TIFF device to save the MSN plot with high resolution
+tiff("../results/msn_plot.tiff", width = 10, height = 8, units = "in", res = 300, compression = "lzw")
+
+# Plot the MSN with Kamada-Kawai layout
+set.seed(69)
+plot_poppr_msn(qmacd_genclone,
+               min_span_net,
+               inds = c("CR_01", "CR_02", "IT_01", "IT_02", "IT_03",
+                        "CY_02", "CY_08", "MT_05", "MB_03", "MC_05",
+                        "MT_06", "LS_01", "LS_02", "LS_03", "LS_04"),
+               mlg = FALSE,
+               gadj = 25,
+               nodescale = 51,
+               palette = cols_transparent,
+               cutoff = NULL,  # Do not apply cutoff
+               quantiles = FALSE,
+               beforecut = TRUE,
+               pop.leg = FALSE,  # Hide population legend
+               size.leg = FALSE,  # Hide sample/node legend
+               scale.leg = TRUE,
+               layfun = igraph::layout_with_kk)  # Use Kamada-Kawai layout
+
+# Close the TIFF device
+dev.off()
+
+####
+
+#####
+# MSN pruebas copilot
+#####
+# Load required libraries
+library(igraph)
+library(poppr)
+
+# Calculate genetic distance
+qmacd_dist <- bitwise.dist(qmacd_genclone)
+
+# Generate the Minimum Spanning Network (MSN)
+qmacd_msn <- poppr.msn(qmacd_genclone, qmacd_dist, showplot = FALSE, include.ties = TRUE)
+
+# Adjust node sizes using igraph functions
+node.size <- rep(5, times = nInd(qmacd_genclone))  # Increase node size for better visibility
+names(node.size) <- indNames(qmacd_genclone)
+V(qmacd_msn$graph)$size <- node.size  # Set node sizes
+
+# Adjust node colors to be more transparent
+cols_transparent <- adjustcolor(cols, alpha.f = 0.7)  # 70% (opacidad) transparency
+V(qmacd_msn$graph)$color <- cols_transparent[pop(qmacd_genclone)]  # Assign colors based on population
+
+# Adjust edge colors and widths
+E(qmacd_msn$graph)$color <- "gray70"  # Light gray for edges
+E(qmacd_msn$graph)$width <- 1  # Thin edges for better clarity
+
+# Open a TIFF device to save the MSN plot with high resolution
+tiff("../results/msn_plot_9sites_custom.tiff", width = 10, height = 8, units = "in", res = 300, compression = "lzw")
+
+# Plot the MSN with customizations
+set.seed(12345)
+plot(qmacd_msn$graph, 
+     layout = layout_with_kk,  # Kamada-Kawai layout for better spacing
+     vertex.label = NA,        # Remove node labels for a cleaner plot
+     main = "")  # Add a title
+
+# Close the TIFF device
+dev.off()
+
+# Add a legend for the sites
+legend("topright", 
+       legend = unique(pop(qmacd_genclone)),  # Names of the sites
+       col = unique(V(qmacd_msn$graph)$color),  # Colors corresponding to the sites
+       pch = 19,              # Use solid circles for the legend
+       pt.cex = 1.5,          # Size of the points in the legend
+       cex = 0.8,             # Size of the text in the legend
+       bty = "n",             # Remove the box around the legend
+       title = "Sites")       # Title of the legend
 
 
+# Plot the MSN with individual labels
+set.seed(12345)
+plot(qmacd_msn$graph, 
+     layout = layout_with_kk,  # Kamada-Kawai layout for better spacing
+     vertex.label = indNames(qmacd_genclone),  # Add individual labels
+     vertex.label.cex = 0.7,   # Adjust the size of the labels
+     vertex.label.color = "black",  # Set the color of the labels
+     vertex.label.dist = 1,    # Distance of the labels from the nodes
+     vertex.size = V(qmacd_msn$graph)$size,  # Use the node sizes already defined
+     vertex.color = V(qmacd_msn$graph)$color,  # Use the node colors already defined
+     edge.color = E(qmacd_msn$graph)$color,  # Use the edge colors already defined
+     edge.width = E(qmacd_msn$graph)$width,  # Use the edge widths already defined
+     main = "Minimum Spanning Network (MSN)")  # Add a title
 
 
+# Export the MSN to Cytoscape-compatible formats
 
+# 1. Export as GraphML
+write_graph(qmacd_msn$graph, file = "../results/qmacd_msn.graphml", format = "graphml")
+cat("MSN exported to ../results/qmacd_msn.graphml (GraphML format).\n")
 
+# 2. Export as Edge List
+edge_list <- as_data_frame(qmacd_msn$graph, what = "edges")
+write.csv(edge_list, "../results/qmacd_msn_edgelist.csv", row.names = FALSE)
+cat("MSN exported to ../results/qmacd_msn_edgelist.csv (Edge List format).\n")
+
+# 3. Export node attributes (optional)
+node_attributes <- as_data_frame(qmacd_msn$graph, what = "vertices")
+write.csv(node_attributes, "../results/qmacd_msn_node_attributes.csv", row.names = FALSE)
+cat("Node attributes exported to ../results/qmacd_msn_node_attributes.csv.\n")
+
+# Save the customized MSN plot as a TIFF file
+tiff("../results/msn_plot_customized.tiff", width = 10, height = 8, units = "in", res = 300, compression = "lzw")
+plot(qmacd_msn$graph, 
+     layout = layout_with_kk, 
+     vertex.label = NA, 
+     main = "")
+dev.off()
+cat("MSN plot saved to ../results/msn_plot_customized.tiff.\n")
