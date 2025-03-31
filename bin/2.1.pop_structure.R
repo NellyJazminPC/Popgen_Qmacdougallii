@@ -513,7 +513,8 @@ V(qmacd_msn$graph)$size <- node.size  # Use V() from igraph to set vertex attrib
 set.seed(12345)
 plot_poppr_msn(qmacd_genclone, qmacd_msn, 
                palette = cols_transparent,
-               gadj = 500)
+               gadj = 500,
+               title = "Nei distances")  # Change the title to "Nei distances"
 
 # Interactive mode (optional)
 # imsn()
@@ -531,16 +532,17 @@ qmacd_genclone_dist <- nei.dist(qmacd_genclone_nomiss, warning = TRUE)
 min_span_net <- poppr.msn(qmacd_genclone_sub, qmacd_genclone_dist, showplot = T, include.ties = TRUE)
 
 # Open a TIFF device to save the MSN plot with high resolution
-tiff("../results/msn_plot.tiff", width = 10, height = 8, units = "in", res = 300, compression = "lzw")
+tiff("../results/msn_plot_nei_distances.tiff", width = 10, height = 8, units = "in", res = 300, compression = "lzw")
 
-# Plot the MSN with Kamada-Kawai layout
+# Plot the MSN with Kamada-Kawai layout and custom scale title
+#               inds = c("CR_01", "CR_02", "IT_01", 
+#"CY_02", "CY_08", "MT_05", "MB_03", "MC_05", 
+#"LS_01", "LS_02", "LS_03", "LS_04"),
 set.seed(69)
 plot_poppr_msn(qmacd_genclone,
                min_span_net,
-               inds = c("CR_01", "CR_02", "IT_01", "IT_02", "IT_03",
-                        "CY_02", "CY_08", "MT_05", "MB_03", "MC_05",
-                        "MT_06", "LS_01", "LS_02", "LS_03", "LS_04"),
                mlg = FALSE,
+               inds = character(0),
                gadj = 25,
                nodescale = 51,
                palette = cols_transparent,
@@ -549,11 +551,17 @@ plot_poppr_msn(qmacd_genclone,
                beforecut = TRUE,
                pop.leg = FALSE,  # Hide population legend
                size.leg = FALSE,  # Hide sample/node legend
-               scale.leg = TRUE,
+               scale.leg = TRUE,  # Show the scale legend
+               scale.leg.title = "Nei distances",  # Change the scale title
                layfun = igraph::layout_with_kk)  # Use Kamada-Kawai layout
 
 # Close the TIFF device
 dev.off()
+
+# Confirmation message
+cat("MSN plot with Nei distances saved to ../results/msn_plot_nei_distances.tiff.\n")
+
+
 
 ####
 
@@ -646,3 +654,35 @@ plot(qmacd_msn$graph,
      main = "")
 dev.off()
 cat("MSN plot saved to ../results/msn_plot_customized.tiff.\n")
+
+
+# Define the individuals to label
+individuals_to_label <- c("CZ_02", "CR_01", "MB_03")
+
+# Create a vector for vertex labels
+vertex_labels <- ifelse(indNames(qmacd_genclone) %in% individuals_to_label, 
+                        indNames(qmacd_genclone), 
+                        NA)  # Only label the specified individuals
+
+# Open a TIFF device to save the MSN plot with high resolution
+tiff("../results/msn_plot_selected_labels.tiff", width = 10, height = 8, units = "in", res = 300, compression = "lzw")
+
+# Plot the MSN with customizations
+set.seed(12345)
+plot(qmacd_msn$graph, 
+     layout = layout_with_kk,  # Kamada-Kawai layout for better spacing
+     vertex.label = vertex_labels,  # Add labels only for the specified individuals
+     vertex.label.cex = 0.8,        # Adjust the size of the labels
+     vertex.label.color = "black",  # Set the color of the labels
+     vertex.label.dist = 1,         # Distance of the labels from the nodes
+     vertex.size = V(qmacd_msn$graph)$size,  # Use the node sizes already defined
+     vertex.color = V(qmacd_msn$graph)$color,  # Use the node colors already defined
+     edge.color = E(qmacd_msn$graph)$color,  # Use the edge colors already defined
+     edge.width = E(qmacd_msn$graph)$width,  # Use the edge widths already defined
+     main = "Minimum Spanning Network (MSN)")  # Add a title
+
+# Close the TIFF device
+dev.off()
+
+# Confirmation message
+cat("MSN plot with selected labels saved to ../results/msn_plot_selected_labels.tiff.\n")
