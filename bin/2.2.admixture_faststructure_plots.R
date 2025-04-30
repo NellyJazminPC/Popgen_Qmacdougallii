@@ -8,11 +8,18 @@ tbl_cv <- read.table("../data/1.5.structure/admixture_output/chooseK.txt",
                      header = F)
 tbl_cv
 
-# Extraer los valores numéricos de K desde la columna V2
-tbl_cv$K <- as.numeric(gsub(".*\\(K=(\\d+)\\).*", "\\1", tbl_cv$V2))
+# Cargar el archivo de texto
+tbl_cv <- read.table("../data/1.5.structure/admixture_output/chooseK.txt", header = FALSE, sep = "\n", stringsAsFactors = FALSE)
 
-# Verifica que la columna K contenga los valores numéricos correctos
-print(tbl_cv$K)
+# Extraer los valores de K y CV error usando expresiones regulares
+tbl_cv_parsed <- data.frame(
+  V1 = "K",
+  V2 = as.numeric(gsub(".*\\(K=(\\d+)\\).*", "\\1", tbl_cv$V1)),
+  V3 = as.numeric(gsub(".*:\\s*([0-9.]+)$", "\\1", tbl_cv$V1))
+)
+
+# Verificar el resultado
+print(tbl_cv_parsed)
 
 # Cross validation error plot
 CV_error <- ggplot(data=tbl_cv, aes(x=K, y=V3)) +  # Usar la columna K en lugar de V2
@@ -27,6 +34,8 @@ CV_error <- ggplot(data=tbl_cv, aes(x=K, y=V3)) +  # Usar la columna K en lugar 
 # Plot
 CV_error
 
+# Guardar el gráfico CV_error
+ggsave(filename = "../results/CV_error_plot.png", plot = CV_error, width = 8, height = 6, dpi = 300)
 
 
 
@@ -34,12 +43,12 @@ CV_error
 
 # Load the Q files from ADMIXTURE
 
-admix2.1=read.table(paste0("../data/admixture/ref.gen.qrob/ref.gen.qrob.plink.1.Q"))
-admix2.2=read.table(paste0("../data/admixture/ref.gen.qrob/ref.gen.qrob.plink.2.Q"))
-admix2.3=read.table(paste0("../data/admixture/ref.gen.qrob/ref.gen.qrob.plink.3.Q"))
+admix2.1=read.table(paste0("../data/1.5.structure/admixture_output/qmacd_ref_gen_rob.1.Q"))
+admix2.2=read.table(paste0("../data/1.5.structure/admixture_output/qmacd_ref_gen_rob.2.Q"))
+admix2.3=read.table(paste0("../data/1.5.structure/admixture_output/qmacd_ref_gen_rob.3.Q"))
 
 # Load the metadata
-qmacd=read.csv("../metadata/metadata_qmacdo_79ind_gen.csv")
+qmacd=read.csv("../metadata/Qmacdougalli_79ind_.csv")
 head(qmacd)
 tail(qmacd)
 
@@ -80,7 +89,8 @@ plot_admix2.1 <- ggplot(data=admix2.1_gather, aes(x=NUM_SAMPLE, y=admixture, fil
   theme(legend.title= element_blank(),text = element_text(size=20))+
   geom_vline(aes(xintercept=10.5)) + geom_vline(aes(xintercept=20.5)) + geom_vline(aes(xintercept=30.5)) + 
   geom_vline(aes(xintercept=40.5)) + geom_vline(aes(xintercept=50.5)) + geom_vline(aes(xintercept=54.5)) + 
-  geom_vline(aes(xintercept=66.5)) + geom_vline(aes(xintercept=76.5)) + theme(plot.margin=unit(c(1.5,1.5,1.5,1.5),"cm"))
+  geom_vline(aes(xintercept=66.5)) + geom_vline(aes(xintercept=76.5))
+
 plot_admix2.1 
 
 
@@ -95,7 +105,8 @@ plot_admix2.2 <- ggplot(data=admix2.2_gather, aes(x=NUM_SAMPLE, y=admixture, fil
   theme(legend.title= element_blank(),text = element_text(size=20))+
   geom_vline(aes(xintercept=10.5)) + geom_vline(aes(xintercept=20.5)) + geom_vline(aes(xintercept=30.5)) + 
   geom_vline(aes(xintercept=40.5)) + geom_vline(aes(xintercept=50.5)) + geom_vline(aes(xintercept=54.5)) + 
-  geom_vline(aes(xintercept=66.5)) + geom_vline(aes(xintercept=76.5)) + theme(plot.margin=unit(c(1.5,1.5,1.5,1.5),"cm"))
+  geom_vline(aes(xintercept=66.5)) + geom_vline(aes(xintercept=76.5))
+
 plot_admix2.2 
 
 ## K = 3
@@ -107,32 +118,51 @@ plot_admix2.3 <- ggplot(data=admix2.3_gather, aes(x=NUM_SAMPLE, y=admixture, fil
         axis.title.y =element_text(size=16),
         axis.text.x  = element_text(size=10, angle = 90)) +
   theme(legend.title= element_blank(),text = element_text(size=20))+
-  geom_vline(aes(xintercept=15.5)) + geom_vline(aes(xintercept=25.5)) + geom_vline(aes(xintercept=29.5)) + 
-  geom_vline(aes(xintercept=39.5)) + geom_vline(aes(xintercept=49.5)) + geom_vline(aes(xintercept=59.5)) + 
-  geom_vline(aes(xintercept=69.5))
+  geom_vline(aes(xintercept=10.5)) + geom_vline(aes(xintercept=20.5)) + geom_vline(aes(xintercept=30.5)) + 
+  geom_vline(aes(xintercept=40.5)) + geom_vline(aes(xintercept=50.5)) + geom_vline(aes(xintercept=54.5)) + 
+  geom_vline(aes(xintercept=66.5)) + geom_vline(aes(xintercept=76.5))
 
 plot_admix2.3
-####  Multiplot 
-library("ggpubr")
-figure <- ggarrange(plot_admix2.1, plot_admix2.2 + font("x.text", size = 10), ncol = 1, nrow = 2)
-annotate_figure(figure,
-                top = text_grob(" ", color = "red", face = "bold", size = 18),
-                bottom = text_grob(" SITES ", color = "black", hjust = 5, x = 1, face = "bold", size = 18),
-                left = text_grob("Ancestry", color = "black", rot = 90),
-                right = "",
-                fig.lab = "Genetic structure with ADMIXTURE", fig.lab.face = "bold"
-)
 
-#http://www.sthda.com/english/articles/24-ggpubr-publication-ready-plots/81-ggplot2-easy-way-to-mix-multiple-graphs-on-the-same-page/
+# Exportar plot_admix2.1
+ggsave(filename = "../results/plot_admix2.1.png", plot = plot_admix2.1, width = 8, height = 6, dpi = 300)
 
+# Exportar plot_admix2.2
+ggsave(filename = "../results/plot_admix2.2.png", plot = plot_admix2.2, width = 8, height = 6, dpi = 300)
+
+# Exportar plot_admix2.3
+ggsave(filename = "../results/plot_admix2.3.png", plot = plot_admix2.3, width = 8, height = 6, dpi = 300)
+
+# Instalar patchwork si no está instalado
+if (!requireNamespace("patchwork", quietly = TRUE)) {
+  install.packages("patchwork")
+}
+
+# Cargar la librería patchwork
+library(patchwork)
+
+# Combinar los gráficos en una sola imagen
+combined_plot <- plot_admix2.1 / plot_admix2.2 / plot_admix2.3 + 
+  plot_layout(ncol = 1) + 
+  plot_annotation(title = "Admixture Plots for K = 1, 2, and 3")
+
+# Mostrar el gráfico combinado
+print(combined_plot)
+
+# Exportar el gráfico combinado
+ggsave(filename = "../results/combined_admixture_plots.png", plot = combined_plot, width = 8, height = 18, dpi = 300)
+
+# -------------------------------
+# PLOT ALTITUDE
+# -------------------------------
 
 #"#1B9E77" "#D95F02" "#7570B3" "#E7298A" "#66A61E" "#E6AB02" "#A6761D" "#666666"
 #VERDE     NARANJA   MORADO    ROSA       VERDE V   AMARILLO   MARRON   GRIS
 
-# PLOT ALTITUD
 
-plot_pop_alt_3<- ggplot(data=admix2.3_gather, aes(x=NUM_SAMPLE, y=ELEVATION)) + 
-  geom_line(stat="identity", color="#00cb5f") + geom_point(aes(colour=SITE_NUM_NOM, size=ELEVATION, alpha=10/20)) +
+
+plot_pop_alt_3<- ggplot(data=admix2.3_gather, aes(x=NUM_SAMPLE, y=ALT)) + 
+  geom_line(stat="identity", color="#00cb5f") + geom_point(aes(colour=SITE_NAME, size=ALT, alpha=10/20)) +
   scale_colour_manual("SITE_NUM_NOM", values = c( "1CZ" = "#7570B3", "2MT" = "#075277", "3MC" = "#00B1E8","4MB" = "#1FC944","5CY" = "#E6AB02", "6LS" = "#E7298A","7PZ" = "#E07E34", "8CR" = "#F15858", "9IT" = "blue")) +
   ylab("Altitud msnm")+ xlab("Individuos")+ theme_bw() +
   theme(axis.title.x = element_blank(), axis.text.y = element_text(size=12),
@@ -141,34 +171,37 @@ plot_pop_alt_3<- ggplot(data=admix2.3_gather, aes(x=NUM_SAMPLE, y=ELEVATION)) +
   geom_vline(aes(xintercept=50.5))
 plot_pop_alt_3
 
+# Exportar plot_pop_alt_3
+ggsave(filename = "../results/plot_pop_alt_3.png", plot = plot_pop_alt_3, width = 8, height = 6, dpi = 300)
 
 
-###### FAST STRUCTURE
-###### FAST STRUCTURE
+
+# -------------------------------
+# FAST STRUCTURE PLOTS
+# -------------------------------
+
 #Load libraries
-library(ggplot2)
-library(tidyr)
+#library(ggplot2)
+#library(tidyr)
 
 # Load databases 
 # Simple mode
-fast_1.1_simple=read.table(paste0("../data/faststructure/ref.gen.qrob.simple/ref.gen.qrob.plink.simple.1.meanQ"))
-fast_1.2_simple=read.table(paste0("../data/faststructure/ref.gen.qrob.simple/ref.gen.qrob.plink.simple.2.meanQ"))
-fast_1.3_simple=read.table(paste0("../data/faststructure/ref.gen.qrob.simple/ref.gen.qrob.plink.simple.3.meanQ"))
+fast_1.1_simple=read.table(paste0("../data/1.5.structure/faststructure_output/qmacd_ref_gen_rob.simple.1.meanQ"))
+fast_1.2_simple=read.table(paste0("../data/1.5.structure/faststructure_output/qmacd_ref_gen_rob.simple.2.meanQ"))
+fast_1.3_simple=read.table(paste0("../data/1.5.structure/faststructure_output/qmacd_ref_gen_rob.simple.3.meanQ"))
 
 # Logistic mode
-fast_1.1_log=read.table(paste0("../data/faststructure/ref.gen.qrob.logistic/ref.gen.qrob.plink.logistic.1.meanQ"))
-fast_1.2_log=read.table(paste0("../data/faststructure/ref.gen.qrob.logistic/ref.gen.qrob.plink.logistic.2.meanQ"))
-fast_1.3_log=read.table(paste0("../data/faststructure/ref.gen.qrob.logistic/ref.gen.qrob.plink.logistic.3.meanQ"))
+fast_1.1_log=read.table(paste0("../data/1.5.structure/faststructure_output/qmacd_ref_gen_rob.logistic.1.meanQ"))
+fast_1.2_log=read.table(paste0("../data/1.5.structure/faststructure_output/qmacd_ref_gen_rob.logistic.2.meanQ"))
+fast_1.3_log=read.table(paste0("../data/1.5.structure/faststructure_output/qmacd_ref_gen_rob.logistic.3.meanQ"))
 
 
 # Load the metadata
-qmacd=read.csv("../metadata/metadata_qmacdo_79ind_gen.csv")
+#qmacd=read.csv("../metadata/metadata_qmacdo_79ind_gen.csv")
 head(qmacd)
 tail(qmacd)
 
-
 # Rename columns
-
 fast_1.1_simple<-`colnames<-`(fast_1.1_simple, c("K1"))
 head(fast_1.1_simple)
 fast_1.2_simple<-`colnames<-`(fast_1.2_simple, c("K2","K1"))
@@ -247,7 +280,7 @@ plot_fast_1.1
 # We can change from "_log_" to "_simple_" to obtain the plot from the simple mode with K=2
 
 plot_fast_1.2 <- ggplot(data=fast_1.2_log_gather, aes(x=NUM_SAMPLE, y=admixture, fill=K)) + 
-  geom_bar(stat="identity") + scale_fill_manual("K", values = c("K2" ="#E07E34" , "K1" = "#40B95B")) + 
+  geom_bar(stat="identity") + scale_fill_manual("K", values = c("K1" ="#E07E34" , "K2" = "#40B95B")) + 
   ylab(" ")+ xlab("SITES")+ theme_bw() +
   theme(axis.title.x = element_text(size=18), 
         axis.title.y =element_blank(),
@@ -275,3 +308,27 @@ plot_fast_1.3 <- ggplot(data=fast_1.3_log_gather, aes(x=NUM_SAMPLE, y=admixture,
   geom_vline(aes(xintercept=66.5)) + geom_vline(aes(xintercept=76.5)) + theme(plot.margin=unit(c(1.5,1.5,1.5,1.5),"cm"))
 
 plot_fast_1.3
+
+# Exportar plot_fast_1.1
+ggsave(filename = "../results/plot_fast_1.1.png", plot = plot_fast_1.1, width = 8, height = 6, dpi = 300)
+
+# Exportar plot_fast_1.2
+ggsave(filename = "../results/plot_fast_1.2.png", plot = plot_fast_1.2, width = 8, height = 6, dpi = 300)
+
+# Exportar plot_fast_1.3
+ggsave(filename = "../results/plot_fast_1.3.png", plot = plot_fast_1.3, width = 8, height = 6, dpi = 300)
+
+# Exportar los tres gráficos en una sola imagen
+# Cargar la librería patchwork
+library(patchwork)
+
+# Combinar los gráficos en una sola imagen
+combined_fast_plot <- plot_fast_1.1 / plot_fast_1.2 / plot_fast_1.3 + 
+  plot_layout(ncol = 1) + 
+  plot_annotation(title = "Fast Structure Plots for K = 1, 2, and 3")
+
+# Mostrar el gráfico combinado
+print(combined_fast_plot)
+
+# Exportar el gráfico combinado
+ggsave(filename = "../results/combined_fast_structure_plots.png", plot = combined_fast_plot, width = 8, height = 18, dpi = 300)
