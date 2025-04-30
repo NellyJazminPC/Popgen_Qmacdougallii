@@ -2,7 +2,7 @@
 #Load libraries
 library(ggplot2)
 library(tidyr)
-
+setwd("/Users/nelly/bioinfo/Popgen_Qmacdougallii/bin")
 #Load the results from ADMIXTURE
 tbl_cv <- read.table("../data/1.5.structure/admixture_output/chooseK.txt", 
                      header = F)
