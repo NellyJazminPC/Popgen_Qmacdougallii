@@ -205,11 +205,11 @@ cat("El análisis de PCAdapt se completó. Los resultados se han exportado a '..
 # -------------------------------
 
 # Instalar y cargar el paquete BiocManager si no está disponible
-if (!require("BiocManager", quietly = TRUE))
-  install.packages("BiocManager")
+#if (!require("BiocManager", quietly = TRUE))
+#  install.packages("BiocManager")
 
 # Instalar y cargar el paquete snpStats
-BiocManager::install("snpStats")
+#BiocManager::install("snpStats")
 library(snpStats)
 
 # Definir el directorio de trabajo y las rutas de los archivos PLINK
@@ -255,30 +255,29 @@ fpop$Fst <- fpop$Fst[!is.na(fpop$Fst)]
 cat("Weighted mean FST (PZ cluster):", weighted.mean(fpop$Fst), "\n")
 
 # Función para identificar SNPs con valores FST más altos
-fst.alta <- function(snpsfst, percent) {
-  alta <- quantile(snpsfst, probs = percent)  # Umbral del percentil deseado
-  fst.snp <- data.frame(
-    SNPs = names(snpsfst[snpsfst >= 0]),
-    Fst = snpsfst[snpsfst >= 0],
-    Dif = snpsfst[snpsfst >= 0] > alta
-  )
-  grafica <- ggplot(fst.snp, aes(x = SNPs, y = Fst, colour = Dif)) +
-    geom_point(shape = 19, size = 4, alpha = 0.6) +
-    scale_colour_brewer(palette = "Set1") +
-    guides(colour = FALSE) +
-    theme_bw() +
-    ylab(expression(paste("F"[ST], sep = "")))
-  snps.alta <- snpsfst[snpsfst > alta]
-  return(list(Fst.value = alta, snp.info = snps.alta, fst.snp = fst.snp, grafica = grafica))
+fst.alta <- function (snpsfst, percent){ ## snpsfst=resultado de fst por snp para cierto agrupamiento, percent=.99 i.e 99%
+  alta <- quantile(snpsfst,probs=percent) ## obtener valor de Fst para el percent deseado
+  fst.snp <- data.frame (SNPs=c(1:length(snpsfst[snpsfst>=0])), Fst = snpsfst[snpsfst>=0], Dif = snpsfst[snpsfst>=0]>alta) # armar matriz con snps(Fst>=0), sus valores de Fst y su condicion(>/< percent)
+  grafica <- ggplot(fst.snp, aes(x=SNPs, y=Fst, colour=Dif, label=)) + geom_point(shape=19, size= 4, alpha=0.6)+scale_colour_brewer(palette="Set1")+guides(colour=FALSE)+ theme_bw()+ ylab(expression(paste("F"[ST],sep=""))) # scatterplot Fst < percent
+  snps.alta <- snpsfst[snpsfst>alta] #lista de snps Fst > treshold
+  return(list(Fst.value=alta, snp.info=snps.alta,fst.snp=fst.snp, grafica=grafica))
 }
 
 # Identificar SNPs con FST más altos para PZ como clúster
-pop.99 <- fst.alta(fpop$Fst, .99)
+pop.99 <- fst.alta(fpop$Fst,.99)
 num_true <- sum(pop.99$fst.snp$Dif)
 cat("Número de SNPs con TRUE en la columna Dif (PZ cluster):", num_true, "\n")
 
-# Exportar los resultados y la gráfica
+# Ajustar los nombres de los SNPs en el data frame
+pop.99$fst.snp$SNPs <- rownames(pop.99$fst.snp)  # Usar directamente los nombres de las filas como nombres de SNPs
+
+# Verificar si los nombres se asignaron correctamente
+head(pop.99$fst.snp$SNPs)
+
+# Exportar los resultados filtrados con nombres de SNPs originales
 write.csv(pop.99$fst.snp[pop.99$fst.snp$Dif, ], "../results/fst_outliers_2pop_PZ.csv", row.names = FALSE)
+
+# Exportar la gráfica generada por ggplot2
 ggsave("../results/fst_outliers_2pop_PZ_plot.png", plot = pop.99$grafica, width = 10, height = 6, dpi = 300)
 
 # Identificar SNPs con FST más altos para las zonas (Norte y Sur)
@@ -286,8 +285,16 @@ pop2.99 <- fst.alta(fpopZONE$Fst, .99)
 num_true <- sum(pop2.99$fst.snp$Dif)
 cat("Número de SNPs con TRUE en la columna Dif (zones):", num_true, "\n")
 
-# Exportar los resultados y la gráfica
+# Ajustar los nombres de los SNPs en el data frame
+pop2.99$fst.snp$SNPs <- rownames(pop2.99$fst.snp)  # Usar directamente los nombres de las filas como nombres de SNPs
+
+# Verificar si los nombres se asignaron correctamente
+head(pop2.99$fst.snp$SNPs)
+
+# Exportar los resultados filtrados con nombres de SNPs originales
 write.csv(pop2.99$fst.snp[pop2.99$fst.snp$Dif, ], "../results/fst_outliers_2pop_NS.csv", row.names = FALSE)
+
+# Exportar la gráfica generada por ggplot2
 ggsave("../results/fst_outliers_2pop_NS_plot.png", plot = pop2.99$grafica, width = 10, height = 6, dpi = 300)
 
 # Identificar SNPs con FST más altos para los nueve sitios
@@ -295,11 +302,171 @@ pop3.99 <- fst.alta(fpopSITE$Fst, .99)
 num_true <- sum(pop3.99$fst.snp$Dif)
 cat("Número de SNPs con TRUE en la columna Dif (9 sites):", num_true, "\n")
 
-# Exportar los resultados y la gráfica
+# Ajustar los nombres de los SNPs en el data frame
+pop3.99$fst.snp$SNPs <- rownames(pop3.99$fst.snp)  # Usar directamente los nombres de las filas como nombres de SNPs
+
+# Verificar si los nombres se asignaron correctamente
+head(pop3.99$fst.snp$SNPs)
+
+# Exportar los resultados filtrados con nombres de SNPs originales
 write.csv(pop3.99$fst.snp[pop3.99$fst.snp$Dif, ], "../results/fst_outliers_9sites.csv", row.names = FALSE)
+
+# Exportar la gráfica generada por ggplot2
 ggsave("../results/fst_outliers_9sites_plot.png", plot = pop3.99$grafica, width = 10, height = 6, dpi = 300)
 
 #-----------------------------
+# Venn diagramas Bayescan + PCAdapt + FST
+#------------------------------
+
+# Cargar la librería necesaria
+library(VennDiagram)
+
+# Cargar los nombres de los SNPs identificados en cada análisis
+# Asegúrate de que los archivos contengan los nombres de los SNPs en una columna específica
+bayescan_snps <- read.table("../results/bayes_outliers_9sites.txt", header = TRUE)$SNP
+pcadapt_snps <- read.table("../results/pcadapt_outliers.txt", header = TRUE)$SNP
+fst_pz_snps <- read.csv("../results/fst_outliers_2pop_PZ.csv")$SNPs
+fst_ns_snps <- read.csv("../results/fst_outliers_2pop_NS.csv")$SNPs
+fst_9sites_snps <- read.csv("../results/fst_outliers_9sites.csv")$SNPs
+
+# Crear una lista con los conjuntos de SNPs
+snps_list <- list(
+  BayeScan = bayescan_snps,
+  PCAdapt = pcadapt_snps,
+  FST_PZ = fst_pz_snps,
+  FST_NS = fst_ns_snps,
+  FST_9Sites = fst_9sites_snps
+)
+
+# Generar el diagrama de Venn
+venn_plot <- venn.diagram(
+  x = snps_list,
+  category.names = c("BayeScan", "PCAdapt", "FST_PZ", "FST_NS", "FST_9Sites"),
+  filename = "../results/venn_snps_analysis.png",
+  output = TRUE,
+  imagetype = "png",
+  resolution = 300,
+  compression = "lzw",
+  lwd = 1,
+  lty = "blank",
+  fill = c("#5BACED", "#F5AC2E", "#8BC34A", "#FF5722", "#9C27B0"),
+  cex = 1.25,
+  fontfamily = "sans",
+  cat.cex = 1,
+  cat.fontfamily = "sans",
+  cat.default.pos = "outer"
+)
+
+# Identificar los SNPs compartidos entre todos los análisis
+shared_snps <- Reduce(intersect, snps_list)
+
+# Exportar los SNPs compartidos a un archivo de texto
+write.table(shared_snps, "../results/shared_snps_across_analyses.txt", row.names = FALSE, col.names = FALSE, quote = FALSE)
+
+# Mensaje de confirmación
+cat("El diagrama de Venn se ha guardado en '../results/venn_snps_analysis.png'.\n")
+cat("Los SNPs compartidos entre todos los análisis se han exportado a '../results/shared_snps_across_analyses.txt'.\n")
+
+### FST outliers
+# Crear una lista con los conjuntos de SNPs
+fst_snps_list <- list(
+  FST_PZ = fst_pz_snps,
+  FST_NS = fst_ns_snps,
+  FST_9Sites = fst_9sites_snps
+)
+
+# Generar el diagrama de Venn
+venn_plot_fst <- venn.diagram(
+  x = fst_snps_list,
+  category.names = c("FST_PZ", "FST_NS", "FST_9Sites"),
+  filename = "../results/venn_fst_outliers.png",
+  output = TRUE,
+  imagetype = "png",
+  resolution = 300,
+  compression = "lzw",
+  lwd = 1,
+  lty = "blank",
+  fill = c("#8BC34A", "#FF5722", "#9C27B0"),
+  cex = 1.25,
+  fontfamily = "sans",
+  cat.cex = 1,
+  cat.fontfamily = "sans",
+  cat.default.pos = "outer"
+)
+
+# Identificar los SNPs compartidos entre los análisis de FST
+shared_fst_snps <- Reduce(intersect, fst_snps_list)
+
+# Crear un data frame con los SNPs compartidos y sus valores de FST
+shared_fst_values <- data.frame(
+  SNPs = shared_fst_snps,
+  FST_PZ = fpop$Fst[shared_fst_snps],
+  FST_NS = fpopZONE$Fst[shared_fst_snps],
+  FST_9Sites = fpopSITE$Fst[shared_fst_snps]
+)
+
+# Exportar los SNPs compartidos y sus valores de FST a un archivo CSV
+write.csv(shared_fst_values, "../results/shared_fst_snps_with_values.csv", row.names = FALSE)
+
+# Mensaje de confirmación
+cat("Los SNPs compartidos y sus valores de FST se han exportado a '../results/shared_fst_snps_with_values.csv'.\n")#-----------------------------
+
+
+# FST SNPs outliers and PCAdapt SNPs
+# Crear una lista con los conjuntos de SNPs
+snps_list <- list(
+  PCAdapt = pcadapt_snps,
+  FST_PZ = fst_pz_snps,
+  FST_NS = fst_ns_snps,
+  FST_9Sites = fst_9sites_snps
+)
+
+# Generar el diagrama de Venn
+venn_plot <- venn.diagram(
+  x = snps_list,
+  category.names = c("PCAdapt", "FST_PZ", "FST_NS", "FST_9Sites"),
+  filename = "../results/venn_pcadapt_fst_outliers.png",
+  output = TRUE,
+  imagetype = "png",
+  resolution = 300,
+  compression = "lzw",
+  lwd = 1,
+  lty = "blank",
+  fill = c("#F5AC2E", "#8BC34A", "#FF5722", "#9C27B0"),
+  cex = 1.25,
+  fontfamily = "sans",
+  cat.cex = 1,
+  cat.fontfamily = "sans",
+  cat.default.pos = "outer"
+)
+
+# Identificar los SNPs compartidos entre PCAdapt y los análisis de FST
+shared_snps <- Reduce(intersect, snps_list)
+
+# Crear un data frame con los SNPs compartidos, sus valores de FST y p-values
+shared_snps_values <- data.frame(
+  SNPs = shared_snps,
+  FST_PZ = fpop$Fst[shared_snps],
+  FST_NS = fpopZONE$Fst[shared_snps],
+  FST_9Sites = fpopSITE$Fst[shared_snps],
+  PCAdapt_pval = pcadapt$pvalues[shared_snps]
+)
+
+# Ordenar los SNPs compartidos por el p-value de PCAdapt (de mayor a menor)
+shared_snps_values <- shared_snps_values[order(-shared_snps_values$PCAdapt_pval), ]
+
+# Exportar los SNPs compartidos y sus valores a un archivo CSV
+write.csv(shared_snps_values, "../results/shared_pcadapt_fst_snps_with_values.csv", row.names = FALSE)
+
+# Exportar los SNPs compartidos a un archivo de texto
+write.table(shared_snps, "../results/shared_pcadapt_fst_snps.txt", row.names = FALSE, col.names = FALSE, quote = FALSE)
+
+# Mensaje de confirmación
+cat("El diagrama de Venn se ha guardado en '../results/venn_pcadapt_fst_outliers.png'.\n")
+cat("Los SNPs compartidos entre PCAdapt y los análisis de FST se han exportado a '../results/shared_pcadapt_fst_snps.txt'.\n")
+cat("Los SNPs compartidos con sus valores de FST y p-values se han exportado a '../results/shared_pcadapt_fst_snps_with_values.csv'.\n")
+
+
 # Frecuencias alélicas de los SNPs outliers - VCF file - genind format
 #-----------------------------
 
