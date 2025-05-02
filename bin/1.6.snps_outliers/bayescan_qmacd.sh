@@ -20,18 +20,21 @@ if [[ ! -f ./BayeScan2.1_linux64bits ]]; then
     exit 1
 fi
 
-# Run BayeScan for the first input file
+# Run BayeScan for the first input file 
 output_dir_2pop=$ruta_output/bayescan_qmacd_ref_gen_qrob_2pop
 mkdir -p $output_dir_2pop
 ./BayeScan2.1_linux64bits $ruta_input/bayescan_qmacd_ref_gen_qrob_2pop -od $output_dir_2pop -threads $num_procesadores
 
-# Run BayeScan for the second input file
+# Run BayeScan for the second input file 
 output_dir_9pop=$ruta_output/bayescan_qmacd_ref_gen_qrob_9pop
 mkdir -p $output_dir_9pop
 ./BayeScan2.1_linux64bits $ruta_input/bayescan_qmacd_ref_gen_qrob_9pop -od $output_dir_9pop -threads $num_procesadores
 
+# Run BayeScan for the new input file; PZ as a single cluster
+output_dir_2pop_PZ=$ruta_output/bayescan_qmacd_ref_gen_qrob_2pop_PZ
+mkdir -p $output_dir_2pop_PZ
+./BayeScan2.1_linux64bits $ruta_input/bayescan_qmacd_ref_gen_qrob_2pop_PZ -od $output_dir_2pop_PZ -threads $num_procesadores
+
 # List the resulting files
-echo "Results for 2pop:"
-ls -lh $output_dir_2pop
-echo "Results for 9pop:"
-ls -lh $output_dir_9pop
+echo "Results for 2pop_PZ:"
+ls -lh $output_dir_2pop_PZ

@@ -1,12 +1,12 @@
-# spid-file generated: Thu Mar 13 08:28:10 CST 2025
+# spid-file generated: Thu May 01 23:46:54 CST 2025
 
 # VCF Parser questions
 PARSER_FORMAT=VCF
 
 # Only output SNPs with a phred-scaled quality of at least:
-VCF_PARSER_QUAL_QUESTION=0
+VCF_PARSER_QUAL_QUESTION=
 # Include a file with population definitions:
-VCF_PARSER_POP_FILE_QUESTION=/home/n311pc/bioinfo/Popgen_Qmacdougallii/bin/1.6.snps_outliers/popfile_bayescan_2pop.txt
+VCF_PARSER_POP_FILE_QUESTION=/home/n311pc/bioinfo/Popgen_Qmacdougallii/bin/1.6.snps_outliers/popfile_bayescan_2pop_PZ.txt
 # What is the ploidy of the data? (DIPLOID/HAPLOID)
 VCF_PARSER_PLOIDY_QUESTION=DIPLOID
 # Output genotypes as missing if the phred-scale genotype quality is below:
