@@ -136,6 +136,73 @@ outliers_2pop <- bayes_2pop[bayes_2pop$qval < alpha, ]
 write.table(outliers_2pop, "../results/bayes_outliers_2pop.txt", row.names = FALSE, quote = FALSE)
 cat("Los outliers de BayeScan para 2 sitios se han exportado a '../results/bayes_outliers_2pop.txt'\n")
 
+# -------------------------------
+# BayeScan; PZ como un clúster aparte
+# -------------------------------
+library(coda)
+library(writexl)
+
+# Cargar funciones de BayeScan
+source("software/bayescan_distributed_2.01/R functions/plot_R.r")
+
+# Cargar resultados de BayeScan para PZ como un clúster aparte
+sel_pz <- read.table("../data/1.6.snps_outliers/bayescan_output/bayescan_qmacd_ref_gen_qrob_2pop_PZ/bayescan_qmacd_ref_gen_qrob_2po.sel",
+                     colClasses = "numeric")
+bayes_pz <- read.table("../data/1.6.snps_outliers/bayescan_output/bayescan_qmacd_ref_gen_qrob_2pop_PZ/bayescan_qmacd_ref_gen_qrob_2po_fst.txt")
+loci_pz <- read.delim("../data/structure_formats/qmacd_ref_gen_rob.bim", header = FALSE)
+
+# Verificar convergencia de las cadenas
+chain_pz <- mcmc(sel_pz, thin = 10)
+
+# Graficar y analizar la convergencia
+par(mar = c(4, 4, 4, 4))
+plot(chain_pz)
+summary(chain_pz)
+autocorr.diag(chain_pz)
+autocorr.plot(chain_pz)
+effectiveSize(chain_pz)
+geweke.diag(chain_pz, frac1 = 0.1, frac2 = 0.5)
+
+# Exportar el resumen de la cadena a un archivo Excel
+summary_results_pz <- summary(chain_pz)
+summary_df_pz <- as.data.frame(summary_results_pz$statistics)
+summary_df_pz <- cbind(Parameter = rownames(summary_df_pz), summary_df_pz)
+write_xlsx(summary_df_pz, "../results/summary_bayescan_snps_detected_pz.xlsx")
+cat("El resumen de BayeScan para PZ como un clúster aparte se ha exportado a '../results/summary_bayescan_snps_detected_pz.xlsx'\n")
+
+# Unir información de SNP con resultados de BayeScan
+bayes_pz <- cbind(bayes_pz, loci_pz[, c(1, 2, 4)])
+colnames(bayes_pz) <- c(colnames(bayes_pz)[1:5], "CHR", "SNP", "Pos")
+
+# Contar cuántos valores son menores a un umbral (por ejemplo, alpha = 0.05)
+alpha <- 0.05
+outliers_count <- sum(bayes_pz$qval < alpha, na.rm = TRUE)
+cat("Número de valores en bayes_pz$qval menores a", alpha, ":", outliers_count, "\n")
+
+# Definir el nivel de significancia
+alpha <- 0.5
+
+# Generar el gráfico de BayeScan
+plot_bayescan_results_pz <- plot_bayescan(
+  "../data/1.6.snps_outliers/bayescan_output/bayescan_qmacd_ref_gen_qrob_2pop_PZ/bayescan_qmacd_ref_gen_qrob_2po_fst.txt", 
+  FDR = alpha
+)
+
+# Guardar el gráfico generado por BayeScan
+jpeg("../results/plot_bayescan_results_pz.jpg", width = 800, height = 600, res = 300)
+plot_bayescan_results_pz
+dev.off()
+
+# Identificar outliers según el nivel de significancia
+outliers_pz <- bayes_pz[bayes_pz$qval < alpha, ]
+
+# Exportar los outliers a un archivo de texto
+write.table(outliers_pz, "../results/bayes_outliers_pz.txt", row.names = FALSE, quote = FALSE)
+cat("Los outliers de BayeScan para PZ como un clúster aparte se han exportado a '../results/bayes_outliers_pz.txt'\n")
+
+
+
+
 
 # -------------------------------
 # PCAdapt
@@ -466,7 +533,93 @@ cat("El diagrama de Venn se ha guardado en '../results/venn_pcadapt_fst_outliers
 cat("Los SNPs compartidos entre PCAdapt y los análisis de FST se han exportado a '../results/shared_pcadapt_fst_snps.txt'.\n")
 cat("Los SNPs compartidos con sus valores de FST y p-values se han exportado a '../results/shared_pcadapt_fst_snps_with_values.csv'.\n")
 
+#-----------------------------
+# SNPs outliers identificados por BayeScan, PCAdapt y FST. Compartidos y unicos
+#-----------------------------
+# Crear listas con los datos de cada análisis
+# BayeScan (9 sitios)
+bayescan_snps_9sites <- read.table("../results/bayes_outliers_9sites.txt", header = TRUE)
+bayescan_snps_9sites$metodo_identificacion <- "bayescan_9sites"
+bayescan_snps_9sites$parametro <- "qval"
+bayescan_snps_9sites <- bayescan_snps_9sites[, c("SNP", "metodo_identificacion", "parametro", "qval")]
+colnames(bayescan_snps_9sites) <- c("locus_name", "metodo_identificacion", "parametro", "value")
 
+# PCAdapt
+pcadapt_snps <- read.table("../results/pcadapt_outliers.txt", header = TRUE)
+pcadapt_snps$metodo_identificacion <- "pcadapt"
+pcadapt_snps$parametro <- "pval"
+pcadapt_snps <- pcadapt_snps[, c("SNP", "metodo_identificacion", "parametro", "pval")]
+colnames(pcadapt_snps) <- c("locus_name", "metodo_identificacion", "parametro", "value")
+
+# FST Outliers (PZ)
+fst_pz_snps <- read.csv("../results/fst_outliers_2pop_PZ.csv")
+fst_pz_snps$metodo_identificacion <- "fst_pz"
+fst_pz_snps$parametro <- "fst"
+fst_pz_snps <- fst_pz_snps[, c("SNPs", "metodo_identificacion", "parametro", "Fst")]
+colnames(fst_pz_snps) <- c("locus_name", "metodo_identificacion", "parametro", "value")
+
+# FST Outliers (Norte-Sur)
+fst_ns_snps <- read.csv("../results/fst_outliers_2pop_NS.csv")
+fst_ns_snps$metodo_identificacion <- "fst_ns"
+fst_ns_snps$parametro <- "fst"
+fst_ns_snps <- fst_ns_snps[, c("SNPs", "metodo_identificacion", "parametro", "Fst")]
+colnames(fst_ns_snps) <- c("locus_name", "metodo_identificacion", "parametro", "value")
+
+# FST Outliers (9 sitios)
+fst_9sites_snps <- read.csv("../results/fst_outliers_9sites.csv")
+fst_9sites_snps$metodo_identificacion <- "fst_9sites"
+fst_9sites_snps$parametro <- "fst"
+fst_9sites_snps <- fst_9sites_snps[, c("SNPs", "metodo_identificacion", "parametro", "Fst")]
+colnames(fst_9sites_snps) <- c("locus_name", "metodo_identificacion", "parametro", "value")
+
+# Combinar todos los resultados en un único data frame
+all_snps <- rbind(
+  bayescan_snps_9sites,
+  pcadapt_snps,
+  fst_pz_snps,
+  fst_ns_snps,
+  fst_9sites_snps
+)
+
+# Identificar SNPs compartidos (shared) a partir de los análisis de Venn
+shared_snps <- read.table("../results/shared_snps_across_analyses.txt", header = FALSE, col.names = "locus_name")
+all_snps$shared <- ifelse(all_snps$locus_name %in% shared_snps$locus_name, "yes", "no")
+
+# EXTRA
+# Crear una lista con los conjuntos de SNPs
+snps_list <- list(
+  bayescan_9sites = bayescan_snps_9sites$locus_name,
+  pcadapt = pcadapt_snps$locus_name,
+  fst_pz = fst_pz_snps$locus_name,
+  fst_ns = fst_ns_snps$locus_name,
+  fst_9sites = fst_9sites_snps$locus_name
+)
+
+# Crear una matriz binaria que indique la presencia de cada SNP en cada análisis
+presence_matrix <- sapply(snps_list, function(set) all_snps$locus_name %in% set)
+
+# Contar en cuántos análisis está presente cada SNP
+all_snps$shared_count <- rowSums(presence_matrix)
+
+# Crear una columna que indique en qué análisis está presente cada SNP
+all_snps$shared_in <- apply(presence_matrix, 1, function(row) {
+  paste(names(snps_list)[row], collapse = ", ")
+})
+
+# Eliminar duplicados basados en la columna locus_name
+unique_snps <- all_snps[!duplicated(all_snps$locus_name), ]
+
+# Contar cuántos duplicados fueron eliminados
+num_duplicates <- nrow(all_snps) - nrow(unique_snps)
+cat("Número de duplicados eliminados:", num_duplicates, "\n")
+
+# Exportar el data frame sin duplicados como archivo Excel
+write_xlsx(unique_snps, "../results/consolidated_snps_results_with_shared_info_unique.xlsx")
+
+# Mensaje de confirmación
+cat("El data frame consolidado sin duplicados se ha exportado a '../results/consolidated_snps_results_with_shared_info_unique.xlsx'.\n")
+
+#--------------------------------
 # Frecuencias alélicas de los SNPs outliers - VCF file - genind format
 #-----------------------------
 
