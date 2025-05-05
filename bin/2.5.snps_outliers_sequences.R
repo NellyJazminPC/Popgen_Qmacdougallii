@@ -121,3 +121,90 @@ writeLines(fasta_lines, "../results/locus_names_for_sequences_wo_amb.txt")
 
 # Mensaje de confirmación
 cat("El archivo con las secuencias corregidas se ha exportado a '../results/locus_names_for_sequences_wo_amb.txt'.\n")
+
+
+# ---------------------------------------------------------------
+# Script: 2.6.blast_results.R
+# Descripción: Este script procesa los resultados de BLAST, extrae la información
+#              relevante y la une al data frame de SNPs únicos con secuencias.
+# ---------------------------------------------------------------
+
+# Cargar las librerías necesarias
+library(dplyr)
+library(stringr)
+library(readr)
+
+# Ruta a la carpeta con los resultados BLAST
+blast_results_dir <- "../results/blast_results/"
+
+# Leer los archivos de resultados BLAST
+blast_files <- list.files(blast_results_dir, pattern = "*.txt", full.names = TRUE)
+
+# Crear un data frame vacío para almacenar los resultados procesados
+blast_summary <- data.frame(
+  locus_name = character(),
+  best_hit = character(),
+  e_value = character(),
+  perc_identity = character(),
+  stringsAsFactors = FALSE
+)
+
+# Procesar cada archivo de resultados BLAST
+for (file in blast_files) {
+  # Extraer el nombre del locus desde el nombre del archivo
+  locus_name <- gsub("_blast.txt", "", basename(file))
+  
+  # Leer el contenido del archivo
+  blast_content <- readLines(file)
+  
+  # Buscar la sección ALIGNMENTS
+  alignments_start <- grep("^ALIGNMENTS", blast_content)
+  if (length(alignments_start) > 0) {
+    # Extraer la línea del mejor hit (primera línea después de ALIGNMENTS)
+    best_hit_line <- blast_content[alignments_start + 1]
+    best_hit <- str_remove(best_hit_line, "^>")  # Quitar el símbolo ">"
+    best_hit <- str_trim(best_hit)  # Eliminar espacios en blanco
+    
+    # Buscar el E-value en la sección ALIGNMENTS
+    e_value_line <- grep("Expect =", blast_content, value = TRUE)
+    e_value <- str_extract(e_value_line[1], "(?<=Expect = )\\S+")  # Extraer el E-value
+    
+    # Buscar el porcentaje de identidad en la sección ALIGNMENTS
+    perc_identity_line <- grep("Identities =", blast_content, value = TRUE)
+    perc_identity <- str_extract(perc_identity_line[1], "(?<=\\()\\d+%")  # Extraer el porcentaje de identidad
+    
+    # Agregar los datos al resumen
+    blast_summary <- rbind(blast_summary, data.frame(
+      locus_name = locus_name,
+      best_hit = best_hit,
+      e_value = e_value,
+      perc_identity = perc_identity,
+      stringsAsFactors = FALSE
+    ))
+  } else {
+    # Si no hay hits, agregar un registro vacío
+    blast_summary <- rbind(blast_summary, data.frame(
+      locus_name = locus_name,
+      best_hit = NA,
+      e_value = NA,
+      perc_identity = NA,
+      stringsAsFactors = FALSE
+    ))
+  }
+}
+
+# Unir los resultados BLAST al data frame unique_snps_with_sequences
+unique_snps_with_blast <- unique_snps_with_sequences %>%
+  left_join(blast_summary, by = c("locus_name_clean" = "locus_name"))
+
+
+# Revisar si hay NAs
+na_files <- blast_summary %>% filter(is.na(e_value)) %>% pull(locus_name)
+print(na_files)
+
+# Exportar el data frame actualizado con los resultados BLAST
+write_xlsx(unique_snps_with_blast, "../results/consolidated_snps_with_blast_results.xlsx")
+
+# Mensaje de confirmación
+cat("El archivo con los resultados BLAST incorporados se ha exportado a '../results/consolidated_snps_with_blast_results.xlsx'.\n")
+
