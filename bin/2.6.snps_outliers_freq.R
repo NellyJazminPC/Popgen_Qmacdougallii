@@ -181,6 +181,7 @@ library(readxl)
 library(dplyr)
 library(purrr)  # Cargar purrr para usar map2
 library(readxl)
+library(adegenet)
 
 # Ruta al archivo Supplementary_2.xlsx
 supplementary_file <- "../doc/Supplementary_2.xlsx"
@@ -215,42 +216,42 @@ snp_info <- filtered_pval %>%
 # Verificar la estructura de snp_info
 str(snp_info)
 
-#-----------------------------
-# Graficar SNPs outliers de PCAdapt
-#-----------------------------
-library(adegenet)
-
 # Lista de SNPs con sus valores de pch y p-value adj
 snp_info 
 
 # Iterar sobre cada SNP en la lista
 for (snp in snp_info) {
-  # Extraer el nombre del SNP, el p-value ajustado y los alelos
+  # Extraer el nombre del SNP, el p-value ajustado, los alelos y el best_hit
   snp_name <- snp$name
   snp_pval <- snp$pval
   snp_pch <- snp$pch
+  snp_best_hit <- filtered_pval %>% filter(locus_name == snp_name) %>% pull(best_hit)  # Obtener el best_hit
   
   # Extraer las frecuencias alélicas del SNP
   snp_data <- tab(temp[[snp_name]])
   freq_snp <- apply(snp_data, 2, function(e) tapply(e, pop(qmacd_genind), mean, na.rm = TRUE))
   
   # Configurar el gráfico
-  par(mar = c(5, 5, 4, 2) + 0.1)  # Márgenes ajustados
+  par(mar = c(6, 5, 4, 2) + 0.1)  # Ajustar márgenes para incluir el texto adicional
   matplot(freq_snp, type = "b", pch = snp_pch,
           xlab = "SITE", ylab = "Allele frequency", 
           main = paste("p-value adj", snp_pval, snp_name),
           xaxt = "n", cex = 1.5)
   axis(side = 1, at = 1:9, lab = c("CZ", "MT", "MC", "MB", "CY", "LS", "PZ", "CR", "IT"))
   
+  # Agregar el texto de best_hit debajo del gráfico
+  mtext(text = paste("Best hit:", snp_best_hit), side = 1, line = 5, cex = 0.8, col = "blue")
+  
   # Exportar el gráfico como PNG
   png_filename <- paste0("../results/allele_frequency_", snp_name, ".png")
   png(png_filename, width = 2400, height = 1200, res = 300)  # Tamaño y resolución ajustados
-  par(mar = c(5, 5, 4, 2) + 0.1)  # Márgenes ajustados para el archivo exportado
+  par(mar = c(6, 5, 4, 2) + 0.1)  # Ajustar márgenes para el archivo exportado
   matplot(freq_snp, type = "b", pch = snp_pch,
           xlab = "SITE", ylab = "Allele frequency", 
           main = paste("p-value adj", snp_pval, snp_name),
           xaxt = "n", cex = 1.5)
   axis(side = 1, at = 1:9, lab = c("CZ", "MT", "MC", "MB", "CY", "LS", "PZ", "CR", "IT"))
+  mtext(text = paste("Best hit:", snp_best_hit), side = 1, line = 5, cex = 0.8, col = "blue")
   dev.off()  # Cerrar el dispositivo gráfico
   
   # Mensaje de confirmación
@@ -301,32 +302,37 @@ str(snp_info)
 
 # Iterar sobre cada SNP en la lista
 for (snp in snp_info) {
-  # Extraer el nombre del SNP, el FST ajustado y los alelos
+  # Extraer el nombre del SNP, el FST ajustado, los alelos y el best_hit
   snp_name <- snp$name
   snp_fst <- snp$fst
   snp_pch <- snp$pch
+  snp_best_hit <- filtered_fst %>% filter(locus_name == snp_name) %>% pull(best_hit)  # Obtener el best_hit
   
   # Extraer las frecuencias alélicas del SNP
   snp_data <- tab(temp[[snp_name]])
   freq_snp <- apply(snp_data, 2, function(e) tapply(e, pop(qmacd_genind), mean, na.rm = TRUE))
   
   # Configurar el gráfico
-  par(mar = c(5, 5, 4, 2) + 0.1)  # Márgenes ajustados
+  par(mar = c(6, 5, 4, 2) + 0.1)  # Ajustar márgenes para incluir el texto adicional
   matplot(freq_snp, type = "b", pch = snp_pch,
           xlab = "SITE", ylab = "Allele frequency", 
           main = paste("FST value", snp_fst, snp_name),
           xaxt = "n", cex = 1.5)
   axis(side = 1, at = 1:9, lab = c("CZ", "MT", "MC", "MB", "CY", "LS", "PZ", "CR", "IT"))
   
+  # Agregar el texto de best_hit debajo del gráfico
+  mtext(text = paste("Best hit:", snp_best_hit), side = 1, line = 5, cex = 0.8, col = "blue")
+  
   # Exportar el gráfico como PNG
   png_filename <- paste0("../results/allele_frequency_fst_", snp_name, ".png")
   png(png_filename, width = 2400, height = 1200, res = 300)  # Tamaño y resolución ajustados
-  par(mar = c(5, 5, 4, 2) + 0.1)  # Márgenes ajustados para el archivo exportado
+  par(mar = c(6, 5, 4, 2) + 0.1)  # Ajustar márgenes para el archivo exportado
   matplot(freq_snp, type = "b", pch = snp_pch,
           xlab = "SITE", ylab = "Allele frequency", 
           main = paste("FST value", snp_fst, snp_name),
           xaxt = "n", cex = 1.5)
   axis(side = 1, at = 1:9, lab = c("CZ", "MT", "MC", "MB", "CY", "LS", "PZ", "CR", "IT"))
+  mtext(text = paste("Best hit:", snp_best_hit), side = 1, line = 5, cex = 0.8, col = "blue")
   dev.off()  # Cerrar el dispositivo gráfico
   
   # Mensaje de confirmación
