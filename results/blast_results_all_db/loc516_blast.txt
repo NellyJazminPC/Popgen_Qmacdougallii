@@ -1,0 +1,174 @@
+<p><!--
+QBlastInfoBegin
+	Status=READY
+QBlastInfoEnd
+--><p>
+<PRE>
+
+BLASTN 2.16.1+
+Reference: Stephen F. Altschul, Thomas L. Madden, Alejandro
+A. Schaffer, Jinghui Zhang, Zheng Zhang, Webb Miller, and
+David J. Lipman (1997), "Gapped BLAST and PSI-BLAST: a new
+generation of protein database search programs", Nucleic
+Acids Res. 25:3389-3402.
+
+
+RID: 1EAW9NAM013
+
+
+Database: Core nucleotide BLAST database
+           114,657,922 sequences; 859,097,896,182 total letters
+Query= 
+Length=139
+
+
+                                                                   Score     E     Max
+Sequences producing significant alignments:                       (Bits)  Value  Ident
+
+XM_050413105.1 PREDICTED: Quercus robur uncharacterized LOC126...  251     1e-62  100%        
+XM_031096071.1 PREDICTED: Quercus lobata uncharacterized LOC11...  251     1e-62  100%        
+XM_024015977.2 PREDICTED: Quercus suber uncharacterized LOC111...  242     6e-60  99%         
+XM_059586397.1 PREDICTED: Corylus avellana uncharacterized LOC...  156     7e-34  85%         
+XM_059586396.1 PREDICTED: Corylus avellana uncharacterized LOC...  156     7e-34  85%         
+
+ALIGNMENTS
+>XM_050413105.1 PREDICTED: Quercus robur uncharacterized LOC126713358 (LOC126713358), 
+mRNA
+Length=2124
+
+ Score = 251 bits (278),  Expect = 1e-62
+ Identities = 139/139 (100%), Gaps = 0/139 (0%)
+ Strand=Plus/Minus
+
+Query  1     GATCCTCTTTCTTCTGGTATATCTCAAATAGTTGCTTAGCATGAGTAACAGCTAATCTTC  60
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  1879  GATCCTCTTTCTTCTGGTATATCTCAAATAGTTGCTTAGCATGAGTAACAGCTAATCTTC  1820
+
+Query  61    TGCAGTCAGAAAGACCTTTCTGGTCATGCTTCTCCAACTCTGCAACAGATTTCCTCAGCt  120
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  1819  TGCAGTCAGAAAGACCTTTCTGGTCATGCTTCTCCAACTCTGCAACAGATTTCCTCAGCT  1760
+
+Query  121   ttttttGTGGATCACCAGC  139
+             |||||||||||||||||||
+Sbjct  1759  TTTTTTGTGGATCACCAGC  1741
+
+
+>XM_031096071.1 PREDICTED: Quercus lobata uncharacterized LOC115975334 (LOC115975334), 
+mRNA
+Length=2198
+
+ Score = 251 bits (278),  Expect = 1e-62
+ Identities = 139/139 (100%), Gaps = 0/139 (0%)
+ Strand=Plus/Minus
+
+Query  1     GATCCTCTTTCTTCTGGTATATCTCAAATAGTTGCTTAGCATGAGTAACAGCTAATCTTC  60
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  1899  GATCCTCTTTCTTCTGGTATATCTCAAATAGTTGCTTAGCATGAGTAACAGCTAATCTTC  1840
+
+Query  61    TGCAGTCAGAAAGACCTTTCTGGTCATGCTTCTCCAACTCTGCAACAGATTTCCTCAGCt  120
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  1839  TGCAGTCAGAAAGACCTTTCTGGTCATGCTTCTCCAACTCTGCAACAGATTTCCTCAGCT  1780
+
+Query  121   ttttttGTGGATCACCAGC  139
+             |||||||||||||||||||
+Sbjct  1779  TTTTTTGTGGATCACCAGC  1761
+
+
+>XM_024015977.2 PREDICTED: Quercus suber uncharacterized LOC111984343 (LOC111984343), 
+mRNA
+Length=2156
+
+ Score = 242 bits (268),  Expect = 6e-60
+ Identities = 137/139 (99%), Gaps = 0/139 (0%)
+ Strand=Plus/Minus
+
+Query  1     GATCCTCTTTCTTCTGGTATATCTCAAATAGTTGCTTAGCATGAGTAACAGCTAATCTTC  60
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  1879  GATCCTCTTTCTTCTGGTATATCTCAAATAGTTGCTTAGCATGAGTAACAGCTAATCTTC  1820
+
+Query  61    TGCAGTCAGAAAGACCTTTCTGGTCATGCTTCTCCAACTCTGCAACAGATTTCCTCAGCt  120
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||| | 
+Sbjct  1819  TGCAGTCAGAAAGACCTTTCTGGTCATGCTTCTCCAACTCTGCAACAGATTTCCTCATCC  1760
+
+Query  121   ttttttGTGGATCACCAGC  139
+             |||||||||||||||||||
+Sbjct  1759  TTTTTTGTGGATCACCAGC  1741
+
+
+>XM_059586397.1 PREDICTED: Corylus avellana uncharacterized LOC132174740 (LOC132174740), 
+transcript variant X2, mRNA
+Length=2208
+
+ Score = 156 bits (172),  Expect = 7e-34
+ Identities = 116/136 (85%), Gaps = 0/136 (0%)
+ Strand=Plus/Minus
+
+Query  1     GATCCTCTTTCTTCTGGTATATCTCAAATAGTTGCTTAGCATGAGTAACAGCTAATCTTC  60
+             |||| | |||||||| |||||||||||| | ||||||||  |||  |||||||| |||| 
+Sbjct  1757  GATCTTTTTTCTTCTCGTATATCTCAAACAATTGCTTAGAGTGACCAACAGCTAGTCTTT  1698
+
+Query  61    TGCAGTCAGAAAGACCTTTCTGGTCATGCTTCTCCAACTCTGCAACAGATTTCCTCAGCt  120
+             |||| |||||||||||||||||||||| |||||||||||||  ||| ||||||||||| |
+Sbjct  1697  TGCACTCAGAAAGACCTTTCTGGTCATACTTCTCCAACTCTCTAACGGATTTCCTCAGTT  1638
+
+Query  121   ttttttGTGGATCACC  136
+             |   ||||||||||||
+Sbjct  1637  TCCCTTGTGGATCACC  1622
+
+
+>XM_059586396.1 PREDICTED: Corylus avellana uncharacterized LOC132174740 (LOC132174740), 
+transcript variant X1, mRNA
+Length=2331
+
+ Score = 156 bits (172),  Expect = 7e-34
+ Identities = 116/136 (85%), Gaps = 0/136 (0%)
+ Strand=Plus/Minus
+
+Query  1     GATCCTCTTTCTTCTGGTATATCTCAAATAGTTGCTTAGCATGAGTAACAGCTAATCTTC  60
+             |||| | |||||||| |||||||||||| | ||||||||  |||  |||||||| |||| 
+Sbjct  1880  GATCTTTTTTCTTCTCGTATATCTCAAACAATTGCTTAGAGTGACCAACAGCTAGTCTTT  1821
+
+Query  61    TGCAGTCAGAAAGACCTTTCTGGTCATGCTTCTCCAACTCTGCAACAGATTTCCTCAGCt  120
+             |||| |||||||||||||||||||||| |||||||||||||  ||| ||||||||||| |
+Sbjct  1820  TGCACTCAGAAAGACCTTTCTGGTCATACTTCTCCAACTCTCTAACGGATTTCCTCAGTT  1761
+
+Query  121   ttttttGTGGATCACC  136
+             |   ||||||||||||
+Sbjct  1760  TCCCTTGTGGATCACC  1745
+
+
+  Database: Core nucleotide BLAST database
+    Posted date:  Apr 29, 2025  11:24 PM
+  Number of letters in database: 859,097,896,182
+  Number of sequences in database:  114,657,922
+
+Lambda      K        H
+   0.634    0.408    0.912 
+Gapped
+Lambda      K        H
+   0.625    0.410    0.780 
+Matrix: blastn matrix:2 -3
+Gap Penalties: Existence: 5, Extension: 2
+Number of Sequences: 114657922
+Number of Hits to DB: 8670324
+Number of extensions: 9737
+Number of successful extensions: 9737
+Number of sequences better than 10: 0
+Number of HSP's better than 10 without gapping: 0
+Number of HSP's gapped: 9737
+Number of HSP's successfully gapped: 0
+Length of query: 139
+Length of database: 859097896182
+Length adjustment: 37
+Effective length of query: 102
+Effective length of database: 854855553068
+Effective search space: 87195266412936
+Effective search space used: 87195266412936
+A: 0
+X1: 22 (20.1 bits)
+X2: 33 (29.8 bits)
+X3: 110 (99.2 bits)
+S1: 28 (26.5 bits)
+S2: 47 (43.7 bits)
+
+

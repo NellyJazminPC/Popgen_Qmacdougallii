@@ -1,0 +1,135 @@
+<p><!--
+QBlastInfoBegin
+	Status=READY
+QBlastInfoEnd
+--><p>
+<PRE>
+
+BLASTN 2.16.1+
+Reference: Stephen F. Altschul, Thomas L. Madden, Alejandro
+A. Schaffer, Jinghui Zhang, Zheng Zhang, Webb Miller, and
+David J. Lipman (1997), "Gapped BLAST and PSI-BLAST: a new
+generation of protein database search programs", Nucleic
+Acids Res. 25:3389-3402.
+
+
+RID: 1EBC5GCM016
+
+
+Database: Core nucleotide BLAST database
+           114,657,922 sequences; 859,097,896,182 total letters
+Query= 
+Length=115
+
+
+                                                                   Score     E     Max
+Sequences producing significant alignments:                       (Bits)  Value  Ident
+
+XM_050392647.1 PREDICTED: Quercus robur uncharacterized LOC126...  157     6e-34  90%       
+CP049868.1 Pedobacter sp. HDW13 chromosome, complete genome        46.4    0.73   89%       
+LN344168.1 Spirometra erinaceieuropaei genome assembly S_erina...  46.4    0.73   89%       
+AP039563.1 Bombyx mori p50ma DNA, chromosome: 16                   44.6    2.6    89%       
+MT122973.1 Solanum aethiopicum isolate NN2 chromosome 1, compl...  44.6    2.6    88%       
+
+ALIGNMENTS
+>XM_050392647.1 PREDICTED: Quercus robur uncharacterized LOC126695843 (LOC126695843), 
+mRNA
+Length=990
+
+ Score = 157 bits (173),  Expect = 6e-34
+ Identities = 103/114 (90%), Gaps = 0/114 (0%)
+ Strand=Plus/Minus
+
+Query  1    AGCAACAATGGGCCCCACTTTAAGAACTAACTGCATACTCCCAATAGTGCACTCATGAAT  60
+            ||| ||||||||||||||||||||| ||| ||| |||||||||||||| || ||||||||
+Sbjct  441  AGCGACAATGGGCCCCACTTTAAGAGCTAGCTGTATACTCCCAATAGTACATTCATGAAT  382
+
+Query  61   TCCAGCAAAGCCAGAAACCTTAATAGGAGCCCTAGCTATTCTACTGAGTGGGAT  114
+            ||||||||| ||| |||||| ||||||||||| |||||||||| ||||||||||
+Sbjct  381  TCCAGCAAAACCAAAAACCTCAATAGGAGCCCCAGCTATTCTATTGAGTGGGAT  328
+
+
+>CP049868.1 Pedobacter sp. HDW13 chromosome, complete genome
+Length=6376638
+
+ Score = 46.4 bits (50),  Expect = 0.73
+ Identities = 33/37 (89%), Gaps = 1/37 (3%)
+ Strand=Plus/Plus
+
+Query  48       TGCACTCATGAATTCCAGCAAAGCCAGAAACCTTAAT  84
+                ||||||| || |||  |||||||||||||||||||||
+Sbjct  3039602  TGCACTC-TGGATTAAAGCAAAGCCAGAAACCTTAAT  3039637
+
+
+>LN344168.1 Spirometra erinaceieuropaei genome assembly S_erinaceieuropaei 
+,scaffold SPER_contig0116845
+Length=827
+
+ Score = 46.4 bits (50),  Expect = 0.73
+ Identities = 31/35 (89%), Gaps = 0/35 (0%)
+ Strand=Plus/Minus
+
+Query  5    ACAATGGGCCCCACTTTAAGAACTAACTGCATACT  39
+            ||| ||||||||||| ||||||| |||||| ||||
+Sbjct  672  ACATTGGGCCCCACTATAAGAACAAACTGCTTACT  638
+
+
+>AP039563.1 Bombyx mori p50ma DNA, chromosome: 16
+Length=14390366
+
+ Score = 44.6 bits (48),  Expect = 2.6
+ Identities = 32/36 (89%), Gaps = 1/36 (3%)
+ Strand=Plus/Minus
+
+Query  50       CACTCATGAATTCCAGCAAAGCCAGAAACCTTAATA  85
+                |||||||||| | |||||||||||| |||| |||||
+Sbjct  9865663  CACTCATGAACTTCAGCAAAGCCAGGAACC-TAATA  9865629
+
+
+>MT122973.1 Solanum aethiopicum isolate NN2 chromosome 1, complete genome
+Length=370542
+
+ Score = 44.6 bits (48),  Expect = 2.6
+ Identities = 30/34 (88%), Gaps = 0/34 (0%)
+ Strand=Plus/Minus
+
+Query  63      CAGCAAAGCCAGAAACCTTAATAGGAGCCCTAGC  96
+               |||||||||||| |||||| ||| ||||| ||||
+Sbjct  185028  CAGCAAAGCCAGTAACCTTCATAAGAGCCGTAGC  184995
+
+
+  Database: Core nucleotide BLAST database
+    Posted date:  Apr 29, 2025  11:24 PM
+  Number of letters in database: 859,097,896,182
+  Number of sequences in database:  114,657,922
+
+Lambda      K        H
+   0.634    0.408    0.912 
+Gapped
+Lambda      K        H
+   0.625    0.410    0.780 
+Matrix: blastn matrix:2 -3
+Gap Penalties: Existence: 5, Extension: 2
+Number of Sequences: 114657922
+Number of Hits to DB: 5847424
+Number of extensions: 67455
+Number of successful extensions: 67455
+Number of sequences better than 10: 0
+Number of HSP's better than 10 without gapping: 0
+Number of HSP's gapped: 67455
+Number of HSP's successfully gapped: 0
+Length of query: 115
+Length of database: 859097896182
+Length adjustment: 37
+Effective length of query: 78
+Effective length of database: 854855553068
+Effective search space: 66678733139304
+Effective search space used: 66678733139304
+A: 0
+X1: 22 (20.1 bits)
+X2: 33 (29.8 bits)
+X3: 110 (99.2 bits)
+S1: 28 (26.5 bits)
+S2: 46 (42.8 bits)
+
+

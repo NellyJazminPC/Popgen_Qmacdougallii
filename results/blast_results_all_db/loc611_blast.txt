@@ -1,0 +1,146 @@
+<p><!--
+QBlastInfoBegin
+	Status=READY
+QBlastInfoEnd
+--><p>
+<PRE>
+
+BLASTN 2.16.1+
+Reference: Stephen F. Altschul, Thomas L. Madden, Alejandro
+A. Schaffer, Jinghui Zhang, Zheng Zhang, Webb Miller, and
+David J. Lipman (1997), "Gapped BLAST and PSI-BLAST: a new
+generation of protein database search programs", Nucleic
+Acids Res. 25:3389-3402.
+
+
+RID: 1EB0921Y016
+
+
+Database: Core nucleotide BLAST database
+           114,657,922 sequences; 859,097,896,182 total letters
+Query= 
+Length=139
+
+
+                                                                   Score     E     Max
+Sequences producing significant alignments:                       (Bits)  Value  Ident
+
+XM_059120025.1 PREDICTED: Musca domestica semaphorin-2A (LOC10...  53.6    0.006  94%         
+XM_059120027.1 PREDICTED: Musca domestica semaphorin-2A (LOC10...  53.6    0.006  94%         
+XM_060038494.1 PREDICTED: Gadus macrocephalus strawberry notch...  51.8    0.023  76%         
+XM_060038496.1 PREDICTED: Gadus macrocephalus strawberry notch...  51.8    0.023  76%         
+XM_060038495.1 PREDICTED: Gadus macrocephalus strawberry notch...  51.8    0.023  76%         
+
+ALIGNMENTS
+>XM_059120025.1 PREDICTED: Musca domestica semaphorin-2A (LOC101895019), transcript 
+variant X1, mRNA
+Length=4872
+
+ Score = 53.6 bits (58),  Expect = 0.006
+ Identities = 32/34 (94%), Gaps = 0/34 (0%)
+ Strand=Plus/Plus
+
+Query  69   TTTGAAAAGCATAATAACTATTTATTTTATATCA  102
+            ||||||||||||||||| |||||||||||| |||
+Sbjct  634  TTTGAAAAGCATAATAAATATTTATTTTATTTCA  667
+
+
+>XM_059120027.1 PREDICTED: Musca domestica semaphorin-2A (LOC101895019), transcript 
+variant X3, mRNA
+Length=4870
+
+ Score = 53.6 bits (58),  Expect = 0.006
+ Identities = 32/34 (94%), Gaps = 0/34 (0%)
+ Strand=Plus/Plus
+
+Query  69   TTTGAAAAGCATAATAACTATTTATTTTATATCA  102
+            ||||||||||||||||| |||||||||||| |||
+Sbjct  635  TTTGAAAAGCATAATAAATATTTATTTTATTTCA  668
+
+
+>XM_060038494.1 PREDICTED: Gadus macrocephalus strawberry notch homolog 1 (Drosophila) 
+(sbno1), transcript variant X3, mRNA
+Length=6539
+
+ Score = 51.8 bits (56),  Expect = 0.023
+ Identities = 57/75 (76%), Gaps = 1/75 (1%)
+ Strand=Plus/Plus
+
+Query  14    aaaaaaCATACATAAAGTGCTTCTGCTCATTCTTCTTT-TCTTGCTTTTTCTCCCCTTTG  72
+             || |||  ||||||||||| |||||  |||| |||||| |  |||| ||| || ||||| 
+Sbjct  5285  AAGAAAGCTACATAAAGTGATTCTGAACATTATTCTTTATAATGCTGTTTGTCACCTTTC  5344
+
+Query  73    AAAAGCATAATAACT  87
+              |||  | |||||||
+Sbjct  5345  TAAATAACAATAACT  5359
+
+
+>XM_060038496.1 PREDICTED: Gadus macrocephalus strawberry notch homolog 1 (Drosophila) 
+(sbno1), transcript variant X5, mRNA
+Length=6493
+
+ Score = 51.8 bits (56),  Expect = 0.023
+ Identities = 57/75 (76%), Gaps = 1/75 (1%)
+ Strand=Plus/Plus
+
+Query  14    aaaaaaCATACATAAAGTGCTTCTGCTCATTCTTCTTT-TCTTGCTTTTTCTCCCCTTTG  72
+             || |||  ||||||||||| |||||  |||| |||||| |  |||| ||| || ||||| 
+Sbjct  5239  AAGAAAGCTACATAAAGTGATTCTGAACATTATTCTTTATAATGCTGTTTGTCACCTTTC  5298
+
+Query  73    AAAAGCATAATAACT  87
+              |||  | |||||||
+Sbjct  5299  TAAATAACAATAACT  5313
+
+
+>XM_060038495.1 PREDICTED: Gadus macrocephalus strawberry notch homolog 1 (Drosophila) 
+(sbno1), transcript variant X4, mRNA
+Length=6712
+
+ Score = 51.8 bits (56),  Expect = 0.023
+ Identities = 57/75 (76%), Gaps = 1/75 (1%)
+ Strand=Plus/Plus
+
+Query  14    aaaaaaCATACATAAAGTGCTTCTGCTCATTCTTCTTT-TCTTGCTTTTTCTCCCCTTTG  72
+             || |||  ||||||||||| |||||  |||| |||||| |  |||| ||| || ||||| 
+Sbjct  5458  AAGAAAGCTACATAAAGTGATTCTGAACATTATTCTTTATAATGCTGTTTGTCACCTTTC  5517
+
+Query  73    AAAAGCATAATAACT  87
+              |||  | |||||||
+Sbjct  5518  TAAATAACAATAACT  5532
+
+
+  Database: Core nucleotide BLAST database
+    Posted date:  Apr 29, 2025  11:24 PM
+  Number of letters in database: 859,097,896,182
+  Number of sequences in database:  114,657,922
+
+Lambda      K        H
+   0.634    0.408    0.912 
+Gapped
+Lambda      K        H
+   0.625    0.410    0.780 
+Matrix: blastn matrix:2 -3
+Gap Penalties: Existence: 5, Extension: 2
+Number of Sequences: 114657922
+Number of Hits to DB: 12382218
+Number of extensions: 25846
+Number of successful extensions: 25846
+Number of sequences better than 10: 2
+Number of HSP's better than 10 without gapping: 0
+Number of HSP's gapped: 25846
+Number of HSP's successfully gapped: 2
+Length of query: 139
+Length of database: 859097896182
+Length adjustment: 37
+Effective length of query: 102
+Effective length of database: 854855553068
+Effective search space: 87195266412936
+Effective search space used: 87195266412936
+A: 0
+X1: 22 (20.1 bits)
+X2: 33 (29.8 bits)
+X3: 110 (99.2 bits)
+S1: 28 (26.5 bits)
+S2: 47 (43.7 bits)
+
+

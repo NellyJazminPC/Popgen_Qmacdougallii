@@ -9,7 +9,7 @@ library(writexl)
 vcf_file <- "../data/1.3.assembly_variant_calling/ref_gen_qrob_trim01_1_sorted.vcf"
 
 # Ruta al archivo con los loci de interés
-blast_results_file <- "../results/consolidated_snps_with_blast_results.xlsx"
+blast_results_file <- "../results/snps_outliers_with_blast_results_magnoliopsida_highlighted.xlsx"
 
 # Leer el archivo VCF
 vcf <- read.vcfR(vcf_file)
@@ -107,7 +107,7 @@ library(readxl)
 library(writexl)
 
 # Ruta al archivo de resultados BLAST
-blast_results_file <- "../results/consolidated_snps_with_blast_results.xlsx"
+blast_results_file <- "../results/snps_outliers_with_blast_results_magnoliopsida_highlighted.xlsx"
 
 # Leer el archivo de resultados BLAST
 blast_results <- read_xlsx(blast_results_file)
@@ -219,13 +219,18 @@ str(snp_info)
 # Lista de SNPs con sus valores de pch y p-value adj
 snp_info 
 
+# Verificar si la carpeta para guardar los gráficos existe, si no, crearla
+if (!dir.exists("../results/plots_snps_outliers")) {
+  dir.create("../results/plots_snps_outliers", showWarnings = FALSE)
+}
+
 # Iterar sobre cada SNP en la lista
 for (snp in snp_info) {
-  # Extraer el nombre del SNP, el p-value ajustado, los alelos y el best_hit
+  # Extraer el nombre del SNP, el FST ajustado, los alelos y el best_hit_Magnoliopsida
   snp_name <- snp$name
   snp_pval <- snp$pval
   snp_pch <- snp$pch
-  snp_best_hit <- filtered_pval %>% filter(locus_name == snp_name) %>% pull(best_hit)  # Obtener el best_hit
+  snp_best_hit <- filtered_pval %>% filter(locus_name == snp_name) %>% pull(best_hit_Magnoliopsida)  # Obtener el best_hit_Magnoliopsida
   
   # Extraer las frecuencias alélicas del SNP
   snp_data <- tab(temp[[snp_name]])
@@ -236,28 +241,27 @@ for (snp in snp_info) {
   matplot(freq_snp, type = "b", pch = snp_pch,
           xlab = "SITE", ylab = "Allele frequency", 
           main = paste("p-value adj", snp_pval, snp_name),
-          xaxt = "n", cex = 1.5)
+          xaxt = "n", cex = 1.1)
   axis(side = 1, at = 1:9, lab = c("CZ", "MT", "MC", "MB", "CY", "LS", "PZ", "CR", "IT"))
   
-  # Agregar el texto de best_hit debajo del gráfico
-  mtext(text = paste("Best hit:", snp_best_hit), side = 1, line = 5, cex = 0.8, col = "blue")
+  # Agregar el texto de best_hit_Magnoliopsida debajo del gráfico
+  mtext(text = paste("Best hit (Magnoliopsida):", snp_best_hit), side = 1, line = 5, cex = 0.6, col = "blue")
   
   # Exportar el gráfico como PNG
-  png_filename <- paste0("../results/allele_frequency_", snp_name, ".png")
-  png(png_filename, width = 2400, height = 1200, res = 300)  # Tamaño y resolución ajustados
+  png_filename <- paste0("../results/plots_snps_outliers/allele_frequency_pcadapt_", snp_name, ".png")
+  png(png_filename, width = 2200, height = 1200, res = 300)  # Tamaño y resolución ajustados
   par(mar = c(6, 5, 4, 2) + 0.1)  # Ajustar márgenes para el archivo exportado
   matplot(freq_snp, type = "b", pch = snp_pch,
           xlab = "SITE", ylab = "Allele frequency", 
           main = paste("p-value adj", snp_pval, snp_name),
-          xaxt = "n", cex = 1.5)
+          xaxt = "n", cex = 1.1)
   axis(side = 1, at = 1:9, lab = c("CZ", "MT", "MC", "MB", "CY", "LS", "PZ", "CR", "IT"))
-  mtext(text = paste("Best hit:", snp_best_hit), side = 1, line = 5, cex = 0.8, col = "blue")
+  mtext(text = paste("Best hit (Magnoliopsida):", snp_best_hit), side = 1, line = 5, cex = 0.6, col = "blue")
   dev.off()  # Cerrar el dispositivo gráfico
   
   # Mensaje de confirmación
   cat("Gráfico guardado para SNP:", snp_name, "en", png_filename, "\n")
 }
-
 #------------------------------
 # Graficar SNPs outliers de FST
 #-----------------------------
@@ -306,7 +310,7 @@ for (snp in snp_info) {
   snp_name <- snp$name
   snp_fst <- snp$fst
   snp_pch <- snp$pch
-  snp_best_hit <- filtered_fst %>% filter(locus_name == snp_name) %>% pull(best_hit)  # Obtener el best_hit
+  snp_best_hit <- filtered_fst %>% filter(locus_name == snp_name) %>% pull(best_hit_Magnoliopsida)  # Obtener el best_hit
   
   # Extraer las frecuencias alélicas del SNP
   snp_data <- tab(temp[[snp_name]])
@@ -317,22 +321,22 @@ for (snp in snp_info) {
   matplot(freq_snp, type = "b", pch = snp_pch,
           xlab = "SITE", ylab = "Allele frequency", 
           main = paste("FST value", snp_fst, snp_name),
-          xaxt = "n", cex = 1.5)
+          xaxt = "n", cex = 1.1)
   axis(side = 1, at = 1:9, lab = c("CZ", "MT", "MC", "MB", "CY", "LS", "PZ", "CR", "IT"))
   
   # Agregar el texto de best_hit debajo del gráfico
-  mtext(text = paste("Best hit:", snp_best_hit), side = 1, line = 5, cex = 0.8, col = "blue")
+  mtext(text = paste("Best hit (Magnoliopsida):", snp_best_hit), side = 1, line = 5, cex = 0.5, col = "blue")
   
   # Exportar el gráfico como PNG
-  png_filename <- paste0("../results/allele_frequency_fst_", snp_name, ".png")
-  png(png_filename, width = 2400, height = 1200, res = 300)  # Tamaño y resolución ajustados
+  png_filename <- paste0("../results/plots_snps_outliers/allele_frequency_fst_", snp_name, ".png")
+  png(png_filename, width = 2200, height = 1200, res = 300)  # Tamaño y resolución ajustados
   par(mar = c(6, 5, 4, 2) + 0.1)  # Ajustar márgenes para el archivo exportado
   matplot(freq_snp, type = "b", pch = snp_pch,
           xlab = "SITE", ylab = "Allele frequency", 
           main = paste("FST value", snp_fst, snp_name),
-          xaxt = "n", cex = 1.5)
+          xaxt = "n", cex = 1.1)
   axis(side = 1, at = 1:9, lab = c("CZ", "MT", "MC", "MB", "CY", "LS", "PZ", "CR", "IT"))
-  mtext(text = paste("Best hit:", snp_best_hit), side = 1, line = 5, cex = 0.8, col = "blue")
+  mtext(text = paste("Best hit (Magnoliopsida):", snp_best_hit), side = 1, line = 5, cex = 0.5, col = "blue")
   dev.off()  # Cerrar el dispositivo gráfico
   
   # Mensaje de confirmación

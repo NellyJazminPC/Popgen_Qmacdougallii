@@ -1,0 +1,153 @@
+<p><!--
+QBlastInfoBegin
+	Status=READY
+QBlastInfoEnd
+--><p>
+<PRE>
+
+BLASTN 2.16.1+
+Reference: Stephen F. Altschul, Thomas L. Madden, Alejandro
+A. Schaffer, Jinghui Zhang, Zheng Zhang, Webb Miller, and
+David J. Lipman (1997), "Gapped BLAST and PSI-BLAST: a new
+generation of protein database search programs", Nucleic
+Acids Res. 25:3389-3402.
+
+
+RID: 1E91GUUH013
+
+
+Database: Core nucleotide BLAST database
+           114,657,922 sequences; 859,097,896,182 total letters
+Query= 
+Length=139
+
+
+                                                                   Score     E     Max
+Sequences producing significant alignments:                       (Bits)  Value  Ident
+
+LT799011.1 Quercus robur BAC genome sequence, isolate 126AN20      115     2e-21  85%       
+XR_010623776.1 PREDICTED: Quercus suber uncharacterized LOC136...  89.7    9e-14  79%       
+XR_002279912.1 PREDICTED: Amborella trichopoda protein SUPPRES...  81.5    5e-11  82%       
+XM_065768859.1 PREDICTED: Quercus suber probable E3 ubiquitin-...  76.1    2e-09  78%       
+XR_004088495.1 PREDICTED: Quercus lobata uncharacterized LOC11...  73.4    7e-09  78%       
+
+ALIGNMENTS
+>LT799011.1 Quercus robur BAC genome sequence, isolate 126AN20
+Length=103306
+
+ Score = 115 bits (127),  Expect = 2e-21
+ Identities = 86/101 (85%), Gaps = 0/101 (0%)
+ Strand=Plus/Minus
+
+Query  33     ATGGTATTGAATGTTGAGTTGCTTAGAAGCAACATATTCATAAAATGCGTGTAGCTGAAA  92
+              |||||| ||||||||| | || | ||||||||| |||||||||||||  |||||||  ||
+Sbjct  15711  ATGGTACTGAATGTTGGGCTGTTAAGAAGCAACTTATTCATAAAATGATTGTAGCTATAA  15652
+
+Query  93     TGAGAATGTTGTGATGGATAAGTGAAAATACACAGAAAGAT  133
+              ||||||||||  ||| |||||||| |||||||| |||||||
+Sbjct  15651  TGAGAATGTTAAGATTGATAAGTGGAAATACACGGAAAGAT  15611
+
+
+>XR_010623776.1 PREDICTED: Quercus suber uncharacterized LOC136061931 (LOC136061931), 
+ncRNA
+Length=4460
+
+ Score = 89.7 bits (98),  Expect = 9e-14
+ Identities = 82/104 (79%), Gaps = 0/104 (0%)
+ Strand=Plus/Minus
+
+Query  35    GGTATTGAATGTTGAGTTGCTTAGAAGCAACATATTCATAAAATGCGTGTAGCTGAAATG  94
+             |||||||||| ||  |||| | ||||||||||||||||||||||  |||||  ||| |||
+Sbjct  1995  GGTATTGAATATTTGGTTGTTAAGAAGCAACATATTCATAAAATAAGTGTAATTGACATG  1936
+
+Query  95    AGAATGTTGTGATGGATAAGTGAAAATACACAGAAAGATGGGAT  138
+             | ||||||  ||||||||||   ||||| |   ||| || ||||
+Sbjct  1935  AAAATGTTAAGATGGATAAGAAGAAATAGAAGCAAATATAGGAT  1892
+
+
+>XR_002279912.1 PREDICTED: Amborella trichopoda protein SUPPRESSOR OF GENE SILENCING 
+3 homolog (LOC105420157), transcript variant X5, misc_RNA
+Length=4501
+
+ Score = 81.5 bits (89),  Expect = 5e-11
+ Identities = 69/84 (82%), Gaps = 1/84 (1%)
+ Strand=Plus/Minus
+
+Query  33   ATGGTATTGAATGTTGAGTTGCTTAGAAGCAACATATTCATAAAATGCGTGTAGCTGAAA  92
+            |||| | ||||||||  || |   |||| || ||||| ||||||||| ||||||||||||
+Sbjct  699  ATGGAACTGAATGTTAGGTGGTCAAGAAACA-CATATCCATAAAATGAGTGTAGCTGAAA  641
+
+Query  93   TGAGAATGTTGTGATGGATAAGTG  116
+            |||| |||||| ||||||| ||||
+Sbjct  640  TGAGGATGTTGAGATGGATGAGTG  617
+
+
+>XM_065768859.1 PREDICTED: Quercus suber probable E3 ubiquitin-protein ligase 
+ARI1 (LOC136065538), mRNA
+Length=1442
+
+ Score = 76.1 bits (83),  Expect = 2e-09
+ Identities = 71/91 (78%), Gaps = 6/91 (7%)
+ Strand=Plus/Plus
+
+Query  33    ATGGTATTGAATGTTGAGTTGCTTAGAAGCAACATATTCATAAAATGCG------TGTAG  86
+             ||||||||| |||||| | |  | ||||| | ||| ||||||||||| |      |||| 
+Sbjct  995   ATGGTATTGCATGTTGGGCTATTAAGAAGTAGCATTTTCATAAAATGAGTTTAACTGTAA  1054
+
+Query  87    CTGAAATGAGAATGTTGTGATGGATAAGTGA  117
+              ||||||||||||||||  ||||||||||||
+Sbjct  1055  TTGAAATGAGAATGTTGAAATGGATAAGTGA  1085
+
+
+>XR_004088495.1 PREDICTED: Quercus lobata uncharacterized LOC115977122 (LOC115977122), 
+ncRNA
+Length=1161
+
+ Score = 73.4 bits (80),  Expect = 7e-09
+ Identities = 70/90 (78%), Gaps = 0/90 (0%)
+ Strand=Plus/Plus
+
+Query  33    ATGGTATTGAATGTTGAGTTGCTTAGAAGCAACATATTCATAAAATGCGTGTAGCTGAAA  92
+             |||||||||||| ||| |||  | |||||||   | || |||||||  |  ||| |||||
+Sbjct  1050  ATGGTATTGAATTTTGGGTTATTAAGAAGCACATTGTTTATAAAATAAGAATAGTTGAAA  1109
+
+Query  93    TGAGAATGTTGTGATGGATAAGTGAAAATA  122
+             ||||||||||  |||| |||| || |||||
+Sbjct  1110  TGAGAATGTTAAGATGAATAAATGGAAATA  1139
+
+
+  Database: Core nucleotide BLAST database
+    Posted date:  Apr 29, 2025  11:24 PM
+  Number of letters in database: 859,097,896,182
+  Number of sequences in database:  114,657,922
+
+Lambda      K        H
+   0.634    0.408    0.912 
+Gapped
+Lambda      K        H
+   0.625    0.410    0.780 
+Matrix: blastn matrix:2 -3
+Gap Penalties: Existence: 5, Extension: 2
+Number of Sequences: 114657922
+Number of Hits to DB: 10584545
+Number of extensions: 11239
+Number of successful extensions: 11239
+Number of sequences better than 10: 8
+Number of HSP's better than 10 without gapping: 0
+Number of HSP's gapped: 11239
+Number of HSP's successfully gapped: 18
+Length of query: 139
+Length of database: 859097896182
+Length adjustment: 37
+Effective length of query: 102
+Effective length of database: 854855553068
+Effective search space: 87195266412936
+Effective search space used: 87195266412936
+A: 0
+X1: 22 (20.1 bits)
+X2: 33 (29.8 bits)
+X3: 110 (99.2 bits)
+S1: 28 (26.5 bits)
+S2: 47 (43.7 bits)
+
+

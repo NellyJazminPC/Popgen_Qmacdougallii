@@ -1,0 +1,706 @@
+<p><!--
+QBlastInfoBegin
+	Status=READY
+QBlastInfoEnd
+--><p>
+<PRE>
+
+BLASTN 2.16.1+
+Reference: Stephen F. Altschul, Thomas L. Madden, Alejandro
+A. Schaffer, Jinghui Zhang, Zheng Zhang, Webb Miller, and
+David J. Lipman (1997), "Gapped BLAST and PSI-BLAST: a new
+generation of protein database search programs", Nucleic
+Acids Res. 25:3389-3402.
+
+
+RID: 1K3S5T2B016
+
+
+Database: Core nucleotide BLAST database
+           114,657,922 sequences; 859,097,896,182 total letters
+Query= 
+Length=139
+
+
+                                                                   Score     E     Max
+Sequences producing significant alignments:                       (Bits)  Value  Ident
+
+AP035804.1 Malpighia emarginata NRA309 DNA, chromosome 3, near...  50.0    0.004  89%       
+CP158653.1 Cannabis sativa cultivar ERBxHO40_23 chromosome 1       49.1    0.013  80%       
+CP158652.1 Cannabis sativa cultivar ERBxHO40_23 chromosome X       49.1    0.013  84%       
+CP158643.1 Cannabis sativa cultivar ERBxHO40_23 chromosome 1       49.1    0.013  80%       
+CP157410.1 Ziziphus jujuba isolate TW-2024b chromosome 08          48.2    0.013  83%       
+
+ALIGNMENTS
+>AP035804.1 Malpighia emarginata NRA309 DNA, chromosome 3, nearly complete 
+sequence
+Length=92689787
+
+ Score = 50.0 bits (54),  Expect = 0.004
+ Identities = 33/37 (89%), Gaps = 0/37 (0%)
+ Strand=Plus/Minus
+
+Query  28       TTGGTATTATATTTACATATTTATCTTTATCCAAAAA  64
+                ||||||||| |||||||||||| |||||||  |||||
+Sbjct  5648871  TTGGTATTAAATTTACATATTTGTCTTTATATAAAAA  5648835
+
+
+ Score = 41.0 bits (44),  Expect = 2.0
+ Identities = 25/27 (93%), Gaps = 0/27 (0%)
+ Strand=Plus/Plus
+
+Query  32       TATTATATTTACATATTTATCTTTATC  58
+                ||||| |||||||||||||||||| ||
+Sbjct  8949517  TATTAAATTTACATATTTATCTTTTTC  8949543
+
+
+>CP158653.1 Cannabis sativa cultivar ERBxHO40_23 chromosome 1
+Length=65878799
+
+ Score = 49.1 bits (53),  Expect = 0.013
+ Identities = 43/54 (80%), Gaps = 0/54 (0%)
+ Strand=Plus/Plus
+
+Query  33        ATTATATTTACATATTTATCTTTATCCAAAAACAGAAATGGATTCATGATAAAA  86
+                 |||| | || ||||||||||||||| |||||| | ||||  ||| || | ||||
+Sbjct  12609813  ATTAAAATTTCATATTTATCTTTATTCAAAAAGAAAAATAAATTGATAAAAAAA  12609866
+
+
+ Score = 49.1 bits (53),  Expect = 0.013
+ Identities = 43/54 (80%), Gaps = 0/54 (0%)
+ Strand=Plus/Minus
+
+Query  33        ATTATATTTACATATTTATCTTTATCCAAAAACAGAAATGGATTCATGATAAAA  86
+                 |||| | || ||||||||||||||| |||||| | |||  |||| || | ||||
+Sbjct  18135254  ATTAAAATTTCATATTTATCTTTATTCAAAAAGAAAAAAAGATTGATAAAAAAA  18135201
+
+
+ Score = 45.5 bits (49),  Expect = 0.16
+ Identities = 37/44 (84%), Gaps = 1/44 (2%)
+ Strand=Plus/Minus
+
+Query  33        ATTATATTTACATATTTATCTTTATCCAAAAACAGAAATGGATT  76
+                 |||| | || ||||||||||||||| |||||| | |||| ||||
+Sbjct  57771484  ATTAAAATTTCATATTTATCTTTATTCAAAAA-AAAAATTGATT  57771442
+
+
+ Score = 44.6 bits (48),  Expect = 0.16
+ Identities = 42/54 (78%), Gaps = 0/54 (0%)
+ Strand=Plus/Minus
+
+Query  33        ATTATATTTACATATTTATCTTTATCCAAAAACAGAAATGGATTCATGATAAAA  86
+                 |||| | || ||||||||||||||| |||||| | |||   ||| || | ||||
+Sbjct  52395959  ATTAAAATTTCATATTTATCTTTATTCAAAAAGAAAAAAAAATTGATAAAAAAA  52395906
+
+
+ Score = 42.8 bits (46),  Expect = 0.57
+ Identities = 32/38 (84%), Gaps = 0/38 (0%)
+ Strand=Plus/Plus
+
+Query  33       ATTATATTTACATATTTATCTTTATCCAAAAACAGAAA  70
+                |||| | || ||||||||||||||| |||||| | |||
+Sbjct  8115403  ATTAAAATTTCATATTTATCTTTATTCAAAAAGAAAAA  8115440
+
+
+ Score = 42.8 bits (46),  Expect = 0.57
+ Identities = 32/38 (84%), Gaps = 0/38 (0%)
+ Strand=Plus/Plus
+
+Query  33        ATTATATTTACATATTTATCTTTATCCAAAAACAGAAA  70
+                 |||| | || ||||||||||||||| |||||| | |||
+Sbjct  10381436  ATTAAAATTTCATATTTATCTTTATTCAAAAAGAAAAA  10381473
+
+
+ Score = 42.8 bits (46),  Expect = 0.57
+ Identities = 32/38 (84%), Gaps = 0/38 (0%)
+ Strand=Plus/Plus
+
+Query  33        ATTATATTTACATATTTATCTTTATCCAAAAACAGAAA  70
+                 |||| | || ||||||||||||||| |||||| | |||
+Sbjct  17226463  ATTAAAATTTCATATTTATCTTTATTCAAAAAGAAAAA  17226500
+
+
+ Score = 42.8 bits (46),  Expect = 0.57
+ Identities = 32/38 (84%), Gaps = 0/38 (0%)
+ Strand=Plus/Plus
+
+Query  33        ATTATATTTACATATTTATCTTTATCCAAAAACAGAAA  70
+                 |||| | || ||||||||||||||| |||||| | |||
+Sbjct  21803517  ATTAAAATTTCATATTTATCTTTATTCAAAAAGAAAAA  21803554
+
+
+ Score = 42.8 bits (46),  Expect = 0.57
+ Identities = 32/38 (84%), Gaps = 0/38 (0%)
+ Strand=Plus/Minus
+
+Query  33        ATTATATTTACATATTTATCTTTATCCAAAAACAGAAA  70
+                 |||| | || ||||||||||||||| |||||| | |||
+Sbjct  24696989  ATTAAAATTTCATATTTATCTTTATTCAAAAAGAAAAA  24696952
+
+
+ Score = 42.8 bits (46),  Expect = 0.57
+ Identities = 32/38 (84%), Gaps = 0/38 (0%)
+ Strand=Plus/Plus
+
+Query  33        ATTATATTTACATATTTATCTTTATCCAAAAACAGAAA  70
+                 |||| | || ||||||||||||||| |||||| | |||
+Sbjct  33763817  ATTAAAATTTCATATTTATCTTTATTCAAAAAGAAAAA  33763854
+
+
+ Score = 42.8 bits (46),  Expect = 0.57
+ Identities = 32/38 (84%), Gaps = 0/38 (0%)
+ Strand=Plus/Plus
+
+Query  33        ATTATATTTACATATTTATCTTTATCCAAAAACAGAAA  70
+                 |||| | || ||||||||||||||| |||||| | |||
+Sbjct  53382787  ATTAAAATTTCATATTTATCTTTATTCAAAAAGAAAAA  53382824
+
+
+ Score = 42.8 bits (46),  Expect = 0.57
+ Identities = 32/38 (84%), Gaps = 0/38 (0%)
+ Strand=Plus/Plus
+
+Query  33        ATTATATTTACATATTTATCTTTATCCAAAAACAGAAA  70
+                 |||| | || ||||||||||||||| |||||| | |||
+Sbjct  58605247  ATTAAAATTTCATATTTATCTTTATTCAAAAAGAAAAA  58605284
+
+
+ Score = 42.8 bits (46),  Expect = 0.57
+ Identities = 34/40 (85%), Gaps = 1/40 (3%)
+ Strand=Plus/Plus
+
+Query  33        ATTATATTTACATATTTATCTTTATCCAAAAACAGAAATG  72
+                 |||| | || ||||||||||||||| |||||| | |||||
+Sbjct  60877304  ATTAAAATTTCATATTTATCTTTATTCAAAAA-AAAAATG  60877342
+
+
+ Score = 42.8 bits (46),  Expect = 0.57
+ Identities = 32/38 (84%), Gaps = 0/38 (0%)
+ Strand=Plus/Minus
+
+Query  33        ATTATATTTACATATTTATCTTTATCCAAAAACAGAAA  70
+                 |||| | || ||||||||||||||| |||||| | |||
+Sbjct  61991284  ATTAAAATTTCATATTTATCTTTATTCAAAAAGAAAAA  61991247
+
+
+ Score = 42.8 bits (46),  Expect = 0.57
+ Identities = 32/38 (84%), Gaps = 0/38 (0%)
+ Strand=Plus/Plus
+
+Query  33        ATTATATTTACATATTTATCTTTATCCAAAAACAGAAA  70
+                 |||| | || ||||||||||||||| |||||| | |||
+Sbjct  64320855  ATTAAAATTTCATATTTATCTTTATTCAAAAAGAAAAA  64320892
+
+
+ Score = 41.0 bits (44),  Expect = 2.0
+ Identities = 43/57 (75%), Gaps = 0/57 (0%)
+ Strand=Plus/Plus
+
+Query  33       ATTATATTTACATATTTATCTTTATCCAAAAACAGAAATGGATTCATGATAAAAGGA  89
+                |||| | || ||||||||||||||  |||||| | |||   ||| || | |||| ||
+Sbjct  4328754  ATTAAAATTTCATATTTATCTTTACTCAAAAAGAAAAAAAAATTGATAAAAAAAAGA  4328810
+
+
+ Score = 41.0 bits (44),  Expect = 2.0
+ Identities = 28/32 (88%), Gaps = 0/32 (0%)
+ Strand=Plus/Plus
+
+Query  33        ATTATATTTACATATTTATCTTTATCCAAAAA  64
+                 |||| | || ||||||||||||||| ||||||
+Sbjct  23318640  ATTAAAATTTCATATTTATCTTTATTCAAAAA  23318671
+
+
+ Score = 41.0 bits (44),  Expect = 2.0
+ Identities = 28/32 (88%), Gaps = 0/32 (0%)
+ Strand=Plus/Plus
+
+Query  33        ATTATATTTACATATTTATCTTTATCCAAAAA  64
+                 |||| | || ||||||||||||||| ||||||
+Sbjct  50505347  ATTAAAATTTCATATTTATCTTTATTCAAAAA  50505378
+
+
+ Score = 41.0 bits (44),  Expect = 2.0
+ Identities = 25/27 (93%), Gaps = 0/27 (0%)
+ Strand=Plus/Plus
+
+Query  34        TTATATTTACATATTTATCTTTATCCA  60
+                 ||||||||||||||||| |||||| ||
+Sbjct  56437866  TTATATTTACATATTTAGCTTTATGCA  56437892
+
+
+ Score = 40.1 bits (43),  Expect = 7.0
+ Identities = 23/24 (96%), Gaps = 0/24 (0%)
+ Strand=Plus/Plus
+
+Query  34        TTATATTTACATATTTATCTTTAT  57
+                 ||||||||||||||||| ||||||
+Sbjct  43434334  TTATATTTACATATTTAACTTTAT  43434357
+
+
+ Score = 40.1 bits (43),  Expect = 7.0
+ Identities = 23/24 (96%), Gaps = 0/24 (0%)
+ Strand=Plus/Minus
+
+Query  34        TTATATTTACATATTTATCTTTAT  57
+                 ||||||||||||||||| ||||||
+Sbjct  49435844  TTATATTTACATATTTAGCTTTAT  49435821
+
+
+ Score = 40.1 bits (43),  Expect = 7.0
+ Identities = 41/54 (76%), Gaps = 0/54 (0%)
+ Strand=Plus/Plus
+
+Query  33        ATTATATTTACATATTTATCTTTATCCAAAAACAGAAATGGATTCATGATAAAA  86
+                 |||| | || ||||||||||||||  |||||| | |||   ||| || | ||||
+Sbjct  64812349  ATTAAAATTTCATATTTATCTTTACTCAAAAAGAAAAAAAAATTGATAAAAAAA  64812402
+
+
+>CP158652.1 Cannabis sativa cultivar ERBxHO40_23 chromosome X
+Length=84401000
+
+ Score = 49.1 bits (53),  Expect = 0.013
+ Identities = 37/44 (84%), Gaps = 0/44 (0%)
+ Strand=Plus/Plus
+
+Query  33        ATTATATTTACATATTTATCTTTATCCAAAAACAGAAATGGATT  76
+                 |||| | || ||||||||||||||| |||||| | |||| ||||
+Sbjct  68962224  ATTAAAATTTCATATTTATCTTTATTCAAAAAAAAAAATTGATT  68962267
+
+
+ Score = 45.5 bits (49),  Expect = 0.16
+ Identities = 44/57 (77%), Gaps = 0/57 (0%)
+ Strand=Plus/Plus
+
+Query  33      ATTATATTTACATATTTATCTTTATCCAAAAACAGAAATGGATTCATGATAAAAGGA  89
+               |||| | || ||||||||||||||| |||||| | |||   ||| || | |||| ||
+Sbjct  210835  ATTAAAATTTCATATTTATCTTTATTCAAAAAGAAAAAAAAATTGATAAAAAAAAGA  210891
+
+
+ Score = 45.5 bits (49),  Expect = 0.16
+ Identities = 44/57 (77%), Gaps = 0/57 (0%)
+ Strand=Plus/Plus
+
+Query  33        ATTATATTTACATATTTATCTTTATCCAAAAACAGAAATGGATTCATGATAAAAGGA  89
+                 |||| | || |||||||||||||| ||||||| | |||   ||| || | |||| ||
+Sbjct  48509061  ATTAAAATTTCATATTTATCTTTACCCAAAAAGAAAAAAAAATTGATCAAAAAAAGA  48509117
+
+
+ Score = 43.7 bits (47),  Expect = 0.57
+ Identities = 33/38 (87%), Gaps = 1/38 (3%)
+ Strand=Plus/Plus
+
+Query  33       ATTATATTTACATATTTATCTTTATCCAAAAACAGAAA  70
+                |||| | || ||||||||||||||| |||||| |||||
+Sbjct  6666673  ATTAAAATTTCATATTTATCTTTATTCAAAAA-AGAAA  6666709
+
+
+ Score = 43.7 bits (47),  Expect = 0.57
+ Identities = 43/56 (77%), Gaps = 0/56 (0%)
+ Strand=Plus/Minus
+
+Query  34        TTATATTTACATATTTATCTTTATCCAAAAACAGAAATGGATTCATGATAAAAGGA  89
+                 ||| | || ||||||||||||||| |||||| | |||   ||| || | |||| ||
+Sbjct  72266783  TTAAAATTTCATATTTATCTTTATTCAAAAAGAAAAAAAAATTGATAAAAAAAAGA  72266728
+
+
+ Score = 42.8 bits (46),  Expect = 0.57
+ Identities = 32/38 (84%), Gaps = 0/38 (0%)
+ Strand=Plus/Plus
+
+Query  33        ATTATATTTACATATTTATCTTTATCCAAAAACAGAAA  70
+                 |||| | || ||||||||||||||| |||||| | |||
+Sbjct  27821300  ATTAAAATTTCATATTTATCTTTATTCAAAAAGAAAAA  27821337
+
+
+ Score = 42.8 bits (46),  Expect = 0.57
+ Identities = 32/38 (84%), Gaps = 0/38 (0%)
+ Strand=Plus/Minus
+
+Query  33        ATTATATTTACATATTTATCTTTATCCAAAAACAGAAA  70
+                 |||| | || ||||||||||||||| |||||| | |||
+Sbjct  56904232  ATTAAAATTTCATATTTATCTTTATTCAAAAAGAAAAA  56904195
+
+
+ Score = 42.8 bits (46),  Expect = 0.57
+ Identities = 32/38 (84%), Gaps = 0/38 (0%)
+ Strand=Plus/Minus
+
+Query  33        ATTATATTTACATATTTATCTTTATCCAAAAACAGAAA  70
+                 |||| | || ||||||||||||||| |||||| | |||
+Sbjct  58225696  ATTAAAATTTCATATTTATCTTTATTCAAAAAGAAAAA  58225659
+
+
+ Score = 42.8 bits (46),  Expect = 0.57
+ Identities = 32/38 (84%), Gaps = 0/38 (0%)
+ Strand=Plus/Minus
+
+Query  33        ATTATATTTACATATTTATCTTTATCCAAAAACAGAAA  70
+                 |||| | || ||||||||||||||| |||||| | |||
+Sbjct  61916516  ATTAAAATTTCATATTTATCTTTATTCAAAAAGAAAAA  61916479
+
+
+ Score = 42.8 bits (46),  Expect = 0.57
+ Identities = 32/38 (84%), Gaps = 0/38 (0%)
+ Strand=Plus/Plus
+
+Query  33        ATTATATTTACATATTTATCTTTATCCAAAAACAGAAA  70
+                 |||| | || ||||||||||||||| |||||| | |||
+Sbjct  69476874  ATTAAAATTTCATATTTATCTTTATTCAAAAAGAAAAA  69476911
+
+
+ Score = 42.8 bits (46),  Expect = 0.57
+ Identities = 32/38 (84%), Gaps = 0/38 (0%)
+ Strand=Plus/Minus
+
+Query  33        ATTATATTTACATATTTATCTTTATCCAAAAACAGAAA  70
+                 |||| | || ||||||||||||||| |||||| | |||
+Sbjct  72629469  ATTAAAATTTCATATTTATCTTTATTCAAAAAGAAAAA  72629432
+
+
+ Score = 42.8 bits (46),  Expect = 0.57
+ Identities = 32/38 (84%), Gaps = 0/38 (0%)
+ Strand=Plus/Minus
+
+Query  33        ATTATATTTACATATTTATCTTTATCCAAAAACAGAAA  70
+                 |||| | || ||||||||||||||| |||||| | |||
+Sbjct  75688336  ATTAAAATTTCATATTTATCTTTATTCAAAAAGAAAAA  75688299
+
+
+ Score = 41.0 bits (44),  Expect = 2.0
+ Identities = 25/27 (93%), Gaps = 0/27 (0%)
+ Strand=Plus/Minus
+
+Query  34        TTATATTTACATATTTATCTTTATCCA  60
+                 ||||||||||||||||| |||||| ||
+Sbjct  14750471  TTATATTTACATATTTAACTTTATGCA  14750445
+
+
+ Score = 41.0 bits (44),  Expect = 2.0
+ Identities = 28/32 (88%), Gaps = 0/32 (0%)
+ Strand=Plus/Minus
+
+Query  33        ATTATATTTACATATTTATCTTTATCCAAAAA  64
+                 |||| | || ||||||||||||||| ||||||
+Sbjct  22092047  ATTAAAATTTCATATTTATCTTTATTCAAAAA  22092016
+
+
+ Score = 41.0 bits (44),  Expect = 2.0
+ Identities = 25/27 (93%), Gaps = 0/27 (0%)
+ Strand=Plus/Minus
+
+Query  34        TTATATTTACATATTTATCTTTATCCA  60
+                 ||||||||||||||||| |||||| ||
+Sbjct  35770773  TTATATTTACATATTTAGCTTTATGCA  35770747
+
+
+ Score = 41.0 bits (44),  Expect = 2.0
+ Identities = 28/32 (88%), Gaps = 0/32 (0%)
+ Strand=Plus/Minus
+
+Query  33        ATTATATTTACATATTTATCTTTATCCAAAAA  64
+                 |||| | || ||||||||||||||| ||||||
+Sbjct  60338102  ATTAAAATTTCATATTTATCTTTATTCAAAAA  60338071
+
+
+ Score = 41.0 bits (44),  Expect = 2.0
+ Identities = 28/32 (88%), Gaps = 0/32 (0%)
+ Strand=Plus/Minus
+
+Query  33        ATTATATTTACATATTTATCTTTATCCAAAAA  64
+                 |||| | || ||||||||||||||| ||||||
+Sbjct  73806305  ATTAAAATTTCATATTTATCTTTATTCAAAAA  73806274
+
+
+ Score = 40.1 bits (43),  Expect = 7.0
+ Identities = 23/24 (96%), Gaps = 0/24 (0%)
+ Strand=Plus/Minus
+
+Query  34       TTATATTTACATATTTATCTTTAT  57
+                ||||||||||||||||| ||||||
+Sbjct  6397593  TTATATTTACATATTTAGCTTTAT  6397570
+
+
+ Score = 40.1 bits (43),  Expect = 7.0
+ Identities = 41/54 (76%), Gaps = 0/54 (0%)
+ Strand=Plus/Plus
+
+Query  33        ATTATATTTACATATTTATCTTTATCCAAAAACAGAAATGGATTCATGATAAAA  86
+                 |||| | || ||||||||||||||  |||||| | |||   ||| || | ||||
+Sbjct  17481343  ATTAAAATTTCATATTTATCTTTACTCAAAAAGAAAAAAAAATTGATAAAAAAA  17481396
+
+
+ Score = 40.1 bits (43),  Expect = 7.0
+ Identities = 41/54 (76%), Gaps = 0/54 (0%)
+ Strand=Plus/Plus
+
+Query  33        ATTATATTTACATATTTATCTTTATCCAAAAACAGAAATGGATTCATGATAAAA  86
+                 |||| | ||  |||||||||||||| |||||| | |||   ||| || | ||||
+Sbjct  19260804  ATTAAAATTTTATATTTATCTTTATTCAAAAAGAAAAAAAAATTGATAAAAAAA  19260857
+
+
+ Score = 40.1 bits (43),  Expect = 7.0
+ Identities = 23/24 (96%), Gaps = 0/24 (0%)
+ Strand=Plus/Plus
+
+Query  34        TTATATTTACATATTTATCTTTAT  57
+                 ||||||||||||||||| ||||||
+Sbjct  48981072  TTATATTTACATATTTAACTTTAT  48981095
+
+
+ Score = 40.1 bits (43),  Expect = 7.0
+ Identities = 23/24 (96%), Gaps = 0/24 (0%)
+ Strand=Plus/Minus
+
+Query  34        TTATATTTACATATTTATCTTTAT  57
+                 ||||||||||||||||| ||||||
+Sbjct  60656290  TTATATTTACATATTTAGCTTTAT  60656267
+
+
+>CP158643.1 Cannabis sativa cultivar ERBxHO40_23 chromosome 1
+Length=63722626
+
+ Score = 49.1 bits (53),  Expect = 0.013
+ Identities = 43/54 (80%), Gaps = 0/54 (0%)
+ Strand=Plus/Plus
+
+Query  33        ATTATATTTACATATTTATCTTTATCCAAAAACAGAAATGGATTCATGATAAAA  86
+                 |||| | || ||||||||||||||| |||||| | ||||  ||| || | ||||
+Sbjct  12405473  ATTAAAATTTCATATTTATCTTTATTCAAAAAGAAAAATAAATTGATAAAAAAA  12405526
+
+
+ Score = 47.3 bits (51),  Expect = 0.047
+ Identities = 36/43 (84%), Gaps = 0/43 (0%)
+ Strand=Plus/Plus
+
+Query  33        ATTATATTTACATATTTATCTTTATCCAAAAACAGAAATGGAT  75
+                 |||| | || ||||||||||||||| |||||| | |||| |||
+Sbjct  59426288  ATTAAAATTTCATATTTATCTTTATTCAAAAAAAAAAATTGAT  59426330
+
+
+ Score = 44.6 bits (48),  Expect = 0.16
+ Identities = 42/54 (78%), Gaps = 0/54 (0%)
+ Strand=Plus/Minus
+
+Query  33        ATTATATTTACATATTTATCTTTATCCAAAAACAGAAATGGATTCATGATAAAA  86
+                 |||| | || ||||||||||||||| |||||| | |||   ||| || | ||||
+Sbjct  18051891  ATTAAAATTTCATATTTATCTTTATTCAAAAAGAAAAAAAAATTGATAAAAAAA  18051838
+
+
+ Score = 44.6 bits (48),  Expect = 0.16
+ Identities = 42/54 (78%), Gaps = 0/54 (0%)
+ Strand=Plus/Minus
+
+Query  33        ATTATATTTACATATTTATCTTTATCCAAAAACAGAAATGGATTCATGATAAAA  86
+                 |||| | || ||||||||||||||| |||||| | |||   ||| || | ||||
+Sbjct  51566495  ATTAAAATTTCATATTTATCTTTATTCAAAAAGAAAAAAAAATTGATAAAAAAA  51566442
+
+
+ Score = 44.6 bits (48),  Expect = 0.16
+ Identities = 42/54 (78%), Gaps = 0/54 (0%)
+ Strand=Plus/Minus
+
+Query  33        ATTATATTTACATATTTATCTTTATCCAAAAACAGAAATGGATTCATGATAAAA  86
+                 |||| | || ||||||||||||||| |||||| | |||   ||| || | ||||
+Sbjct  56749734  ATTAAAATTTCATATTTATCTTTATTCAAAAAGAAAAAAAAATTGATTAAAAAA  56749681
+
+
+ Score = 43.7 bits (47),  Expect = 0.57
+ Identities = 43/54 (80%), Gaps = 4/54 (7%)
+ Strand=Plus/Plus
+
+Query  33        ATTATATTTACATATTTATCTTTATCCAAAAACAGAAATGGATTCATGATAAAA  86
+                 |||| | || ||||||||||||||| |||||  |||||   |||  ||||||||
+Sbjct  10315407  ATTAAAATTTCATATTTATCTTTATTCAAAA--AGAAAAAAATT--TGATAAAA  10315456
+
+
+ Score = 42.8 bits (46),  Expect = 0.57
+ Identities = 34/40 (85%), Gaps = 1/40 (3%)
+ Strand=Plus/Minus
+
+Query  33       ATTATATTTACATATTTATCTTTATCCAAAAACAGAAATG  72
+                |||| | || ||||||||||||||| |||||| | |||||
+Sbjct  6075826  ATTAAAATTTCATATTTATCTTTATTCAAAAA-AAAAATG  6075788
+
+
+ Score = 42.8 bits (46),  Expect = 0.57
+ Identities = 32/38 (84%), Gaps = 0/38 (0%)
+ Strand=Plus/Plus
+
+Query  33       ATTATATTTACATATTTATCTTTATCCAAAAACAGAAA  70
+                |||| | || ||||||||||||||| |||||| | |||
+Sbjct  9371217  ATTAAAATTTCATATTTATCTTTATTCAAAAAGAAAAA  9371254
+
+
+ Score = 42.8 bits (46),  Expect = 0.57
+ Identities = 32/38 (84%), Gaps = 0/38 (0%)
+ Strand=Plus/Plus
+
+Query  33        ATTATATTTACATATTTATCTTTATCCAAAAACAGAAA  70
+                 |||| | || ||||||||||||||| |||||| | |||
+Sbjct  17147712  ATTAAAATTTCATATTTATCTTTATTCAAAAAGAAAAA  17147749
+
+
+ Score = 42.8 bits (46),  Expect = 0.57
+ Identities = 32/38 (84%), Gaps = 0/38 (0%)
+ Strand=Plus/Minus
+
+Query  33        ATTATATTTACATATTTATCTTTATCCAAAAACAGAAA  70
+                 |||| | || ||||||||||||||| |||||| | |||
+Sbjct  17288071  ATTAAAATTTCATATTTATCTTTATTCAAAAAGAAAAA  17288034
+
+
+ Score = 42.8 bits (46),  Expect = 0.57
+ Identities = 32/38 (84%), Gaps = 0/38 (0%)
+ Strand=Plus/Plus
+
+Query  33        ATTATATTTACATATTTATCTTTATCCAAAAACAGAAA  70
+                 |||| | || ||||||||||||||| |||||| | |||
+Sbjct  21574114  ATTAAAATTTCATATTTATCTTTATTCAAAAAGAAAAA  21574151
+
+
+ Score = 42.8 bits (46),  Expect = 0.57
+ Identities = 32/38 (84%), Gaps = 0/38 (0%)
+ Strand=Plus/Minus
+
+Query  33        ATTATATTTACATATTTATCTTTATCCAAAAACAGAAA  70
+                 |||| | || ||||||||||||||| |||||| | |||
+Sbjct  23502891  ATTAAAATTTCATATTTATCTTTATTCAAAAAGAAAAA  23502854
+
+
+ Score = 42.8 bits (46),  Expect = 0.57
+ Identities = 32/38 (84%), Gaps = 0/38 (0%)
+ Strand=Plus/Plus
+
+Query  33        ATTATATTTACATATTTATCTTTATCCAAAAACAGAAA  70
+                 |||| | || ||||||||||||||| |||||| | |||
+Sbjct  49810438  ATTAAAATTTCATATTTATCTTTATTCAAAAAAAAAAA  49810475
+
+
+ Score = 42.8 bits (46),  Expect = 0.57
+ Identities = 32/38 (84%), Gaps = 0/38 (0%)
+ Strand=Plus/Plus
+
+Query  33        ATTATATTTACATATTTATCTTTATCCAAAAACAGAAA  70
+                 |||| | || ||||||||||||||| |||||| | |||
+Sbjct  55236253  ATTAAAATTTCATATTTATCTTTATTCAAAAAGAAAAA  55236290
+
+
+ Score = 42.8 bits (46),  Expect = 0.57
+ Identities = 32/38 (84%), Gaps = 0/38 (0%)
+ Strand=Plus/Plus
+
+Query  33        ATTATATTTACATATTTATCTTTATCCAAAAACAGAAA  70
+                 |||| | || ||||||||||||||| |||||| | |||
+Sbjct  57506617  ATTAAAATTTCATATTTATCTTTATTCAAAAAGAAAAA  57506654
+
+
+ Score = 42.8 bits (46),  Expect = 0.57
+ Identities = 32/38 (84%), Gaps = 0/38 (0%)
+ Strand=Plus/Minus
+
+Query  33        ATTATATTTACATATTTATCTTTATCCAAAAACAGAAA  70
+                 |||| | || ||||||||||||||| |||||| | |||
+Sbjct  61787988  ATTAAAATTTCATATTTATCTTTATTCAAAAAGAAAAA  61787951
+
+
+ Score = 42.8 bits (46),  Expect = 0.57
+ Identities = 32/38 (84%), Gaps = 0/38 (0%)
+ Strand=Plus/Plus
+
+Query  33        ATTATATTTACATATTTATCTTTATCCAAAAACAGAAA  70
+                 |||| | || ||||||||||||||| |||||| | |||
+Sbjct  62339262  ATTAAAATTTCATATTTATCTTTATTCAAAAAGAAAAA  62339299
+
+
+ Score = 42.8 bits (46),  Expect = 0.57
+ Identities = 32/38 (84%), Gaps = 0/38 (0%)
+ Strand=Plus/Plus
+
+Query  33        ATTATATTTACATATTTATCTTTATCCAAAAACAGAAA  70
+                 |||| | || ||||||||||||||| |||||| | |||
+Sbjct  62346898  ATTAAAATTTCATATTTATCTTTATTCAAAAAGAAAAA  62346935
+
+
+ Score = 42.8 bits (46),  Expect = 0.57
+ Identities = 32/38 (84%), Gaps = 0/38 (0%)
+ Strand=Plus/Plus
+
+Query  33        ATTATATTTACATATTTATCTTTATCCAAAAACAGAAA  70
+                 |||| | || ||||||||||||||| |||||| | |||
+Sbjct  62369519  ATTAAAATTTCATATTTATCTTTATTCAAAAAGAAAAA  62369556
+
+
+ Score = 41.0 bits (44),  Expect = 2.0
+ Identities = 43/57 (75%), Gaps = 0/57 (0%)
+ Strand=Plus/Plus
+
+Query  33       ATTATATTTACATATTTATCTTTATCCAAAAACAGAAATGGATTCATGATAAAAGGA  89
+                |||| | || ||||||||||||||  |||||| | |||   ||| || | |||| ||
+Sbjct  4205145  ATTAAAATTTCATATTTATCTTTACTCAAAAAGAAAAAAAAATTGATAAAAAAAAGA  4205201
+
+
+ Score = 41.0 bits (44),  Expect = 2.0
+ Identities = 25/27 (93%), Gaps = 0/27 (0%)
+ Strand=Plus/Plus
+
+Query  34        TTATATTTACATATTTATCTTTATCCA  60
+                 ||||||||||||||||| |||||| ||
+Sbjct  55560819  TTATATTTACATATTTAGCTTTATGCA  55560845
+
+
+>CP157410.1 Ziziphus jujuba isolate TW-2024b chromosome 08
+Length=27596186
+
+ Score = 48.2 bits (52),  Expect = 0.013
+ Identities = 38/46 (83%), Gaps = 0/46 (0%)
+ Strand=Plus/Plus
+
+Query  32        TATTATATTTACATATTTATCTTTATCCAAAAACAGAAATGGATTC  77
+                 ||||||||||| |||||||| |||||  || || | |||||| |||
+Sbjct  20919192  TATTATATTTATATATTTATATTTATGTAAGAAAATAAATGGGTTC  20919237
+
+
+ Score = 40.1 bits (43),  Expect = 7.0
+ Identities = 23/24 (96%), Gaps = 0/24 (0%)
+ Strand=Plus/Plus
+
+Query  55       TATCCAAAAACAGAAATGGATTCA  78
+                |||||||||||||| |||||||||
+Sbjct  1015394  TATCCAAAAACAGATATGGATTCA  1015417
+
+
+  Database: Core nucleotide BLAST database
+    Posted date:  Apr 29, 2025  11:24 PM
+  Number of letters in database: 40,642,655,839
+  Number of sequences in database:  13,690,491
+
+Lambda      K        H
+   0.634    0.408    0.912 
+Gapped
+Lambda      K        H
+   0.625    0.410    0.780 
+Matrix: blastn matrix:2 -3
+Gap Penalties: Existence: 5, Extension: 2
+Number of Sequences: 13690491
+Number of Hits to DB: 492438
+Number of extensions: 1709
+Number of successful extensions: 1709
+Number of sequences better than 10: 4
+Number of HSP's better than 10 without gapping: 0
+Number of HSP's gapped: 1709
+Number of HSP's successfully gapped: 4
+Length of query: 139
+Length of database: 40642655839
+Length adjustment: 34
+Effective length of query: 105
+Effective length of database: 40177179145
+Effective search space: 4218603810225
+Effective search space used: 4218603810225
+A: 0
+X1: 22 (20.1 bits)
+X2: 33 (29.8 bits)
+X3: 110 (99.2 bits)
+S1: 28 (26.5 bits)
+S2: 42 (39.2 bits)
+
+

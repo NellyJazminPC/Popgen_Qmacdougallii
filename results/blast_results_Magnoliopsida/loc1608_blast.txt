@@ -1,0 +1,177 @@
+<p><!--
+QBlastInfoBegin
+	Status=READY
+QBlastInfoEnd
+--><p>
+<PRE>
+
+BLASTN 2.16.1+
+Reference: Stephen F. Altschul, Thomas L. Madden, Alejandro
+A. Schaffer, Jinghui Zhang, Zheng Zhang, Webb Miller, and
+David J. Lipman (1997), "Gapped BLAST and PSI-BLAST: a new
+generation of protein database search programs", Nucleic
+Acids Res. 25:3389-3402.
+
+
+RID: 1K4ZGETC016
+
+
+Database: Core nucleotide BLAST database
+           114,657,922 sequences; 859,097,896,182 total letters
+Query= 
+Length=139
+
+
+                                                                   Score     E     Max
+Sequences producing significant alignments:                       (Bits)  Value  Ident
+
+XR_007653885.1 PREDICTED: Quercus robur uncharacterized LOC126...  75.2    1e-10  74%         
+XM_065771081.1 PREDICTED: Quercus suber 3-oxoacyl-[acyl-carrie...  72.5    1e-09  74%         
+XM_065771080.1 PREDICTED: Quercus suber 3-oxoacyl-[acyl-carrie...  72.5    1e-09  74%         
+XM_065771078.1 PREDICTED: Quercus suber 3-oxoacyl-[acyl-carrie...  72.5    1e-09  74%         
+XR_010631039.1 PREDICTED: Quercus suber uncharacterized LOC136...  68.0    1e-08  72%         
+
+ALIGNMENTS
+>XR_007653885.1 PREDICTED: Quercus robur uncharacterized LOC126721415 (LOC126721415), 
+ncRNA
+Length=6911
+
+ Score = 75.2 bits (82),  Expect = 1e-10
+ Identities = 98/133 (74%), Gaps = 6/133 (5%)
+ Strand=Plus/Plus
+
+Query  1     GTAGTGGCCAGTTTGATA----GCCTTTTTATCAGGTGATTCGGGCTGCTACGAAGTCTC  56
+             |||||||  |||||||||    | |||| || ||   |||| |||  ||| | |  || |
+Sbjct  4383  GTAGTGGGAAGTTTGATACTCGGTCTTTCTACCATAAGATTTGGGTGGCTTCTACTTC-C  4441
+
+Query  57    CATTTCC-ATGGAAGGGTATTTGGTTCGTTAAGGTTCCTAAAAGGGTTCTGTTGTTTATG  115
+               ||||| ||||||||||||||||  ||| ||| |||||||||||||    || |||| |
+Sbjct  4442  TTTTTCCTATGGAAGGGTATTTGGAACGTAAAGATTCCTAAAAGGGTGGCCTTTTTTAAG  4501
+
+Query  116   TGGATAGCGGCTT  128
+             |||| ||| ||||
+Sbjct  4502  TGGACAGCAGCTT  4514
+
+
+>XM_065771081.1 PREDICTED: Quercus suber 3-oxoacyl-[acyl-carrier-protein] synthase 
+II, chloroplastic (LOC112033876), transcript variant X4, 
+mRNA
+Length=9355
+
+ Score = 72.5 bits (79),  Expect = 1e-09
+ Identities = 95/129 (74%), Gaps = 6/129 (5%)
+ Strand=Plus/Plus
+
+Query  3     AGTGGCCAGTTTGATA----GCCTTTTTATCAGGTGATTCGGGCTGCTACGAAGTCTCCA  58
+             |||||  |||||||||    | | ||||||||   ||||||   |||  |    ||  | 
+Sbjct  4584  AGTGGAAAGTTTGATACTCGGTCCTTTTATCATAAGATTCGTAATGCAGCTCCTTCCACT  4643
+
+Query  59    TTTCCATGGAAGGGTATTTGGTTCGTTAAGGTTCCTAAAAGGGT-TCTGTTGTTTATGTG  117
+             || || |||||||| ||||||   ||||||||||||||||||||  ||||| ||||||||
+Sbjct  4644  TTCCCTTGGAAGGGAATTTGGAAAGTTAAGGTTCCTAAAAGGGTAGCTGTT-TTTATGTG  4702
+
+Query  118   GATAGCGGC  126
+             || ||| ||
+Sbjct  4703  GACAGCAGC  4711
+
+
+>XM_065771080.1 PREDICTED: Quercus suber 3-oxoacyl-[acyl-carrier-protein] synthase 
+II, chloroplastic (LOC112033876), transcript variant X3, 
+mRNA
+Length=8057
+
+ Score = 72.5 bits (79),  Expect = 1e-09
+ Identities = 95/129 (74%), Gaps = 6/129 (5%)
+ Strand=Plus/Plus
+
+Query  3     AGTGGCCAGTTTGATA----GCCTTTTTATCAGGTGATTCGGGCTGCTACGAAGTCTCCA  58
+             |||||  |||||||||    | | ||||||||   ||||||   |||  |    ||  | 
+Sbjct  3286  AGTGGAAAGTTTGATACTCGGTCCTTTTATCATAAGATTCGTAATGCAGCTCCTTCCACT  3345
+
+Query  59    TTTCCATGGAAGGGTATTTGGTTCGTTAAGGTTCCTAAAAGGGT-TCTGTTGTTTATGTG  117
+             || || |||||||| ||||||   ||||||||||||||||||||  ||||| ||||||||
+Sbjct  3346  TTCCCTTGGAAGGGAATTTGGAAAGTTAAGGTTCCTAAAAGGGTAGCTGTT-TTTATGTG  3404
+
+Query  118   GATAGCGGC  126
+             || ||| ||
+Sbjct  3405  GACAGCAGC  3413
+
+
+>XM_065771078.1 PREDICTED: Quercus suber 3-oxoacyl-[acyl-carrier-protein] synthase 
+II, chloroplastic (LOC112033876), transcript variant X1, 
+mRNA
+Length=9574
+
+ Score = 72.5 bits (79),  Expect = 1e-09
+ Identities = 95/129 (74%), Gaps = 6/129 (5%)
+ Strand=Plus/Plus
+
+Query  3     AGTGGCCAGTTTGATA----GCCTTTTTATCAGGTGATTCGGGCTGCTACGAAGTCTCCA  58
+             |||||  |||||||||    | | ||||||||   ||||||   |||  |    ||  | 
+Sbjct  4803  AGTGGAAAGTTTGATACTCGGTCCTTTTATCATAAGATTCGTAATGCAGCTCCTTCCACT  4862
+
+Query  59    TTTCCATGGAAGGGTATTTGGTTCGTTAAGGTTCCTAAAAGGGT-TCTGTTGTTTATGTG  117
+             || || |||||||| ||||||   ||||||||||||||||||||  ||||| ||||||||
+Sbjct  4863  TTCCCTTGGAAGGGAATTTGGAAAGTTAAGGTTCCTAAAAGGGTAGCTGTT-TTTATGTG  4921
+
+Query  118   GATAGCGGC  126
+             || ||| ||
+Sbjct  4922  GACAGCAGC  4930
+
+
+>XR_010631039.1 PREDICTED: Quercus suber uncharacterized LOC136069820 (LOC136069820), 
+ncRNA
+Length=3369
+
+ Score = 68.0 bits (74),  Expect = 1e-08
+ Identities = 93/130 (72%), Gaps = 4/130 (3%)
+ Strand=Plus/Plus
+
+Query  1    GTAGTGGCCAGTTTGATA----GCCTTTTTATCAGGTGATTCGGGCTGCTACGAAGTCTC  56
+            |||||||  |||||||||    | | ||||||||   ||||||   ||   |    ||  
+Sbjct  125  GTAGTGGGAAGTTTGATACTTGGTCCTTTTATCATAAGATTCGAAATGTAGCTCCTTCCA  184
+
+Query  57   CATTTCCATGGAAGGGTATTTGGTTCGTTAAGGTTCCTAAAAGGGTTCTGTTGTTTATGT  116
+            | || || |||||||| ||||||   ||||||||||||||||||||    || |||||||
+Sbjct  185  CTTTCCCTTGGAAGGGAATTTGGAAAGTTAAGGTTCCTAAAAGGGTGGCTTTTTTTATGT  244
+
+Query  117  GGATAGCGGC  126
+            ||| ||| ||
+Sbjct  245  GGACAGCAGC  254
+
+
+  Database: Core nucleotide BLAST database
+    Posted date:  Apr 29, 2025  11:24 PM
+  Number of letters in database: 40,642,655,839
+  Number of sequences in database:  13,690,491
+
+Lambda      K        H
+   0.634    0.408    0.912 
+Gapped
+Lambda      K        H
+   0.625    0.410    0.780 
+Matrix: blastn matrix:2 -3
+Gap Penalties: Existence: 5, Extension: 2
+Number of Sequences: 13690491
+Number of Hits to DB: 391205
+Number of extensions: 529
+Number of successful extensions: 529
+Number of sequences better than 10: 1
+Number of HSP's better than 10 without gapping: 0
+Number of HSP's gapped: 529
+Number of HSP's successfully gapped: 1
+Length of query: 139
+Length of database: 40642655839
+Length adjustment: 34
+Effective length of query: 105
+Effective length of database: 40177179145
+Effective search space: 4218603810225
+Effective search space used: 4218603810225
+A: 0
+X1: 22 (20.1 bits)
+X2: 33 (29.8 bits)
+X3: 110 (99.2 bits)
+S1: 28 (26.5 bits)
+S2: 42 (39.2 bits)
+
+

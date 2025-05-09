@@ -1,0 +1,138 @@
+<p><!--
+QBlastInfoBegin
+	Status=READY
+QBlastInfoEnd
+--><p>
+<PRE>
+
+BLASTN 2.16.1+
+Reference: Stephen F. Altschul, Thomas L. Madden, Alejandro
+A. Schaffer, Jinghui Zhang, Zheng Zhang, Webb Miller, and
+David J. Lipman (1997), "Gapped BLAST and PSI-BLAST: a new
+generation of protein database search programs", Nucleic
+Acids Res. 25:3389-3402.
+
+
+RID: 1K5T1G7D016
+
+
+Database: Core nucleotide BLAST database
+           114,657,922 sequences; 859,097,896,182 total letters
+Query= 
+Length=138
+
+
+                                                                   Score     E     Max
+Sequences producing significant alignments:                       (Bits)  Value  Ident
+
+XM_031109336.1 PREDICTED: Quercus lobata pentatricopeptide rep...  47.3    0.046  88%         
+XM_031109337.1 PREDICTED: Quercus lobata pentatricopeptide rep...  47.3    0.046  88%         
+XR_004090708.1 PREDICTED: Quercus lobata pentatricopeptide rep...  47.3    0.046  88%         
+XM_031109335.1 PREDICTED: Quercus lobata pentatricopeptide rep...  47.3    0.046  88%         
+XM_050423680.1 PREDICTED: Quercus robur pentatricopeptide repe...  47.3    0.046  88%         
+
+ALIGNMENTS
+>XM_031109336.1 PREDICTED: Quercus lobata pentatricopeptide repeat-containing 
+protein At5g16860-like (LOC115986386), transcript variant X10, 
+mRNA
+Length=3144
+
+ Score = 47.3 bits (51),  Expect = 0.046
+ Identities = 35/40 (88%), Gaps = 1/40 (3%)
+ Strand=Plus/Minus
+
+Query  1    GATCCTATAAACCACAACCACTCAAATTCTCCT-AACACT  39
+            ||||| |||||||||||||| |||| | ||||| ||||||
+Sbjct  252  GATCCAATAAACCACAACCATTCAAGTGCTCCTAAACACT  213
+
+
+>XM_031109337.1 PREDICTED: Quercus lobata pentatricopeptide repeat-containing 
+protein At5g16860-like (LOC115986386), transcript variant X11, 
+mRNA
+Length=3172
+
+ Score = 47.3 bits (51),  Expect = 0.046
+ Identities = 35/40 (88%), Gaps = 1/40 (3%)
+ Strand=Plus/Minus
+
+Query  1    GATCCTATAAACCACAACCACTCAAATTCTCCT-AACACT  39
+            ||||| |||||||||||||| |||| | ||||| ||||||
+Sbjct  252  GATCCAATAAACCACAACCATTCAAGTGCTCCTAAACACT  213
+
+
+>XR_004090708.1 PREDICTED: Quercus lobata pentatricopeptide repeat-containing 
+protein At5g16860-like (LOC115986386), transcript variant X12, 
+misc_RNA
+Length=445
+
+ Score = 47.3 bits (51),  Expect = 0.046
+ Identities = 35/40 (88%), Gaps = 1/40 (3%)
+ Strand=Plus/Minus
+
+Query  1    GATCCTATAAACCACAACCACTCAAATTCTCCT-AACACT  39
+            ||||| |||||||||||||| |||| | ||||| ||||||
+Sbjct  242  GATCCAATAAACCACAACCATTCAAGTGCTCCTAAACACT  203
+
+
+>XM_031109335.1 PREDICTED: Quercus lobata pentatricopeptide repeat-containing 
+protein At5g16860-like (LOC115986386), transcript variant X9, 
+mRNA
+Length=3302
+
+ Score = 47.3 bits (51),  Expect = 0.046
+ Identities = 35/40 (88%), Gaps = 1/40 (3%)
+ Strand=Plus/Minus
+
+Query  1    GATCCTATAAACCACAACCACTCAAATTCTCCT-AACACT  39
+            ||||| |||||||||||||| |||| | ||||| ||||||
+Sbjct  252  GATCCAATAAACCACAACCATTCAAGTGCTCCTAAACACT  213
+
+
+>XM_050423680.1 PREDICTED: Quercus robur pentatricopeptide repeat-containing 
+protein At5g16860 (LOC126720852), transcript variant X5, mRNA
+Length=4067
+
+ Score = 47.3 bits (51),  Expect = 0.046
+ Identities = 35/40 (88%), Gaps = 1/40 (3%)
+ Strand=Plus/Minus
+
+Query  1    GATCCTATAAACCACAACCACTCAAATTCTCCT-AACACT  39
+            ||||| |||||||||||||| |||| | ||||| ||||||
+Sbjct  492  GATCCAATAAACCACAACCATTCAAGTGCTCCTAAACACT  453
+
+
+  Database: Core nucleotide BLAST database
+    Posted date:  Apr 29, 2025  11:24 PM
+  Number of letters in database: 40,642,655,839
+  Number of sequences in database:  13,690,491
+
+Lambda      K        H
+   0.634    0.408    0.912 
+Gapped
+Lambda      K        H
+   0.625    0.410    0.780 
+Matrix: blastn matrix:2 -3
+Gap Penalties: Existence: 5, Extension: 2
+Number of Sequences: 13690491
+Number of Hits to DB: 519423
+Number of extensions: 729
+Number of successful extensions: 729
+Number of sequences better than 10: 0
+Number of HSP's better than 10 without gapping: 0
+Number of HSP's gapped: 729
+Number of HSP's successfully gapped: 0
+Length of query: 138
+Length of database: 40642655839
+Length adjustment: 34
+Effective length of query: 104
+Effective length of database: 40177179145
+Effective search space: 4178426631080
+Effective search space used: 4178426631080
+A: 0
+X1: 22 (20.1 bits)
+X2: 33 (29.8 bits)
+X3: 110 (99.2 bits)
+S1: 28 (26.5 bits)
+S2: 42 (39.2 bits)
+
+

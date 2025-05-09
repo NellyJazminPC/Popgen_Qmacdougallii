@@ -1,0 +1,154 @@
+<p><!--
+QBlastInfoBegin
+	Status=READY
+QBlastInfoEnd
+--><p>
+<PRE>
+
+BLASTN 2.16.1+
+Reference: Stephen F. Altschul, Thomas L. Madden, Alejandro
+A. Schaffer, Jinghui Zhang, Zheng Zhang, Webb Miller, and
+David J. Lipman (1997), "Gapped BLAST and PSI-BLAST: a new
+generation of protein database search programs", Nucleic
+Acids Res. 25:3389-3402.
+
+
+RID: 1EASA8TJ013
+
+
+Database: Core nucleotide BLAST database
+           114,657,922 sequences; 859,097,896,182 total letters
+Query= 
+Length=232
+
+
+                                                                   Score     E     Max
+Sequences producing significant alignments:                       (Bits)  Value  Ident
+
+XM_050407070.1 PREDICTED: Quercus robur serine/threonine-prote...  140     1e-28  89%         
+XR_007653871.1 PREDICTED: Quercus robur uncharacterized LOC126...  131     6e-26  88%         
+XR_004091365.1 PREDICTED: Quercus lobata uncharacterized LOC11...  131     6e-26  88%         
+XR_007653869.1 PREDICTED: Quercus robur uncharacterized LOC126...  131     6e-26  88%         
+XR_007653870.1 PREDICTED: Quercus robur uncharacterized LOC126...  131     6e-26  88%         
+
+ALIGNMENTS
+>XM_050407070.1 PREDICTED: Quercus robur serine/threonine-protein phosphatase 
+7 long form homolog (LOC126707436), mRNA
+Length=1678
+
+ Score = 140 bits (154),  Expect = 1e-28
+ Identities = 93/104 (89%), Gaps = 0/104 (0%)
+ Strand=Plus/Plus
+
+Query  129   AGNATCCTCCCGGCACACTAAGTTGTCGATGTTGCCATGGAGAGTTGAAATGTCAAGATC  188
+             || ||||||| |||||||||| |||||||||| |||||| |||||||| | ||| |||||
+Sbjct  947   AGGATCCTCCTGGCACACTAAATTGTCGATGTCGCCATGAAGAGTTGACACGTCGAGATC  1006
+
+Query  189   CTATGGTAGATGAGCATGTGATTTCTATAGTGAGGTTGCTTGGT  232
+             ||||||||||||||| ||||||| | ||||||||||||||||||
+Sbjct  1007  CTATGGTAGATGAGCGTGTGATTGCCATAGTGAGGTTGCTTGGT  1050
+
+
+>XR_007653871.1 PREDICTED: Quercus robur uncharacterized LOC126721178 (LOC126721178), 
+transcript variant X3, ncRNA
+Length=4342
+
+ Score = 131 bits (144),  Expect = 6e-26
+ Identities = 91/104 (88%), Gaps = 0/104 (0%)
+ Strand=Plus/Plus
+
+Query  129   AGNATCCTCCCGGCACACTAAGTTGTCGATGTTGCCATGGAGAGTTGAAATGTCAAGATC  188
+             || |||||||  ||||||||| ||||||||||||||||| ||||| || | ||| |||||
+Sbjct  938   AGGATCCTCCTAGCACACTAAATTGTCGATGTTGCCATGAAGAGTAGACACGTCGAGATC  997
+
+Query  189   CTATGGTAGATGAGCATGTGATTTCTATAGTGAGGTTGCTTGGT  232
+             ||||||||||||||  ||||||| | ||||||||||||||||||
+Sbjct  998   CTATGGTAGATGAGTGTGTGATTGCCATAGTGAGGTTGCTTGGT  1041
+
+
+>XR_004091365.1 PREDICTED: Quercus lobata uncharacterized LOC115988173 (LOC115988173), 
+transcript variant X3, ncRNA
+Length=2370
+
+ Score = 131 bits (144),  Expect = 6e-26
+ Identities = 91/104 (88%), Gaps = 0/104 (0%)
+ Strand=Plus/Plus
+
+Query  129   AGNATCCTCCCGGCACACTAAGTTGTCGATGTTGCCATGGAGAGTTGAAATGTCAAGATC  188
+             || |||||||  ||||||||| |||| |||||||||||| ||||| || |  || |||||
+Sbjct  1701  AGGATCCTCCTAGCACACTAAATTGTTGATGTTGCCATGAAGAGTAGACACATCGAGATC  1760
+
+Query  189   CTATGGTAGATGAGCATGTGATTTCTATAGTGAGGTTGCTTGGT  232
+             ||||||||||||||||||||||| | ||||||||||||||||||
+Sbjct  1761  CTATGGTAGATGAGCATGTGATTGCCATAGTGAGGTTGCTTGGT  1804
+
+
+>XR_007653869.1 PREDICTED: Quercus robur uncharacterized LOC126721178 (LOC126721178), 
+transcript variant X1, ncRNA
+Length=4453
+
+ Score = 131 bits (144),  Expect = 6e-26
+ Identities = 91/104 (88%), Gaps = 0/104 (0%)
+ Strand=Plus/Plus
+
+Query  129   AGNATCCTCCCGGCACACTAAGTTGTCGATGTTGCCATGGAGAGTTGAAATGTCAAGATC  188
+             || |||||||  ||||||||| ||||||||||||||||| ||||| || | ||| |||||
+Sbjct  938   AGGATCCTCCTAGCACACTAAATTGTCGATGTTGCCATGAAGAGTAGACACGTCGAGATC  997
+
+Query  189   CTATGGTAGATGAGCATGTGATTTCTATAGTGAGGTTGCTTGGT  232
+             ||||||||||||||  ||||||| | ||||||||||||||||||
+Sbjct  998   CTATGGTAGATGAGTGTGTGATTGCCATAGTGAGGTTGCTTGGT  1041
+
+
+>XR_007653870.1 PREDICTED: Quercus robur uncharacterized LOC126721178 (LOC126721178), 
+transcript variant X2, ncRNA
+Length=4403
+
+ Score = 131 bits (144),  Expect = 6e-26
+ Identities = 91/104 (88%), Gaps = 0/104 (0%)
+ Strand=Plus/Plus
+
+Query  129   AGNATCCTCCCGGCACACTAAGTTGTCGATGTTGCCATGGAGAGTTGAAATGTCAAGATC  188
+             || |||||||  ||||||||| ||||||||||||||||| ||||| || | ||| |||||
+Sbjct  938   AGGATCCTCCTAGCACACTAAATTGTCGATGTTGCCATGAAGAGTAGACACGTCGAGATC  997
+
+Query  189   CTATGGTAGATGAGCATGTGATTTCTATAGTGAGGTTGCTTGGT  232
+             ||||||||||||||  ||||||| | ||||||||||||||||||
+Sbjct  998   CTATGGTAGATGAGTGTGTGATTGCCATAGTGAGGTTGCTTGGT  1041
+
+
+  Database: Core nucleotide BLAST database
+    Posted date:  Apr 29, 2025  11:24 PM
+  Number of letters in database: 859,097,896,182
+  Number of sequences in database:  114,657,922
+
+Lambda      K        H
+   0.634    0.408    0.912 
+Gapped
+Lambda      K        H
+   0.625    0.410    0.780 
+Matrix: blastn matrix:2 -3
+Gap Penalties: Existence: 5, Extension: 2
+Number of Sequences: 114657922
+Number of Hits to DB: 18992931
+Number of extensions: 31289
+Number of successful extensions: 31289
+Number of sequences better than 10: 2
+Number of HSP's better than 10 without gapping: 0
+Number of HSP's gapped: 31289
+Number of HSP's successfully gapped: 2
+Length of query: 232
+Length of database: 859097896182
+Length adjustment: 38
+Effective length of query: 194
+Effective length of database: 854740895146
+Effective search space: 165819733658324
+Effective search space used: 165819733658324
+A: 0
+X1: 22 (20.1 bits)
+X2: 33 (29.8 bits)
+X3: 110 (99.2 bits)
+S1: 28 (26.5 bits)
+S2: 48 (44.6 bits)
+
+

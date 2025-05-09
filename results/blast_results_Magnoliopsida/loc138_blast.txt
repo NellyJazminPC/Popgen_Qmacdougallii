@@ -1,0 +1,133 @@
+<p><!--
+QBlastInfoBegin
+	Status=READY
+QBlastInfoEnd
+--><p>
+<PRE>
+
+BLASTN 2.16.1+
+Reference: Stephen F. Altschul, Thomas L. Madden, Alejandro
+A. Schaffer, Jinghui Zhang, Zheng Zhang, Webb Miller, and
+David J. Lipman (1997), "Gapped BLAST and PSI-BLAST: a new
+generation of protein database search programs", Nucleic
+Acids Res. 25:3389-3402.
+
+
+RID: 1K7E6BK1016
+
+
+Database: Core nucleotide BLAST database
+           114,657,922 sequences; 859,097,896,182 total letters
+Query= 
+Length=139
+
+
+                                                                   Score     E     Max
+Sequences producing significant alignments:                       (Bits)  Value  Ident
+
+OZ022204.1 Prunus dulcis genome assembly, chromosome: 8            43.7    0.57   80%       
+XM_039290849.1 PREDICTED: Dioscorea cayenensis subsp. rotundat...  42.8    0.57   100%      
+XM_059439719.1 PREDICTED: Lycium ferocissimum myosin-11-like (...  41.9    2.0    90%       
+XM_052879775.1 PREDICTED: Vigna angularis uncharacterized LOC1...  41.9    2.0    83%       
+AM450900.1 Vitis vinifera, whole genome shotgun sequence, cont...  40.1    7.0    81%       
+
+ALIGNMENTS
+>OZ022204.1 Prunus dulcis genome assembly, chromosome: 8
+Length=26760049
+
+ Score = 43.7 bits (47),  Expect = 0.57
+ Identities = 37/46 (80%), Gaps = 0/46 (0%)
+ Strand=Plus/Plus
+
+Query  94        TTTACATATTGATGAACATTTTTGGAACAGAAAGTTCCCTTTGGGA  139
+                 |||||||||||||||    ||||  ||||| |||||| || |||||
+Sbjct  21599425  TTTACATATTGATGAGATGTTTTTTAACAGGAAGTTCACTCTGGGA  21599470
+
+
+>XM_039290849.1 PREDICTED: Dioscorea cayenensis subsp. rotundata uncharacterized 
+LOC120284024 (LOC120284024), mRNA
+Length=5597
+
+ Score = 42.8 bits (46),  Expect = 0.57
+ Identities = 23/23 (100%), Gaps = 0/23 (0%)
+ Strand=Plus/Plus
+
+Query  104   GATGAACATTTTTGGAACAGAAA  126
+             |||||||||||||||||||||||
+Sbjct  1149  GATGAACATTTTTGGAACAGAAA  1171
+
+
+>XM_059439719.1 PREDICTED: Lycium ferocissimum myosin-11-like (LOC132049051), 
+mRNA
+Length=1009
+
+ Score = 41.9 bits (45),  Expect = 2.0
+ Identities = 27/30 (90%), Gaps = 0/30 (0%)
+ Strand=Plus/Plus
+
+Query  91   AACTTTACATATTGATGAACATTTTTGGAA  120
+            |||||||||||||| |||||| |||| |||
+Sbjct  783  AACTTTACATATTGTTGAACAATTTTTGAA  812
+
+
+>XM_052879775.1 PREDICTED: Vigna angularis uncharacterized LOC108345529 (LOC108345529), 
+transcript variant X4, mRNA
+Length=4325
+
+ Score = 41.9 bits (45),  Expect = 2.0
+ Identities = 33/40 (83%), Gaps = 0/40 (0%)
+ Strand=Plus/Minus
+
+Query  72    TGCAATTACTTTCTATCGTAACTTTACATATTGATGAACA  111
+             |||| ||||| ||   ||||||| ||||||||||||| ||
+Sbjct  4153  TGCATTTACTGTCATACGTAACTGTACATATTGATGAGCA  4114
+
+
+>AM450900.1 Vitis vinifera, whole genome shotgun sequence, contig VV78X034076.26, 
+clone ENTAV 115
+Length=47489
+
+ Score = 40.1 bits (43),  Expect = 7.0
+ Identities = 38/47 (81%), Gaps = 2/47 (4%)
+ Strand=Plus/Minus
+
+Query  37     TTTCATTCGTTAATATATTTGCTCACTCTGAGTGGTGCAATTACTTT  83
+              |||||||| | || || || | | |||||||| | ||||||||||||
+Sbjct  27561  TTTCATTC-TAAAGATGTTGGATGACTCTGAG-GRTGCAATTACTTT  27517
+
+
+  Database: Core nucleotide BLAST database
+    Posted date:  Apr 29, 2025  11:24 PM
+  Number of letters in database: 40,642,655,839
+  Number of sequences in database:  13,690,491
+
+Lambda      K        H
+   0.634    0.408    0.912 
+Gapped
+Lambda      K        H
+   0.625    0.410    0.780 
+Matrix: blastn matrix:2 -3
+Gap Penalties: Existence: 5, Extension: 2
+Number of Sequences: 13690491
+Number of Hits to DB: 741429
+Number of extensions: 1338
+Number of successful extensions: 1338
+Number of sequences better than 10: 0
+Number of HSP's better than 10 without gapping: 0
+Number of HSP's gapped: 1338
+Number of HSP's successfully gapped: 0
+Length of query: 139
+Length of database: 40642655839
+Length adjustment: 34
+Effective length of query: 105
+Effective length of database: 40177179145
+Effective search space: 4218603810225
+Effective search space used: 4218603810225
+A: 0
+X1: 22 (20.1 bits)
+X2: 33 (29.8 bits)
+X3: 110 (99.2 bits)
+S1: 28 (26.5 bits)
+S2: 42 (39.2 bits)
+
+

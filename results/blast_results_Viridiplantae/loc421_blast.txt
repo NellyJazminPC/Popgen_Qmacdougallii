@@ -1,0 +1,137 @@
+<p><!--
+QBlastInfoBegin
+	Status=READY
+QBlastInfoEnd
+--><p>
+<PRE>
+
+BLASTN 2.16.1+
+Reference: Stephen F. Altschul, Thomas L. Madden, Alejandro
+A. Schaffer, Jinghui Zhang, Zheng Zhang, Webb Miller, and
+David J. Lipman (1997), "Gapped BLAST and PSI-BLAST: a new
+generation of protein database search programs", Nucleic
+Acids Res. 25:3389-3402.
+
+
+RID: 1MG6NPSE016
+
+
+Database: Core nucleotide BLAST database
+           114,657,922 sequences; 859,097,896,182 total letters
+Query= 
+Length=139
+
+
+                                                                   Score     E     Max
+Sequences producing significant alignments:                       (Bits)  Value  Ident
+
+XR_010626491.1 PREDICTED: Quercus suber uncharacterized LOC112...  136     4e-29  87%         
+AC240797.1 Oryza punctata clone OP__Ba0029A21, complete sequence   44.6    0.17   88%         
+XM_026551485.1 PREDICTED: Papaver somniferum protein ARABIDILL...  42.8    0.60   93%         
+XM_026545582.1 PREDICTED: Papaver somniferum protein ARABIDILL...  42.8    0.60   93%         
+XR_004128962.1 PREDICTED: Pistacia vera uncharacterized LOC116...  41.9    2.1    91%         
+
+ALIGNMENTS
+>XR_010626491.1 PREDICTED: Quercus suber uncharacterized LOC112033239 (LOC112033239), 
+transcript variant X1, ncRNA
+Length=1451
+
+ Score = 136 bits (150),  Expect = 4e-29
+ Identities = 103/119 (87%), Gaps = 12/119 (10%)
+ Strand=Plus/Minus
+
+Query  1    GATCCTATtaaaagtgtccaccaaaaataaaaag-gagaccaccaatataataa------  53
+            ||||||||| |||||||||||||||||||||||  ||| |||||||||||||||      
+Sbjct  847  GATCCTATTGAAAGTGTCCACCAAAAATAAAAAAAGAGTCCACCAATATAATAATAATAG  788
+
+Query  54   --ataaaaaaa--ccaccTTTTCTGTGTAGTTGTGGTGCAAATACCATGGCTCGAAAAA  108
+              |||| ||||  |||||||| |||||||||||||||||||||||||||||||||||||
+Sbjct  787  TAATAATAAAAAGCCACCTTT-CTGTGTAGTTGTGGTGCAAATACCATGGCTCGAAAAA  730
+
+
+>AC240797.1 Oryza punctata clone OP__Ba0029A21, complete sequence
+Length=111942
+
+ Score = 44.6 bits (48),  Expect = 0.17
+ Identities = 30/34 (88%), Gaps = 0/34 (0%)
+ Strand=Plus/Plus
+
+Query  97     TGGCTCGAAAAATTGAATATTCACTCAACTAATC  130
+              |||||||| |||| ||||| | ||||||||||||
+Sbjct  40282  TGGCTCGACAAATGGAATACTTACTCAACTAATC  40315
+
+
+>XM_026551485.1 PREDICTED: Papaver somniferum protein ARABIDILLO 1-like (LOC113302556), 
+mRNA
+Length=3777
+
+ Score = 42.8 bits (46),  Expect = 0.60
+ Identities = 26/28 (93%), Gaps = 0/28 (0%)
+ Strand=Plus/Minus
+
+Query  102  CGAAAAATTGAATATTCACTCAACTAAT  129
+            |||||||||||||||| ||||||| |||
+Sbjct  483  CGAAAAATTGAATATTGACTCAACAAAT  456
+
+
+>XM_026545582.1 PREDICTED: Papaver somniferum protein ARABIDILLO 1-like (LOC113297164), 
+mRNA
+Length=3822
+
+ Score = 42.8 bits (46),  Expect = 0.60
+ Identities = 26/28 (93%), Gaps = 0/28 (0%)
+ Strand=Plus/Minus
+
+Query  102  CGAAAAATTGAATATTCACTCAACTAAT  129
+            |||||||||||||||| ||||||| |||
+Sbjct  494  CGAAAAATTGAATATTGACTCAACAAAT  467
+
+
+>XR_004128962.1 PREDICTED: Pistacia vera uncharacterized LOC116135978 (LOC116135978), 
+ncRNA
+Length=623
+
+ Score = 41.9 bits (45),  Expect = 2.1
+ Identities = 29/32 (91%), Gaps = 1/32 (3%)
+ Strand=Plus/Minus
+
+Query  47   ataataaataaaaaaaccaccTTTTCTGTGTA  78
+            |||||||| |||||||  ||||||||||||||
+Sbjct  600  ATAATAAA-AAAAAAATAACCTTTTCTGTGTA  570
+
+
+  Database: Core nucleotide BLAST database
+    Posted date:  Apr 29, 2025  11:24 PM
+  Number of letters in database: 42,500,400,461
+  Number of sequences in database:  14,455,934
+
+Lambda      K        H
+   0.634    0.408    0.912 
+Gapped
+Lambda      K        H
+   0.625    0.410    0.780 
+Matrix: blastn matrix:2 -3
+Gap Penalties: Existence: 5, Extension: 2
+Number of Sequences: 14455934
+Number of Hits to DB: 279449
+Number of extensions: 445
+Number of successful extensions: 445
+Number of sequences better than 10: 0
+Number of HSP's better than 10 without gapping: 0
+Number of HSP's gapped: 445
+Number of HSP's successfully gapped: 0
+Length of query: 139
+Length of database: 42500400461
+Length adjustment: 34
+Effective length of query: 105
+Effective length of database: 42008898705
+Effective search space: 4410934364025
+Effective search space used: 4410934364025
+A: 0
+X1: 22 (20.1 bits)
+X2: 33 (29.8 bits)
+X3: 110 (99.2 bits)
+S1: 28 (26.5 bits)
+S2: 42 (39.2 bits)
+
+

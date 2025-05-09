@@ -1,0 +1,135 @@
+<p><!--
+QBlastInfoBegin
+	Status=READY
+QBlastInfoEnd
+--><p>
+<PRE>
+
+BLASTN 2.16.1+
+Reference: Stephen F. Altschul, Thomas L. Madden, Alejandro
+A. Schaffer, Jinghui Zhang, Zheng Zhang, Webb Miller, and
+David J. Lipman (1997), "Gapped BLAST and PSI-BLAST: a new
+generation of protein database search programs", Nucleic
+Acids Res. 25:3389-3402.
+
+
+RID: 1E9PYVH6013
+
+
+Database: Core nucleotide BLAST database
+           114,657,922 sequences; 859,097,896,182 total letters
+Query= 
+Length=139
+
+
+                                                                   Score     E     Max
+Sequences producing significant alignments:                       (Bits)  Value  Ident
+
+OE868130.1 5_Tge_b3v08                                             46.4    0.96   89%         
+OZ181339.1 Dendarus foraminosus genome assembly, chromosome: 6     45.5    3.3    84%         
+XM_053538526.1 PREDICTED: Mercenaria mercenaria protein phosph...  44.6    3.3    88%         
+XM_053538527.1 PREDICTED: Mercenaria mercenaria protein phosph...  44.6    3.3    88%         
+XM_053538530.1 PREDICTED: Mercenaria mercenaria protein phosph...  44.6    3.3    88%         
+
+ALIGNMENTS
+>OE868130.1 5_Tge_b3v08
+Length=1327
+
+ Score = 46.4 bits (50),  Expect = 0.96
+ Identities = 31/35 (89%), Gaps = 0/35 (0%)
+ Strand=Plus/Minus
+
+Query  7    TCTGTAGGAATGATATATCTCTCTCTCTGTGACAA  41
+            ||| |||||  ||||||||||||||||| ||||||
+Sbjct  885  TCTCTAGGAGGGATATATCTCTCTCTCTCTGACAA  851
+
+
+>OZ181339.1 Dendarus foraminosus genome assembly, chromosome: 6
+Length=46751427
+
+ Score = 45.5 bits (49),  Expect = 3.3
+ Identities = 37/44 (84%), Gaps = 1/44 (2%)
+ Strand=Plus/Minus
+
+Query  61        CAACTACTAAAATAATCACAACGCTATTTACTGTATCGAACTAA  104
+                 |||||||||||||| ||||| |||  ||| | |||||||| |||
+Sbjct  21929366  CAACTACTAAAATACTCACATCGCCGTTTTC-GTATCGAATTAA  21929324
+
+
+>XM_053538526.1 PREDICTED: Mercenaria mercenaria protein phosphatase 1 regulatory 
+subunit 42-like (LOC123524733), transcript variant X8, 
+mRNA
+Length=1615
+
+ Score = 44.6 bits (48),  Expect = 3.3
+ Identities = 30/34 (88%), Gaps = 0/34 (0%)
+ Strand=Plus/Minus
+
+Query  17    TGATATATCTCTCTCTCTGTGACAAGCAACCGTT  50
+             ||||||| ||||||||||||| |||| ||| |||
+Sbjct  1307  TGATATACCTCTCTCTCTGTGGCAAGAAACAGTT  1274
+
+
+>XM_053538527.1 PREDICTED: Mercenaria mercenaria protein phosphatase 1 regulatory 
+subunit 42-like (LOC123524733), transcript variant X9, 
+mRNA
+Length=1605
+
+ Score = 44.6 bits (48),  Expect = 3.3
+ Identities = 30/34 (88%), Gaps = 0/34 (0%)
+ Strand=Plus/Minus
+
+Query  17    TGATATATCTCTCTCTCTGTGACAAGCAACCGTT  50
+             ||||||| ||||||||||||| |||| ||| |||
+Sbjct  1308  TGATATACCTCTCTCTCTGTGGCAAGAAACAGTT  1275
+
+
+>XM_053538530.1 PREDICTED: Mercenaria mercenaria protein phosphatase 1 regulatory 
+subunit 42-like (LOC123524733), transcript variant X24, 
+mRNA
+Length=4545
+
+ Score = 44.6 bits (48),  Expect = 3.3
+ Identities = 30/34 (88%), Gaps = 0/34 (0%)
+ Strand=Plus/Minus
+
+Query  17    TGATATATCTCTCTCTCTGTGACAAGCAACCGTT  50
+             ||||||| ||||||||||||| |||| ||| |||
+Sbjct  1300  TGATATACCTCTCTCTCTGTGGCAAGAAACAGTT  1267
+
+
+  Database: Core nucleotide BLAST database
+    Posted date:  Apr 29, 2025  11:24 PM
+  Number of letters in database: 859,097,896,182
+  Number of sequences in database:  114,657,922
+
+Lambda      K        H
+   0.634    0.408    0.912 
+Gapped
+Lambda      K        H
+   0.625    0.410    0.780 
+Matrix: blastn matrix:2 -3
+Gap Penalties: Existence: 5, Extension: 2
+Number of Sequences: 114657922
+Number of Hits to DB: 8758669
+Number of extensions: 11553
+Number of successful extensions: 11553
+Number of sequences better than 10: 0
+Number of HSP's better than 10 without gapping: 0
+Number of HSP's gapped: 11553
+Number of HSP's successfully gapped: 0
+Length of query: 139
+Length of database: 859097896182
+Length adjustment: 37
+Effective length of query: 102
+Effective length of database: 854855553068
+Effective search space: 87195266412936
+Effective search space used: 87195266412936
+A: 0
+X1: 22 (20.1 bits)
+X2: 33 (29.8 bits)
+X3: 110 (99.2 bits)
+S1: 28 (26.5 bits)
+S2: 47 (43.7 bits)
+
+

@@ -1,0 +1,146 @@
+<p><!--
+QBlastInfoBegin
+	Status=READY
+QBlastInfoEnd
+--><p>
+<PRE>
+
+BLASTN 2.16.1+
+Reference: Stephen F. Altschul, Thomas L. Madden, Alejandro
+A. Schaffer, Jinghui Zhang, Zheng Zhang, Webb Miller, and
+David J. Lipman (1997), "Gapped BLAST and PSI-BLAST: a new
+generation of protein database search programs", Nucleic
+Acids Res. 25:3389-3402.
+
+
+RID: 1E7JDNG0013
+
+
+Database: Core nucleotide BLAST database
+           114,657,922 sequences; 859,097,896,182 total letters
+Query= 
+Length=138
+
+
+                                                                   Score     E     Max
+Sequences producing significant alignments:                       (Bits)  Value  Ident
+
+XM_050399278.1 PREDICTED: Quercus robur uncharacterized LOC126...  173     9e-39  88%       
+XM_031070373.1 PREDICTED: Quercus lobata uncharacterized LOC11...  50.0    0.078  76%       
+XM_010791759.1 PREDICTED: Notothenia coriiceps signal-induced ...  46.4    0.95   94%       
+XM_010791761.1 PREDICTED: Notothenia coriiceps signal-induced ...  46.4    0.95   94%       
+XM_010791760.1 PREDICTED: Notothenia coriiceps signal-induced ...  46.4    0.95   94%       
+
+ALIGNMENTS
+>XM_050399278.1 PREDICTED: Quercus robur uncharacterized LOC126701152 (LOC126701152), 
+mRNA
+Length=780
+
+ Score = 173 bits (191),  Expect = 9e-39
+ Identities = 121/138 (88%), Gaps = 0/138 (0%)
+ Strand=Plus/Minus
+
+Query  1    ATCCAAATCAACATCCACAGCGCACAGAATTCCATTTAAAATGCTATCAAATCCAGATGG  60
+            ||||| |||||||| ||||| | || | |||||||||||||| ||||| |||||||| ||
+Sbjct  738  ATCCACATCAACATTCACAGGGTACGGGATTCCATTTAAAATTCTATCCAATCCAGACGG  679
+
+Query  61   GTTTGAGGTGGAAAAGATATTCTTAAAATACCTCTCTACCACTCCACCCATTTCGGTTTC  120
+            ||||||||||||||||||||||||||| |||| ||||||||| |||||||  |||| |||
+Sbjct  678  GTTTGAGGTGGAAAAGATATTCTTAAAGTACCCCTCTACCACACCACCCAAATCGGCTTC  619
+
+Query  121  ATCCTTAACCCACACCCC  138
+            |||||  |||||||||||
+Sbjct  618  ATCCTCTACCCACACCCC  601
+
+
+>XM_031070373.1 PREDICTED: Quercus lobata uncharacterized LOC115952977 (LOC115952977), 
+mRNA
+Length=2337
+
+ Score = 50.0 bits (54),  Expect = 0.078
+ Identities = 51/67 (76%), Gaps = 0/67 (0%)
+ Strand=Plus/Minus
+
+Query  46   ATCAAATCCAGATGGGTTTGAGGTGGAAAAGATATTCTTAAAATACCTCTCTACCACTCC  105
+            |||||| || ||||||||||| || |  ||||||||   |||||||  | | |||| | |
+Sbjct  135  ATCAAAACCCGATGGGTTTGAAGTAGTGAAGATATTGGCAAAATACTCCACAACCATTTC  76
+
+Query  106  ACCCATT  112
+             ||||||
+Sbjct  75   CCCCATT  69
+
+
+>XM_010791759.1 PREDICTED: Notothenia coriiceps signal-induced proliferation-associated 
+1 like 1 (sipa1l1), transcript variant X1, mRNA
+Length=7352
+
+ Score = 46.4 bits (50),  Expect = 0.95
+ Identities = 30/32 (94%), Gaps = 1/32 (3%)
+ Strand=Plus/Plus
+
+Query  19    AGCGCACAGAATTCCATTTAAAATGCTATCAA  50
+             |||||||||||||||| |||||||||| ||||
+Sbjct  5987  AGCGCACAGAATTCCAATTAAAATGCT-TCAA  6017
+
+
+>XM_010791761.1 PREDICTED: Notothenia coriiceps signal-induced proliferation-associated 
+1 like 1 (sipa1l1), transcript variant X3, mRNA
+Length=7244
+
+ Score = 46.4 bits (50),  Expect = 0.95
+ Identities = 30/32 (94%), Gaps = 1/32 (3%)
+ Strand=Plus/Plus
+
+Query  19    AGCGCACAGAATTCCATTTAAAATGCTATCAA  50
+             |||||||||||||||| |||||||||| ||||
+Sbjct  5879  AGCGCACAGAATTCCAATTAAAATGCT-TCAA  5909
+
+
+>XM_010791760.1 PREDICTED: Notothenia coriiceps signal-induced proliferation-associated 
+1 like 1 (sipa1l1), transcript variant X2, mRNA
+Length=7238
+
+ Score = 46.4 bits (50),  Expect = 0.95
+ Identities = 30/32 (94%), Gaps = 1/32 (3%)
+ Strand=Plus/Plus
+
+Query  19    AGCGCACAGAATTCCATTTAAAATGCTATCAA  50
+             |||||||||||||||| |||||||||| ||||
+Sbjct  5873  AGCGCACAGAATTCCAATTAAAATGCT-TCAA  5903
+
+
+  Database: Core nucleotide BLAST database
+    Posted date:  Apr 29, 2025  11:24 PM
+  Number of letters in database: 859,097,896,182
+  Number of sequences in database:  114,657,922
+
+Lambda      K        H
+   0.634    0.408    0.912 
+Gapped
+Lambda      K        H
+   0.625    0.410    0.780 
+Matrix: blastn matrix:2 -3
+Gap Penalties: Existence: 5, Extension: 2
+Number of Sequences: 114657922
+Number of Hits to DB: 10416562
+Number of extensions: 12058
+Number of successful extensions: 12058
+Number of sequences better than 10: 0
+Number of HSP's better than 10 without gapping: 0
+Number of HSP's gapped: 12058
+Number of HSP's successfully gapped: 0
+Length of query: 138
+Length of database: 859097896182
+Length adjustment: 37
+Effective length of query: 101
+Effective length of database: 854855553068
+Effective search space: 86340410859868
+Effective search space used: 86340410859868
+A: 0
+X1: 22 (20.1 bits)
+X2: 33 (29.8 bits)
+X3: 110 (99.2 bits)
+S1: 28 (26.5 bits)
+S2: 47 (43.7 bits)
+
+

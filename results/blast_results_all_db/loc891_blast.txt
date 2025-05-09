@@ -1,0 +1,132 @@
+<p><!--
+QBlastInfoBegin
+	Status=READY
+QBlastInfoEnd
+--><p>
+<PRE>
+
+BLASTN 2.16.1+
+Reference: Stephen F. Altschul, Thomas L. Madden, Alejandro
+A. Schaffer, Jinghui Zhang, Zheng Zhang, Webb Miller, and
+David J. Lipman (1997), "Gapped BLAST and PSI-BLAST: a new
+generation of protein database search programs", Nucleic
+Acids Res. 25:3389-3402.
+
+
+RID: 1E62H6J3013
+
+
+Database: Core nucleotide BLAST database
+           114,657,922 sequences; 859,097,896,182 total letters
+Query= 
+Length=139
+
+
+                                                                   Score     E     Max
+Sequences producing significant alignments:                       (Bits)  Value  Ident
+
+KT425084.1 Stenosialis australiensis mitochondrion, partial ge...  52.7    0.023  97%         
+CT737401.2 Pan troglodytes chromosome X clone CH251-76C21 map ...  51.8    0.023  94%         
+AC200912.3 Pan troglodytes BAC clone CH251-435B7 from chromoso...  51.8    0.023  94%         
+AC148829.3 Pan troglodytes BAC clone CH251-483L24 from chromos...  51.8    0.023  94%         
+CP168771.1 Malus domestica cultivar Golden Delicious chromosom...  51.8    0.023  89%         
+
+ALIGNMENTS
+>KT425084.1 Stenosialis australiensis mitochondrion, partial genome
+Length=14018
+
+ Score = 52.7 bits (57),  Expect = 0.023
+ Identities = 30/31 (97%), Gaps = 0/31 (0%)
+ Strand=Plus/Minus
+
+Query  62     ttttttatttttattttttGGGTTAAAGGTT  92
+              |||||||||||| ||||||||||||||||||
+Sbjct  11059  TTTTTTATTTTTCTTTTTTGGGTTAAAGGTT  11029
+
+
+>CT737401.2 Pan troglodytes chromosome X clone CH251-76C21 map Xq28, complete 
+sequence
+Length=193693
+
+ Score = 51.8 bits (56),  Expect = 0.023
+ Identities = 31/33 (94%), Gaps = 0/33 (0%)
+ Strand=Plus/Minus
+
+Query  48      AGAATTGGTGTTAGttttttatttttatttttt  80
+               ||||||||||| |||| ||||||||||||||||
+Sbjct  117276  AGAATTGGTGTGAGTTCTTTATTTTTATTTTTT  117244
+
+
+>AC200912.3 Pan troglodytes BAC clone CH251-435B7 from chromosome 7, complete 
+sequence
+Length=194620
+
+ Score = 51.8 bits (56),  Expect = 0.023
+ Identities = 31/33 (94%), Gaps = 0/33 (0%)
+ Strand=Plus/Minus
+
+Query  48      AGAATTGGTGTTAGttttttatttttatttttt  80
+               |||||||||||||||||||| ||||| ||||||
+Sbjct  113779  AGAATTGGTGTTAGTTTTTTTTTTTTTTTTTTT  113747
+
+
+>AC148829.3 Pan troglodytes BAC clone CH251-483L24 from chromosome 7, complete 
+sequence
+Length=153598
+
+ Score = 51.8 bits (56),  Expect = 0.023
+ Identities = 31/33 (94%), Gaps = 0/33 (0%)
+ Strand=Plus/Plus
+
+Query  48      AGAATTGGTGTTAGttttttatttttatttttt  80
+               |||||||||||||||||||| ||||| ||||||
+Sbjct  146896  AGAATTGGTGTTAGTTTTTTTTTTTTTTTTTTT  146928
+
+
+>CP168771.1 Malus domestica cultivar Golden Delicious chromosome 07
+Length=36267156
+
+ Score = 51.8 bits (56),  Expect = 0.023
+ Identities = 34/38 (89%), Gaps = 0/38 (0%)
+ Strand=Plus/Minus
+
+Query  58       TTAGttttttatttttattttttGGGTTAAAGGTTAGA  95
+                |||| |||||||||||||||| | ||||||||||| ||
+Sbjct  5110043  TTAGCTTTTTATTTTTATTTTCTAGGTTAAAGGTTTGA  5110006
+
+
+  Database: Core nucleotide BLAST database
+    Posted date:  Apr 29, 2025  11:24 PM
+  Number of letters in database: 859,097,896,182
+  Number of sequences in database:  114,657,922
+
+Lambda      K        H
+   0.634    0.408    0.912 
+Gapped
+Lambda      K        H
+   0.625    0.410    0.780 
+Matrix: blastn matrix:2 -3
+Gap Penalties: Existence: 5, Extension: 2
+Number of Sequences: 114657922
+Number of Hits to DB: 6762500
+Number of extensions: 64629
+Number of successful extensions: 64629
+Number of sequences better than 10: 0
+Number of HSP's better than 10 without gapping: 0
+Number of HSP's gapped: 64629
+Number of HSP's successfully gapped: 0
+Length of query: 139
+Length of database: 859097896182
+Length adjustment: 37
+Effective length of query: 102
+Effective length of database: 854855553068
+Effective search space: 87195266412936
+Effective search space used: 87195266412936
+A: 0
+X1: 22 (20.1 bits)
+X2: 33 (29.8 bits)
+X3: 110 (99.2 bits)
+S1: 28 (26.5 bits)
+S2: 47 (43.7 bits)
+
+

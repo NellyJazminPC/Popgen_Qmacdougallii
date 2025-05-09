@@ -1,0 +1,134 @@
+<p><!--
+QBlastInfoBegin
+	Status=READY
+QBlastInfoEnd
+--><p>
+<PRE>
+
+BLASTN 2.16.1+
+Reference: Stephen F. Altschul, Thomas L. Madden, Alejandro
+A. Schaffer, Jinghui Zhang, Zheng Zhang, Webb Miller, and
+David J. Lipman (1997), "Gapped BLAST and PSI-BLAST: a new
+generation of protein database search programs", Nucleic
+Acids Res. 25:3389-3402.
+
+
+RID: 1K4RN23S016
+
+
+Database: Core nucleotide BLAST database
+           114,657,922 sequences; 859,097,896,182 total letters
+Query= 
+Length=139
+
+
+                                                                   Score     E     Max
+Sequences producing significant alignments:                       (Bits)  Value  Ident
+
+XM_042146445.1 PREDICTED: Salvia splendens dirigent protein 11...  43.7    0.57   85%         
+XM_024454697.1 PREDICTED: Brachypodium distachyon non-lysosoma...  41.9    2.0    83%         
+XM_010239497.3 PREDICTED: Brachypodium distachyon non-lysosoma...  41.9    2.0    83%         
+XM_014903022.2 PREDICTED: Brachypodium distachyon non-lysosoma...  41.9    2.0    83%         
+XM_014903021.2 PREDICTED: Brachypodium distachyon non-lysosoma...  41.9    2.0    83%         
+
+ALIGNMENTS
+>XM_042146445.1 PREDICTED: Salvia splendens dirigent protein 11-like (LOC121751647), 
+mRNA
+Length=657
+
+ Score = 43.7 bits (47),  Expect = 0.57
+ Identities = 34/40 (85%), Gaps = 2/40 (5%)
+ Strand=Plus/Minus
+
+Query  35   TTCTGATGTTCATTTCTTGCATAGCTTGCAATTATCATCC  74
+            |||| || |||||||| ||||||||||||  || ||||||
+Sbjct  656  TTCTCATCTTCATTTCATGCATAGCTTGC--TTTTCATCC  619
+
+
+>XM_024454697.1 PREDICTED: Brachypodium distachyon non-lysosomal glucosylceramidase 
+(LOC100824639), transcript variant X5, mRNA
+Length=2478
+
+ Score = 41.9 bits (45),  Expect = 2.0
+ Identities = 35/42 (83%), Gaps = 1/42 (2%)
+ Strand=Plus/Plus
+
+Query  38    TGATGTTCATTTCT-TGCATAGCTTGCAATTATCATCCCTTT  78
+             |||||||||||||| |||||   ||||| ||||||| | |||
+Sbjct  972   TGATGTTCATTTCTATGCATCATTTGCACTTATCATGCTTTT  1013
+
+
+>XM_010239497.3 PREDICTED: Brachypodium distachyon non-lysosomal glucosylceramidase 
+(LOC100824639), transcript variant X3, mRNA
+Length=3374
+
+ Score = 41.9 bits (45),  Expect = 2.0
+ Identities = 35/42 (83%), Gaps = 1/42 (2%)
+ Strand=Plus/Plus
+
+Query  38    TGATGTTCATTTCT-TGCATAGCTTGCAATTATCATCCCTTT  78
+             |||||||||||||| |||||   ||||| ||||||| | |||
+Sbjct  1868  TGATGTTCATTTCTATGCATCATTTGCACTTATCATGCTTTT  1909
+
+
+>XM_014903022.2 PREDICTED: Brachypodium distachyon non-lysosomal glucosylceramidase 
+(LOC100824639), transcript variant X4, mRNA
+Length=3369
+
+ Score = 41.9 bits (45),  Expect = 2.0
+ Identities = 35/42 (83%), Gaps = 1/42 (2%)
+ Strand=Plus/Plus
+
+Query  38    TGATGTTCATTTCT-TGCATAGCTTGCAATTATCATCCCTTT  78
+             |||||||||||||| |||||   ||||| ||||||| | |||
+Sbjct  1863  TGATGTTCATTTCTATGCATCATTTGCACTTATCATGCTTTT  1904
+
+
+>XM_014903021.2 PREDICTED: Brachypodium distachyon non-lysosomal glucosylceramidase 
+(LOC100824639), transcript variant X2, mRNA
+Length=3203
+
+ Score = 41.9 bits (45),  Expect = 2.0
+ Identities = 35/42 (83%), Gaps = 1/42 (2%)
+ Strand=Plus/Plus
+
+Query  38    TGATGTTCATTTCT-TGCATAGCTTGCAATTATCATCCCTTT  78
+             |||||||||||||| |||||   ||||| ||||||| | |||
+Sbjct  1697  TGATGTTCATTTCTATGCATCATTTGCACTTATCATGCTTTT  1738
+
+
+  Database: Core nucleotide BLAST database
+    Posted date:  Apr 29, 2025  11:24 PM
+  Number of letters in database: 40,642,655,839
+  Number of sequences in database:  13,690,491
+
+Lambda      K        H
+   0.634    0.408    0.912 
+Gapped
+Lambda      K        H
+   0.625    0.410    0.780 
+Matrix: blastn matrix:2 -3
+Gap Penalties: Existence: 5, Extension: 2
+Number of Sequences: 13690491
+Number of Hits to DB: 751093
+Number of extensions: 1179
+Number of successful extensions: 1179
+Number of sequences better than 10: 2
+Number of HSP's better than 10 without gapping: 0
+Number of HSP's gapped: 1179
+Number of HSP's successfully gapped: 2
+Length of query: 139
+Length of database: 40642655839
+Length adjustment: 34
+Effective length of query: 105
+Effective length of database: 40177179145
+Effective search space: 4218603810225
+Effective search space used: 4218603810225
+A: 0
+X1: 22 (20.1 bits)
+X2: 33 (29.8 bits)
+X3: 110 (99.2 bits)
+S1: 28 (26.5 bits)
+S2: 42 (39.2 bits)
+
+

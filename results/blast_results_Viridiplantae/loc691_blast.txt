@@ -1,0 +1,174 @@
+<p><!--
+QBlastInfoBegin
+	Status=READY
+QBlastInfoEnd
+--><p>
+<PRE>
+
+BLASTN 2.16.1+
+Reference: Stephen F. Altschul, Thomas L. Madden, Alejandro
+A. Schaffer, Jinghui Zhang, Zheng Zhang, Webb Miller, and
+David J. Lipman (1997), "Gapped BLAST and PSI-BLAST: a new
+generation of protein database search programs", Nucleic
+Acids Res. 25:3389-3402.
+
+
+RID: 1MHNP444016
+
+
+Database: Core nucleotide BLAST database
+           114,657,922 sequences; 859,097,896,182 total letters
+Query= 
+Length=138
+
+
+                                                                   Score     E     Max
+Sequences producing significant alignments:                       (Bits)  Value  Ident
+
+XM_050422002.1 PREDICTED: Quercus robur uncharacterized LOC126...  131     1e-27  81%         
+XM_065761880.1 PREDICTED: Quercus suber uncharacterized LOC112...  130     5e-27  81%         
+XM_065761881.1 PREDICTED: Quercus suber uncharacterized LOC112...  130     5e-27  81%         
+XM_065761879.1 PREDICTED: Quercus suber uncharacterized LOC112...  130     5e-27  81%         
+XM_065779135.1 PREDICTED: Quercus suber uncharacterized LOC136...  126     6e-26  80%         
+
+ALIGNMENTS
+>XM_050422002.1 PREDICTED: Quercus robur uncharacterized LOC126719454 (LOC126719454), 
+mRNA
+Length=2097
+
+ Score = 131 bits (144),  Expect = 1e-27
+ Identities = 111/137 (81%), Gaps = 0/137 (0%)
+ Strand=Plus/Plus
+
+Query  2     TCCAATATACCTCAAACTGAGAATCGAGACCGTATAAGATGGAAGTTGATGAAGAATGGG  61
+             || ||| |||||||| ||||| || |||||||||| ||||||||||||  |||||| |||
+Sbjct  1825  TCTAATTTACCTCAATCTGAGCATGGAGACCGTATGAGATGGAAGTTGTCGAAGAAGGGG  1884
+
+Query  62    GATTTTGACATCCGTTCGTTTTACAATGAGTTACGAGGTTCCTCATCCACTGTGTTTCCT  121
+             |||||||||||||| ||||| || ||| || | ||| || |||   | | | | ||||||
+Sbjct  1885  GATTTTGACATCCGCTCGTTCTATAATAAGCTTCGAAGTCCCTTGCCTATTATCTTTCCT  1944
+
+Query  122   TGGAAAGGCATTTGGAA  138
+             |||||||| ||||| ||
+Sbjct  1945  TGGAAAGGTATTTGTAA  1961
+
+
+>XM_065761880.1 PREDICTED: Quercus suber uncharacterized LOC112040872 (LOC112040872), 
+transcript variant X2, mRNA
+Length=3007
+
+ Score = 130 bits (143),  Expect = 5e-27
+ Identities = 109/134 (81%), Gaps = 0/134 (0%)
+ Strand=Plus/Minus
+
+Query  5     AATATACCTCAAACTGAGAATCGAGACCGTATAAGATGGAAGTTGATGAAGAATGGGGAT  64
+             ||| |||||| ||||| |||| |||||||||| ||||||||||| | |||||||| ||||
+Sbjct  2781  AATTTACCTCCAACTGTGAATGGAGACCGTATGAGATGGAAGTTAACGAAGAATGAGGAT  2722
+
+Query  65    TTTGACATCCGTTCGTTTTACAATGAGTTACGAGGTTCCTCATCCACTGTGTTTCCTTGG  124
+             ||||| || || ||||||||  || |  |||||||| |||   | | | | |||||||||
+Sbjct  2721  TTTGATATTCGCTCGTTTTATTATAAACTACGAGGTCCCTTGCCTATTATCTTTCCTTGG  2662
+
+Query  125   AAAGGCATTTGGAA  138
+             ||||| ||||||||
+Sbjct  2661  AAAGGTATTTGGAA  2648
+
+
+>XM_065761881.1 PREDICTED: Quercus suber uncharacterized LOC112040872 (LOC112040872), 
+transcript variant X3, mRNA
+Length=2998
+
+ Score = 130 bits (143),  Expect = 5e-27
+ Identities = 109/134 (81%), Gaps = 0/134 (0%)
+ Strand=Plus/Minus
+
+Query  5     AATATACCTCAAACTGAGAATCGAGACCGTATAAGATGGAAGTTGATGAAGAATGGGGAT  64
+             ||| |||||| ||||| |||| |||||||||| ||||||||||| | |||||||| ||||
+Sbjct  2772  AATTTACCTCCAACTGTGAATGGAGACCGTATGAGATGGAAGTTAACGAAGAATGAGGAT  2713
+
+Query  65    TTTGACATCCGTTCGTTTTACAATGAGTTACGAGGTTCCTCATCCACTGTGTTTCCTTGG  124
+             ||||| || || ||||||||  || |  |||||||| |||   | | | | |||||||||
+Sbjct  2712  TTTGATATTCGCTCGTTTTATTATAAACTACGAGGTCCCTTGCCTATTATCTTTCCTTGG  2653
+
+Query  125   AAAGGCATTTGGAA  138
+             ||||| ||||||||
+Sbjct  2652  AAAGGTATTTGGAA  2639
+
+
+>XM_065761879.1 PREDICTED: Quercus suber uncharacterized LOC112040872 (LOC112040872), 
+transcript variant X1, mRNA
+Length=3001
+
+ Score = 130 bits (143),  Expect = 5e-27
+ Identities = 109/134 (81%), Gaps = 0/134 (0%)
+ Strand=Plus/Minus
+
+Query  5     AATATACCTCAAACTGAGAATCGAGACCGTATAAGATGGAAGTTGATGAAGAATGGGGAT  64
+             ||| |||||| ||||| |||| |||||||||| ||||||||||| | |||||||| ||||
+Sbjct  2775  AATTTACCTCCAACTGTGAATGGAGACCGTATGAGATGGAAGTTAACGAAGAATGAGGAT  2716
+
+Query  65    TTTGACATCCGTTCGTTTTACAATGAGTTACGAGGTTCCTCATCCACTGTGTTTCCTTGG  124
+             ||||| || || ||||||||  || |  |||||||| |||   | | | | |||||||||
+Sbjct  2715  TTTGATATTCGCTCGTTTTATTATAAACTACGAGGTCCCTTGCCTATTATCTTTCCTTGG  2656
+
+Query  125   AAAGGCATTTGGAA  138
+             ||||| ||||||||
+Sbjct  2655  AAAGGTATTTGGAA  2642
+
+
+>XM_065779135.1 PREDICTED: Quercus suber uncharacterized LOC136069960 (LOC136069960), 
+mRNA
+Length=654
+
+ Score = 126 bits (139),  Expect = 6e-26
+ Identities = 110/137 (80%), Gaps = 0/137 (0%)
+ Strand=Plus/Plus
+
+Query  2    TCCAATATACCTCAAACTGAGAATCGAGACCGTATAAGATGGAAGTTGATGAAGAATGGG  61
+            || ||| |||||  |||||||||| |||||| |||  |||||||||||||||| ||||||
+Sbjct  37   TCTAATTTACCTTCAACTGAGAATGGAGACCATATGCGATGGAAGTTGATGAATAATGGG  96
+
+Query  62   GATTTTGACATCCGTTCGTTTTACAATGAGTTACGAGGTTCCTCATCCACTGTGTTTCCT  121
+             ||||||| ||||| |||||||| ||| ||||| ||||  ||    ||| | | ||||||
+Sbjct  97   AATTTTGATATCCGCTCGTTTTATAATAAGTTAAGAGGACCCGTGCCCATTATTTTTCCT  156
+
+Query  122  TGGAAAGGCATTTGGAA  138
+            |||||| |  |||||||
+Sbjct  157  TGGAAAAGTGTTTGGAA  173
+
+
+  Database: Core nucleotide BLAST database
+    Posted date:  Apr 29, 2025  11:24 PM
+  Number of letters in database: 42,500,400,461
+  Number of sequences in database:  14,455,934
+
+Lambda      K        H
+   0.634    0.408    0.912 
+Gapped
+Lambda      K        H
+   0.625    0.410    0.780 
+Matrix: blastn matrix:2 -3
+Gap Penalties: Existence: 5, Extension: 2
+Number of Sequences: 14455934
+Number of Hits to DB: 460007
+Number of extensions: 768
+Number of successful extensions: 768
+Number of sequences better than 10: 0
+Number of HSP's better than 10 without gapping: 0
+Number of HSP's gapped: 768
+Number of HSP's successfully gapped: 0
+Length of query: 138
+Length of database: 42500400461
+Length adjustment: 34
+Effective length of query: 104
+Effective length of database: 42008898705
+Effective search space: 4368925465320
+Effective search space used: 4368925465320
+A: 0
+X1: 22 (20.1 bits)
+X2: 33 (29.8 bits)
+X3: 110 (99.2 bits)
+S1: 28 (26.5 bits)
+S2: 42 (39.2 bits)
+
+

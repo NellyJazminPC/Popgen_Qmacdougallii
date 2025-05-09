@@ -1,0 +1,174 @@
+<p><!--
+QBlastInfoBegin
+	Status=READY
+QBlastInfoEnd
+--><p>
+<PRE>
+
+BLASTN 2.16.1+
+Reference: Stephen F. Altschul, Thomas L. Madden, Alejandro
+A. Schaffer, Jinghui Zhang, Zheng Zhang, Webb Miller, and
+David J. Lipman (1997), "Gapped BLAST and PSI-BLAST: a new
+generation of protein database search programs", Nucleic
+Acids Res. 25:3389-3402.
+
+
+RID: 1K45Y0W2016
+
+
+Database: Core nucleotide BLAST database
+           114,657,922 sequences; 859,097,896,182 total letters
+Query= 
+Length=139
+
+
+                                                                   Score     E     Max
+Sequences producing significant alignments:                       (Bits)  Value  Ident
+
+XM_024025582.2 PREDICTED: Quercus suber uncharacterized LOC111...  214     2e-52  94%         
+XM_065765852.1 PREDICTED: Quercus suber vacuolar protein sorti...  209     7e-51  93%         
+XM_065765853.1 PREDICTED: Quercus suber vacuolar protein sorti...  209     7e-51  93%         
+XM_065765856.1 PREDICTED: Quercus suber vacuolar protein sorti...  209     7e-51  93%         
+XM_065765851.1 PREDICTED: Quercus suber vacuolar protein sorti...  209     7e-51  93%         
+
+ALIGNMENTS
+>XM_024025582.2 PREDICTED: Quercus suber uncharacterized LOC111993752 (LOC111993752), 
+mRNA
+Length=1121
+
+ Score = 214 bits (236),  Expect = 2e-52
+ Identities = 130/138 (94%), Gaps = 0/138 (0%)
+ Strand=Plus/Minus
+
+Query  1    AAAACATTCATATTGATGTGAAGACAAGACAGATAACTGAGAAAGATGGTAGGGAAAAGA  60
+            |||||||||||||||||||||||||||||||||||||||||||||| |||||||||||||
+Sbjct  972  AAAACATTCATATTGATGTGAAGACAAGACAGATAACTGAGAAAGACGGTAGGGAAAAGA  913
+
+Query  61   ACAAGGGGAGCTCAACGTCTAGCTGCGTTATCTATCAGGCTATCAGCATACCTTTTGCAT  120
+            | ||||||| |||||| |||||||| || |||||||||| ||||||||||| ||||||||
+Sbjct  912  AAAAGGGGATCTCAACATCTAGCTGTGTCATCTATCAGGGTATCAGCATACATTTTGCAT  853
+
+Query  121  CTTTATATCTCAAAGGAT  138
+            ||||||||||||||||||
+Sbjct  852  CTTTATATCTCAAAGGAT  835
+
+
+>XM_065765852.1 PREDICTED: Quercus suber vacuolar protein sorting-associated 
+protein 41 homolog (LOC136061333), transcript variant X3, mRNA
+Length=1823
+
+ Score = 209 bits (231),  Expect = 7e-51
+ Identities = 129/138 (93%), Gaps = 0/138 (0%)
+ Strand=Plus/Minus
+
+Query  1    AAAACATTCATATTGATGTGAAGACAAGACAGATAACTGAGAAAGATGGTAGGGAAAAGA  60
+            |||||||||||||||||||||||||||||||||||||||||||||| ||| |||||||||
+Sbjct  208  AAAACATTCATATTGATGTGAAGACAAGACAGATAACTGAGAAAGACGGTTGGGAAAAGA  149
+
+Query  61   ACAAGGGGAGCTCAACGTCTAGCTGCGTTATCTATCAGGCTATCAGCATACCTTTTGCAT  120
+            | ||||||| |||||| |||||||| || |||||||||| ||||||||||| ||||||||
+Sbjct  148  AAAAGGGGATCTCAACATCTAGCTGTGTCATCTATCAGGGTATCAGCATACATTTTGCAT  89
+
+Query  121  CTTTATATCTCAAAGGAT  138
+            ||||||||||||||||||
+Sbjct  88   CTTTATATCTCAAAGGAT  71
+
+
+>XM_065765853.1 PREDICTED: Quercus suber vacuolar protein sorting-associated 
+protein 41 homolog (LOC136061333), transcript variant X4, mRNA
+Length=2000
+
+ Score = 209 bits (231),  Expect = 7e-51
+ Identities = 129/138 (93%), Gaps = 0/138 (0%)
+ Strand=Plus/Minus
+
+Query  1    AAAACATTCATATTGATGTGAAGACAAGACAGATAACTGAGAAAGATGGTAGGGAAAAGA  60
+            |||||||||||||||||||||||||||||||||||||||||||||| ||| |||||||||
+Sbjct  207  AAAACATTCATATTGATGTGAAGACAAGACAGATAACTGAGAAAGACGGTTGGGAAAAGA  148
+
+Query  61   ACAAGGGGAGCTCAACGTCTAGCTGCGTTATCTATCAGGCTATCAGCATACCTTTTGCAT  120
+            | ||||||| |||||| |||||||| || |||||||||| ||||||||||| ||||||||
+Sbjct  147  AAAAGGGGATCTCAACATCTAGCTGTGTCATCTATCAGGGTATCAGCATACATTTTGCAT  88
+
+Query  121  CTTTATATCTCAAAGGAT  138
+            ||||||||||||||||||
+Sbjct  87   CTTTATATCTCAAAGGAT  70
+
+
+>XM_065765856.1 PREDICTED: Quercus suber vacuolar protein sorting-associated 
+protein 41 homolog (LOC136061333), transcript variant X7, mRNA
+Length=1638
+
+ Score = 209 bits (231),  Expect = 7e-51
+ Identities = 129/138 (93%), Gaps = 0/138 (0%)
+ Strand=Plus/Minus
+
+Query  1    AAAACATTCATATTGATGTGAAGACAAGACAGATAACTGAGAAAGATGGTAGGGAAAAGA  60
+            |||||||||||||||||||||||||||||||||||||||||||||| ||| |||||||||
+Sbjct  192  AAAACATTCATATTGATGTGAAGACAAGACAGATAACTGAGAAAGACGGTTGGGAAAAGA  133
+
+Query  61   ACAAGGGGAGCTCAACGTCTAGCTGCGTTATCTATCAGGCTATCAGCATACCTTTTGCAT  120
+            | ||||||| |||||| |||||||| || |||||||||| ||||||||||| ||||||||
+Sbjct  132  AAAAGGGGATCTCAACATCTAGCTGTGTCATCTATCAGGGTATCAGCATACATTTTGCAT  73
+
+Query  121  CTTTATATCTCAAAGGAT  138
+            ||||||||||||||||||
+Sbjct  72   CTTTATATCTCAAAGGAT  55
+
+
+>XM_065765851.1 PREDICTED: Quercus suber vacuolar protein sorting-associated 
+protein 41 homolog (LOC136061333), transcript variant X2, mRNA
+Length=1940
+
+ Score = 209 bits (231),  Expect = 7e-51
+ Identities = 129/138 (93%), Gaps = 0/138 (0%)
+ Strand=Plus/Minus
+
+Query  1    AAAACATTCATATTGATGTGAAGACAAGACAGATAACTGAGAAAGATGGTAGGGAAAAGA  60
+            |||||||||||||||||||||||||||||||||||||||||||||| ||| |||||||||
+Sbjct  208  AAAACATTCATATTGATGTGAAGACAAGACAGATAACTGAGAAAGACGGTTGGGAAAAGA  149
+
+Query  61   ACAAGGGGAGCTCAACGTCTAGCTGCGTTATCTATCAGGCTATCAGCATACCTTTTGCAT  120
+            | ||||||| |||||| |||||||| || |||||||||| ||||||||||| ||||||||
+Sbjct  148  AAAAGGGGATCTCAACATCTAGCTGTGTCATCTATCAGGGTATCAGCATACATTTTGCAT  89
+
+Query  121  CTTTATATCTCAAAGGAT  138
+            ||||||||||||||||||
+Sbjct  88   CTTTATATCTCAAAGGAT  71
+
+
+  Database: Core nucleotide BLAST database
+    Posted date:  Apr 29, 2025  11:24 PM
+  Number of letters in database: 40,642,655,839
+  Number of sequences in database:  13,690,491
+
+Lambda      K        H
+   0.634    0.408    0.912 
+Gapped
+Lambda      K        H
+   0.625    0.410    0.780 
+Matrix: blastn matrix:2 -3
+Gap Penalties: Existence: 5, Extension: 2
+Number of Sequences: 13690491
+Number of Hits to DB: 586175
+Number of extensions: 1222
+Number of successful extensions: 1222
+Number of sequences better than 10: 0
+Number of HSP's better than 10 without gapping: 0
+Number of HSP's gapped: 1222
+Number of HSP's successfully gapped: 0
+Length of query: 139
+Length of database: 40642655839
+Length adjustment: 34
+Effective length of query: 105
+Effective length of database: 40177179145
+Effective search space: 4218603810225
+Effective search space used: 4218603810225
+A: 0
+X1: 22 (20.1 bits)
+X2: 33 (29.8 bits)
+X3: 110 (99.2 bits)
+S1: 28 (26.5 bits)
+S2: 42 (39.2 bits)
+
+

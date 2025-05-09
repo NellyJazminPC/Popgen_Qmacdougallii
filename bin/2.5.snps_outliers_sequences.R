@@ -124,7 +124,7 @@ cat("El archivo con las secuencias corregidas se ha exportado a '../results/locu
 
 
 # ---------------------------------------------------------------
-# Script: 2.6.blast_results.R
+# Script: blast_results.R
 # Descripción: Este script procesa los resultados de BLAST, extrae la información
 #              relevante y la une al data frame de SNPs únicos con secuencias.
 # ---------------------------------------------------------------
@@ -133,12 +133,18 @@ cat("El archivo con las secuencias corregidas se ha exportado a '../results/locu
 library(dplyr)
 library(stringr)
 library(readr)
+library(readxl)
+library(writexl)
+library(tidyr)
+# Ruta para cargar archivo unique_snps_with_sequences
+unique_snps_with_sequences <- read_xlsx("../results/consolidated_snps_with_sequences_and_ambiguities.xlsx")
 
-# Ruta a la carpeta con los resultados BLAST
-blast_results_dir <- "../results/blast_results/"
-
-# Leer los archivos de resultados BLAST
-blast_files <- list.files(blast_results_dir, pattern = "*.txt", full.names = TRUE)
+# Definir las carpetas con los resultados BLAST
+blast_dirs <- list(
+  all_db = "../results/blast_results_all_db/",
+  Magnoliopsida = "../results/blast_results_Magnoliopsida/",
+  Viridiplantae = "../results/blast_results_Viridiplantae/"
+)
 
 # Crear un data frame vacío para almacenar los resultados procesados
 blast_summary <- data.frame(
@@ -146,50 +152,61 @@ blast_summary <- data.frame(
   best_hit = character(),
   e_value = character(),
   perc_identity = character(),
+  source = character(),  # Nueva columna para la carpeta de origen
   stringsAsFactors = FALSE
 )
 
-# Procesar cada archivo de resultados BLAST
-for (file in blast_files) {
-  # Extraer el nombre del locus desde el nombre del archivo
-  locus_name <- gsub("_blast.txt", "", basename(file))
+# Procesar cada carpeta de resultados BLAST
+for (source_name in names(blast_dirs)) {
+  blast_dir <- blast_dirs[[source_name]]
   
-  # Leer el contenido del archivo
-  blast_content <- readLines(file)
+  # Listar los archivos de resultados BLAST en la carpeta
+  blast_files <- list.files(blast_dir, pattern = "*.txt", full.names = TRUE)
   
-  # Buscar la sección ALIGNMENTS
-  alignments_start <- grep("^ALIGNMENTS", blast_content)
-  if (length(alignments_start) > 0) {
-    # Extraer la línea del mejor hit (primera línea después de ALIGNMENTS)
-    best_hit_line <- blast_content[alignments_start + 1]
-    best_hit <- str_remove(best_hit_line, "^>")  # Quitar el símbolo ">"
-    best_hit <- str_trim(best_hit)  # Eliminar espacios en blanco
+  # Procesar cada archivo de resultados BLAST
+  for (file in blast_files) {
+    # Extraer el nombre del locus desde el nombre del archivo
+    locus_name <- gsub("_blast.txt", "", basename(file))
     
-    # Buscar el E-value en la sección ALIGNMENTS
-    e_value_line <- grep("Expect =", blast_content, value = TRUE)
-    e_value <- str_extract(e_value_line[1], "(?<=Expect = )\\S+")  # Extraer el E-value
+    # Leer el contenido del archivo
+    blast_content <- readLines(file)
     
-    # Buscar el porcentaje de identidad en la sección ALIGNMENTS
-    perc_identity_line <- grep("Identities =", blast_content, value = TRUE)
-    perc_identity <- str_extract(perc_identity_line[1], "(?<=\\()\\d+%")  # Extraer el porcentaje de identidad
-    
-    # Agregar los datos al resumen
-    blast_summary <- rbind(blast_summary, data.frame(
-      locus_name = locus_name,
-      best_hit = best_hit,
-      e_value = e_value,
-      perc_identity = perc_identity,
-      stringsAsFactors = FALSE
-    ))
-  } else {
-    # Si no hay hits, agregar un registro vacío
-    blast_summary <- rbind(blast_summary, data.frame(
-      locus_name = locus_name,
-      best_hit = NA,
-      e_value = NA,
-      perc_identity = NA,
-      stringsAsFactors = FALSE
-    ))
+    # Buscar la sección ALIGNMENTS
+    alignments_start <- grep("^ALIGNMENTS", blast_content)
+    if (length(alignments_start) > 0) {
+      # Extraer la línea del mejor hit (primera línea después de ALIGNMENTS)
+      best_hit_line <- blast_content[alignments_start + 1]
+      best_hit <- str_remove(best_hit_line, "^>")  # Quitar el símbolo ">"
+      best_hit <- str_trim(best_hit)  # Eliminar espacios en blanco
+      
+      # Buscar el E-value en la sección ALIGNMENTS
+      e_value_line <- grep("Expect =", blast_content, value = TRUE)
+      e_value <- str_extract(e_value_line[1], "(?<=Expect = )\\S+")  # Extraer el E-value
+      
+      # Buscar el porcentaje de identidad en la sección ALIGNMENTS
+      perc_identity_line <- grep("Identities =", blast_content, value = TRUE)
+      perc_identity <- str_extract(perc_identity_line[1], "(?<=\\()\\d+%")  # Extraer el porcentaje de identidad
+      
+      # Agregar los datos al resumen
+      blast_summary <- rbind(blast_summary, data.frame(
+        locus_name = locus_name,
+        best_hit = best_hit,
+        e_value = e_value,
+        perc_identity = perc_identity,
+        source = source_name,  # Agregar la carpeta de origen
+        stringsAsFactors = FALSE
+      ))
+    } else {
+      # Si no hay hits, agregar un registro vacío
+      blast_summary <- rbind(blast_summary, data.frame(
+        locus_name = locus_name,
+        best_hit = NA,
+        e_value = NA,
+        perc_identity = NA,
+        source = source_name,  # Agregar la carpeta de origen
+        stringsAsFactors = FALSE
+      ))
+    }
   }
 }
 
@@ -197,14 +214,94 @@ for (file in blast_files) {
 unique_snps_with_blast <- unique_snps_with_sequences %>%
   left_join(blast_summary, by = c("locus_name_clean" = "locus_name"))
 
-
 # Revisar si hay NAs
 na_files <- blast_summary %>% filter(is.na(e_value)) %>% pull(locus_name)
 print(na_files)
 
+
+# Poner en formato ancho las columnas de resultados BLAST
+blast_summary_wide <- blast_summary %>%
+  pivot_wider(
+    names_from = source,  # Usar la columna "source" para los nombres de las nuevas columnas
+    values_from = c(best_hit, e_value, perc_identity),  # Expandir estas columnas
+    names_sep = "_"
+  )
+
+# Agregar una columna para verificar si hay diferencias entre las tres carpetas
+blast_summary_wide <- blast_summary_wide %>%
+  mutate(
+    is_consistent = ifelse(
+      best_hit_all_db == best_hit_Magnoliopsida & best_hit_all_db == best_hit_Viridiplantae,
+      "Yes",  # Los datos son consistentes
+      "No"    # Hay diferencias
+    )
+  )
+
+# Unir los resultados BLAST al data frame unique_snps_with_sequences
+unique_snps_with_blast <- unique_snps_with_sequences %>%
+  left_join(blast_summary_wide, by = c("locus_name_clean" = "locus_name"))
+
 # Exportar el data frame actualizado con los resultados BLAST
-write_xlsx(unique_snps_with_blast, "../results/consolidated_snps_with_blast_results.xlsx")
+write_xlsx(unique_snps_with_blast, "../results/snps_outliers_with_blast_results_combined.xlsx")
 
 # Mensaje de confirmación
-cat("El archivo con los resultados BLAST incorporados se ha exportado a '../results/consolidated_snps_with_blast_results.xlsx'.\n")
+cat("El archivo con los resultados BLAST incorporados se ha exportado a '../results/snps_outliers_with_blast_results_combined.xlsx'.\n")
+
+
+# ---------------------------------------------------------------
+# Script: Filtrar resultados BLAST para Magnoliopsida
+# Descripción: Este script filtra los resultados BLAST para obtener solo
+#              aquellos relacionados con Magnoliopsida y los exporta a un archivo Excel.
+# ---------------------------------------------------------------
+# Eliminar las columnas no deseadas del data frame
+unique_snps_with_blast_filtered <- unique_snps_with_blast %>%
+  select(
+    -best_hit_all_db,
+    -best_hit_Viridiplantae,
+    -e_value_all_db,
+    -e_value_Viridiplantae,
+    -perc_identity_all_db,
+    -perc_identity_Viridiplantae,
+    -is_consistent
+  )
+
+# Convertir la columna e_value_Magnoliopsida a formato numérico
+unique_snps_with_blast_filtered <- unique_snps_with_blast_filtered %>%
+  mutate(e_value_Magnoliopsida = as.numeric(e_value_Magnoliopsida))
+
+
+# Cargar la librería openxlsx para aplicar estilos
+library(openxlsx)
+
+# Convertir la columna e_value_Magnoliopsida a formato numérico
+unique_snps_with_blast_filtered <- unique_snps_with_blast_filtered %>%
+  mutate(e_value_Magnoliopsida = as.numeric(e_value_Magnoliopsida))
+
+# Crear un nuevo workbook
+wb <- createWorkbook()
+
+# Agregar una hoja al workbook
+addWorksheet(wb, "Magnoliopsida Results")
+
+# Escribir los datos en la hoja
+writeData(wb, "Magnoliopsida Results", unique_snps_with_blast_filtered)
+
+# Crear un estilo para resaltar en verde los valores <= 0.05
+green_style <- createStyle(fontColour = "#006400", bgFill = "#C6EFCE")  # Verde oscuro con fondo claro
+
+# Aplicar el estilo a las celdas donde e_value_Magnoliopsida <= 0.05
+conditionalFormatting(
+  wb, 
+  sheet = "Magnoliopsida Results", 
+  cols = which(colnames(unique_snps_with_blast_filtered) == "e_value_Magnoliopsida"), 
+  rows = 2:(nrow(unique_snps_with_blast_filtered) + 1),  # Desde la fila 2 (excluyendo encabezado)
+  rule = "<=0.05", 
+  style = green_style
+)
+
+# Exportar el archivo Excel con los estilos aplicados
+saveWorkbook(wb, "../results/snps_outliers_with_blast_results_magnoliopsida_highlighted.xlsx", overwrite = TRUE)
+
+# Mensaje de confirmación
+cat("El archivo con los valores resaltados en verde para e_value_Magnoliopsida <= 0.05 se ha exportado a '../results/snps_outliers_with_blast_results_magnoliopsida_highlighted.xlsx'.\n")
 

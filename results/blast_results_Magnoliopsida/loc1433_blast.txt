@@ -1,0 +1,165 @@
+<p><!--
+QBlastInfoBegin
+	Status=READY
+QBlastInfoEnd
+--><p>
+<PRE>
+
+BLASTN 2.16.1+
+Reference: Stephen F. Altschul, Thomas L. Madden, Alejandro
+A. Schaffer, Jinghui Zhang, Zheng Zhang, Webb Miller, and
+David J. Lipman (1997), "Gapped BLAST and PSI-BLAST: a new
+generation of protein database search programs", Nucleic
+Acids Res. 25:3389-3402.
+
+
+RID: 1K3EBCNF013
+
+
+Database: Core nucleotide BLAST database
+           114,657,922 sequences; 859,097,896,182 total letters
+Query= 
+Length=138
+
+
+                                                                   Score     E     Max
+Sequences producing significant alignments:                       (Bits)  Value  Ident
+
+XM_050409611.1 PREDICTED: Quercus robur protein NPGR1 (LOC1267...  242     1e-60  99%         
+XM_050409612.1 PREDICTED: Quercus robur protein NPGR1 (LOC1267...  242     1e-60  99%         
+XM_031092594.1 PREDICTED: Quercus lobata protein NPGR1 (LOC115...  230     2e-57  98%         
+XM_031092593.1 PREDICTED: Quercus lobata protein NPGR1 (LOC115...  230     2e-57  98%         
+XM_024067933.2 PREDICTED: Quercus suber protein NPGR1 (LOC1120...  70.7    4e-09  94%         
+
+ALIGNMENTS
+>XM_050409611.1 PREDICTED: Quercus robur protein NPGR1 (LOC126709397), transcript 
+variant X1, mRNA
+Length=3180
+
+ Score = 242 bits (267),  Expect = 1e-60
+ Identities = 136/138 (99%), Gaps = 0/138 (0%)
+ Strand=Plus/Plus
+
+Query  1     ATCCATTATGTTACTGTTCGGCTAATTTACTCATTACTAGCTTATTTGATTAAAGGTGAA  60
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||| ||
+Sbjct  2679  ATCCATTATGTTACTGTTCGGCTAATTTACTCATTACTAGCTTATTTGATTAAAGGTAAA  2738
+
+Query  61    ATAAAAAGTGANTTTTAAGTAATTAAGTTAACTTTAAACAATTGAAGCCAACTTATTTGC  120
+             ||||||||||| ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  2739  ATAAAAAGTGACTTTTAAGTAATTAAGTTAACTTTAAACAATTGAAGCCAACTTATTTGC  2798
+
+Query  121   TTAAAGTCAATTTTTATC  138
+             ||||||||||||||||||
+Sbjct  2799  TTAAAGTCAATTTTTATC  2816
+
+
+>XM_050409612.1 PREDICTED: Quercus robur protein NPGR1 (LOC126709397), transcript 
+variant X2, mRNA
+Length=2934
+
+ Score = 242 bits (267),  Expect = 1e-60
+ Identities = 136/138 (99%), Gaps = 0/138 (0%)
+ Strand=Plus/Plus
+
+Query  1     ATCCATTATGTTACTGTTCGGCTAATTTACTCATTACTAGCTTATTTGATTAAAGGTGAA  60
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||| ||
+Sbjct  2433  ATCCATTATGTTACTGTTCGGCTAATTTACTCATTACTAGCTTATTTGATTAAAGGTAAA  2492
+
+Query  61    ATAAAAAGTGANTTTTAAGTAATTAAGTTAACTTTAAACAATTGAAGCCAACTTATTTGC  120
+             ||||||||||| ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  2493  ATAAAAAGTGACTTTTAAGTAATTAAGTTAACTTTAAACAATTGAAGCCAACTTATTTGC  2552
+
+Query  121   TTAAAGTCAATTTTTATC  138
+             ||||||||||||||||||
+Sbjct  2553  TTAAAGTCAATTTTTATC  2570
+
+
+>XM_031092594.1 PREDICTED: Quercus lobata protein NPGR1 (LOC115972332), transcript 
+variant X2, mRNA
+Length=3177
+
+ Score = 230 bits (254),  Expect = 2e-57
+ Identities = 135/138 (98%), Gaps = 2/138 (1%)
+ Strand=Plus/Plus
+
+Query  1     ATCCATTATGTTACTGTTCGGCTAATTTACTCATTACTAGCTTATTTGATTAAAGGTGAA  60
+             |||||||||||||||||||| |||||||||||||||||||||||||||||||||||||||
+Sbjct  2678  ATCCATTATGTTACTGTTCG-CTAATTTACTCATTACTAGCTTATTTGATTAAAGGTGAA  2736
+
+Query  61    ATAAAAAGTGANTTTTAAGTAATTAAGTTAACTTTAAACAATTGAAGCCAACTTATTTGC  120
+             ||||||||||| ||| ||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  2737  ATAAAAAGTGACTTT-AAGTAATTAAGTTAACTTTAAACAATTGAAGCCAACTTATTTGC  2795
+
+Query  121   TTAAAGTCAATTTTTATC  138
+             ||||||||||||||||||
+Sbjct  2796  TTAAAGTCAATTTTTATC  2813
+
+
+>XM_031092593.1 PREDICTED: Quercus lobata protein NPGR1 (LOC115972332), transcript 
+variant X1, mRNA
+Length=2998
+
+ Score = 230 bits (254),  Expect = 2e-57
+ Identities = 135/138 (98%), Gaps = 2/138 (1%)
+ Strand=Plus/Plus
+
+Query  1     ATCCATTATGTTACTGTTCGGCTAATTTACTCATTACTAGCTTATTTGATTAAAGGTGAA  60
+             |||||||||||||||||||| |||||||||||||||||||||||||||||||||||||||
+Sbjct  2499  ATCCATTATGTTACTGTTCG-CTAATTTACTCATTACTAGCTTATTTGATTAAAGGTGAA  2557
+
+Query  61    ATAAAAAGTGANTTTTAAGTAATTAAGTTAACTTTAAACAATTGAAGCCAACTTATTTGC  120
+             ||||||||||| ||| ||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  2558  ATAAAAAGTGACTTT-AAGTAATTAAGTTAACTTTAAACAATTGAAGCCAACTTATTTGC  2616
+
+Query  121   TTAAAGTCAATTTTTATC  138
+             ||||||||||||||||||
+Sbjct  2617  TTAAAGTCAATTTTTATC  2634
+
+
+>XM_024067933.2 PREDICTED: Quercus suber protein NPGR1 (LOC112035093), mRNA
+Length=2834
+
+ Score = 70.7 bits (77),  Expect = 4e-09
+ Identities = 47/50 (94%), Gaps = 2/50 (4%)
+ Strand=Plus/Plus
+
+Query  1     ATCCATTATGTTACTGTTCGGCTAATTTACTCATTACTAGCTTATTTGAT  50
+             |||||||||||||| |||||||||| ||||||||||||||| ||||||||
+Sbjct  2787  ATCCATTATGTTACCGTTCGGCTAA-TTACTCATTACTAGC-TATTTGAT  2834
+
+
+  Database: Core nucleotide BLAST database
+    Posted date:  Apr 29, 2025  11:24 PM
+  Number of letters in database: 40,642,655,839
+  Number of sequences in database:  13,690,491
+
+Lambda      K        H
+   0.634    0.408    0.912 
+Gapped
+Lambda      K        H
+   0.625    0.410    0.780 
+Matrix: blastn matrix:2 -3
+Gap Penalties: Existence: 5, Extension: 2
+Number of Sequences: 13690491
+Number of Hits to DB: 642020
+Number of extensions: 1190
+Number of successful extensions: 1190
+Number of sequences better than 10: 2
+Number of HSP's better than 10 without gapping: 0
+Number of HSP's gapped: 1190
+Number of HSP's successfully gapped: 2
+Length of query: 138
+Length of database: 40642655839
+Length adjustment: 34
+Effective length of query: 104
+Effective length of database: 40177179145
+Effective search space: 4178426631080
+Effective search space used: 4178426631080
+A: 0
+X1: 22 (20.1 bits)
+X2: 33 (29.8 bits)
+X3: 110 (99.2 bits)
+S1: 28 (26.5 bits)
+S2: 42 (39.2 bits)
+
+

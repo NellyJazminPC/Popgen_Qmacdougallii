@@ -1,0 +1,132 @@
+<p><!--
+QBlastInfoBegin
+	Status=READY
+QBlastInfoEnd
+--><p>
+<PRE>
+
+BLASTN 2.16.1+
+Reference: Stephen F. Altschul, Thomas L. Madden, Alejandro
+A. Schaffer, Jinghui Zhang, Zheng Zhang, Webb Miller, and
+David J. Lipman (1997), "Gapped BLAST and PSI-BLAST: a new
+generation of protein database search programs", Nucleic
+Acids Res. 25:3389-3402.
+
+
+RID: 1K62VGWF016
+
+
+Database: Core nucleotide BLAST database
+           114,657,922 sequences; 859,097,896,182 total letters
+Query= 
+Length=139
+
+
+                                                                   Score     E     Max
+Sequences producing significant alignments:                       (Bits)  Value  Ident
+
+XM_062291475.1 PREDICTED: Alnus glutinosa pathogenesis-related...  42.8    0.57   93%         
+XM_062291474.1 PREDICTED: Alnus glutinosa pathogenesis-related...  42.8    0.57   93%         
+XM_028068070.1 PREDICTED: Vigna unguiculata O-fucosyltransfera...  42.8    0.57   88%         
+KF184903.1 Saccharum hybrid cultivar R570 clone BAC 121P14 com...  41.9    2.0    90%         
+CP157406.1 Ziziphus jujuba isolate TW-2024b chromosome 04          41.0    2.0    100%        
+
+ALIGNMENTS
+>XM_062291475.1 PREDICTED: Alnus glutinosa pathogenesis-related thaumatin-like 
+protein 3.5 (LOC133856207), transcript variant X2, mRNA
+Length=3091
+
+ Score = 42.8 bits (46),  Expect = 0.57
+ Identities = 26/28 (93%), Gaps = 0/28 (0%)
+ Strand=Plus/Minus
+
+Query  15    AATGATATATCTCTCTCTCTGTGACAAG  42
+             |||||| | |||||||||||||||||||
+Sbjct  1506  AATGATCTCTCTCTCTCTCTGTGACAAG  1479
+
+
+>XM_062291474.1 PREDICTED: Alnus glutinosa pathogenesis-related thaumatin-like 
+protein 3.5 (LOC133856207), transcript variant X1, mRNA
+Length=3098
+
+ Score = 42.8 bits (46),  Expect = 0.57
+ Identities = 26/28 (93%), Gaps = 0/28 (0%)
+ Strand=Plus/Minus
+
+Query  15    AATGATATATCTCTCTCTCTGTGACAAG  42
+             |||||| | |||||||||||||||||||
+Sbjct  1513  AATGATCTCTCTCTCTCTCTGTGACAAG  1486
+
+
+>XM_028068070.1 PREDICTED: Vigna unguiculata O-fucosyltransferase 30 (LOC114181577), 
+transcript variant X3, mRNA
+Length=3238
+
+ Score = 42.8 bits (46),  Expect = 0.57
+ Identities = 29/33 (88%), Gaps = 0/33 (0%)
+ Strand=Plus/Minus
+
+Query  63    ACTACTAAAATAATCACAACGCTATTTACTGTA  95
+             |||||||||||||| |||| ||| || ||||||
+Sbjct  2329  ACTACTAAAATAATAACAATGCTCTTGACTGTA  2297
+
+
+>KF184903.1 Saccharum hybrid cultivar R570 clone BAC 121P14 complete sequence
+Length=134508
+
+ Score = 41.9 bits (45),  Expect = 2.0
+ Identities = 27/30 (90%), Gaps = 0/30 (0%)
+ Strand=Plus/Minus
+
+Query  5      CATCTGTAGGAATGATATATCTCTCTCTCT  34
+              ||||| || ||||||||| |||||||||||
+Sbjct  24126  CATCTTTATGAATGATATCTCTCTCTCTCT  24097
+
+
+>CP157406.1 Ziziphus jujuba isolate TW-2024b chromosome 04
+Length=32841798
+
+ Score = 41.0 bits (44),  Expect = 2.0
+ Identities = 22/22 (100%), Gaps = 0/22 (0%)
+ Strand=Plus/Plus
+
+Query  16       ATGATATATCTCTCTCTCTGTG  37
+                ||||||||||||||||||||||
+Sbjct  3739862  ATGATATATCTCTCTCTCTGTG  3739883
+
+
+  Database: Core nucleotide BLAST database
+    Posted date:  Apr 29, 2025  11:24 PM
+  Number of letters in database: 40,642,655,839
+  Number of sequences in database:  13,690,491
+
+Lambda      K        H
+   0.634    0.408    0.912 
+Gapped
+Lambda      K        H
+   0.625    0.410    0.780 
+Matrix: blastn matrix:2 -3
+Gap Penalties: Existence: 5, Extension: 2
+Number of Sequences: 13690491
+Number of Hits to DB: 461509
+Number of extensions: 1035
+Number of successful extensions: 1035
+Number of sequences better than 10: 0
+Number of HSP's better than 10 without gapping: 0
+Number of HSP's gapped: 1035
+Number of HSP's successfully gapped: 0
+Length of query: 139
+Length of database: 40642655839
+Length adjustment: 34
+Effective length of query: 105
+Effective length of database: 40177179145
+Effective search space: 4218603810225
+Effective search space used: 4218603810225
+A: 0
+X1: 22 (20.1 bits)
+X2: 33 (29.8 bits)
+X3: 110 (99.2 bits)
+S1: 28 (26.5 bits)
+S2: 42 (39.2 bits)
+
+

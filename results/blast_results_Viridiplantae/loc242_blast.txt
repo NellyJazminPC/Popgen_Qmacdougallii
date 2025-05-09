@@ -1,0 +1,214 @@
+<p><!--
+QBlastInfoBegin
+	Status=READY
+QBlastInfoEnd
+--><p>
+<PRE>
+
+BLASTN 2.16.1+
+Reference: Stephen F. Altschul, Thomas L. Madden, Alejandro
+A. Schaffer, Jinghui Zhang, Zheng Zhang, Webb Miller, and
+David J. Lipman (1997), "Gapped BLAST and PSI-BLAST: a new
+generation of protein database search programs", Nucleic
+Acids Res. 25:3389-3402.
+
+
+RID: 1MH04HBR016
+
+
+Database: Core nucleotide BLAST database
+           114,657,922 sequences; 859,097,896,182 total letters
+Query= 
+Length=140
+
+
+                                                                   Score     E     Max
+Sequences producing significant alignments:                       (Bits)  Value  Ident
+
+LR862148.1 Ananas comosus var. bracteatus genome assembly, chr...  49.1    0.014  81%       
+LR862152.1 Ananas comosus var. bracteatus genome assembly, chr...  46.4    0.050  89%       
+XM_061110185.1 PREDICTED: Cannabis sativa pentatricopeptide re...  46.4    0.050  84%       
+XM_061110186.1 PREDICTED: Cannabis sativa pentatricopeptide re...  46.4    0.050  84%       
+LR862130.1 Ananas comosus var. bracteatus genome assembly, chr...  46.4    0.050  93%       
+
+ALIGNMENTS
+>LR862148.1 Ananas comosus var. bracteatus genome assembly, chromosome: 20
+Length=18202827
+
+ Score = 49.1 bits (53),  Expect = 0.014
+ Identities = 44/54 (81%), Gaps = 4/54 (7%)
+ Strand=Plus/Plus
+
+Query  36        CANttttttttGCTC---ATAAATTTCATTTAGTTTGAACTT-TAAATTCAAAT  85
+                 || |||||||| |||   ||  ||| ||||||||||||||||  ||||||||||
+Sbjct  15283015  CATTTTTTTTTTCTCTATATGTATTGCATTTAGTTTGAACTTAAAAATTCAAAT  15283068
+
+
+ Score = 41.0 bits (44),  Expect = 2.1
+ Identities = 40/51 (78%), Gaps = 2/51 (4%)
+ Strand=Plus/Plus
+
+Query  39       ttttttttGCTCATAAA--TTTCATTTAGTTTGAACTTTAAATTCAAATTT  87
+                |||||| | ||||||||  ||| | ||||||| ||  |||| |||| ||||
+Sbjct  2412935  TTTTTTGTACTCATAAATTTTTGAATTAGTTTTAAAATTAATTTCAGATTT  2412985
+
+
+ Score = 40.1 bits (43),  Expect = 7.3
+ Identities = 32/38 (84%), Gaps = 2/38 (5%)
+ Strand=Plus/Minus
+
+Query  52       TAAATTTCA--TTTAGTTTGAACTTTAAATTCAAATTT  87
+                ||||||| |  ||||| || || |||||||||||||||
+Sbjct  2352705  TAAATTTAAACTTTAGATTTAAATTTAAATTCAAATTT  2352668
+
+
+ Score = 40.1 bits (43),  Expect = 7.3
+ Identities = 32/38 (84%), Gaps = 2/38 (5%)
+ Strand=Plus/Plus
+
+Query  52       TAAATTTCA--TTTAGTTTGAACTTTAAATTCAAATTT  87
+                ||||||| |  ||||| || || |||||||||||||||
+Sbjct  2369474  TAAATTTAAACTTTAGATTTAAATTTAAATTCAAATTT  2369511
+
+
+ Score = 40.1 bits (43),  Expect = 7.3
+ Identities = 32/38 (84%), Gaps = 2/38 (5%)
+ Strand=Plus/Minus
+
+Query  52       TAAATTTCA--TTTAGTTTGAACTTTAAATTCAAATTT  87
+                ||||||| |  ||||| || || |||||||||||||||
+Sbjct  3336817  TAAATTTAAACTTTAGATTTAAATTTAAATTCAAATTT  3336780
+
+
+>LR862152.1 Ananas comosus var. bracteatus genome assembly, chromosome: 24
+Length=21245074
+
+ Score = 46.4 bits (50),  Expect = 0.050
+ Identities = 31/35 (89%), Gaps = 0/35 (0%)
+ Strand=Plus/Minus
+
+Query  51       ATAAATTTCATTTAGTTTGAACTTTAAATTCAAAT  85
+                |||||||| |||||| || || |||||||||||||
+Sbjct  4875339  ATAAATTTAATTTAGATTTAAGTTTAAATTCAAAT  4875305
+
+
+ Score = 42.8 bits (46),  Expect = 0.60
+ Identities = 35/43 (81%), Gaps = 0/43 (0%)
+ Strand=Plus/Minus
+
+Query  43       ttttGCTCATAAATTTCATTTAGTTTGAACTTTAAATTCAAAT  85
+                ||||  | |||||||| ||| || || || |||||||||||||
+Sbjct  4616821  TTTTAATTATAAATTTAATTCAGATTTAAGTTTAAATTCAAAT  4616779
+
+
+ Score = 42.8 bits (46),  Expect = 0.60
+ Identities = 32/37 (86%), Gaps = 2/37 (5%)
+ Strand=Plus/Plus
+
+Query  53        AAATTTCATTT--AGTTTGAACTTTAAATTCAAATTT  87
+                 || ||| ||||  |||||||| |||||||||||||||
+Sbjct  12065172  AATTTTGATTTTGAGTTTGAATTTTAAATTCAAATTT  12065208
+
+
+ Score = 40.1 bits (43),  Expect = 7.3
+ Identities = 33/38 (87%), Gaps = 2/38 (5%)
+ Strand=Plus/Minus
+
+Query  52        TAAATTTCA-TTTAG-TTTGAACTTTAAATTCAAATTT  87
+                 ||||||| | ||||| ||| || |||||||||||||||
+Sbjct  19694734  TAAATTTAAATTTAGATTTAAATTTTAAATTCAAATTT  19694697
+
+
+>XM_061110185.1 PREDICTED: Cannabis sativa pentatricopeptide repeat-containing 
+protein At1g62350-like (LOC133034793), transcript variant 
+X1, mRNA
+Length=1156
+
+ Score = 46.4 bits (50),  Expect = 0.050
+ Identities = 38/45 (84%), Gaps = 5/45 (11%)
+ Strand=Plus/Minus
+
+Query  42    tttttGCTCATAAATTTCATT----TAGTTTGAACTTTAAATTCA  82
+             ||||||| |||||||||||||    | ||||||||||| ||||||
+Sbjct  1117  TTTTTGC-CATAAATTTCATTCTCATTGTTTGAACTTTGAATTCA  1074
+
+
+>XM_061110186.1 PREDICTED: Cannabis sativa pentatricopeptide repeat-containing 
+protein At1g62350-like (LOC133034793), transcript variant 
+X2, mRNA
+Length=1061
+
+ Score = 46.4 bits (50),  Expect = 0.050
+ Identities = 38/45 (84%), Gaps = 5/45 (11%)
+ Strand=Plus/Minus
+
+Query  42    tttttGCTCATAAATTTCATT----TAGTTTGAACTTTAAATTCA  82
+             ||||||| |||||||||||||    | ||||||||||| ||||||
+Sbjct  1022  TTTTTGC-CATAAATTTCATTCTCATTGTTTGAACTTTGAATTCA  979
+
+
+>LR862130.1 Ananas comosus var. bracteatus genome assembly, chromosome: 2
+Length=12151994
+
+ Score = 46.4 bits (50),  Expect = 0.050
+ Identities = 28/30 (93%), Gaps = 0/30 (0%)
+ Strand=Plus/Minus
+
+Query  56       TTTCATTTAGTTTGAACTTTAAATTCAAAT  85
+                |||| ||||||||||||||| |||||||||
+Sbjct  5078331  TTTCGTTTAGTTTGAACTTTGAATTCAAAT  5078302
+
+
+ Score = 46.4 bits (50),  Expect = 0.050
+ Identities = 28/30 (93%), Gaps = 0/30 (0%)
+ Strand=Plus/Plus
+
+Query  56        TTTCATTTAGTTTGAACTTTAAATTCAAAT  85
+                 |||| ||||||||||||||| |||||||||
+Sbjct  10163277  TTTCGTTTAGTTTGAACTTTGAATTCAAAT  10163306
+
+
+ Score = 39.2 bits (42),  Expect = 7.3
+ Identities = 30/36 (83%), Gaps = 0/36 (0%)
+ Strand=Plus/Plus
+
+Query  52        TAAATTTCATTTAGTTTGAACTTTAAATTCAAATTT  87
+                 ||||||  |||||  || || |||||||||||||||
+Sbjct  10830223  TAAATTAAATTTAAATTTAAATTTAAATTCAAATTT  10830258
+
+
+  Database: Core nucleotide BLAST database
+    Posted date:  Apr 29, 2025  11:24 PM
+  Number of letters in database: 42,500,400,461
+  Number of sequences in database:  14,455,934
+
+Lambda      K        H
+   0.634    0.408    0.912 
+Gapped
+Lambda      K        H
+   0.625    0.410    0.780 
+Matrix: blastn matrix:2 -3
+Gap Penalties: Existence: 5, Extension: 2
+Number of Sequences: 14455934
+Number of Hits to DB: 568063
+Number of extensions: 1113
+Number of successful extensions: 1113
+Number of sequences better than 10: 1
+Number of HSP's better than 10 without gapping: 0
+Number of HSP's gapped: 1113
+Number of HSP's successfully gapped: 1
+Length of query: 140
+Length of database: 42500400461
+Length adjustment: 34
+Effective length of query: 106
+Effective length of database: 42008898705
+Effective search space: 4452943262730
+Effective search space used: 4452943262730
+A: 0
+X1: 22 (20.1 bits)
+X2: 33 (29.8 bits)
+X3: 110 (99.2 bits)
+S1: 28 (26.5 bits)
+S2: 42 (39.2 bits)
+
+

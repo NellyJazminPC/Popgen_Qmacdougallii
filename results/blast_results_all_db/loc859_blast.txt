@@ -1,0 +1,77 @@
+<p><!--
+QBlastInfoBegin
+	Status=READY
+QBlastInfoEnd
+--><p>
+<PRE>
+
+BLASTN 2.16.1+
+Reference: Stephen F. Altschul, Thomas L. Madden, Alejandro
+A. Schaffer, Jinghui Zhang, Zheng Zhang, Webb Miller, and
+David J. Lipman (1997), "Gapped BLAST and PSI-BLAST: a new
+generation of protein database search programs", Nucleic
+Acids Res. 25:3389-3402.
+
+
+RID: 1E89X8N8013
+
+
+Database: Core nucleotide BLAST database
+           114,657,922 sequences; 859,097,896,182 total letters
+Query= 
+Length=139
+
+
+                                                                   Score     E     Max
+Sequences producing significant alignments:                       (Bits)  Value  Ident
+
+CP025734.1 Bdellovibrio sp. qaytius chromosome, complete genome    44.6    3.3    83%       
+
+ALIGNMENTS
+>CP025734.1 Bdellovibrio sp. qaytius chromosome, complete genome
+Length=3348710
+
+ Score = 44.6 bits (48),  Expect = 3.3
+ Identities = 40/48 (83%), Gaps = 2/48 (4%)
+ Strand=Plus/Plus
+
+Query  20       CCTGGCCCC-ACAAATTTCTGATGTTCATTTCTTGCATA-GCTTGCAA  65
+                ||||||||  | ||||||||||||||  ||| || |||| ||||||||
+Sbjct  2494899  CCTGGCCCAGAGAAATTTCTGATGTTTTTTTATTCCATAGGCTTGCAA  2494946
+
+
+  Database: Core nucleotide BLAST database
+    Posted date:  Apr 29, 2025  11:24 PM
+  Number of letters in database: 859,097,896,182
+  Number of sequences in database:  114,657,922
+
+Lambda      K        H
+   0.634    0.408    0.912 
+Gapped
+Lambda      K        H
+   0.625    0.410    0.780 
+Matrix: blastn matrix:2 -3
+Gap Penalties: Existence: 5, Extension: 2
+Number of Sequences: 114657922
+Number of Hits to DB: 9779743
+Number of extensions: 10320
+Number of successful extensions: 10320
+Number of sequences better than 10: 0
+Number of HSP's better than 10 without gapping: 0
+Number of HSP's gapped: 10320
+Number of HSP's successfully gapped: 0
+Length of query: 139
+Length of database: 859097896182
+Length adjustment: 37
+Effective length of query: 102
+Effective length of database: 854855553068
+Effective search space: 87195266412936
+Effective search space used: 87195266412936
+A: 0
+X1: 22 (20.1 bits)
+X2: 33 (29.8 bits)
+X3: 110 (99.2 bits)
+S1: 28 (26.5 bits)
+S2: 47 (43.7 bits)
+
+

@@ -1,0 +1,133 @@
+<p><!--
+QBlastInfoBegin
+	Status=READY
+QBlastInfoEnd
+--><p>
+<PRE>
+
+BLASTN 2.16.1+
+Reference: Stephen F. Altschul, Thomas L. Madden, Alejandro
+A. Schaffer, Jinghui Zhang, Zheng Zhang, Webb Miller, and
+David J. Lipman (1997), "Gapped BLAST and PSI-BLAST: a new
+generation of protein database search programs", Nucleic
+Acids Res. 25:3389-3402.
+
+
+RID: 1K2JR8XH013
+
+
+Database: Core nucleotide BLAST database
+           114,657,922 sequences; 859,097,896,182 total letters
+Query= 
+Length=139
+
+
+                                                                   Score     E     Max
+Sequences producing significant alignments:                       (Bits)  Value  Ident
+
+LT799005.1 Quercus robur BAC genome sequence, isolate 101C24       68.9    1e-08  90%         
+XM_019306552.1 PREDICTED: Ipomoea nil pentatricopeptide repeat...  43.7    0.57   83%         
+XR_011743223.1 PREDICTED: Lolium perenne uncharacterized prote...  41.9    2.0    96%         
+XM_071819003.1 PREDICTED: Lolium perenne uncharacterized prote...  41.9    2.0    96%         
+XM_051325103.2 PREDICTED: Lolium perenne uncharacterized prote...  41.9    2.0    96%         
+
+ALIGNMENTS
+>LT799005.1 Quercus robur BAC genome sequence, isolate 101C24
+Length=145168
+
+ Score = 68.9 bits (75),  Expect = 1e-08
+ Identities = 45/50 (90%), Gaps = 0/50 (0%)
+ Strand=Plus/Plus
+
+Query  20      TGGGCCCAACTGTTCATCGAATCAAGCCCATCCCAACCAGGACAATCAAA  69
+               ||||||||||| |||||| ||||||||||| || || |||||||||||||
+Sbjct  114414  TGGGCCCAACTATTCATCTAATCAAGCCCAACCTAATCAGGACAATCAAA  114463
+
+
+>XM_019306552.1 PREDICTED: Ipomoea nil pentatricopeptide repeat-containing protein 
+At3g62890-like (LOC109158657), mRNA
+Length=3489
+
+ Score = 43.7 bits (47),  Expect = 0.57
+ Identities = 34/41 (83%), Gaps = 0/41 (0%)
+ Strand=Plus/Minus
+
+Query  74    AAGGAAGATCAAAGAACCGAGGAGGGAAATCCACCCAAGGA  114
+             || |||||||||||| |||| || || || ||||||| |||
+Sbjct  2936  AATGAAGATCAAAGAGCCGATGAAGGCAAGCCACCCATGGA  2896
+
+
+>XR_011743223.1 PREDICTED: Lolium perenne uncharacterized protein (LOC127295200), 
+transcript variant X4, misc_RNA
+Length=1292
+
+ Score = 41.9 bits (45),  Expect = 2.0
+ Identities = 24/25 (96%), Gaps = 0/25 (0%)
+ Strand=Plus/Plus
+
+Query  94   GGAGGGAAATCCACCCAAGGAGGCC  118
+            ||||||||| |||||||||||||||
+Sbjct  216  GGAGGGAAACCCACCCAAGGAGGCC  240
+
+
+>XM_071819003.1 PREDICTED: Lolium perenne uncharacterized protein (LOC127295200), 
+transcript variant X5, mRNA
+Length=1110
+
+ Score = 41.9 bits (45),  Expect = 2.0
+ Identities = 24/25 (96%), Gaps = 0/25 (0%)
+ Strand=Plus/Plus
+
+Query  94   GGAGGGAAATCCACCCAAGGAGGCC  118
+            ||||||||| |||||||||||||||
+Sbjct  215  GGAGGGAAACCCACCCAAGGAGGCC  239
+
+
+>XM_051325103.2 PREDICTED: Lolium perenne uncharacterized protein (LOC127295200), 
+transcript variant X6, mRNA
+Length=1109
+
+ Score = 41.9 bits (45),  Expect = 2.0
+ Identities = 24/25 (96%), Gaps = 0/25 (0%)
+ Strand=Plus/Plus
+
+Query  94   GGAGGGAAATCCACCCAAGGAGGCC  118
+            ||||||||| |||||||||||||||
+Sbjct  180  GGAGGGAAACCCACCCAAGGAGGCC  204
+
+
+  Database: Core nucleotide BLAST database
+    Posted date:  Apr 29, 2025  11:24 PM
+  Number of letters in database: 40,642,655,839
+  Number of sequences in database:  13,690,491
+
+Lambda      K        H
+   0.634    0.408    0.912 
+Gapped
+Lambda      K        H
+   0.625    0.410    0.780 
+Matrix: blastn matrix:2 -3
+Gap Penalties: Existence: 5, Extension: 2
+Number of Sequences: 13690491
+Number of Hits to DB: 417383
+Number of extensions: 674
+Number of successful extensions: 674
+Number of sequences better than 10: 0
+Number of HSP's better than 10 without gapping: 0
+Number of HSP's gapped: 674
+Number of HSP's successfully gapped: 0
+Length of query: 139
+Length of database: 40642655839
+Length adjustment: 34
+Effective length of query: 105
+Effective length of database: 40177179145
+Effective search space: 4218603810225
+Effective search space used: 4218603810225
+A: 0
+X1: 22 (20.1 bits)
+X2: 33 (29.8 bits)
+X3: 110 (99.2 bits)
+S1: 28 (26.5 bits)
+S2: 42 (39.2 bits)
+
+

@@ -1,0 +1,95 @@
+<p><!--
+QBlastInfoBegin
+	Status=READY
+QBlastInfoEnd
+--><p>
+<PRE>
+
+BLASTN 2.16.1+
+Reference: Stephen F. Altschul, Thomas L. Madden, Alejandro
+A. Schaffer, Jinghui Zhang, Zheng Zhang, Webb Miller, and
+David J. Lipman (1997), "Gapped BLAST and PSI-BLAST: a new
+generation of protein database search programs", Nucleic
+Acids Res. 25:3389-3402.
+
+
+RID: 1E5MUPNS013
+
+
+Database: Core nucleotide BLAST database
+           114,657,922 sequences; 859,097,896,182 total letters
+Query= 
+Length=139
+
+
+                                                                   Score     E     Max
+Sequences producing significant alignments:                       (Bits)  Value  Ident
+
+XR_004090694.1 PREDICTED: Quercus lobata uncharacterized LOC11...  59.9    2e-04  79%       
+CP046621.1 Pseudomonas alkylphenolica strain Neo chromosome, c...  44.6    3.3    100%      
+
+ALIGNMENTS
+>XR_004090694.1 PREDICTED: Quercus lobata uncharacterized LOC115986333 (LOC115986333), 
+ncRNA
+Length=524
+
+ Score = 59.9 bits (65),  Expect = 2e-04
+ Identities = 55/70 (79%), Gaps = 0/70 (0%)
+ Strand=Plus/Minus
+
+Query  36   AACTAGCAACGCACTCGCTCTGCCAAGTATAGCACCCTCAAACCTGCACCCTCTAAAGGC  95
+            |||| ||  || || | |||||||||||||||| |||||| ||| || || || ||||| 
+Sbjct  500  AACTGGCGCCGTACCCTCTCTGCCAAGTATAGCGCCCTCACACCCGCTCCTTCAAAAGGT  441
+
+Query  96   TGGGTGATCT  105
+            || || ||||
+Sbjct  440  TGAGTAATCT  431
+
+
+>CP046621.1 Pseudomonas alkylphenolica strain Neo chromosome, complete genome
+Length=5612010
+
+ Score = 44.6 bits (48),  Expect = 3.3
+ Identities = 24/24 (100%), Gaps = 0/24 (0%)
+ Strand=Plus/Minus
+
+Query  109      AGACAACAACAATAGATGCCTTCA  132
+                ||||||||||||||||||||||||
+Sbjct  3412236  AGACAACAACAATAGATGCCTTCA  3412213
+
+
+  Database: Core nucleotide BLAST database
+    Posted date:  Apr 29, 2025  11:24 PM
+  Number of letters in database: 859,097,896,182
+  Number of sequences in database:  114,657,922
+
+Lambda      K        H
+   0.634    0.408    0.912 
+Gapped
+Lambda      K        H
+   0.625    0.410    0.780 
+Matrix: blastn matrix:2 -3
+Gap Penalties: Existence: 5, Extension: 2
+Number of Sequences: 114657922
+Number of Hits to DB: 7708606
+Number of extensions: 72891
+Number of successful extensions: 72891
+Number of sequences better than 10: 0
+Number of HSP's better than 10 without gapping: 0
+Number of HSP's gapped: 72891
+Number of HSP's successfully gapped: 0
+Length of query: 139
+Length of database: 859097896182
+Length adjustment: 37
+Effective length of query: 102
+Effective length of database: 854855553068
+Effective search space: 87195266412936
+Effective search space used: 87195266412936
+A: 0
+X1: 22 (20.1 bits)
+X2: 33 (29.8 bits)
+X3: 110 (99.2 bits)
+S1: 28 (26.5 bits)
+S2: 47 (43.7 bits)
+
+

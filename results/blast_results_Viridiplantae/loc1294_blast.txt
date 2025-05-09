@@ -1,0 +1,146 @@
+<p><!--
+QBlastInfoBegin
+	Status=READY
+QBlastInfoEnd
+--><p>
+<PRE>
+
+BLASTN 2.16.1+
+Reference: Stephen F. Altschul, Thomas L. Madden, Alejandro
+A. Schaffer, Jinghui Zhang, Zheng Zhang, Webb Miller, and
+David J. Lipman (1997), "Gapped BLAST and PSI-BLAST: a new
+generation of protein database search programs", Nucleic
+Acids Res. 25:3389-3402.
+
+
+RID: 1MH60W44016
+
+
+Database: Core nucleotide BLAST database
+           114,657,922 sequences; 859,097,896,182 total letters
+Query= 
+Length=138
+
+
+                                                                   Score     E     Max
+Sequences producing significant alignments:                       (Bits)  Value  Ident
+
+XM_050399278.1 PREDICTED: Quercus robur uncharacterized LOC126...  173     5e-40  88%         
+XM_031070373.1 PREDICTED: Quercus lobata uncharacterized LOC11...  50.0    0.004  76%         
+XM_004499308.4 PREDICTED: Cicer arietinum mitotic spindle chec...  42.8    0.59   88%         
+XM_059577951.1 PREDICTED: Corylus avellana uncharacterized LOC...  42.8    0.59   84%         
+XM_004499307.4 PREDICTED: Cicer arietinum mitotic spindle chec...  42.8    0.59   88%         
+
+ALIGNMENTS
+>XM_050399278.1 PREDICTED: Quercus robur uncharacterized LOC126701152 (LOC126701152), 
+mRNA
+Length=780
+
+ Score = 173 bits (191),  Expect = 5e-40
+ Identities = 121/138 (88%), Gaps = 0/138 (0%)
+ Strand=Plus/Minus
+
+Query  1    ATCCAAATCAACATCCACAGCGCACAGAATTCCATTTAAAATGCTATCAAATCCAGATGG  60
+            ||||| |||||||| ||||| | || | |||||||||||||| ||||| |||||||| ||
+Sbjct  738  ATCCACATCAACATTCACAGGGTACGGGATTCCATTTAAAATTCTATCCAATCCAGACGG  679
+
+Query  61   GTTTGAGGTGGAAAAGATATTCTTAAAATACCTCTCTACCACTCCACCCATTTCGGTTTC  120
+            ||||||||||||||||||||||||||| |||| ||||||||| |||||||  |||| |||
+Sbjct  678  GTTTGAGGTGGAAAAGATATTCTTAAAGTACCCCTCTACCACACCACCCAAATCGGCTTC  619
+
+Query  121  ATCCTTAACCCACACCCC  138
+            |||||  |||||||||||
+Sbjct  618  ATCCTCTACCCACACCCC  601
+
+
+>XM_031070373.1 PREDICTED: Quercus lobata uncharacterized LOC115952977 (LOC115952977), 
+mRNA
+Length=2337
+
+ Score = 50.0 bits (54),  Expect = 0.004
+ Identities = 51/67 (76%), Gaps = 0/67 (0%)
+ Strand=Plus/Minus
+
+Query  46   ATCAAATCCAGATGGGTTTGAGGTGGAAAAGATATTCTTAAAATACCTCTCTACCACTCC  105
+            |||||| || ||||||||||| || |  ||||||||   |||||||  | | |||| | |
+Sbjct  135  ATCAAAACCCGATGGGTTTGAAGTAGTGAAGATATTGGCAAAATACTCCACAACCATTTC  76
+
+Query  106  ACCCATT  112
+             ||||||
+Sbjct  75   CCCCATT  69
+
+
+>XM_004499308.4 PREDICTED: Cicer arietinum mitotic spindle checkpoint protein 
+MAD1 (LOC101495887), transcript variant X2, mRNA
+Length=2476
+
+ Score = 42.8 bits (46),  Expect = 0.59
+ Identities = 29/33 (88%), Gaps = 0/33 (0%)
+ Strand=Plus/Plus
+
+Query  19    AGCGCACAGAATTCCATTTAAAATGCTATCAAA  51
+             |||| |||||||||||| ||||  |||||||||
+Sbjct  2246  AGCGTACAGAATTCCATGTAAATCGCTATCAAA  2278
+
+
+>XM_059577951.1 PREDICTED: Corylus avellana uncharacterized LOC132167054 (LOC132167054), 
+mRNA
+Length=1980
+
+ Score = 42.8 bits (46),  Expect = 0.59
+ Identities = 32/38 (84%), Gaps = 0/38 (0%)
+ Strand=Plus/Minus
+
+Query  53    CCAGATGGGTTTGAGGTGGAAAAGATATTCTTAAAATA  90
+             ||| | ||||| || || ||||||||||||| ||||||
+Sbjct  1238  CCATACGGGTTAGATGTAGAAAAGATATTCTGAAAATA  1201
+
+
+>XM_004499307.4 PREDICTED: Cicer arietinum mitotic spindle checkpoint protein 
+MAD1 (LOC101495887), transcript variant X1, mRNA
+Length=2672
+
+ Score = 42.8 bits (46),  Expect = 0.59
+ Identities = 29/33 (88%), Gaps = 0/33 (0%)
+ Strand=Plus/Plus
+
+Query  19    AGCGCACAGAATTCCATTTAAAATGCTATCAAA  51
+             |||| |||||||||||| ||||  |||||||||
+Sbjct  2442  AGCGTACAGAATTCCATGTAAATCGCTATCAAA  2474
+
+
+  Database: Core nucleotide BLAST database
+    Posted date:  Apr 29, 2025  11:24 PM
+  Number of letters in database: 42,500,400,461
+  Number of sequences in database:  14,455,934
+
+Lambda      K        H
+   0.634    0.408    0.912 
+Gapped
+Lambda      K        H
+   0.625    0.410    0.780 
+Matrix: blastn matrix:2 -3
+Gap Penalties: Existence: 5, Extension: 2
+Number of Sequences: 14455934
+Number of Hits to DB: 584226
+Number of extensions: 1151
+Number of successful extensions: 1151
+Number of sequences better than 10: 2
+Number of HSP's better than 10 without gapping: 0
+Number of HSP's gapped: 1151
+Number of HSP's successfully gapped: 2
+Length of query: 138
+Length of database: 42500400461
+Length adjustment: 34
+Effective length of query: 104
+Effective length of database: 42008898705
+Effective search space: 4368925465320
+Effective search space used: 4368925465320
+A: 0
+X1: 22 (20.1 bits)
+X2: 33 (29.8 bits)
+X3: 110 (99.2 bits)
+S1: 28 (26.5 bits)
+S2: 42 (39.2 bits)
+
+

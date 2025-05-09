@@ -1,0 +1,143 @@
+<p><!--
+QBlastInfoBegin
+	Status=READY
+QBlastInfoEnd
+--><p>
+<PRE>
+
+BLASTN 2.16.1+
+Reference: Stephen F. Altschul, Thomas L. Madden, Alejandro
+A. Schaffer, Jinghui Zhang, Zheng Zhang, Webb Miller, and
+David J. Lipman (1997), "Gapped BLAST and PSI-BLAST: a new
+generation of protein database search programs", Nucleic
+Acids Res. 25:3389-3402.
+
+
+RID: 1EAEHX7T013
+
+
+Database: Core nucleotide BLAST database
+           114,657,922 sequences; 859,097,896,182 total letters
+Query= 
+Length=124
+
+
+                                                                   Score     E     Max
+Sequences producing significant alignments:                       (Bits)  Value  Ident
+
+OY979787.1 Helicoverpa assulta genome assembly, chromosome: 13     51.8    0.019  81%       
+OZ243250.1 Episema tersa genome assembly, chromosome: 19           50.9    0.067  85%       
+OZ243239.1 Episema tersa genome assembly, chromosome: 8            50.9    0.067  85%       
+AP039597.1 Bradybaena similaris mixture of YIPCMo001421 and YI...  50.9    0.067  88%       
+OZ239308.1 Saragossa porosa genome assembly, chromosome: 13        50.9    0.067  85%       
+
+ALIGNMENTS
+>OY979787.1 Helicoverpa assulta genome assembly, chromosome: 13
+Length=13699072
+
+ Score = 51.8 bits (56),  Expect = 0.019
+ Identities = 50/62 (81%), Gaps = 7/62 (11%)
+ Strand=Plus/Plus
+
+Query  57        CTAACATCATGGTTAAGCTTAA-AGTTTGTTTGTTTATTCCATGTTTCTTTGTTAGTTTG  115
+                 |||| |||||    ||||| || ||||||||||||| ||   |||||||||||| |||||
+Sbjct  10770139  CTAATATCATA---AAGCTAAAGAGTTTGTTTGTTTGTT---TGTTTCTTTGTTTGTTTG  10770192
+
+Query  116       AA  117
+                 ||
+Sbjct  10770193  AA  10770194
+
+
+ Score = 42.8 bits (46),  Expect = 10.0
+ Identities = 38/46 (83%), Gaps = 4/46 (9%)
+ Strand=Plus/Plus
+
+Query  71       AAGCT-TAAAGTTTGTTTGTTTATTCCATGTTTCTTTGTTAGTTTG  115
+                ||||| || ||||||||||||| ||   ||||| |||||| |||||
+Sbjct  9764379  AAGCTGTAGAGTTTGTTTGTTTGTT---TGTTTGTTTGTTTGTTTG  9764421
+
+
+>OZ243250.1 Episema tersa genome assembly, chromosome: 19
+Length=19894458
+
+ Score = 50.9 bits (55),  Expect = 0.067
+ Identities = 41/48 (85%), Gaps = 4/48 (8%)
+ Strand=Plus/Minus
+
+Query  71        AAGCTTAA-AGTTTGTTTGTTTATTCCATGTTTCTTTGTTAGTTTGAA  117
+                 ||||| || ||||||||||||| ||   ||||| ||||||||||||||
+Sbjct  15142519  AAGCTGAAGAGTTTGTTTGTTTGTT---TGTTTGTTTGTTAGTTTGAA  15142475
+
+
+>OZ243239.1 Episema tersa genome assembly, chromosome: 8
+Length=23650245
+
+ Score = 50.9 bits (55),  Expect = 0.067
+ Identities = 41/48 (85%), Gaps = 4/48 (8%)
+ Strand=Plus/Minus
+
+Query  71        AAGCTTAA-AGTTTGTTTGTTTATTCCATGTTTCTTTGTTAGTTTGAA  117
+                 ||||| || ||||||||||||||||   ||||| |||||| |||||||
+Sbjct  19266346  AAGCTGAAGAGTTTGTTTGTTTATT---TGTTTGTTTGTTTGTTTGAA  19266302
+
+
+>AP039597.1 Bradybaena similaris mixture of YIPCMo001421 and YIPCMo001540 
+DNA, chromosome 16, sequence
+Length=73088726
+
+ Score = 50.9 bits (55),  Expect = 0.067
+ Identities = 37/42 (88%), Gaps = 1/42 (2%)
+ Strand=Plus/Plus
+
+Query  74        CTTAAAGTTTGTTTGTTT-ATTCCATGTTTCTTTGTTAGTTT  114
+                 ||||||||||||||||||  || | |||||||||||| ||||
+Sbjct  64440739  CTTAAAGTTTGTTTGTTTGTTTGCTTGTTTCTTTGTTTGTTT  64440780
+
+
+>OZ239308.1 Saragossa porosa genome assembly, chromosome: 13
+Length=19061875
+
+ Score = 50.9 bits (55),  Expect = 0.067
+ Identities = 41/48 (85%), Gaps = 4/48 (8%)
+ Strand=Plus/Plus
+
+Query  71       AAGCTTAA-AGTTTGTTTGTTTATTCCATGTTTCTTTGTTAGTTTGAA  117
+                ||||| || ||||||||||||||||   ||||| |||||| |||||||
+Sbjct  1413527  AAGCTGAATAGTTTGTTTGTTTATT---TGTTTGTTTGTTTGTTTGAA  1413571
+
+
+  Database: Core nucleotide BLAST database
+    Posted date:  Apr 29, 2025  11:24 PM
+  Number of letters in database: 859,097,896,182
+  Number of sequences in database:  114,657,922
+
+Lambda      K        H
+   0.634    0.408    0.912 
+Gapped
+Lambda      K        H
+   0.625    0.410    0.780 
+Matrix: blastn matrix:2 -3
+Gap Penalties: Existence: 5, Extension: 2
+Number of Sequences: 114657922
+Number of Hits to DB: 10625283
+Number of extensions: 14617
+Number of successful extensions: 14617
+Number of sequences better than 10: 4
+Number of HSP's better than 10 without gapping: 0
+Number of HSP's gapped: 14607
+Number of HSP's successfully gapped: 17
+Length of query: 124
+Length of database: 859097896182
+Length adjustment: 37
+Effective length of query: 87
+Effective length of database: 854855553068
+Effective search space: 74372433116916
+Effective search space used: 74372433116916
+A: 0
+X1: 22 (20.1 bits)
+X2: 33 (29.8 bits)
+X3: 110 (99.2 bits)
+S1: 28 (26.5 bits)
+S2: 46 (42.8 bits)
+
+

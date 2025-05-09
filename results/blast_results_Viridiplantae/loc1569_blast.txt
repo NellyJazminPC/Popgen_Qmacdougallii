@@ -1,0 +1,131 @@
+<p><!--
+QBlastInfoBegin
+	Status=READY
+QBlastInfoEnd
+--><p>
+<PRE>
+
+BLASTN 2.16.1+
+Reference: Stephen F. Altschul, Thomas L. Madden, Alejandro
+A. Schaffer, Jinghui Zhang, Zheng Zhang, Webb Miller, and
+David J. Lipman (1997), "Gapped BLAST and PSI-BLAST: a new
+generation of protein database search programs", Nucleic
+Acids Res. 25:3389-3402.
+
+
+RID: 1MJ7CCR8013
+
+
+Database: Core nucleotide BLAST database
+           114,657,922 sequences; 859,097,896,182 total letters
+Query= 
+Length=104
+
+
+                                                                   Score     E     Max
+Sequences producing significant alignments:                       (Bits)  Value  Ident
+
+AC140026.11 Medicago truncatula clone mth2-36j24, complete seq...  42.8    0.40   100%        
+AC122723.6 Medicago truncatula clone mth2-5i15, complete sequence  42.8    0.40   89%         
+XM_059585439.1 PREDICTED: Corylus avellana uncharacterized LOC...  41.9    1.4    83%         
+XM_059585440.1 PREDICTED: Corylus avellana uncharacterized LOC...  41.9    1.4    83%         
+CP168766.1 Malus domestica cultivar Golden Delicious chromosom...  41.0    1.4    90%         
+
+ALIGNMENTS
+>AC140026.11 Medicago truncatula clone mth2-36j24, complete sequence
+Length=162172
+
+ Score = 42.8 bits (46),  Expect = 0.40
+ Identities = 23/23 (100%), Gaps = 0/23 (0%)
+ Strand=Plus/Plus
+
+Query  33     GTATTTTACAAGTGTTTTTAAGA  55
+              |||||||||||||||||||||||
+Sbjct  40952  GTATTTTACAAGTGTTTTTAAGA  40974
+
+
+>AC122723.6 Medicago truncatula clone mth2-5i15, complete sequence
+Length=105353
+
+ Score = 42.8 bits (46),  Expect = 0.40
+ Identities = 31/35 (89%), Gaps = 1/35 (3%)
+ Strand=Plus/Plus
+
+Query  33     GTATTTTACAAGTGTTTTTAAGACAAACGCACATG  67
+              ||||||| || |||||||||||| ||| |||||||
+Sbjct  54939  GTATTTTCCATGTGTTTTTAAGA-AAAAGCACATG  54972
+
+
+>XM_059585439.1 PREDICTED: Corylus avellana uncharacterized LOC132173823 (LOC132173823), 
+transcript variant X1, mRNA
+Length=4191
+
+ Score = 41.9 bits (45),  Expect = 1.4
+ Identities = 33/40 (83%), Gaps = 0/40 (0%)
+ Strand=Plus/Plus
+
+Query  65    ATGGTGCTAAGTTTCCTGCAACCCTACATTTTGTTAAAAA  104
+             |||| ||||||||| || | |  || ||||||||||||||
+Sbjct  3071  ATGGAGCTAAGTTTTCTACTATGCTTCATTTTGTTAAAAA  3110
+
+
+>XM_059585440.1 PREDICTED: Corylus avellana uncharacterized LOC132173823 (LOC132173823), 
+transcript variant X2, mRNA
+Length=4170
+
+ Score = 41.9 bits (45),  Expect = 1.4
+ Identities = 33/40 (83%), Gaps = 0/40 (0%)
+ Strand=Plus/Plus
+
+Query  65    ATGGTGCTAAGTTTCCTGCAACCCTACATTTTGTTAAAAA  104
+             |||| ||||||||| || | |  || ||||||||||||||
+Sbjct  3050  ATGGAGCTAAGTTTTCTACTATGCTTCATTTTGTTAAAAA  3089
+
+
+>CP168766.1 Malus domestica cultivar Golden Delicious chromosome 02
+Length=38451056
+
+ Score = 41.0 bits (44),  Expect = 1.4
+ Identities = 28/31 (90%), Gaps = 2/31 (6%)
+ Strand=Plus/Minus
+
+Query  23        GCTCCTTCAAGTATT--TTACAAGTGTTTTT  51
+                 ||| |||||||||||  ||||||||||||||
+Sbjct  16355938  GCTTCTTCAAGTATTACTTACAAGTGTTTTT  16355908
+
+
+  Database: Core nucleotide BLAST database
+    Posted date:  Apr 29, 2025  11:24 PM
+  Number of letters in database: 42,500,400,461
+  Number of sequences in database:  14,455,934
+
+Lambda      K        H
+   0.634    0.408    0.912 
+Gapped
+Lambda      K        H
+   0.625    0.410    0.780 
+Matrix: blastn matrix:2 -3
+Gap Penalties: Existence: 5, Extension: 2
+Number of Sequences: 14455934
+Number of Hits to DB: 526337
+Number of extensions: 669
+Number of successful extensions: 669
+Number of sequences better than 10: 0
+Number of HSP's better than 10 without gapping: 0
+Number of HSP's gapped: 669
+Number of HSP's successfully gapped: 0
+Length of query: 104
+Length of database: 42500400461
+Length adjustment: 33
+Effective length of query: 71
+Effective length of database: 42023354639
+Effective search space: 2983658179369
+Effective search space used: 2983658179369
+A: 0
+X1: 22 (20.1 bits)
+X2: 33 (29.8 bits)
+X3: 110 (99.2 bits)
+S1: 28 (26.5 bits)
+S2: 41 (38.3 bits)
+
+

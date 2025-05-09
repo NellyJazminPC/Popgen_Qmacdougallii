@@ -1,0 +1,144 @@
+<p><!--
+QBlastInfoBegin
+	Status=READY
+QBlastInfoEnd
+--><p>
+<PRE>
+
+BLASTN 2.16.1+
+Reference: Stephen F. Altschul, Thomas L. Madden, Alejandro
+A. Schaffer, Jinghui Zhang, Zheng Zhang, Webb Miller, and
+David J. Lipman (1997), "Gapped BLAST and PSI-BLAST: a new
+generation of protein database search programs", Nucleic
+Acids Res. 25:3389-3402.
+
+
+RID: 1MFH05PP013
+
+
+Database: Core nucleotide BLAST database
+           114,657,922 sequences; 859,097,896,182 total letters
+Query= 
+Length=138
+
+
+                                                                   Score     E     Max
+Sequences producing significant alignments:                       (Bits)  Value  Ident
+
+XR_007654581.1 PREDICTED: Quercus robur uncharacterized LOC126...  110     5e-21  81%         
+XR_007654573.1 PREDICTED: Quercus robur uncharacterized LOC126...  110     5e-21  82%         
+XM_024674201.1 PREDICTED: Selaginella moellendorffii U11/U12 s...  44.6    0.17   89%         
+CP158650.1 Cannabis sativa cultivar ERBxHO40_23 chromosome 9       43.7    0.59   82%         
+CP158660.1 Cannabis sativa cultivar ERBxHO40_23 chromosome 9       43.7    0.59   82%         
+
+ALIGNMENTS
+>XR_007654581.1 PREDICTED: Quercus robur uncharacterized LOC126724050 (LOC126724050), 
+ncRNA
+Length=1499
+
+ Score = 110 bits (121),  Expect = 5e-21
+ Identities = 100/124 (81%), Gaps = 3/124 (2%)
+ Strand=Plus/Plus
+
+Query  1     GATCCCTTGTATGCTTGTTTGATATCCTCTGGGAATAGATGCCTTGGCATACTTAAGTTA  60
+             |||| |||||||||||||||||| |||  ||||||||| |||||||| ||| | ||||||
+Sbjct  880   GATCACTTGTATGCTTGTTTGATGTCCCTTGGGAATAGGTGCCTTGGGATAGTCAAGTTA  939
+
+Query  61    GGCTTTAGGGCCCCAATTTGATCTTAGAGATC--TTTCCAATTTATGGAGACAA-TGTGA  117
+             || |||||| |  | ||||||| |||| |  |  ||| | |||||||||||||| | |||
+Sbjct  940   GGTTTTAGGCCATCGATTTGATTTTAGGGGACCATTTTCGATTTATGGAGACAAGTTTGA  999
+
+Query  118   TGGT  121
+              |||
+Sbjct  1000  AGGT  1003
+
+
+>XR_007654573.1 PREDICTED: Quercus robur uncharacterized LOC126724031 (LOC126724031), 
+ncRNA
+Length=761
+
+ Score = 110 bits (121),  Expect = 5e-21
+ Identities = 94/114 (82%), Gaps = 3/114 (3%)
+ Strand=Plus/Plus
+
+Query  1    GATCCCTTGTATGCTTGTTTGATATCCTCTGGGAATAGATGCCTTGGCATACTTAAGTTA  60
+            |||| ||||||||||||| |||| |||  ||||||||| |||||||| ||| | ||||||
+Sbjct  193  GATCACTTGTATGCTTGTCTGATGTCCCTTGGGAATAGGTGCCTTGGGATAGTCAAGTTA  252
+
+Query  61   GGCTTTAGGGCCCCAATTTGATCTTAGAGATC--TTTCCAATTTATGGAGACAA  112
+            ||| ||||| || | ||||||| |||| |  |  ||| ||||||||||||||||
+Sbjct  253  GGC-TTAGGCCCTCGATTTGATTTTAGGGGACCATTTTCAATTTATGGAGACAA  305
+
+
+>XM_024674201.1 PREDICTED: Selaginella moellendorffii U11/U12 small nuclear ribonucleoprotein 
+59 kDa protein (LOC9659746), mRNA
+Length=1395
+
+ Score = 44.6 bits (48),  Expect = 0.17
+ Identities = 32/36 (89%), Gaps = 1/36 (3%)
+ Strand=Plus/Minus
+
+Query  24   ATCCTCTGGGAATAGATGCCTTGGCATACTTAAGTT  59
+            |||||||||||||||||| | |||| | ||||||||
+Sbjct  336  ATCCTCTGGGAATAGATGGCCTGGCGT-CTTAAGTT  302
+
+
+>CP158650.1 Cannabis sativa cultivar ERBxHO40_23 chromosome 9
+Length=65951000
+
+ Score = 43.7 bits (47),  Expect = 0.59
+ Identities = 41/50 (82%), Gaps = 2/50 (4%)
+ Strand=Plus/Plus
+
+Query  55       AAGTTAGGCTTTAGGGCC-CCAATTTGATCTTAGAGATCTTTCCAATTTA  103
+                ||||  |||||||||||| || |||| || |||||||| | || ||||||
+Sbjct  9795791  AAGTGGGGCTTTAGGGCCTCCCATTTTAT-TTAGAGATTTATCTAATTTA  9795839
+
+
+>CP158660.1 Cannabis sativa cultivar ERBxHO40_23 chromosome 9
+Length=66061500
+
+ Score = 43.7 bits (47),  Expect = 0.59
+ Identities = 41/50 (82%), Gaps = 2/50 (4%)
+ Strand=Plus/Plus
+
+Query  55        AAGTTAGGCTTTAGGGCC-CCAATTTGATCTTAGAGATCTTTCCAATTTA  103
+                 ||||  |||||||||||| || |||| || |||||||| | || ||||||
+Sbjct  10256529  AAGTGGGGCTTTAGGGCCTCCCATTTTAT-TTAGAGATTTATCTAATTTA  10256577
+
+
+  Database: Core nucleotide BLAST database
+    Posted date:  Apr 29, 2025  11:24 PM
+  Number of letters in database: 42,500,400,461
+  Number of sequences in database:  14,455,934
+
+Lambda      K        H
+   0.634    0.408    0.912 
+Gapped
+Lambda      K        H
+   0.625    0.410    0.780 
+Matrix: blastn matrix:2 -3
+Gap Penalties: Existence: 5, Extension: 2
+Number of Sequences: 14455934
+Number of Hits to DB: 547614
+Number of extensions: 796
+Number of successful extensions: 796
+Number of sequences better than 10: 0
+Number of HSP's better than 10 without gapping: 0
+Number of HSP's gapped: 796
+Number of HSP's successfully gapped: 0
+Length of query: 138
+Length of database: 42500400461
+Length adjustment: 34
+Effective length of query: 104
+Effective length of database: 42008898705
+Effective search space: 4368925465320
+Effective search space used: 4368925465320
+A: 0
+X1: 22 (20.1 bits)
+X2: 33 (29.8 bits)
+X3: 110 (99.2 bits)
+S1: 28 (26.5 bits)
+S2: 42 (39.2 bits)
+
+

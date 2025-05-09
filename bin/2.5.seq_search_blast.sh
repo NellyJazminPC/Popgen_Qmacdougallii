@@ -13,6 +13,9 @@ DB="nt"
 # Número máximo de hits por secuencia
 MAX_HITS=5
 
+# Filtro para restringir la búsqueda a Magnoliopsida
+ENTREZ_QUERY="Viridiplantae[ORGANISM]"
+
 # Arreglo para registrar las secuencias que fallaron
 FAILED_SEQUENCES=()
 
@@ -36,6 +39,7 @@ while read -r line; do
       -d "DATABASE=$DB" \
       -d "QUERY=$line" \
       -d "HITLIST_SIZE=$MAX_HITS" \
+      -d "ENTREZ_QUERY=$ENTREZ_QUERY" \
       | grep "RID =" | sed 's/.*RID = \(.*\)/\1/')
 
     if [[ -z "$RID" ]]; then
@@ -49,7 +53,7 @@ while read -r line; do
     # Paso 2: Esperar y recuperar los resultados
     STATUS="WAITING"
     while [[ "$STATUS" == "WAITING" ]]; do
-      sleep 60  # Esperar 30 segundos antes de verificar el estado
+      sleep 60  # Esperar 60 segundos antes de verificar el estado
       STATUS=$(curl -s "https://blast.ncbi.nlm.nih.gov/Blast.cgi?CMD=Get&RID=$RID&FORMAT_OBJECT=SearchInfo" \
         | grep "Status=" | sed 's/.*Status=\(.*\)/\1/')
     done
@@ -66,17 +70,23 @@ while read -r line; do
   fi
 done < "$FASTA_FILE"
 
+# Archivo para guardar el resumen
+SUMMARY_FILE="../results/blast_summary.txt"
+
+# Limpiar el archivo de resumen si ya existe
+> "$SUMMARY_FILE"
+
 # Imprimir resumen de secuencias que fallaron
 if [[ ${#FAILED_SEQUENCES[@]} -gt 0 ]]; then
-  echo "Resumen de errores:"
-  echo "Las siguientes secuencias fallaron:"
+  echo "Resumen de errores:" | tee -a "$SUMMARY_FILE"
+  echo "Las siguientes secuencias fallaron:" | tee -a "$SUMMARY_FILE"
   for SEQ in "${FAILED_SEQUENCES[@]}"; do
-    echo "- $SEQ"
+    echo "- $SEQ" | tee -a "$SUMMARY_FILE"
   done
-  echo "Número total de secuencias que fallaron: ${#FAILED_SEQUENCES[@]} del total de secuencias: $TOTAL_SEQUENCES"
+  echo "Número total de secuencias que fallaron: ${#FAILED_SEQUENCES[@]} del total de secuencias: $TOTAL_SEQUENCES" | tee -a "$SUMMARY_FILE"
 else
-  echo "Todas las búsquedas BLAST se completaron exitosamente."
-  echo "Número total de secuencias procesadas: $TOTAL_SEQUENCES"
+  echo "Todas las búsquedas BLAST se completaron exitosamente." | tee -a "$SUMMARY_FILE"
+  echo "Número total de secuencias procesadas: $TOTAL_SEQUENCES" | tee -a "$SUMMARY_FILE"
 fi
 
-echo "Las búsquedas BLAST se han completado. Los resultados están en la carpeta '$OUTPUT_DIR'."
+echo "Las búsquedas BLAST se han completado. Los resultados están en la carpeta '$OUTPUT_DIR'." | tee -a "$SUMMARY_FILE"

@@ -1,0 +1,140 @@
+<p><!--
+QBlastInfoBegin
+	Status=READY
+QBlastInfoEnd
+--><p>
+<PRE>
+
+BLASTN 2.16.1+
+Reference: Stephen F. Altschul, Thomas L. Madden, Alejandro
+A. Schaffer, Jinghui Zhang, Zheng Zhang, Webb Miller, and
+David J. Lipman (1997), "Gapped BLAST and PSI-BLAST: a new
+generation of protein database search programs", Nucleic
+Acids Res. 25:3389-3402.
+
+
+RID: 1K2GSF56013
+
+
+Database: Core nucleotide BLAST database
+           114,657,922 sequences; 859,097,896,182 total letters
+Query= 
+Length=139
+
+
+                                                                   Score     E     Max
+Sequences producing significant alignments:                       (Bits)  Value  Ident
+
+CP168771.1 Malus domestica cultivar Golden Delicious chromosom...  51.8    0.001  89%       
+XR_002556383.2 PREDICTED: Helianthus annuus uncharacterized LO...  47.3    0.047  83%       
+LR862152.1 Ananas comosus var. bracteatus genome assembly, chr...  47.3    0.047  88%       
+XR_002556382.2 PREDICTED: Helianthus annuus uncharacterized LO...  47.3    0.047  83%       
+XM_035046538.2 PREDICTED: Populus alba aureusidin synthase (LO...  46.4    0.047  89%       
+
+ALIGNMENTS
+>CP168771.1 Malus domestica cultivar Golden Delicious chromosome 07
+Length=36267156
+
+ Score = 51.8 bits (56),  Expect = 0.001
+ Identities = 34/38 (89%), Gaps = 0/38 (0%)
+ Strand=Plus/Minus
+
+Query  58       TTAGttttttatttttattttttGGGTTAAAGGTTAGA  95
+                |||| |||||||||||||||| | ||||||||||| ||
+Sbjct  5110043  TTAGCTTTTTATTTTTATTTTCTAGGTTAAAGGTTTGA  5110006
+
+
+>XR_002556383.2 PREDICTED: Helianthus annuus uncharacterized LOC110874958 (LOC110874958), 
+transcript variant X2, ncRNA
+Length=1264
+
+ Score = 47.3 bits (51),  Expect = 0.047
+ Identities = 39/47 (83%), Gaps = 2/47 (4%)
+ Strand=Plus/Plus
+
+Query  62   ttttttatttttattttttGGGTTA--AAGGTTAGAGTAGTAGGGGA  106
+            |||||| ||||| |||||||||| |  |||||||||| ||  |||||
+Sbjct  14   TTTTTTTTTTTTTTTTTTTGGGTGAGAAAGGTTAGAGAAGATGGGGA  60
+
+
+>LR862152.1 Ananas comosus var. bracteatus genome assembly, chromosome: 24
+Length=21245074
+
+ Score = 47.3 bits (51),  Expect = 0.047
+ Identities = 35/40 (88%), Gaps = 1/40 (3%)
+ Strand=Plus/Minus
+
+Query  68        atttttattttttGGGTTAAAGGTTA-GAGTAGTAGGGGA  106
+                 |||||| |||||||||| ||| |||| | |||||||||||
+Sbjct  17582474  ATTTTTTTTTTTTGGGTGAAAAGTTATGTGTAGTAGGGGA  17582435
+
+
+ Score = 45.5 bits (49),  Expect = 0.16
+ Identities = 37/44 (84%), Gaps = 1/44 (2%)
+ Strand=Plus/Plus
+
+Query  64        ttttatttttattttttGGGTTAAAGGTTA-GAGTAGTAGGGGA  106
+                 |||| ||||| |||||||| | ||| |||| | |||||||||||
+Sbjct  16371845  TTTTTTTTTTTTTTTTTGGATGAAAAGTTATGTGTAGTAGGGGA  16371888
+
+
+>XR_002556382.2 PREDICTED: Helianthus annuus uncharacterized LOC110874958 (LOC110874958), 
+transcript variant X1, ncRNA
+Length=1261
+
+ Score = 47.3 bits (51),  Expect = 0.047
+ Identities = 39/47 (83%), Gaps = 2/47 (4%)
+ Strand=Plus/Plus
+
+Query  62   ttttttatttttattttttGGGTTA--AAGGTTAGAGTAGTAGGGGA  106
+            |||||| ||||| |||||||||| |  |||||||||| ||  |||||
+Sbjct  14   TTTTTTTTTTTTTTTTTTTGGGTGAGAAAGGTTAGAGAAGATGGGGA  60
+
+
+>XM_035046538.2 PREDICTED: Populus alba aureusidin synthase (LOC118039743), mRNA
+Length=2256
+
+ Score = 46.4 bits (50),  Expect = 0.047
+ Identities = 31/35 (89%), Gaps = 0/35 (0%)
+ Strand=Plus/Plus
+
+Query  62   ttttttatttttattttttGGGTTAAAGGTTAGAG  96
+            |||||| ||||| |||||||  |||||||||||||
+Sbjct  164  TTTTTTTTTTTTTTTTTTTGTTTTAAAGGTTAGAG  198
+
+
+  Database: Core nucleotide BLAST database
+    Posted date:  Apr 29, 2025  11:24 PM
+  Number of letters in database: 40,642,655,839
+  Number of sequences in database:  13,690,491
+
+Lambda      K        H
+   0.634    0.408    0.912 
+Gapped
+Lambda      K        H
+   0.625    0.410    0.780 
+Matrix: blastn matrix:2 -3
+Gap Penalties: Existence: 5, Extension: 2
+Number of Sequences: 13690491
+Number of Hits to DB: 347068
+Number of extensions: 415
+Number of successful extensions: 415
+Number of sequences better than 10: 1
+Number of HSP's better than 10 without gapping: 0
+Number of HSP's gapped: 415
+Number of HSP's successfully gapped: 1
+Length of query: 139
+Length of database: 40642655839
+Length adjustment: 34
+Effective length of query: 105
+Effective length of database: 40177179145
+Effective search space: 4218603810225
+Effective search space used: 4218603810225
+A: 0
+X1: 22 (20.1 bits)
+X2: 33 (29.8 bits)
+X3: 110 (99.2 bits)
+S1: 28 (26.5 bits)
+S2: 42 (39.2 bits)
+
+

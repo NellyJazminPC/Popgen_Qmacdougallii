@@ -1,0 +1,130 @@
+<p><!--
+QBlastInfoBegin
+	Status=READY
+QBlastInfoEnd
+--><p>
+<PRE>
+
+BLASTN 2.16.1+
+Reference: Stephen F. Altschul, Thomas L. Madden, Alejandro
+A. Schaffer, Jinghui Zhang, Zheng Zhang, Webb Miller, and
+David J. Lipman (1997), "Gapped BLAST and PSI-BLAST: a new
+generation of protein database search programs", Nucleic
+Acids Res. 25:3389-3402.
+
+
+RID: 1E6GBER0013
+
+
+Database: Core nucleotide BLAST database
+           114,657,922 sequences; 859,097,896,182 total letters
+Query= 
+Length=140
+
+
+                                                                   Score     E     Max
+Sequences producing significant alignments:                       (Bits)  Value  Ident
+
+AP002855.2 Oryza sativa Japonica Group genomic DNA, chromosome...  46.4    0.97   86%       
+CP099966.1 Chryseobacterium sp. CJ51 chromosome, complete genome   45.5    3.4    91%       
+AP027385.1 Oryza sativa indica subgroup Inn Ma Yebaw DNA, chro...  45.5    3.4    83%       
+BX664749.12 Zebrafish DNA sequence from clone DKEY-53M7 in lin...  44.6    3.4    93%       
+OZ239390.1 Calymma communimacula genome assembly, chromosome: Z    44.6    3.4    93%       
+
+ALIGNMENTS
+>AP002855.2 Oryza sativa Japonica Group genomic DNA, chromosome 1, BAC clone:OSJNBa0086P08
+Length=145312
+
+ Score = 46.4 bits (50),  Expect = 0.97
+ Identities = 36/42 (86%), Gaps = 1/42 (2%)
+ Strand=Plus/Minus
+
+Query  10     TGTCTTCTCTCCAGTTTACATTGCTTGATTTCATTCGTTAAT  51
+              ||||||||||||| ||||||||| ||||||  | |||| |||
+Sbjct  73101  TGTCTTCTCTCCATTTTACATTG-TTGATTGAAATCGTAAAT  73061
+
+
+>CP099966.1 Chryseobacterium sp. CJ51 chromosome, complete genome
+Length=5050391
+
+ Score = 45.5 bits (49),  Expect = 3.4
+ Identities = 29/32 (91%), Gaps = 0/32 (0%)
+ Strand=Plus/Minus
+
+Query  83       TTCTATCGTAACTTTACATATTGATGAACATT  114
+                || |||||||| |||||||||||||||| |||
+Sbjct  2592015  TTTTATCGTAAATTTACATATTGATGAAAATT  2591984
+
+
+>AP027385.1 Oryza sativa indica subgroup Inn Ma Yebaw DNA, chromosome: 1
+Length=43886869
+
+ Score = 45.5 bits (49),  Expect = 3.4
+ Identities = 35/42 (83%), Gaps = 0/42 (0%)
+ Strand=Plus/Minus
+
+Query  10       TGTCTTCTCTCCAGTTTACATTGCTTGATTTCATTCGTTAAT  51
+                ||||||||||||| ||||||||  ||||||  | |||| |||
+Sbjct  7711935  TGTCTTCTCTCCATTTTACATTTGTTGATTGAAATCGTAAAT  7711894
+
+
+>BX664749.12 Zebrafish DNA sequence from clone DKEY-53M7 in linkage group 
+5, complete sequence
+Length=181789
+
+ Score = 44.6 bits (48),  Expect = 3.4
+ Identities = 27/29 (93%), Gaps = 0/29 (0%)
+ Strand=Plus/Plus
+
+Query  36     GATTTCATTCGTTAATATATTTGCTCACT  64
+              ||||||||| |||||| ||||||||||||
+Sbjct  50459  GATTTCATTAGTTAATTTATTTGCTCACT  50487
+
+
+>OZ239390.1 Calymma communimacula genome assembly, chromosome: Z
+Length=27402681
+
+ Score = 44.6 bits (48),  Expect = 3.4
+ Identities = 27/29 (93%), Gaps = 0/29 (0%)
+ Strand=Plus/Minus
+
+Query  94        CTTTACATATTGATGAACATTTTTGGAAC  122
+                 ||||||||||| ||||| |||||||||||
+Sbjct  18901658  CTTTACATATTTATGAATATTTTTGGAAC  18901630
+
+
+  Database: Core nucleotide BLAST database
+    Posted date:  Apr 29, 2025  11:24 PM
+  Number of letters in database: 859,097,896,182
+  Number of sequences in database:  114,657,922
+
+Lambda      K        H
+   0.634    0.408    0.912 
+Gapped
+Lambda      K        H
+   0.625    0.410    0.780 
+Matrix: blastn matrix:2 -3
+Gap Penalties: Existence: 5, Extension: 2
+Number of Sequences: 114657922
+Number of Hits to DB: 10722645
+Number of extensions: 12121
+Number of successful extensions: 12121
+Number of sequences better than 10: 0
+Number of HSP's better than 10 without gapping: 0
+Number of HSP's gapped: 12121
+Number of HSP's successfully gapped: 0
+Length of query: 140
+Length of database: 859097896182
+Length adjustment: 37
+Effective length of query: 103
+Effective length of database: 854855553068
+Effective search space: 88050121966004
+Effective search space used: 88050121966004
+A: 0
+X1: 22 (20.1 bits)
+X2: 33 (29.8 bits)
+X3: 110 (99.2 bits)
+S1: 28 (26.5 bits)
+S2: 47 (43.7 bits)
+
+

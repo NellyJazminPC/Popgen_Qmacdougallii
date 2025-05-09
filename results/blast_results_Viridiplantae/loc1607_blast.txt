@@ -1,0 +1,174 @@
+<p><!--
+QBlastInfoBegin
+	Status=READY
+QBlastInfoEnd
+--><p>
+<PRE>
+
+BLASTN 2.16.1+
+Reference: Stephen F. Altschul, Thomas L. Madden, Alejandro
+A. Schaffer, Jinghui Zhang, Zheng Zhang, Webb Miller, and
+David J. Lipman (1997), "Gapped BLAST and PSI-BLAST: a new
+generation of protein database search programs", Nucleic
+Acids Res. 25:3389-3402.
+
+
+RID: 1MKCPHNE013
+
+
+Database: Core nucleotide BLAST database
+           114,657,922 sequences; 859,097,896,182 total letters
+Query= 
+Length=124
+
+
+                                                                   Score     E     Max
+Sequences producing significant alignments:                       (Bits)  Value  Ident
+
+XM_031096852.1 PREDICTED: Quercus lobata histone acetyltransfe...  224     8e-56  100%        
+XM_050413906.1 PREDICTED: Quercus robur histone acetyltransfer...  224     8e-56  100%        
+XM_050413907.1 PREDICTED: Quercus robur histone acetyltransfer...  224     8e-56  100%        
+XM_031096851.1 PREDICTED: Quercus lobata histone acetyltransfe...  224     8e-56  100%        
+XM_024020302.2 PREDICTED: Quercus suber histone acetyltransfer...  211     2e-51  98%         
+
+ALIGNMENTS
+>XM_031096852.1 PREDICTED: Quercus lobata histone acetyltransferase HAC1-like 
+(LOC115975837), transcript variant X2, mRNA
+Length=4811
+
+ Score = 224 bits (248),  Expect = 8e-56
+ Identities = 124/124 (100%), Gaps = 0/124 (0%)
+ Strand=Plus/Minus
+
+Query  1    GATCCTGCCACCAACTTGCAGAGCCTTCTTGTTTACAACCTAAGCCATTCTCTCCCAGCT  60
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  276  GATCCTGCCACCAACTTGCAGAGCCTTCTTGTTTACAACCTAAGCCATTCTCTCCCAGCT  217
+
+Query  61   GGGATAGACTCTGGAAATTCGGGATTGAAAGGTTTGGTATCTGACCAAGGGTCTGGCCAA  120
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  216  GGGATAGACTCTGGAAATTCGGGATTGAAAGGTTTGGTATCTGACCAAGGGTCTGGCCAA  157
+
+Query  121  AAAT  124
+            ||||
+Sbjct  156  AAAT  153
+
+
+>XM_050413906.1 PREDICTED: Quercus robur histone acetyltransferase HAC1-like 
+(LOC126713943), transcript variant X1, mRNA
+Length=5314
+
+ Score = 224 bits (248),  Expect = 8e-56
+ Identities = 124/124 (100%), Gaps = 0/124 (0%)
+ Strand=Plus/Minus
+
+Query  1    GATCCTGCCACCAACTTGCAGAGCCTTCTTGTTTACAACCTAAGCCATTCTCTCCCAGCT  60
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  863  GATCCTGCCACCAACTTGCAGAGCCTTCTTGTTTACAACCTAAGCCATTCTCTCCCAGCT  804
+
+Query  61   GGGATAGACTCTGGAAATTCGGGATTGAAAGGTTTGGTATCTGACCAAGGGTCTGGCCAA  120
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  803  GGGATAGACTCTGGAAATTCGGGATTGAAAGGTTTGGTATCTGACCAAGGGTCTGGCCAA  744
+
+Query  121  AAAT  124
+            ||||
+Sbjct  743  AAAT  740
+
+
+>XM_050413907.1 PREDICTED: Quercus robur histone acetyltransferase HAC1-like 
+(LOC126713943), transcript variant X2, mRNA
+Length=4701
+
+ Score = 224 bits (248),  Expect = 8e-56
+ Identities = 124/124 (100%), Gaps = 0/124 (0%)
+ Strand=Plus/Minus
+
+Query  1    GATCCTGCCACCAACTTGCAGAGCCTTCTTGTTTACAACCTAAGCCATTCTCTCCCAGCT  60
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  250  GATCCTGCCACCAACTTGCAGAGCCTTCTTGTTTACAACCTAAGCCATTCTCTCCCAGCT  191
+
+Query  61   GGGATAGACTCTGGAAATTCGGGATTGAAAGGTTTGGTATCTGACCAAGGGTCTGGCCAA  120
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  190  GGGATAGACTCTGGAAATTCGGGATTGAAAGGTTTGGTATCTGACCAAGGGTCTGGCCAA  131
+
+Query  121  AAAT  124
+            ||||
+Sbjct  130  AAAT  127
+
+
+>XM_031096851.1 PREDICTED: Quercus lobata histone acetyltransferase HAC1-like 
+(LOC115975837), transcript variant X1, mRNA
+Length=4877
+
+ Score = 224 bits (248),  Expect = 8e-56
+ Identities = 124/124 (100%), Gaps = 0/124 (0%)
+ Strand=Plus/Minus
+
+Query  1    GATCCTGCCACCAACTTGCAGAGCCTTCTTGTTTACAACCTAAGCCATTCTCTCCCAGCT  60
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  276  GATCCTGCCACCAACTTGCAGAGCCTTCTTGTTTACAACCTAAGCCATTCTCTCCCAGCT  217
+
+Query  61   GGGATAGACTCTGGAAATTCGGGATTGAAAGGTTTGGTATCTGACCAAGGGTCTGGCCAA  120
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  216  GGGATAGACTCTGGAAATTCGGGATTGAAAGGTTTGGTATCTGACCAAGGGTCTGGCCAA  157
+
+Query  121  AAAT  124
+            ||||
+Sbjct  156  AAAT  153
+
+
+>XM_024020302.2 PREDICTED: Quercus suber histone acetyltransferase HAC1 (LOC111988497), 
+transcript variant X2, mRNA
+Length=4898
+
+ Score = 211 bits (233),  Expect = 2e-51
+ Identities = 121/124 (98%), Gaps = 0/124 (0%)
+ Strand=Plus/Minus
+
+Query  1    GATCCTGCCACCAACTTGCAGAGCCTTCTTGTTTACAACCTAAGCCATTCTCTCCCAGCT  60
+            ||||| ||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  237  GATCCCGCCACCAACTTGCAGAGCCTTCTTGTTTACAACCTAAGCCATTCTCTCCCAGCT  178
+
+Query  61   GGGATAGACTCTGGAAATTCGGGATTGAAAGGTTTGGTATCTGACCAAGGGTCTGGCCAA  120
+            ||||||||||||||||||||||||| |||||||||||||||||||||| |||||||||||
+Sbjct  177  GGGATAGACTCTGGAAATTCGGGATAGAAAGGTTTGGTATCTGACCAAAGGTCTGGCCAA  118
+
+Query  121  AAAT  124
+            ||||
+Sbjct  117  AAAT  114
+
+
+  Database: Core nucleotide BLAST database
+    Posted date:  Apr 29, 2025  11:24 PM
+  Number of letters in database: 42,500,400,461
+  Number of sequences in database:  14,455,934
+
+Lambda      K        H
+   0.634    0.408    0.912 
+Gapped
+Lambda      K        H
+   0.625    0.410    0.780 
+Matrix: blastn matrix:2 -3
+Gap Penalties: Existence: 5, Extension: 2
+Number of Sequences: 14455934
+Number of Hits to DB: 499721
+Number of extensions: 713
+Number of successful extensions: 713
+Number of sequences better than 10: 0
+Number of HSP's better than 10 without gapping: 0
+Number of HSP's gapped: 713
+Number of HSP's successfully gapped: 0
+Length of query: 124
+Length of database: 42500400461
+Length adjustment: 33
+Effective length of query: 91
+Effective length of database: 42023354639
+Effective search space: 3824125272149
+Effective search space used: 3824125272149
+A: 0
+X1: 22 (20.1 bits)
+X2: 33 (29.8 bits)
+X3: 110 (99.2 bits)
+S1: 28 (26.5 bits)
+S2: 42 (39.2 bits)
+
+

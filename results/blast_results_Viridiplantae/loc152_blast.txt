@@ -1,0 +1,138 @@
+<p><!--
+QBlastInfoBegin
+	Status=READY
+QBlastInfoEnd
+--><p>
+<PRE>
+
+BLASTN 2.16.1+
+Reference: Stephen F. Altschul, Thomas L. Madden, Alejandro
+A. Schaffer, Jinghui Zhang, Zheng Zhang, Webb Miller, and
+David J. Lipman (1997), "Gapped BLAST and PSI-BLAST: a new
+generation of protein database search programs", Nucleic
+Acids Res. 25:3389-3402.
+
+
+RID: 1MHTKMGD013
+
+
+Database: Core nucleotide BLAST database
+           114,657,922 sequences; 859,097,896,182 total letters
+Query= 
+Length=138
+
+
+                                                                   Score     E     Max
+Sequences producing significant alignments:                       (Bits)  Value  Ident
+
+XM_016582309.1 PREDICTED: Nicotiana tabacum protein transport ...  44.6    0.17   76%         
+XM_058096629.1 PREDICTED: Malania oleifera thaumatin-like prot...  43.7    0.59   90%         
+XM_019409112.1 PREDICTED: Nicotiana attenuata uncharacterized ...  41.9    2.1    90%         
+XM_073256043.1 PREDICTED: Elaeis guineensis subtilisin-like pr...  41.9    2.1    86%         
+XM_057644707.1 PREDICTED: Actinidia eriantha patatin-like prot...  41.0    2.1    93%         
+
+ALIGNMENTS
+>XM_016582309.1 PREDICTED: Nicotiana tabacum protein transport protein Sec61 
+subunit beta-like (LOC107763814), mRNA
+Length=537
+
+ Score = 44.6 bits (48),  Expect = 0.17
+ Identities = 51/67 (76%), Gaps = 4/67 (6%)
+ Strand=Plus/Minus
+
+Query  32   ttttgtaggtttttgtgaaattttttagatgggttttggttgTGGCAATA---TTGTAGA  88
+            |||| ||| |||||| || || ||||||||  || || | ||| | | ||   |||||||
+Sbjct  123  TTTTTTAGATTTTTG-GAGATGTTTTAGATCTGTCTTCGATGTAGTATTAGGTTTGTAGA  65
+
+Query  89   GAGAGAG  95
+            |||||||
+Sbjct  64   GAGAGAG  58
+
+
+>XM_058096629.1 PREDICTED: Malania oleifera thaumatin-like protein 1 (LOC131146828), 
+mRNA
+Length=925
+
+ Score = 43.7 bits (47),  Expect = 0.59
+ Identities = 28/31 (90%), Gaps = 0/31 (0%)
+ Strand=Plus/Plus
+
+Query  99   TCTTGGAGGCATCTTCATATCTTGTCTTGGA  129
+            |||||||| ||||||||||||||  ||||||
+Sbjct  37   TCTTGGAGCCATCTTCATATCTTCACTTGGA  67
+
+
+>XM_019409112.1 PREDICTED: Nicotiana attenuata uncharacterized LOC109242256 (LOC109242256), 
+mRNA
+Length=1002
+
+ Score = 41.9 bits (45),  Expect = 2.1
+ Identities = 27/30 (90%), Gaps = 0/30 (0%)
+ Strand=Plus/Minus
+
+Query  107  GCATCTTCATATCTTGTCTTGGACGCTGGA  136
+            |||||||||||||||||||| | | |||||
+Sbjct  539  GCATCTTCATATCTTGTCTTCGGCTCTGGA  510
+
+
+>XM_073256043.1 PREDICTED: Elaeis guineensis subtilisin-like protease (LOC105043551), 
+mRNA
+Length=2211
+
+ Score = 41.9 bits (45),  Expect = 2.1
+ Identities = 30/35 (86%), Gaps = 0/35 (0%)
+ Strand=Plus/Minus
+
+Query  97    AATCTTGGAGGCATCTTCATATCTTGTCTTGGACG  131
+             |||||||||||||||||||||  |  | |||||||
+Sbjct  1284  AATCTTGGAGGCATCTTCATAGGTCATTTTGGACG  1250
+
+
+>XM_057644707.1 PREDICTED: Actinidia eriantha patatin-like protein 2 (LOC130784736), 
+transcript variant X2, mRNA
+Length=1312
+
+ Score = 41.0 bits (44),  Expect = 2.1
+ Identities = 25/27 (93%), Gaps = 0/27 (0%)
+ Strand=Plus/Minus
+
+Query  92   AGAGCAATCTTGGAGGCATCTTCATAT  118
+            |||||| |||||||| |||||||||||
+Sbjct  724  AGAGCATTCTTGGAGACATCTTCATAT  698
+
+
+  Database: Core nucleotide BLAST database
+    Posted date:  Apr 29, 2025  11:24 PM
+  Number of letters in database: 42,500,400,461
+  Number of sequences in database:  14,455,934
+
+Lambda      K        H
+   0.634    0.408    0.912 
+Gapped
+Lambda      K        H
+   0.625    0.410    0.780 
+Matrix: blastn matrix:2 -3
+Gap Penalties: Existence: 5, Extension: 2
+Number of Sequences: 14455934
+Number of Hits to DB: 415586
+Number of extensions: 700
+Number of successful extensions: 700
+Number of sequences better than 10: 0
+Number of HSP's better than 10 without gapping: 0
+Number of HSP's gapped: 700
+Number of HSP's successfully gapped: 0
+Length of query: 138
+Length of database: 42500400461
+Length adjustment: 34
+Effective length of query: 104
+Effective length of database: 42008898705
+Effective search space: 4368925465320
+Effective search space used: 4368925465320
+A: 0
+X1: 22 (20.1 bits)
+X2: 33 (29.8 bits)
+X3: 110 (99.2 bits)
+S1: 28 (26.5 bits)
+S2: 42 (39.2 bits)
+
+

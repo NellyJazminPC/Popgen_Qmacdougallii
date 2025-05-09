@@ -1,0 +1,174 @@
+<p><!--
+QBlastInfoBegin
+	Status=READY
+QBlastInfoEnd
+--><p>
+<PRE>
+
+BLASTN 2.16.1+
+Reference: Stephen F. Altschul, Thomas L. Madden, Alejandro
+A. Schaffer, Jinghui Zhang, Zheng Zhang, Webb Miller, and
+David J. Lipman (1997), "Gapped BLAST and PSI-BLAST: a new
+generation of protein database search programs", Nucleic
+Acids Res. 25:3389-3402.
+
+
+RID: 1E5UPA80013
+
+
+Database: Core nucleotide BLAST database
+           114,657,922 sequences; 859,097,896,182 total letters
+Query= 
+Length=139
+
+
+                                                                   Score     E     Max
+Sequences producing significant alignments:                       (Bits)  Value  Ident
+
+XM_031081661.1 PREDICTED: Quercus lobata lysine-specific demet...  245     2e-60  99%         
+XM_050402460.1 PREDICTED: Quercus robur lysine-specific demeth...  245     2e-60  99%         
+XM_024062062.2 PREDICTED: Quercus suber lysine-specific demeth...  241     2e-59  99%         
+XM_059585434.1 PREDICTED: Corylus avellana lysine-specific dem...  209     1e-49  93%         
+XM_062312592.1 PREDICTED: Alnus glutinosa lysine-specific deme...  200     7e-47  92%         
+
+ALIGNMENTS
+>XM_031081661.1 PREDICTED: Quercus lobata lysine-specific demethylase REF6 (LOC115962788), 
+mRNA
+Length=4804
+
+ Score = 245 bits (271),  Expect = 2e-60
+ Identities = 137/138 (99%), Gaps = 0/138 (0%)
+ Strand=Plus/Plus
+
+Query  1     GATCCGGTCAGCTCTGGATAGCCAGGAAGCAATTCCTGGGAATGGAGATTGGGCTGTAAA  60
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  2674  GATCCGGTCAGCTCTGGATAGCCAGGAAGCAATTCCTGGGAATGGAGATTGGGCTGTAAA  2733
+
+Query  61    GCTGGGCATCAATCTCTTTTATAGTGCCAACCTCAGCCGCTCTCCTCTTTATAGTAAGCA  120
+             |||||| |||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  2734  GCTGGGTATCAATCTCTTTTATAGTGCCAACCTCAGCCGCTCTCCTCTTTATAGTAAGCA  2793
+
+Query  121   GATGCCTTACAATTCTGT  138
+             ||||||||||||||||||
+Sbjct  2794  GATGCCTTACAATTCTGT  2811
+
+
+>XM_050402460.1 PREDICTED: Quercus robur lysine-specific demethylase REF6 (LOC126703502), 
+mRNA
+Length=4968
+
+ Score = 245 bits (271),  Expect = 2e-60
+ Identities = 137/138 (99%), Gaps = 0/138 (0%)
+ Strand=Plus/Plus
+
+Query  1     GATCCGGTCAGCTCTGGATAGCCAGGAAGCAATTCCTGGGAATGGAGATTGGGCTGTAAA  60
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  2863  GATCCGGTCAGCTCTGGATAGCCAGGAAGCAATTCCTGGGAATGGAGATTGGGCTGTAAA  2922
+
+Query  61    GCTGGGCATCAATCTCTTTTATAGTGCCAACCTCAGCCGCTCTCCTCTTTATAGTAAGCA  120
+             |||||| |||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  2923  GCTGGGTATCAATCTCTTTTATAGTGCCAACCTCAGCCGCTCTCCTCTTTATAGTAAGCA  2982
+
+Query  121   GATGCCTTACAATTCTGT  138
+             ||||||||||||||||||
+Sbjct  2983  GATGCCTTACAATTCTGT  3000
+
+
+>XM_024062062.2 PREDICTED: Quercus suber lysine-specific demethylase REF6 (LOC112029048), 
+mRNA
+Length=4982
+
+ Score = 241 bits (266),  Expect = 2e-59
+ Identities = 136/138 (99%), Gaps = 0/138 (0%)
+ Strand=Plus/Plus
+
+Query  1     GATCCGGTCAGCTCTGGATAGCCAGGAAGCAATTCCTGGGAATGGAGATTGGGCTGTAAA  60
+             ||||||||||||||||||||| ||||||||||||||||||||||||||||||||||||||
+Sbjct  2849  GATCCGGTCAGCTCTGGATAGTCAGGAAGCAATTCCTGGGAATGGAGATTGGGCTGTAAA  2908
+
+Query  61    GCTGGGCATCAATCTCTTTTATAGTGCCAACCTCAGCCGCTCTCCTCTTTATAGTAAGCA  120
+             |||||| |||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  2909  GCTGGGTATCAATCTCTTTTATAGTGCCAACCTCAGCCGCTCTCCTCTTTATAGTAAGCA  2968
+
+Query  121   GATGCCTTACAATTCTGT  138
+             ||||||||||||||||||
+Sbjct  2969  GATGCCTTACAATTCTGT  2986
+
+
+>XM_059585434.1 PREDICTED: Corylus avellana lysine-specific demethylase REF6 
+(LOC132173819), mRNA
+Length=5043
+
+ Score = 209 bits (231),  Expect = 1e-49
+ Identities = 129/138 (93%), Gaps = 0/138 (0%)
+ Strand=Plus/Plus
+
+Query  1     GATCCGGTCAGCTCTGGATAGCCAGGAAGCAATTCCTGGGAATGGAGATTGGGCTGTAAA  60
+             ||||||||||||||||||||||||||||||||||||||| ||||| ||||||||||||||
+Sbjct  2895  GATCCGGTCAGCTCTGGATAGCCAGGAAGCAATTCCTGGCAATGGGGATTGGGCTGTAAA  2954
+
+Query  61    GCTGGGCATCAATCTCTTTTATAGTGCCAACCTCAGCCGCTCTCCTCTTTATAGTAAGCA  120
+             ||| || |||||||||||||| ||||||||||| ||||||||| ||||||| ||||||||
+Sbjct  2955  GCTTGGAATCAATCTCTTTTACAGTGCCAACCTTAGCCGCTCTACTCTTTACAGTAAGCA  3014
+
+Query  121   GATGCCTTACAATTCTGT  138
+             |||||||||||||| |||
+Sbjct  3015  GATGCCTTACAATTTTGT  3032
+
+
+>XM_062312592.1 PREDICTED: Alnus glutinosa lysine-specific demethylase REF6 (LOC133874713), 
+transcript variant X2, mRNA
+Length=5099
+
+ Score = 200 bits (221),  Expect = 7e-47
+ Identities = 127/138 (92%), Gaps = 0/138 (0%)
+ Strand=Plus/Plus
+
+Query  1     GATCCGGTCAGCTCTGGATAGCCAGGAAGCAATTCCTGGGAATGGAGATTGGGCTGTAAA  60
+             ||||||||||||||||||||| ||||||||||||||||| ||||| ||||||||||||||
+Sbjct  2932  GATCCGGTCAGCTCTGGATAGTCAGGAAGCAATTCCTGGCAATGGGGATTGGGCTGTAAA  2991
+
+Query  61    GCTGGGCATCAATCTCTTTTATAGTGCCAACCTCAGCCGCTCTCCTCTTTATAGTAAGCA  120
+             ||| || |||||||||||||| ||||||||||| ||  ||||| ||||||||||||||||
+Sbjct  2992  GCTTGGAATCAATCTCTTTTACAGTGCCAACCTTAGTGGCTCTACTCTTTATAGTAAGCA  3051
+
+Query  121   GATGCCTTACAATTCTGT  138
+             |||||||||||||| |||
+Sbjct  3052  GATGCCTTACAATTTTGT  3069
+
+
+  Database: Core nucleotide BLAST database
+    Posted date:  Apr 29, 2025  11:24 PM
+  Number of letters in database: 859,097,896,182
+  Number of sequences in database:  114,657,922
+
+Lambda      K        H
+   0.634    0.408    0.912 
+Gapped
+Lambda      K        H
+   0.625    0.410    0.780 
+Matrix: blastn matrix:2 -3
+Gap Penalties: Existence: 5, Extension: 2
+Number of Sequences: 114657922
+Number of Hits to DB: 8264944
+Number of extensions: 8182
+Number of successful extensions: 8182
+Number of sequences better than 10: 3
+Number of HSP's better than 10 without gapping: 0
+Number of HSP's gapped: 8182
+Number of HSP's successfully gapped: 3
+Length of query: 139
+Length of database: 859097896182
+Length adjustment: 37
+Effective length of query: 102
+Effective length of database: 854855553068
+Effective search space: 87195266412936
+Effective search space used: 87195266412936
+A: 0
+X1: 22 (20.1 bits)
+X2: 33 (29.8 bits)
+X3: 110 (99.2 bits)
+S1: 28 (26.5 bits)
+S2: 47 (43.7 bits)
+
+

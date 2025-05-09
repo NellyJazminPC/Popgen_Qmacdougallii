@@ -1,0 +1,174 @@
+<p><!--
+QBlastInfoBegin
+	Status=READY
+QBlastInfoEnd
+--><p>
+<PRE>
+
+BLASTN 2.16.1+
+Reference: Stephen F. Altschul, Thomas L. Madden, Alejandro
+A. Schaffer, Jinghui Zhang, Zheng Zhang, Webb Miller, and
+David J. Lipman (1997), "Gapped BLAST and PSI-BLAST: a new
+generation of protein database search programs", Nucleic
+Acids Res. 25:3389-3402.
+
+
+RID: 1MPEN25V016
+
+
+Database: Core nucleotide BLAST database
+           114,657,922 sequences; 859,097,896,182 total letters
+Query= 
+Length=138
+
+
+                                                                   Score     E     Max
+Sequences producing significant alignments:                       (Bits)  Value  Ident
+
+XM_024033137.2 PREDICTED: Quercus suber transcription factor P...  250     2e-63  100%        
+XM_050417398.1 PREDICTED: Quercus robur transcription factor P...  250     2e-63  100%        
+XM_050417397.1 PREDICTED: Quercus robur transcription factor P...  250     2e-63  100%        
+XM_065761307.1 PREDICTED: Quercus suber transcription factor P...  250     2e-63  100%        
+XM_031102041.1 PREDICTED: Quercus lobata transcription factor ...  245     9e-62  99%         
+
+ALIGNMENTS
+>XM_024033137.2 PREDICTED: Quercus suber transcription factor PIF3 (LOC112000967), 
+mRNA
+Length=2738
+
+ Score = 250 bits (276),  Expect = 2e-63
+ Identities = 138/138 (100%), Gaps = 0/138 (0%)
+ Strand=Plus/Plus
+
+Query  1     CCAATGCCAATGCCTCGTGCACCATTAATTCCTTTGTCGGGAGGGCCTGTTATGAAGTCT  60
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  2140  CCAATGCCAATGCCTCGTGCACCATTAATTCCTTTGTCGGGAGGGCCTGTTATGAAGTCT  2199
+
+Query  61    GCCACAGGACTTAATGCCTGTGGGGTTGTAGGTCCTGTGGAAAATGTGGATTCAGCTCCA  120
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  2200  GCCACAGGACTTAATGCCTGTGGGGTTGTAGGTCCTGTGGAAAATGTGGATTCAGCTCCA  2259
+
+Query  121   GCCTCTAGCTCAAAGGAT  138
+             ||||||||||||||||||
+Sbjct  2260  GCCTCTAGCTCAAAGGAT  2277
+
+
+>XM_050417398.1 PREDICTED: Quercus robur transcription factor PIF3 (LOC126716577), 
+transcript variant X2, mRNA
+Length=3447
+
+ Score = 250 bits (276),  Expect = 2e-63
+ Identities = 138/138 (100%), Gaps = 0/138 (0%)
+ Strand=Plus/Plus
+
+Query  1     CCAATGCCAATGCCTCGTGCACCATTAATTCCTTTGTCGGGAGGGCCTGTTATGAAGTCT  60
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  2849  CCAATGCCAATGCCTCGTGCACCATTAATTCCTTTGTCGGGAGGGCCTGTTATGAAGTCT  2908
+
+Query  61    GCCACAGGACTTAATGCCTGTGGGGTTGTAGGTCCTGTGGAAAATGTGGATTCAGCTCCA  120
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  2909  GCCACAGGACTTAATGCCTGTGGGGTTGTAGGTCCTGTGGAAAATGTGGATTCAGCTCCA  2968
+
+Query  121   GCCTCTAGCTCAAAGGAT  138
+             ||||||||||||||||||
+Sbjct  2969  GCCTCTAGCTCAAAGGAT  2986
+
+
+>XM_050417397.1 PREDICTED: Quercus robur transcription factor PIF3 (LOC126716577), 
+transcript variant X1, mRNA
+Length=3543
+
+ Score = 250 bits (276),  Expect = 2e-63
+ Identities = 138/138 (100%), Gaps = 0/138 (0%)
+ Strand=Plus/Plus
+
+Query  1     CCAATGCCAATGCCTCGTGCACCATTAATTCCTTTGTCGGGAGGGCCTGTTATGAAGTCT  60
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  2851  CCAATGCCAATGCCTCGTGCACCATTAATTCCTTTGTCGGGAGGGCCTGTTATGAAGTCT  2910
+
+Query  61    GCCACAGGACTTAATGCCTGTGGGGTTGTAGGTCCTGTGGAAAATGTGGATTCAGCTCCA  120
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  2911  GCCACAGGACTTAATGCCTGTGGGGTTGTAGGTCCTGTGGAAAATGTGGATTCAGCTCCA  2970
+
+Query  121   GCCTCTAGCTCAAAGGAT  138
+             ||||||||||||||||||
+Sbjct  2971  GCCTCTAGCTCAAAGGAT  2988
+
+
+>XM_065761307.1 PREDICTED: Quercus suber transcription factor PHYTOCHROME INTERACTING 
+FACTOR-LIKE 15-like (LOC136062355), mRNA
+Length=1517
+
+ Score = 250 bits (276),  Expect = 2e-63
+ Identities = 138/138 (100%), Gaps = 0/138 (0%)
+ Strand=Plus/Plus
+
+Query  1     CCAATGCCAATGCCTCGTGCACCATTAATTCCTTTGTCGGGAGGGCCTGTTATGAAGTCT  60
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  919   CCAATGCCAATGCCTCGTGCACCATTAATTCCTTTGTCGGGAGGGCCTGTTATGAAGTCT  978
+
+Query  61    GCCACAGGACTTAATGCCTGTGGGGTTGTAGGTCCTGTGGAAAATGTGGATTCAGCTCCA  120
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  979   GCCACAGGACTTAATGCCTGTGGGGTTGTAGGTCCTGTGGAAAATGTGGATTCAGCTCCA  1038
+
+Query  121   GCCTCTAGCTCAAAGGAT  138
+             ||||||||||||||||||
+Sbjct  1039  GCCTCTAGCTCAAAGGAT  1056
+
+
+>XM_031102041.1 PREDICTED: Quercus lobata transcription factor PIF3 (LOC115979922), 
+transcript variant X2, mRNA
+Length=2721
+
+ Score = 245 bits (271),  Expect = 9e-62
+ Identities = 137/138 (99%), Gaps = 0/138 (0%)
+ Strand=Plus/Plus
+
+Query  1     CCAATGCCAATGCCTCGTGCACCATTAATTCCTTTGTCGGGAGGGCCTGTTATGAAGTCT  60
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  2123  CCAATGCCAATGCCTCGTGCACCATTAATTCCTTTGTCGGGAGGGCCTGTTATGAAGTCT  2182
+
+Query  61    GCCACAGGACTTAATGCCTGTGGGGTTGTAGGTCCTGTGGAAAATGTGGATTCAGCTCCA  120
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  2183  GCCACAGGACTTAATGCCTGTGGGGTTGTAGGTCCTGTGGAAAATGTGGATTCAGCTCCA  2242
+
+Query  121   GCCTCTAGCTCAAAGGAT  138
+             |||||||| |||||||||
+Sbjct  2243  GCCTCTAGGTCAAAGGAT  2260
+
+
+  Database: Core nucleotide BLAST database
+    Posted date:  Apr 29, 2025  11:24 PM
+  Number of letters in database: 42,500,400,461
+  Number of sequences in database:  14,455,934
+
+Lambda      K        H
+   0.634    0.408    0.912 
+Gapped
+Lambda      K        H
+   0.625    0.410    0.780 
+Matrix: blastn matrix:2 -3
+Gap Penalties: Existence: 5, Extension: 2
+Number of Sequences: 14455934
+Number of Hits to DB: 349372
+Number of extensions: 507
+Number of successful extensions: 507
+Number of sequences better than 10: 2
+Number of HSP's better than 10 without gapping: 0
+Number of HSP's gapped: 507
+Number of HSP's successfully gapped: 2
+Length of query: 138
+Length of database: 42500400461
+Length adjustment: 34
+Effective length of query: 104
+Effective length of database: 42008898705
+Effective search space: 4368925465320
+Effective search space used: 4368925465320
+A: 0
+X1: 22 (20.1 bits)
+X2: 33 (29.8 bits)
+X3: 110 (99.2 bits)
+S1: 28 (26.5 bits)
+S2: 42 (39.2 bits)
+
+

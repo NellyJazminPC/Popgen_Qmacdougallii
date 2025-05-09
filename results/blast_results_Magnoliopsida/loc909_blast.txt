@@ -1,0 +1,166 @@
+<p><!--
+QBlastInfoBegin
+	Status=READY
+QBlastInfoEnd
+--><p>
+<PRE>
+
+BLASTN 2.16.1+
+Reference: Stephen F. Altschul, Thomas L. Madden, Alejandro
+A. Schaffer, Jinghui Zhang, Zheng Zhang, Webb Miller, and
+David J. Lipman (1997), "Gapped BLAST and PSI-BLAST: a new
+generation of protein database search programs", Nucleic
+Acids Res. 25:3389-3402.
+
+
+RID: 1K3M7PM9013
+
+
+Database: Core nucleotide BLAST database
+           114,657,922 sequences; 859,097,896,182 total letters
+Query= 
+Length=137
+
+
+                                                                   Score     E     Max
+Sequences producing significant alignments:                       (Bits)  Value  Ident
+
+XM_031068566.1 PREDICTED: Quercus lobata U11/U12 small nuclear...  231     2e-57  98%         
+XM_031068565.1 PREDICTED: Quercus lobata U11/U12 small nuclear...  231     2e-57  98%         
+XM_024044902.2 PREDICTED: Quercus suber U11/U12 small nuclear ...  226     2e-56  97%         
+XM_050388456.1 PREDICTED: Quercus robur U11/U12 small nuclear ...  128     2e-26  96%         
+XM_050388455.1 PREDICTED: Quercus robur U11/U12 small nuclear ...  128     2e-26  96%         
+
+ALIGNMENTS
+>XM_031068566.1 PREDICTED: Quercus lobata U11/U12 small nuclear ribonucleoprotein 
+48 kDa protein (LOC115951351), transcript variant X2, mRNA
+Length=2901
+
+ Score = 231 bits (255),  Expect = 2e-57
+ Identities = 134/137 (98%), Gaps = 1/137 (1%)
+ Strand=Plus/Minus
+
+Query  1     GATCCAGAATGCAGGCTACATCGCCAAACAGAAACCAAAAATCCACATATAACAGACATA  60
+             ||||||||||||||||||||| ||||||||||||||||||||||||||||||||||||||
+Sbjct  2822  GATCCAGAATGCAGGCTACATAGCCAAACAGAAACCAAAAATCCACATATAACAGACATA  2763
+
+Query  61    TATAAACATATCTTTGATCATTAAATCACAAT-aaaaaataaaaataaaaGTACTGTCAA  119
+             |||||||||||||||||||||||||||||||| |||||||||||||||||| ||||||||
+Sbjct  2762  TATAAACATATCTTTGATCATTAAATCACAATAAAAAAATAAAAATAAAAGAACTGTCAA  2703
+
+Query  120   TACAAAATATCTACTCA  136
+             |||||||||||||||||
+Sbjct  2702  TACAAAATATCTACTCA  2686
+
+
+>XM_031068565.1 PREDICTED: Quercus lobata U11/U12 small nuclear ribonucleoprotein 
+48 kDa protein (LOC115951351), transcript variant X1, mRNA
+Length=5542
+
+ Score = 231 bits (255),  Expect = 2e-57
+ Identities = 134/137 (98%), Gaps = 1/137 (1%)
+ Strand=Plus/Minus
+
+Query  1     GATCCAGAATGCAGGCTACATCGCCAAACAGAAACCAAAAATCCACATATAACAGACATA  60
+             ||||||||||||||||||||| ||||||||||||||||||||||||||||||||||||||
+Sbjct  5463  GATCCAGAATGCAGGCTACATAGCCAAACAGAAACCAAAAATCCACATATAACAGACATA  5404
+
+Query  61    TATAAACATATCTTTGATCATTAAATCACAAT-aaaaaataaaaataaaaGTACTGTCAA  119
+             |||||||||||||||||||||||||||||||| |||||||||||||||||| ||||||||
+Sbjct  5403  TATAAACATATCTTTGATCATTAAATCACAATAAAAAAATAAAAATAAAAGAACTGTCAA  5344
+
+Query  120   TACAAAATATCTACTCA  136
+             |||||||||||||||||
+Sbjct  5343  TACAAAATATCTACTCA  5327
+
+
+>XM_024044902.2 PREDICTED: Quercus suber U11/U12 small nuclear ribonucleoprotein 
+48 kDa protein (LOC112012529), transcript variant X2, mRNA
+Length=2864
+
+ Score = 226 bits (250),  Expect = 2e-56
+ Identities = 133/137 (97%), Gaps = 1/137 (1%)
+ Strand=Plus/Minus
+
+Query  1     GATCCAGAATGCAGGCTACATCGCCAAACAGAAACCAAAAATCCACATATAACAGACATA  60
+             |||||||||||||||||||||||||||||||||||||||||||||||||| |||||||||
+Sbjct  2768  GATCCAGAATGCAGGCTACATCGCCAAACAGAAACCAAAAATCCACATATGACAGACATA  2709
+
+Query  61    TATAAACATATCTTTGATCATTAAATCACAAT-aaaaaataaaaataaaaGTACTGTCAA  119
+             |||||||||||||||||||||||||||||||| |||||||||||||||||| ||||||| 
+Sbjct  2708  TATAAACATATCTTTGATCATTAAATCACAATAAAAAAATAAAAATAAAAGAACTGTCAC  2649
+
+Query  120   TACAAAATATCTACTCA  136
+             |||||||||||||||||
+Sbjct  2648  TACAAAATATCTACTCA  2632
+
+
+>XM_050388456.1 PREDICTED: Quercus robur U11/U12 small nuclear ribonucleoprotein 
+48 kDa protein (LOC126692739), transcript variant X3, mRNA
+Length=2778
+
+ Score = 128 bits (141),  Expect = 2e-26
+ Identities = 75/78 (96%), Gaps = 0/78 (0%)
+ Strand=Plus/Minus
+
+Query  59    TATATAAACATATCTTTGATCATTAAATCACAATaaaaaataaaaataaaaGTACTGTCA  118
+             ||||||| |||||||||||||||||||||||||||||||||||||||||||| || ||||
+Sbjct  2778  TATATAAGCATATCTTTGATCATTAAATCACAATAAAAAATAAAAATAAAAGAACAGTCA  2719
+
+Query  119   ATACAAAATATCTACTCA  136
+             ||||||||||||||||||
+Sbjct  2718  ATACAAAATATCTACTCA  2701
+
+
+>XM_050388455.1 PREDICTED: Quercus robur U11/U12 small nuclear ribonucleoprotein 
+48 kDa protein (LOC126692739), transcript variant X2, mRNA
+Length=3461
+
+ Score = 128 bits (141),  Expect = 2e-26
+ Identities = 75/78 (96%), Gaps = 0/78 (0%)
+ Strand=Plus/Minus
+
+Query  59    TATATAAACATATCTTTGATCATTAAATCACAATaaaaaataaaaataaaaGTACTGTCA  118
+             ||||||| |||||||||||||||||||||||||||||||||||||||||||| || ||||
+Sbjct  3461  TATATAAGCATATCTTTGATCATTAAATCACAATAAAAAATAAAAATAAAAGAACAGTCA  3402
+
+Query  119   ATACAAAATATCTACTCA  136
+             ||||||||||||||||||
+Sbjct  3401  ATACAAAATATCTACTCA  3384
+
+
+  Database: Core nucleotide BLAST database
+    Posted date:  Apr 29, 2025  11:24 PM
+  Number of letters in database: 40,642,655,839
+  Number of sequences in database:  13,690,491
+
+Lambda      K        H
+   0.634    0.408    0.912 
+Gapped
+Lambda      K        H
+   0.625    0.410    0.780 
+Matrix: blastn matrix:2 -3
+Gap Penalties: Existence: 5, Extension: 2
+Number of Sequences: 13690491
+Number of Hits to DB: 599353
+Number of extensions: 1450
+Number of successful extensions: 1450
+Number of sequences better than 10: 3
+Number of HSP's better than 10 without gapping: 0
+Number of HSP's gapped: 1450
+Number of HSP's successfully gapped: 4
+Length of query: 137
+Length of database: 40642655839
+Length adjustment: 34
+Effective length of query: 103
+Effective length of database: 40177179145
+Effective search space: 4138249451935
+Effective search space used: 4138249451935
+A: 0
+X1: 22 (20.1 bits)
+X2: 33 (29.8 bits)
+X3: 110 (99.2 bits)
+S1: 28 (26.5 bits)
+S2: 42 (39.2 bits)
+
+

@@ -1,0 +1,146 @@
+<p><!--
+QBlastInfoBegin
+	Status=READY
+QBlastInfoEnd
+--><p>
+<PRE>
+
+BLASTN 2.16.1+
+Reference: Stephen F. Altschul, Thomas L. Madden, Alejandro
+A. Schaffer, Jinghui Zhang, Zheng Zhang, Webb Miller, and
+David J. Lipman (1997), "Gapped BLAST and PSI-BLAST: a new
+generation of protein database search programs", Nucleic
+Acids Res. 25:3389-3402.
+
+
+RID: 1K3CBMC5013
+
+
+Database: Core nucleotide BLAST database
+           114,657,922 sequences; 859,097,896,182 total letters
+Query= 
+Length=139
+
+
+                                                                   Score     E     Max
+Sequences producing significant alignments:                       (Bits)  Value  Ident
+
+XM_050430081.1 PREDICTED: Quercus robur homeobox-leucine zippe...  172     5e-40  100%        
+XM_024042743.2 PREDICTED: Quercus suber homeobox-leucine zippe...  163     2e-37  98%         
+XM_031112508.1 PREDICTED: Quercus lobata homeobox-leucine zipp...  136     3e-29  100%        
+XM_062298509.1 PREDICTED: Alnus glutinosa homeobox-leucine zip...  63.5    6e-07  84%         
+XM_062298508.1 PREDICTED: Alnus glutinosa homeobox-leucine zip...  63.5    6e-07  84%         
+
+ALIGNMENTS
+>XM_050430081.1 PREDICTED: Quercus robur homeobox-leucine zipper protein ATHB-15 
+(LOC126725380), mRNA
+Length=3997
+
+ Score = 172 bits (190),  Expect = 5e-40
+ Identities = 95/95 (100%), Gaps = 0/95 (0%)
+ Strand=Plus/Minus
+
+Query  45    TTGAAGACAAACCAGCACTGTTAGCATCAATAAACTGATTAAAGCATGACATACCAAGGT  104
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  3997  TTGAAGACAAACCAGCACTGTTAGCATCAATAAACTGATTAAAGCATGACATACCAAGGT  3938
+
+Query  105   ACTAGTATTAGTTTAAGTTTACAATTACAACAAAA  139
+             |||||||||||||||||||||||||||||||||||
+Sbjct  3937  ACTAGTATTAGTTTAAGTTTACAATTACAACAAAA  3903
+
+
+>XM_024042743.2 PREDICTED: Quercus suber homeobox-leucine zipper protein ATHB-15 
+(LOC112010403), transcript variant X2, mRNA
+Length=4007
+
+ Score = 163 bits (180),  Expect = 2e-37
+ Identities = 93/95 (98%), Gaps = 0/95 (0%)
+ Strand=Plus/Minus
+
+Query  45    TTGAAGACAAACCAGCACTGTTAGCATCAATAAACTGATTAAAGCATGACATACCAAGGT  104
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  4007  TTGAAGACAAACCAGCACTGTTAGCATCAATAAACTGATTAAAGCATGACATACCAAGGT  3948
+
+Query  105   ACTAGTATTAGTTTAAGTTTACAATTACAACAAAA  139
+             ||  |||||||||||||||||||||||||||||||
+Sbjct  3947  ACATGTATTAGTTTAAGTTTACAATTACAACAAAA  3913
+
+
+>XM_031112508.1 PREDICTED: Quercus lobata homeobox-leucine zipper protein ATHB-15 
+(LOC115988881), mRNA
+Length=3968
+
+ Score = 136 bits (150),  Expect = 3e-29
+ Identities = 75/75 (100%), Gaps = 0/75 (0%)
+ Strand=Plus/Minus
+
+Query  65    TTAGCATCAATAAACTGATTAAAGCATGACATACCAAGGTACTAGTATTAGTTTAAGTTT  124
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  3968  TTAGCATCAATAAACTGATTAAAGCATGACATACCAAGGTACTAGTATTAGTTTAAGTTT  3909
+
+Query  125   ACAATTACAACAAAA  139
+             |||||||||||||||
+Sbjct  3908  ACAATTACAACAAAA  3894
+
+
+>XM_062298509.1 PREDICTED: Alnus glutinosa homeobox-leucine zipper protein ATHB-15 
+(LOC133862662), transcript variant X2, mRNA
+Length=4217
+
+ Score = 63.5 bits (69),  Expect = 6e-07
+ Identities = 48/57 (84%), Gaps = 0/57 (0%)
+ Strand=Plus/Minus
+
+Query  62    CTGTTAGCATCAATAAACTGATTAAAGCATGACATACCAAGGTACTAGTATTAGTTT  118
+             |||||| |||||||  |||||||||||||| |||||||| || ||  |||| |||||
+Sbjct  3911  CTGTTAACATCAATTTACTGATTAAAGCATAACATACCATGGAACATGTATCAGTTT  3855
+
+
+>XM_062298508.1 PREDICTED: Alnus glutinosa homeobox-leucine zipper protein ATHB-15 
+(LOC133862662), transcript variant X1, mRNA
+Length=4227
+
+ Score = 63.5 bits (69),  Expect = 6e-07
+ Identities = 48/57 (84%), Gaps = 0/57 (0%)
+ Strand=Plus/Minus
+
+Query  62    CTGTTAGCATCAATAAACTGATTAAAGCATGACATACCAAGGTACTAGTATTAGTTT  118
+             |||||| |||||||  |||||||||||||| |||||||| || ||  |||| |||||
+Sbjct  3921  CTGTTAACATCAATTTACTGATTAAAGCATAACATACCATGGAACATGTATCAGTTT  3865
+
+
+  Database: Core nucleotide BLAST database
+    Posted date:  Apr 29, 2025  11:24 PM
+  Number of letters in database: 40,642,655,839
+  Number of sequences in database:  13,690,491
+
+Lambda      K        H
+   0.634    0.408    0.912 
+Gapped
+Lambda      K        H
+   0.625    0.410    0.780 
+Matrix: blastn matrix:2 -3
+Gap Penalties: Existence: 5, Extension: 2
+Number of Sequences: 13690491
+Number of Hits to DB: 554607
+Number of extensions: 954
+Number of successful extensions: 954
+Number of sequences better than 10: 0
+Number of HSP's better than 10 without gapping: 0
+Number of HSP's gapped: 954
+Number of HSP's successfully gapped: 0
+Length of query: 139
+Length of database: 40642655839
+Length adjustment: 34
+Effective length of query: 105
+Effective length of database: 40177179145
+Effective search space: 4218603810225
+Effective search space used: 4218603810225
+A: 0
+X1: 22 (20.1 bits)
+X2: 33 (29.8 bits)
+X3: 110 (99.2 bits)
+S1: 28 (26.5 bits)
+S2: 42 (39.2 bits)
+
+

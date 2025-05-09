@@ -1,0 +1,160 @@
+<p><!--
+QBlastInfoBegin
+	Status=READY
+QBlastInfoEnd
+--><p>
+<PRE>
+
+BLASTN 2.16.1+
+Reference: Stephen F. Altschul, Thomas L. Madden, Alejandro
+A. Schaffer, Jinghui Zhang, Zheng Zhang, Webb Miller, and
+David J. Lipman (1997), "Gapped BLAST and PSI-BLAST: a new
+generation of protein database search programs", Nucleic
+Acids Res. 25:3389-3402.
+
+
+RID: 1K6MN171016
+
+
+Database: Core nucleotide BLAST database
+           114,657,922 sequences; 859,097,896,182 total letters
+Query= 
+Length=137
+
+
+                                                                   Score     E     Max
+Sequences producing significant alignments:                       (Bits)  Value  Ident
+
+XM_024059090.2 PREDICTED: Quercus suber putative methylesteras...  106     6e-20  80%         
+LT799017.1 Quercus robur BAC genome sequence, isolate 154E14       78.8    8e-12  77%         
+XM_050413327.1 PREDICTED: Quercus robur MA3 DOMAIN-CONTAINING ...  65.3    2e-07  73%         
+LT799013.1 Quercus robur BAC genome sequence, isolate 138D21       52.7    0.001  72%         
+XR_007653151.1 PREDICTED: Quercus robur uncharacterized LOC126...  49.1    0.013  71%         
+
+ALIGNMENTS
+>XM_024059090.2 PREDICTED: Quercus suber putative methylesterase 11, chloroplastic 
+(LOC112026405), mRNA
+Length=1233
+
+ Score = 106 bits (117),  Expect = 6e-20
+ Identities = 99/123 (80%), Gaps = 6/123 (5%)
+ Strand=Plus/Minus
+
+Query  18    TTAAGATTTCATTTCCAGGATCTAATAGTGTATAGAGTGCCATGTCATTT--AATTTTAA  75
+             ||||||||| |||||  ||||||||||||||||||||||| |||| ||||  ||||||||
+Sbjct  1128  TTAAGATTTTATTTCTTGGATCTAATAGTGTATAGAGTGCTATGTAATTTAAAATTTTAA  1069
+
+Query  76    ATGAAGTGA-TATAGATTGTAGACCTTTAGATTTATAATATTTAATCTGAGCAATGATAT  134
+              ||  |||| | ||||   || ||  ||| |||| |||| |||||||||| | |||| ||
+Sbjct  1068  GTGGTGTGACTCTAGA---TACACGATTAAATTTTTAATTTTTAATCTGAACTATGAAAT  1012
+
+Query  135   GGA  137
+             |||
+Sbjct  1011  GGA  1009
+
+
+>LT799017.1 Quercus robur BAC genome sequence, isolate 154E14
+Length=116481
+
+ Score = 78.8 bits (86),  Expect = 8e-12
+ Identities = 90/117 (77%), Gaps = 7/117 (6%)
+ Strand=Plus/Minus
+
+Query  11     TCACAAGTTAAGATTTCATTTCCAGGATCTAATAGTGTATAGAGTGCCATGTCATTT--A  68
+              |||||| |||| |||| ||||||   |||||| |||||||||  | |||||||||||  |
+Sbjct  11754  TCACAA-TTAATATTTTATTTCCTAAATCTAACAGTGTATAGTCTACCATGTCATTTAAA  11696
+
+Query  69     ATTTTAAATGAAGTGATA-TAGATTGTAGACCTTTAGATTTATAATATTTAATCTGA  124
+              ||||||||||| |||| | | ||   |  |  ||||||||| ||| || |||| |||
+Sbjct  11695  ATTTTAAATGATGTGACACTGGA---TCCATTTTTAGATTTGTAACATCTAATTTGA  11642
+
+
+>XM_050413327.1 PREDICTED: Quercus robur MA3 DOMAIN-CONTAINING TRANSLATION REGULATORY 
+FACTOR 2 (LOC126713565), transcript variant X1, mRNA
+Length=3466
+
+ Score = 65.3 bits (71),  Expect = 2e-07
+ Identities = 100/137 (73%), Gaps = 7/137 (5%)
+ Strand=Plus/Minus
+
+Query  6    CCATTTCACAAGTTAAGATTTCATTTCCAGGATCTAATAGTGTATAGAGTGCCATGTCAT  65
+            ||| ||||| | |||| |||| |||||    || ||| | |||| | |  ||||  ||||
+Sbjct  144  CCAGTTCACCA-TTAATATTTTATTTCTTCTATTTAAAAATGTACATAAAGCCACATCAT  86
+
+Query  66   TTAA--TTTTAAATGAAGTGATA-TAG-ATTG--TAGACCTTTAGATTTATAATATTTAA  119
+             |||  | |||||||  |||||| ||  | ||  || || ||||||||| ||||||||||
+Sbjct  85   ATAAAATGTTAAATGGTGTGATACTATTACTGAATACACATTTAGATTTGTAATATTTAA  26
+
+Query  120  TCTGAGCAATGATATGG  136
+            ||| | | |||| ||||
+Sbjct  25   TCTAAACTATGAAATGG  9
+
+
+>LT799013.1 Quercus robur BAC genome sequence, isolate 138D21
+Length=106004
+
+ Score = 52.7 bits (57),  Expect = 0.001
+ Identities = 75/104 (72%), Gaps = 4/104 (4%)
+ Strand=Plus/Minus
+
+Query  20     AAGATTTCATTTCCAGGATCTAATAGTGTATAGAGTGCCA--TGTCATTTAATTTTAAAT  77
+              || |||| |||| | ||| ||||   ||||||| ||||||  | | |   |||||| |||
+Sbjct  66071  AAAATTTTATTTTCTGGACCTAACCATGTATAGTGTGCCACTTTTTAAAAAATTTTGAAT  66012
+
+Query  78     GAAGTGATATAGATTGTAGACCTTTAGATTTATAATATTTAATC  121
+              ||  ||| |  || |  | || ||||||| | ||||||||||||
+Sbjct  66011  GACATGACACTGAAT--ACACTTTTAGATATGTAATATTTAATC  65970
+
+
+>XR_007653151.1 PREDICTED: Quercus robur uncharacterized LOC126718950 (LOC126718950), 
+ncRNA
+Length=1589
+
+ Score = 49.1 bits (53),  Expect = 0.013
+ Identities = 79/111 (71%), Gaps = 6/111 (5%)
+ Strand=Plus/Plus
+
+Query  15   AAGTTAAGATTTCATTTCCAGGATCTAATAGTGTATAGAGTGCCATGTCATTTAA--TTT  72
+            |||||||||||||||| |    || ||| |||  |||      |||| |||||||  |||
+Sbjct  770  AAGTTAAGATTTCATTCCTTCTATATAACAGTACATATGACATCATGCCATTTAAAATTT  829
+
+Query  73   TAAATGAAGTGA-TATAGATTGTAGACCTTTAGATTTATAATATTTAATCT  122
+            ||| | | || | | || ||   | |  |||| ||||||||||||||||||
+Sbjct  830  TAATTAATGTAACTCTAAAT---ATATTTTTAAATTTATAATATTTAATCT  877
+
+
+  Database: Core nucleotide BLAST database
+    Posted date:  Apr 29, 2025  11:24 PM
+  Number of letters in database: 40,642,655,839
+  Number of sequences in database:  13,690,491
+
+Lambda      K        H
+   0.634    0.408    0.912 
+Gapped
+Lambda      K        H
+   0.625    0.410    0.780 
+Matrix: blastn matrix:2 -3
+Gap Penalties: Existence: 5, Extension: 2
+Number of Sequences: 13690491
+Number of Hits to DB: 529171
+Number of extensions: 1174
+Number of successful extensions: 1174
+Number of sequences better than 10: 0
+Number of HSP's better than 10 without gapping: 0
+Number of HSP's gapped: 1174
+Number of HSP's successfully gapped: 0
+Length of query: 137
+Length of database: 40642655839
+Length adjustment: 34
+Effective length of query: 103
+Effective length of database: 40177179145
+Effective search space: 4138249451935
+Effective search space used: 4138249451935
+A: 0
+X1: 22 (20.1 bits)
+X2: 33 (29.8 bits)
+X3: 110 (99.2 bits)
+S1: 28 (26.5 bits)
+S2: 42 (39.2 bits)
+
+

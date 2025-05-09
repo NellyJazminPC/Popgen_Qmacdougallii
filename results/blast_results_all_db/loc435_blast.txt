@@ -1,0 +1,138 @@
+<p><!--
+QBlastInfoBegin
+	Status=READY
+QBlastInfoEnd
+--><p>
+<PRE>
+
+BLASTN 2.16.1+
+Reference: Stephen F. Altschul, Thomas L. Madden, Alejandro
+A. Schaffer, Jinghui Zhang, Zheng Zhang, Webb Miller, and
+David J. Lipman (1997), "Gapped BLAST and PSI-BLAST: a new
+generation of protein database search programs", Nucleic
+Acids Res. 25:3389-3402.
+
+
+RID: 1E8FTDTN013
+
+
+Database: Core nucleotide BLAST database
+           114,657,922 sequences; 859,097,896,182 total letters
+Query= 
+Length=136
+
+
+                                                                   Score     E     Max
+Sequences producing significant alignments:                       (Bits)  Value  Ident
+
+AL732619.13 Mouse DNA sequence from clone RP23-122I3 on chromo...  51.8    0.022  80%       
+XM_034677731.1 PREDICTED: Notolabrus celidotus islet cell auto...  50.9    0.076  97%       
+XM_034677734.1 PREDICTED: Notolabrus celidotus islet cell auto...  50.9    0.076  97%       
+XM_034677733.1 PREDICTED: Notolabrus celidotus islet cell auto...  50.9    0.076  97%       
+AP039601.1 Bradybaena similaris mixture of YIPCMo001421 and YI...  50.9    0.076  88%       
+
+ALIGNMENTS
+>AL732619.13 Mouse DNA sequence from clone RP23-122I3 on chromosome 4, complete 
+sequence
+Length=225086
+
+ Score = 51.8 bits (56),  Expect = 0.022
+ Identities = 51/64 (80%), Gaps = 3/64 (5%)
+ Strand=Plus/Plus
+
+Query  45     tgtgtgtgtgtgtgtgCTGGTTTGCTGTGTCTAACACCATTTTAACACATCTGTTTAAGT  104
+              ||||||||||||||||   || || ||||||  |||   ||| || ||||||||||||||
+Sbjct  48710  TGTGTGTGTGTGTGTGTGTGTGTG-TGTGTCCTACAT--TTTGAATACATCTGTTTAAGT  48766
+
+Query  105    CCAA  108
+               |||
+Sbjct  48767  GCAA  48770
+
+
+>XM_034677731.1 PREDICTED: Notolabrus celidotus islet cell autoantigen 1-like 
+(ical1), transcript variant X1, mRNA
+Length=3474
+
+ Score = 50.9 bits (55),  Expect = 0.076
+ Identities = 29/30 (97%), Gaps = 0/30 (0%)
+ Strand=Plus/Plus
+
+Query  45    tgtgtgtgtgtgtgtgCTGGTTTGCTGTGT  74
+             |||||||||||||||| |||||||||||||
+Sbjct  2226  TGTGTGTGTGTGTGTGTTGGTTTGCTGTGT  2255
+
+
+>XM_034677734.1 PREDICTED: Notolabrus celidotus islet cell autoantigen 1-like 
+(ical1), transcript variant X3, mRNA
+Length=3228
+
+ Score = 50.9 bits (55),  Expect = 0.076
+ Identities = 29/30 (97%), Gaps = 0/30 (0%)
+ Strand=Plus/Plus
+
+Query  45    tgtgtgtgtgtgtgtgCTGGTTTGCTGTGT  74
+             |||||||||||||||| |||||||||||||
+Sbjct  1980  TGTGTGTGTGTGTGTGTTGGTTTGCTGTGT  2009
+
+
+>XM_034677733.1 PREDICTED: Notolabrus celidotus islet cell autoantigen 1-like 
+(ical1), transcript variant X2, mRNA
+Length=3447
+
+ Score = 50.9 bits (55),  Expect = 0.076
+ Identities = 29/30 (97%), Gaps = 0/30 (0%)
+ Strand=Plus/Plus
+
+Query  45    tgtgtgtgtgtgtgtgCTGGTTTGCTGTGT  74
+             |||||||||||||||| |||||||||||||
+Sbjct  2199  TGTGTGTGTGTGTGTGTTGGTTTGCTGTGT  2228
+
+
+>AP039601.1 Bradybaena similaris mixture of YIPCMo001421 and YIPCMo001540 
+DNA, chromosome 20, sequence
+Length=65701203
+
+ Score = 50.9 bits (55),  Expect = 0.076
+ Identities = 37/42 (88%), Gaps = 1/42 (2%)
+ Strand=Plus/Minus
+
+Query  45        tgtgtgtgtgtgtgtgCTGGTTTGCTGTGTCTAACACCATTT  86
+                 ||||||||||||||||   || || |||||||||||||||||
+Sbjct  65642274  TGTGTGTGTGTGTGTGTGTGTGTG-TGTGTCTAACACCATTT  65642234
+
+
+  Database: Core nucleotide BLAST database
+    Posted date:  Apr 29, 2025  11:24 PM
+  Number of letters in database: 859,097,896,182
+  Number of sequences in database:  114,657,922
+
+Lambda      K        H
+   0.634    0.408    0.912 
+Gapped
+Lambda      K        H
+   0.625    0.410    0.780 
+Matrix: blastn matrix:2 -3
+Gap Penalties: Existence: 5, Extension: 2
+Number of Sequences: 114657922
+Number of Hits to DB: 9672303
+Number of extensions: 77714
+Number of successful extensions: 77714
+Number of sequences better than 10: 0
+Number of HSP's better than 10 without gapping: 0
+Number of HSP's gapped: 77714
+Number of HSP's successfully gapped: 0
+Length of query: 136
+Length of database: 859097896182
+Length adjustment: 37
+Effective length of query: 99
+Effective length of database: 854855553068
+Effective search space: 84630699753732
+Effective search space used: 84630699753732
+A: 0
+X1: 22 (20.1 bits)
+X2: 33 (29.8 bits)
+X3: 110 (99.2 bits)
+S1: 28 (26.5 bits)
+S2: 47 (43.7 bits)
+
+

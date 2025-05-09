@@ -1,0 +1,3 @@
+Todas las búsquedas BLAST se completaron exitosamente.
+Número total de secuencias procesadas: 94
+Las búsquedas BLAST se han completado. Los resultados están en la carpeta '../results/blast_results'.

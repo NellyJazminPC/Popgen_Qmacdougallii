@@ -1,0 +1,170 @@
+<p><!--
+QBlastInfoBegin
+	Status=READY
+QBlastInfoEnd
+--><p>
+<PRE>
+
+BLASTN 2.16.1+
+Reference: Stephen F. Altschul, Thomas L. Madden, Alejandro
+A. Schaffer, Jinghui Zhang, Zheng Zhang, Webb Miller, and
+David J. Lipman (1997), "Gapped BLAST and PSI-BLAST: a new
+generation of protein database search programs", Nucleic
+Acids Res. 25:3389-3402.
+
+
+RID: 1MHRMCEU016
+
+
+Database: Core nucleotide BLAST database
+           114,657,922 sequences; 859,097,896,182 total letters
+Query= 
+Length=138
+
+
+                                                                   Score     E     Max
+Sequences producing significant alignments:                       (Bits)  Value  Ident
+
+XM_031077879.1 PREDICTED: Quercus lobata uncharacterized LOC11...  151     2e-33  85%         
+XR_004084922.1 PREDICTED: Quercus lobata uncharacterized LOC11...  151     2e-33  85%         
+XM_031077948.1 PREDICTED: Quercus lobata uncharacterized LOC11...  151     2e-33  85%         
+XR_004090694.1 PREDICTED: Quercus lobata uncharacterized LOC11...  86.9    6e-14  75%         
+XM_031083934.1 PREDICTED: Quercus lobata uncharacterized LOC11...  79.7    8e-12  85%         
+
+ALIGNMENTS
+>XM_031077879.1 PREDICTED: Quercus lobata uncharacterized LOC115959448 (LOC115959448), 
+transcript variant X1, mRNA
+Length=1168
+
+ Score = 151 bits (167),  Expect = 2e-33
+ Identities = 115/136 (85%), Gaps = 0/136 (0%)
+ Strand=Plus/Plus
+
+Query  3    GACTTGGAAGCCACCGCCATTATTGCTTTGGAGATTACCCAGCCTTTTGAAGGAGCGAGC  62
+            |||||||||||| ||  ||| ||||||| ||||||||| | ||||||||||||||   ||
+Sbjct  355  GACTTGGAAGCCGCCATCATCATTGCTTCGGAGATTACACTGCCTTTTGAAGGAGTAGGC  414
+
+Query  63   TTGAGGGCACTTTACTTGGCAGAGAGGGTGCAATGTCAACTGGTGGGTAGAGATAACCCA  122
+            ||||||  ||| |||||||| ||||||||||| |||||| |||||||||  ||| |||||
+Sbjct  415  TTGAGGCAACTCTACTTGGCGGAGAGGGTGCAGTGTCAATTGGTGGGTAAGGATGACCCA  474
+
+Query  123  CAGATTTTGATGGATC  138
+            ||||||  ||||||||
+Sbjct  475  CAGATTCCGATGGATC  490
+
+
+>XR_004084922.1 PREDICTED: Quercus lobata uncharacterized LOC115959448 (LOC115959448), 
+transcript variant X3, misc_RNA
+Length=680
+
+ Score = 151 bits (167),  Expect = 2e-33
+ Identities = 115/136 (85%), Gaps = 0/136 (0%)
+ Strand=Plus/Plus
+
+Query  3    GACTTGGAAGCCACCGCCATTATTGCTTTGGAGATTACCCAGCCTTTTGAAGGAGCGAGC  62
+            |||||||||||| ||  ||| ||||||| ||||||||| | ||||||||||||||   ||
+Sbjct  273  GACTTGGAAGCCGCCATCATCATTGCTTCGGAGATTACACTGCCTTTTGAAGGAGTAGGC  332
+
+Query  63   TTGAGGGCACTTTACTTGGCAGAGAGGGTGCAATGTCAACTGGTGGGTAGAGATAACCCA  122
+            ||||||  ||| |||||||| ||||||||||| |||||| |||||||||  ||| |||||
+Sbjct  333  TTGAGGCAACTCTACTTGGCGGAGAGGGTGCAGTGTCAATTGGTGGGTAAGGATGACCCA  392
+
+Query  123  CAGATTTTGATGGATC  138
+            ||||||  ||||||||
+Sbjct  393  CAGATTCCGATGGATC  408
+
+
+>XM_031077948.1 PREDICTED: Quercus lobata uncharacterized LOC115959448 (LOC115959448), 
+transcript variant X2, mRNA
+Length=1112
+
+ Score = 151 bits (167),  Expect = 2e-33
+ Identities = 115/136 (85%), Gaps = 0/136 (0%)
+ Strand=Plus/Plus
+
+Query  3    GACTTGGAAGCCACCGCCATTATTGCTTTGGAGATTACCCAGCCTTTTGAAGGAGCGAGC  62
+            |||||||||||| ||  ||| ||||||| ||||||||| | ||||||||||||||   ||
+Sbjct  299  GACTTGGAAGCCGCCATCATCATTGCTTCGGAGATTACACTGCCTTTTGAAGGAGTAGGC  358
+
+Query  63   TTGAGGGCACTTTACTTGGCAGAGAGGGTGCAATGTCAACTGGTGGGTAGAGATAACCCA  122
+            ||||||  ||| |||||||| ||||||||||| |||||| |||||||||  ||| |||||
+Sbjct  359  TTGAGGCAACTCTACTTGGCGGAGAGGGTGCAGTGTCAATTGGTGGGTAAGGATGACCCA  418
+
+Query  123  CAGATTTTGATGGATC  138
+            ||||||  ||||||||
+Sbjct  419  CAGATTCCGATGGATC  434
+
+
+>XR_004090694.1 PREDICTED: Quercus lobata uncharacterized LOC115986333 (LOC115986333), 
+ncRNA
+Length=524
+
+ Score = 86.9 bits (95),  Expect = 6e-14
+ Identities = 94/125 (75%), Gaps = 0/125 (0%)
+ Strand=Plus/Plus
+
+Query  3    GACTTGGAAGCCACCGCCATTATTGCTTTGGAGATTACCCAGCCTTTTGAAGGAGCGAGC  62
+            ||||||||  | ||| |  | || ||||   ||||||| || ||||||||||||||| | 
+Sbjct  400  GACTTGGAGCCTACCACTTTCATCGCTTCAAAGATTACTCAACCTTTTGAAGGAGCGGGT  459
+
+Query  63   TTGAGGGCACTTTACTTGGCAGAGAGGGTGCAATGTCAACTGGTGGGTAGAGATAACCCA  122
+             ||||||| || ||||||||||||||||| |   | ||  |  ||||||   || |||||
+Sbjct  460  GTGAGGGCGCTATACTTGGCAGAGAGGGTACGGCGCCAGTTAATGGGTATGAATGACCCA  519
+
+Query  123  CAGAT  127
+            |||||
+Sbjct  520  CAGAT  524
+
+
+>XM_031083934.1 PREDICTED: Quercus lobata uncharacterized LOC115964670 (LOC115964670), 
+mRNA
+Length=2763
+
+ Score = 79.7 bits (87),  Expect = 8e-12
+ Identities = 60/71 (85%), Gaps = 0/71 (0%)
+ Strand=Plus/Plus
+
+Query  68    GGCACTTTACTTGGCAGAGAGGGTGCAATGTCAACTGGTGGGTAGAGATAACCCACAGAT  127
+             |||||| |||||||| ||||  |||| | |||||||| ||||||||||| ||| ||||||
+Sbjct  2520  GGCACTCTACTTGGCGGAGATTGTGCGACGTCAACTGATGGGTAGAGATGACCTACAGAT  2579
+
+Query  128   TTTGATGGATC  138
+             | | |||||||
+Sbjct  2580  TGTAATGGATC  2590
+
+
+  Database: Core nucleotide BLAST database
+    Posted date:  Apr 29, 2025  11:24 PM
+  Number of letters in database: 42,500,400,461
+  Number of sequences in database:  14,455,934
+
+Lambda      K        H
+   0.634    0.408    0.912 
+Gapped
+Lambda      K        H
+   0.625    0.410    0.780 
+Matrix: blastn matrix:2 -3
+Gap Penalties: Existence: 5, Extension: 2
+Number of Sequences: 14455934
+Number of Hits to DB: 572267
+Number of extensions: 721
+Number of successful extensions: 721
+Number of sequences better than 10: 0
+Number of HSP's better than 10 without gapping: 0
+Number of HSP's gapped: 721
+Number of HSP's successfully gapped: 0
+Length of query: 138
+Length of database: 42500400461
+Length adjustment: 34
+Effective length of query: 104
+Effective length of database: 42008898705
+Effective search space: 4368925465320
+Effective search space used: 4368925465320
+A: 0
+X1: 22 (20.1 bits)
+X2: 33 (29.8 bits)
+X3: 110 (99.2 bits)
+S1: 28 (26.5 bits)
+S2: 42 (39.2 bits)
+
+

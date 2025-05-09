@@ -1,0 +1,162 @@
+<p><!--
+QBlastInfoBegin
+	Status=READY
+QBlastInfoEnd
+--><p>
+<PRE>
+
+BLASTN 2.16.1+
+Reference: Stephen F. Altschul, Thomas L. Madden, Alejandro
+A. Schaffer, Jinghui Zhang, Zheng Zhang, Webb Miller, and
+David J. Lipman (1997), "Gapped BLAST and PSI-BLAST: a new
+generation of protein database search programs", Nucleic
+Acids Res. 25:3389-3402.
+
+
+RID: 1K2UNNXT016
+
+
+Database: Core nucleotide BLAST database
+           114,657,922 sequences; 859,097,896,182 total letters
+Query= 
+Length=139
+
+
+                                                                   Score     E     Max
+Sequences producing significant alignments:                       (Bits)  Value  Ident
+
+OZ022197.1 Prunus dulcis genome assembly, chromosome: 1            120     3e-24  84%       
+XM_031119456.1 PREDICTED: Quercus lobata beta-galactosidase 9 ...  118     9e-24  100%      
+XM_044622806.1 PREDICTED: Mangifera indica beta-galactosidase ...  115     1e-22  90%       
+XM_065781808.1 PREDICTED: Quercus suber beta-galactosidase 9 (...  113     4e-22  98%       
+XM_050383063.1 PREDICTED: Quercus robur beta-galactosidase 9 (...  113     4e-22  98%       
+
+ALIGNMENTS
+>OZ022197.1 Prunus dulcis genome assembly, chromosome: 1
+Length=50520004
+
+ Score = 120 bits (132),  Expect = 3e-24
+ Identities = 96/114 (84%), Gaps = 4/114 (4%)
+ Strand=Plus/Minus
+
+Query  1         GATCCAGTGGACTCTATCTCCATCTTCGCGTAGGACCTTATGTATGCGCCGAGTGGAATT  60
+                 || |||||||||| ||||||||||| ||| |||| |||||||| ||||| ||||||||||
+Sbjct  13972286  GAGCCAGTGGACTTTATCTCCATCTACGCATAGGCCCTTATGTCTGCGCAGAGTGGAATT  13972227
+
+Query  61        TTGGGTCTAATCTTCTCTCCCC---TTTTATTTACTAGTTCCTTTTTCTACTTA  111
+                 |||||||| | ||||| |||||   |||| ||||| |||| |  ||||||||||
+Sbjct  13972226  TTGGGTCTCAACTTCTTTCCCCCTTTTTTTTTTACAAGTTAC-CTTTCTACTTA  13972174
+
+
+ Score = 65.3 bits (71),  Expect = 2e-07
+ Identities = 49/58 (84%), Gaps = 0/58 (0%)
+ Strand=Plus/Minus
+
+Query  9         GGACTCTATCTCCATCTTCGCGTAGGACCTTATGTATGCGCCGAGTGGAATTTTGGGT  66
+                 || ||||| || ||||| ||| | ||||||||||| || || ||||||||||||||||
+Sbjct  35480537  GGGCTCTACCTTCATCTGCGCATTGGACCTTATGTTTGTGCAGAGTGGAATTTTGGGT  35480480
+
+
+>XM_031119456.1 PREDICTED: Quercus lobata beta-galactosidase 9 (LOC115995046), 
+mRNA
+Length=3115
+
+ Score = 118 bits (130),  Expect = 9e-24
+ Identities = 65/65 (100%), Gaps = 0/65 (0%)
+ Strand=Plus/Plus
+
+Query  1    GATCCAGTGGACTCTATCTCCATCTTCGCGTAGGACCTTATGTATGCGCCGAGTGGAATT  60
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  488  GATCCAGTGGACTCTATCTCCATCTTCGCGTAGGACCTTATGTATGCGCCGAGTGGAATT  547
+
+Query  61   TTGGG  65
+            |||||
+Sbjct  548  TTGGG  552
+
+
+>XM_044622806.1 PREDICTED: Mangifera indica beta-galactosidase 9-like (LOC123205773), 
+transcript variant X2, mRNA
+Length=2818
+
+ Score = 115 bits (127),  Expect = 1e-22
+ Identities = 77/86 (90%), Gaps = 0/86 (0%)
+ Strand=Plus/Plus
+
+Query  1    GATCCAGTGGACTCTATCTCCATCTTCGCGTAGGACCTTATGTATGCGCCGAGTGGAATT  60
+            |||||||||| || ||||||||||||||| |||| |||||||||||||| ||||||||||
+Sbjct  76   GATCCAGTGGGCTATATCTCCATCTTCGCATAGGTCCTTATGTATGCGCTGAGTGGAATT  135
+
+Query  61   TTGGGTCTAATCTTCTCTCCCCTTTT  86
+            |||||||| | ||||| |||||| ||
+Sbjct  136  TTGGGTCTCACCTTCTTTCCCCTATT  161
+
+
+>XM_065781808.1 PREDICTED: Quercus suber beta-galactosidase 9 (LOC112028432), 
+mRNA
+Length=1308
+
+ Score = 113 bits (125),  Expect = 4e-22
+ Identities = 64/65 (98%), Gaps = 0/65 (0%)
+ Strand=Plus/Plus
+
+Query  1    GATCCAGTGGACTCTATCTCCATCTTCGCGTAGGACCTTATGTATGCGCCGAGTGGAATT  60
+            ||||||||||||||||||||||||||||| ||||||||||||||||||||||||||||||
+Sbjct  497  GATCCAGTGGACTCTATCTCCATCTTCGCATAGGACCTTATGTATGCGCCGAGTGGAATT  556
+
+Query  61   TTGGG  65
+            |||||
+Sbjct  557  TTGGG  561
+
+
+>XM_050383063.1 PREDICTED: Quercus robur beta-galactosidase 9 (LOC126688392), 
+mRNA
+Length=3143
+
+ Score = 113 bits (125),  Expect = 4e-22
+ Identities = 64/65 (98%), Gaps = 0/65 (0%)
+ Strand=Plus/Plus
+
+Query  1    GATCCAGTGGACTCTATCTCCATCTTCGCGTAGGACCTTATGTATGCGCCGAGTGGAATT  60
+            ||||||||||||| ||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  514  GATCCAGTGGACTATATCTCCATCTTCGCGTAGGACCTTATGTATGCGCCGAGTGGAATT  573
+
+Query  61   TTGGG  65
+            |||||
+Sbjct  574  TTGGG  578
+
+
+  Database: Core nucleotide BLAST database
+    Posted date:  Apr 29, 2025  11:24 PM
+  Number of letters in database: 40,642,655,839
+  Number of sequences in database:  13,690,491
+
+Lambda      K        H
+   0.634    0.408    0.912 
+Gapped
+Lambda      K        H
+   0.625    0.410    0.780 
+Matrix: blastn matrix:2 -3
+Gap Penalties: Existence: 5, Extension: 2
+Number of Sequences: 13690491
+Number of Hits to DB: 493797
+Number of extensions: 1318
+Number of successful extensions: 1318
+Number of sequences better than 10: 11
+Number of HSP's better than 10 without gapping: 0
+Number of HSP's gapped: 1318
+Number of HSP's successfully gapped: 11
+Length of query: 139
+Length of database: 40642655839
+Length adjustment: 34
+Effective length of query: 105
+Effective length of database: 40177179145
+Effective search space: 4218603810225
+Effective search space used: 4218603810225
+A: 0
+X1: 22 (20.1 bits)
+X2: 33 (29.8 bits)
+X3: 110 (99.2 bits)
+S1: 28 (26.5 bits)
+S2: 42 (39.2 bits)
+
+

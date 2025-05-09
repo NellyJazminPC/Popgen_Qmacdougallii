@@ -1,0 +1,179 @@
+<p><!--
+QBlastInfoBegin
+	Status=READY
+QBlastInfoEnd
+--><p>
+<PRE>
+
+BLASTN 2.16.1+
+Reference: Stephen F. Altschul, Thomas L. Madden, Alejandro
+A. Schaffer, Jinghui Zhang, Zheng Zhang, Webb Miller, and
+David J. Lipman (1997), "Gapped BLAST and PSI-BLAST: a new
+generation of protein database search programs", Nucleic
+Acids Res. 25:3389-3402.
+
+
+RID: 1MGEG4Z2013
+
+
+Database: Core nucleotide BLAST database
+           114,657,922 sequences; 859,097,896,182 total letters
+Query= 
+Length=139
+
+
+                                                                   Score     E     Max
+Sequences producing significant alignments:                       (Bits)  Value  Ident
+
+XM_031118375.1 PREDICTED: Quercus lobata probable inactive ATP...  240     4e-60  99%       
+XM_050436592.1 PREDICTED: Quercus robur probable inactive ATP-...  240     4e-60  99%       
+XM_031118373.1 PREDICTED: Quercus lobata probable inactive ATP...  240     4e-60  99%       
+XM_050436593.1 PREDICTED: Quercus robur probable inactive ATP-...  240     4e-60  99%       
+XM_031118374.1 PREDICTED: Quercus lobata probable inactive ATP...  240     4e-60  99%       
+
+ALIGNMENTS
+>XM_031118375.1 PREDICTED: Quercus lobata probable inactive ATP-dependent zinc 
+metalloprotease FTSHI 4, chloroplastic (LOC115994292), transcript 
+variant X4, mRNA
+Length=3031
+
+ Score = 240 bits (265),  Expect = 4e-60
+ Identities = 134/135 (99%), Gaps = 0/135 (0%)
+ Strand=Plus/Minus
+
+Query  5     CTCCATTGGACGGGGTGCACCAAAGGTTGAAAATCCAACATTTCCGGGAGCAAATGTAAC  64
+             ||||||||| ||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  2621  CTCCATTGGGCGGGGTGCACCAAAGGTTGAAAATCCAACATTTCCGGGAGCAAATGTAAC  2562
+
+Query  65    CCTCCCAGGAAGTGTGATTCCATGGATTCCCCATCGTCCAGCATAAATTAGGGCTCCATA  124
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  2561  CCTCCCAGGAAGTGTGATTCCATGGATTCCCCATCGTCCAGCATAAATTAGGGCTCCATA  2502
+
+Query  125   TTCATCGACTGGATC  139
+             |||||||||||||||
+Sbjct  2501  TTCATCGACTGGATC  2487
+
+
+>XM_050436592.1 PREDICTED: Quercus robur probable inactive ATP-dependent zinc 
+metalloprotease FTSHI 4, chloroplastic (LOC126733347), transcript 
+variant X1, mRNA
+Length=2974
+
+ Score = 240 bits (265),  Expect = 4e-60
+ Identities = 134/135 (99%), Gaps = 0/135 (0%)
+ Strand=Plus/Minus
+
+Query  5     CTCCATTGGACGGGGTGCACCAAAGGTTGAAAATCCAACATTTCCGGGAGCAAATGTAAC  64
+             ||||||||| ||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  2554  CTCCATTGGGCGGGGTGCACCAAAGGTTGAAAATCCAACATTTCCGGGAGCAAATGTAAC  2495
+
+Query  65    CCTCCCAGGAAGTGTGATTCCATGGATTCCCCATCGTCCAGCATAAATTAGGGCTCCATA  124
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  2494  CCTCCCAGGAAGTGTGATTCCATGGATTCCCCATCGTCCAGCATAAATTAGGGCTCCATA  2435
+
+Query  125   TTCATCGACTGGATC  139
+             |||||||||||||||
+Sbjct  2434  TTCATCGACTGGATC  2420
+
+
+>XM_031118373.1 PREDICTED: Quercus lobata probable inactive ATP-dependent zinc 
+metalloprotease FTSHI 4, chloroplastic (LOC115994292), transcript 
+variant X2, mRNA
+Length=3282
+
+ Score = 240 bits (265),  Expect = 4e-60
+ Identities = 134/135 (99%), Gaps = 0/135 (0%)
+ Strand=Plus/Minus
+
+Query  5     CTCCATTGGACGGGGTGCACCAAAGGTTGAAAATCCAACATTTCCGGGAGCAAATGTAAC  64
+             ||||||||| ||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  2628  CTCCATTGGGCGGGGTGCACCAAAGGTTGAAAATCCAACATTTCCGGGAGCAAATGTAAC  2569
+
+Query  65    CCTCCCAGGAAGTGTGATTCCATGGATTCCCCATCGTCCAGCATAAATTAGGGCTCCATA  124
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  2568  CCTCCCAGGAAGTGTGATTCCATGGATTCCCCATCGTCCAGCATAAATTAGGGCTCCATA  2509
+
+Query  125   TTCATCGACTGGATC  139
+             |||||||||||||||
+Sbjct  2508  TTCATCGACTGGATC  2494
+
+
+>XM_050436593.1 PREDICTED: Quercus robur probable inactive ATP-dependent zinc 
+metalloprotease FTSHI 4, chloroplastic (LOC126733347), transcript 
+variant X2, mRNA
+Length=3498
+
+ Score = 240 bits (265),  Expect = 4e-60
+ Identities = 134/135 (99%), Gaps = 0/135 (0%)
+ Strand=Plus/Minus
+
+Query  5     CTCCATTGGACGGGGTGCACCAAAGGTTGAAAATCCAACATTTCCGGGAGCAAATGTAAC  64
+             ||||||||| ||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  2555  CTCCATTGGGCGGGGTGCACCAAAGGTTGAAAATCCAACATTTCCGGGAGCAAATGTAAC  2496
+
+Query  65    CCTCCCAGGAAGTGTGATTCCATGGATTCCCCATCGTCCAGCATAAATTAGGGCTCCATA  124
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  2495  CCTCCCAGGAAGTGTGATTCCATGGATTCCCCATCGTCCAGCATAAATTAGGGCTCCATA  2436
+
+Query  125   TTCATCGACTGGATC  139
+             |||||||||||||||
+Sbjct  2435  TTCATCGACTGGATC  2421
+
+
+>XM_031118374.1 PREDICTED: Quercus lobata probable inactive ATP-dependent zinc 
+metalloprotease FTSHI 4, chloroplastic (LOC115994292), transcript 
+variant X3, mRNA
+Length=2878
+
+ Score = 240 bits (265),  Expect = 4e-60
+ Identities = 134/135 (99%), Gaps = 0/135 (0%)
+ Strand=Plus/Minus
+
+Query  5     CTCCATTGGACGGGGTGCACCAAAGGTTGAAAATCCAACATTTCCGGGAGCAAATGTAAC  64
+             ||||||||| ||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  2621  CTCCATTGGGCGGGGTGCACCAAAGGTTGAAAATCCAACATTTCCGGGAGCAAATGTAAC  2562
+
+Query  65    CCTCCCAGGAAGTGTGATTCCATGGATTCCCCATCGTCCAGCATAAATTAGGGCTCCATA  124
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  2561  CCTCCCAGGAAGTGTGATTCCATGGATTCCCCATCGTCCAGCATAAATTAGGGCTCCATA  2502
+
+Query  125   TTCATCGACTGGATC  139
+             |||||||||||||||
+Sbjct  2501  TTCATCGACTGGATC  2487
+
+
+  Database: Core nucleotide BLAST database
+    Posted date:  Apr 29, 2025  11:24 PM
+  Number of letters in database: 42,500,400,461
+  Number of sequences in database:  14,455,934
+
+Lambda      K        H
+   0.634    0.408    0.912 
+Gapped
+Lambda      K        H
+   0.625    0.410    0.780 
+Matrix: blastn matrix:2 -3
+Gap Penalties: Existence: 5, Extension: 2
+Number of Sequences: 14455934
+Number of Hits to DB: 453355
+Number of extensions: 642
+Number of successful extensions: 642
+Number of sequences better than 10: 3
+Number of HSP's better than 10 without gapping: 0
+Number of HSP's gapped: 642
+Number of HSP's successfully gapped: 3
+Length of query: 139
+Length of database: 42500400461
+Length adjustment: 34
+Effective length of query: 105
+Effective length of database: 42008898705
+Effective search space: 4410934364025
+Effective search space used: 4410934364025
+A: 0
+X1: 22 (20.1 bits)
+X2: 33 (29.8 bits)
+X3: 110 (99.2 bits)
+S1: 28 (26.5 bits)
+S2: 42 (39.2 bits)
+
+

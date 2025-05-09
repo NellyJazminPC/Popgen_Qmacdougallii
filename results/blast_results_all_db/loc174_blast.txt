@@ -1,0 +1,174 @@
+<p><!--
+QBlastInfoBegin
+	Status=READY
+QBlastInfoEnd
+--><p>
+<PRE>
+
+BLASTN 2.16.1+
+Reference: Stephen F. Altschul, Thomas L. Madden, Alejandro
+A. Schaffer, Jinghui Zhang, Zheng Zhang, Webb Miller, and
+David J. Lipman (1997), "Gapped BLAST and PSI-BLAST: a new
+generation of protein database search programs", Nucleic
+Acids Res. 25:3389-3402.
+
+
+RID: 1EA0S35J016
+
+
+Database: Core nucleotide BLAST database
+           114,657,922 sequences; 859,097,896,182 total letters
+Query= 
+Length=139
+
+
+                                                                   Score     E     Max
+Sequences producing significant alignments:                       (Bits)  Value  Ident
+
+XM_031094520.1 PREDICTED: Quercus lobata inactive protein kina...  247     5e-61  99%         
+XM_065769131.1 PREDICTED: Quercus suber inactive protein kinas...  242     6e-60  99%         
+XM_050411362.1 PREDICTED: Quercus robur inactive protein kinas...  238     3e-58  98%         
+XM_041141020.1 PREDICTED: Juglans microcarpa x Juglans regia i...  193     1e-44  91%         
+XM_019002293.2 PREDICTED: Juglans regia inactive protein kinas...  188     1e-43  90%         
+
+ALIGNMENTS
+>XM_031094520.1 PREDICTED: Quercus lobata inactive protein kinase SELMODRAFT_444075-like 
+(LOC115974257), mRNA
+Length=2595
+
+ Score = 247 bits (273),  Expect = 5e-61
+ Identities = 138/139 (99%), Gaps = 0/139 (0%)
+ Strand=Plus/Plus
+
+Query  1     TTATTAGAGCTAATGACAGGTAAAAGAATGGATGAGCTGCAATATATTGAGAGGCAGCAG  60
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||| ||||||
+Sbjct  1892  TTATTAGAGCTAATGACAGGTAAAAGAATGGATGAGCTGCAATATATTGAGAGACAGCAG  1951
+
+Query  61    TTCCTGTCTGAATGGTTCCACCCACTAGCCGCATTAGAACCAGGCCATGTTATAGCAAAT  120
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  1952  TTCCTGTCTGAATGGTTCCACCCACTAGCCGCATTAGAACCAGGCCATGTTATAGCAAAT  2011
+
+Query  121   AACTATCATTTACTGGATC  139
+             |||||||||||||||||||
+Sbjct  2012  AACTATCATTTACTGGATC  2030
+
+
+>XM_065769131.1 PREDICTED: Quercus suber inactive protein kinase SELMODRAFT_444075-like 
+(LOC136065641), mRNA
+Length=2508
+
+ Score = 242 bits (268),  Expect = 6e-60
+ Identities = 137/139 (99%), Gaps = 0/139 (0%)
+ Strand=Plus/Plus
+
+Query  1     TTATTAGAGCTAATGACAGGTAAAAGAATGGATGAGCTGCAATATATTGAGAGGCAGCAG  60
+             ||||||||||||||||||||||||||||||||||||||||| ||||||||||| ||||||
+Sbjct  1897  TTATTAGAGCTAATGACAGGTAAAAGAATGGATGAGCTGCAGTATATTGAGAGACAGCAG  1956
+
+Query  61    TTCCTGTCTGAATGGTTCCACCCACTAGCCGCATTAGAACCAGGCCATGTTATAGCAAAT  120
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  1957  TTCCTGTCTGAATGGTTCCACCCACTAGCCGCATTAGAACCAGGCCATGTTATAGCAAAT  2016
+
+Query  121   AACTATCATTTACTGGATC  139
+             |||||||||||||||||||
+Sbjct  2017  AACTATCATTTACTGGATC  2035
+
+
+>XM_050411362.1 PREDICTED: Quercus robur inactive protein kinase SELMODRAFT_444075-like 
+(LOC126712151), mRNA
+Length=2503
+
+ Score = 238 bits (263),  Expect = 3e-58
+ Identities = 136/139 (98%), Gaps = 0/139 (0%)
+ Strand=Plus/Plus
+
+Query  1     TTATTAGAGCTAATGACAGGTAAAAGAATGGATGAGCTGCAATATATTGAGAGGCAGCAG  60
+             ||||||||||||||||||||||||||||||||||||||||||||||| ||||| ||||||
+Sbjct  1892  TTATTAGAGCTAATGACAGGTAAAAGAATGGATGAGCTGCAATATATCGAGAGACAGCAG  1951
+
+Query  61    TTCCTGTCTGAATGGTTCCACCCACTAGCCGCATTAGAACCAGGCCATGTTATAGCAAAT  120
+             |||||||||||||||||||||||||||||||||||||||||||| |||||||||||||||
+Sbjct  1952  TTCCTGTCTGAATGGTTCCACCCACTAGCCGCATTAGAACCAGGACATGTTATAGCAAAT  2011
+
+Query  121   AACTATCATTTACTGGATC  139
+             |||||||||||||||||||
+Sbjct  2012  AACTATCATTTACTGGATC  2030
+
+
+>XM_041141020.1 PREDICTED: Juglans microcarpa x Juglans regia inactive protein 
+kinase SELMODRAFT_444075-like (LOC121242973), mRNA
+Length=2593
+
+ Score = 193 bits (213),  Expect = 1e-44
+ Identities = 126/139 (91%), Gaps = 0/139 (0%)
+ Strand=Plus/Plus
+
+Query  1     TTATTAGAGCTAATGACAGGTAAAAGAATGGATGAGCTGCAATATATTGAGAGGCAGCAG  60
+             || ||||||||||||||||||||||||||  ||||||||||| || |  ||  |||||||
+Sbjct  1904  TTGTTAGAGCTAATGACAGGTAAAAGAATCAATGAGCTGCAACATGTCAAGGAGCAGCAG  1963
+
+Query  61    TTCCTGTCTGAATGGTTCCACCCACTAGCCGCATTAGAACCAGGCCATGTTATAGCAAAT  120
+             || |||||||||||||||||||| |||||||||||||||||| |||||||||||||||||
+Sbjct  1964  TTTCTGTCTGAATGGTTCCACCCTCTAGCCGCATTAGAACCAAGCCATGTTATAGCAAAT  2023
+
+Query  121   AACTATCATTTACTGGATC  139
+             |||||||| ||||||||||
+Sbjct  2024  AACTATCAATTACTGGATC  2042
+
+
+>XM_019002293.2 PREDICTED: Juglans regia inactive protein kinase SELMODRAFT_444075-like 
+(LOC109019913), transcript variant X2, mRNA
+Length=2078
+
+ Score = 188 bits (208),  Expect = 1e-43
+ Identities = 125/139 (90%), Gaps = 0/139 (0%)
+ Strand=Plus/Plus
+
+Query  1     TTATTAGAGCTAATGACAGGTAAAAGAATGGATGAGCTGCAATATATTGAGAGGCAGCAG  60
+             || |||||||||||||| |||||||||||  ||||||||||| || |  ||  |||||||
+Sbjct  1386  TTGTTAGAGCTAATGACGGGTAAAAGAATCAATGAGCTGCAACATGTCAAGGAGCAGCAG  1445
+
+Query  61    TTCCTGTCTGAATGGTTCCACCCACTAGCCGCATTAGAACCAGGCCATGTTATAGCAAAT  120
+             || |||||||||||||||||||| |||||||||||||||||| |||||||||||||||||
+Sbjct  1446  TTTCTGTCTGAATGGTTCCACCCTCTAGCCGCATTAGAACCAAGCCATGTTATAGCAAAT  1505
+
+Query  121   AACTATCATTTACTGGATC  139
+             |||||||| ||||||||||
+Sbjct  1506  AACTATCAATTACTGGATC  1524
+
+
+  Database: Core nucleotide BLAST database
+    Posted date:  Apr 29, 2025  11:24 PM
+  Number of letters in database: 859,097,896,182
+  Number of sequences in database:  114,657,922
+
+Lambda      K        H
+   0.634    0.408    0.912 
+Gapped
+Lambda      K        H
+   0.625    0.410    0.780 
+Matrix: blastn matrix:2 -3
+Gap Penalties: Existence: 5, Extension: 2
+Number of Sequences: 114657922
+Number of Hits to DB: 9210060
+Number of extensions: 9581
+Number of successful extensions: 9581
+Number of sequences better than 10: 0
+Number of HSP's better than 10 without gapping: 0
+Number of HSP's gapped: 9581
+Number of HSP's successfully gapped: 0
+Length of query: 139
+Length of database: 859097896182
+Length adjustment: 37
+Effective length of query: 102
+Effective length of database: 854855553068
+Effective search space: 87195266412936
+Effective search space used: 87195266412936
+A: 0
+X1: 22 (20.1 bits)
+X2: 33 (29.8 bits)
+X3: 110 (99.2 bits)
+S1: 28 (26.5 bits)
+S2: 47 (43.7 bits)
+
+

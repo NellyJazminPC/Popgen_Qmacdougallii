@@ -1,0 +1,174 @@
+<p><!--
+QBlastInfoBegin
+	Status=READY
+QBlastInfoEnd
+--><p>
+<PRE>
+
+BLASTN 2.16.1+
+Reference: Stephen F. Altschul, Thomas L. Madden, Alejandro
+A. Schaffer, Jinghui Zhang, Zheng Zhang, Webb Miller, and
+David J. Lipman (1997), "Gapped BLAST and PSI-BLAST: a new
+generation of protein database search programs", Nucleic
+Acids Res. 25:3389-3402.
+
+
+RID: 1E7MCBTD013
+
+
+Database: Core nucleotide BLAST database
+           114,657,922 sequences; 859,097,896,182 total letters
+Query= 
+Length=139
+
+
+                                                                   Score     E     Max
+Sequences producing significant alignments:                       (Bits)  Value  Ident
+
+XM_050410119.1 PREDICTED: Quercus robur 7-deoxyloganetin gluco...  251     1e-62  100%        
+XM_050410118.1 PREDICTED: Quercus robur 7-deoxyloganetin gluco...  251     1e-62  100%        
+XM_031089386.1 PREDICTED: Quercus lobata 7-deoxyloganetin gluc...  251     1e-62  100%        
+XM_065769882.1 PREDICTED: Quercus suber 7-deoxyloganetin gluco...  238     3e-58  98%         
+XM_065766467.1 PREDICTED: Quercus suber 7-deoxyloganetin gluco...  238     3e-58  98%         
+
+ALIGNMENTS
+>XM_050410119.1 PREDICTED: Quercus robur 7-deoxyloganetin glucosyltransferase-like 
+(LOC126709780), transcript variant X2, mRNA
+Length=1476
+
+ Score = 251 bits (278),  Expect = 1e-62
+ Identities = 139/139 (100%), Gaps = 0/139 (0%)
+ Strand=Plus/Plus
+
+Query  1    CATAGAGGTTTTCACGTAACCTTTGTGAACACTGAGTTTAATCACCAACGTTTTCTGAAA  60
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  166  CATAGAGGTTTTCACGTAACCTTTGTGAACACTGAGTTTAATCACCAACGTTTTCTGAAA  225
+
+Query  61   ACTAATGGTCCTAACTCCTTAGATGGCTTGTCTGACTTTCGATTCAAAACTATTCCAGAC  120
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  226  ACTAATGGTCCTAACTCCTTAGATGGCTTGTCTGACTTTCGATTCAAAACTATTCCAGAC  285
+
+Query  121  AGCCTCCCTCCCATGGATC  139
+            |||||||||||||||||||
+Sbjct  286  AGCCTCCCTCCCATGGATC  304
+
+
+>XM_050410118.1 PREDICTED: Quercus robur 7-deoxyloganetin glucosyltransferase-like 
+(LOC126709780), transcript variant X1, mRNA
+Length=1565
+
+ Score = 251 bits (278),  Expect = 1e-62
+ Identities = 139/139 (100%), Gaps = 0/139 (0%)
+ Strand=Plus/Plus
+
+Query  1    CATAGAGGTTTTCACGTAACCTTTGTGAACACTGAGTTTAATCACCAACGTTTTCTGAAA  60
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  165  CATAGAGGTTTTCACGTAACCTTTGTGAACACTGAGTTTAATCACCAACGTTTTCTGAAA  224
+
+Query  61   ACTAATGGTCCTAACTCCTTAGATGGCTTGTCTGACTTTCGATTCAAAACTATTCCAGAC  120
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  225  ACTAATGGTCCTAACTCCTTAGATGGCTTGTCTGACTTTCGATTCAAAACTATTCCAGAC  284
+
+Query  121  AGCCTCCCTCCCATGGATC  139
+            |||||||||||||||||||
+Sbjct  285  AGCCTCCCTCCCATGGATC  303
+
+
+>XM_031089386.1 PREDICTED: Quercus lobata 7-deoxyloganetin glucosyltransferase-like 
+(LOC115969774), mRNA
+Length=1561
+
+ Score = 251 bits (278),  Expect = 1e-62
+ Identities = 139/139 (100%), Gaps = 0/139 (0%)
+ Strand=Plus/Plus
+
+Query  1    CATAGAGGTTTTCACGTAACCTTTGTGAACACTGAGTTTAATCACCAACGTTTTCTGAAA  60
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  161  CATAGAGGTTTTCACGTAACCTTTGTGAACACTGAGTTTAATCACCAACGTTTTCTGAAA  220
+
+Query  61   ACTAATGGTCCTAACTCCTTAGATGGCTTGTCTGACTTTCGATTCAAAACTATTCCAGAC  120
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  221  ACTAATGGTCCTAACTCCTTAGATGGCTTGTCTGACTTTCGATTCAAAACTATTCCAGAC  280
+
+Query  121  AGCCTCCCTCCCATGGATC  139
+            |||||||||||||||||||
+Sbjct  281  AGCCTCCCTCCCATGGATC  299
+
+
+>XM_065769882.1 PREDICTED: Quercus suber 7-deoxyloganetin glucosyltransferase-like 
+(LOC111986357), mRNA
+Length=1663
+
+ Score = 238 bits (263),  Expect = 3e-58
+ Identities = 136/139 (98%), Gaps = 0/139 (0%)
+ Strand=Plus/Plus
+
+Query  1    CATAGAGGTTTTCACGTAACCTTTGTGAACACTGAGTTTAATCACCAACGTTTTCTGAAA  60
+            |||||||||||||||||||||||||| |||||||||||||||||||||||||||||||||
+Sbjct  190  CATAGAGGTTTTCACGTAACCTTTGTTAACACTGAGTTTAATCACCAACGTTTTCTGAAA  249
+
+Query  61   ACTAATGGTCCTAACTCCTTAGATGGCTTGTCTGACTTTCGATTCAAAACTATTCCAGAC  120
+            ||| |||||||||||||||||||||||||||||||||||| |||||||||||||||||||
+Sbjct  250  ACTTATGGTCCTAACTCCTTAGATGGCTTGTCTGACTTTCAATTCAAAACTATTCCAGAC  309
+
+Query  121  AGCCTCCCTCCCATGGATC  139
+            |||||||||||||||||||
+Sbjct  310  AGCCTCCCTCCCATGGATC  328
+
+
+>XM_065766467.1 PREDICTED: Quercus suber 7-deoxyloganetin glucosyltransferase-like 
+(LOC136064564), mRNA
+Length=1738
+
+ Score = 238 bits (263),  Expect = 3e-58
+ Identities = 136/139 (98%), Gaps = 0/139 (0%)
+ Strand=Plus/Plus
+
+Query  1    CATAGAGGTTTTCACGTAACCTTTGTGAACACTGAGTTTAATCACCAACGTTTTCTGAAA  60
+            |||||||||||||||||||||||||| |||||||||||||||||||||||||||||||||
+Sbjct  190  CATAGAGGTTTTCACGTAACCTTTGTTAACACTGAGTTTAATCACCAACGTTTTCTGAAA  249
+
+Query  61   ACTAATGGTCCTAACTCCTTAGATGGCTTGTCTGACTTTCGATTCAAAACTATTCCAGAC  120
+            ||| |||||||||||||||||||||||||||||||||||| |||||||||||||||||||
+Sbjct  250  ACTTATGGTCCTAACTCCTTAGATGGCTTGTCTGACTTTCAATTCAAAACTATTCCAGAC  309
+
+Query  121  AGCCTCCCTCCCATGGATC  139
+            |||||||||||||||||||
+Sbjct  310  AGCCTCCCTCCCATGGATC  328
+
+
+  Database: Core nucleotide BLAST database
+    Posted date:  Apr 29, 2025  11:24 PM
+  Number of letters in database: 859,097,896,182
+  Number of sequences in database:  114,657,922
+
+Lambda      K        H
+   0.634    0.408    0.912 
+Gapped
+Lambda      K        H
+   0.625    0.410    0.780 
+Matrix: blastn matrix:2 -3
+Gap Penalties: Existence: 5, Extension: 2
+Number of Sequences: 114657922
+Number of Hits to DB: 8378521
+Number of extensions: 6736
+Number of successful extensions: 6736
+Number of sequences better than 10: 5
+Number of HSP's better than 10 without gapping: 0
+Number of HSP's gapped: 6736
+Number of HSP's successfully gapped: 5
+Length of query: 139
+Length of database: 859097896182
+Length adjustment: 37
+Effective length of query: 102
+Effective length of database: 854855553068
+Effective search space: 87195266412936
+Effective search space used: 87195266412936
+A: 0
+X1: 22 (20.1 bits)
+X2: 33 (29.8 bits)
+X3: 110 (99.2 bits)
+S1: 28 (26.5 bits)
+S2: 47 (43.7 bits)
+
+
