@@ -24,7 +24,6 @@ ne_results <- linkNe(gtypes_data, ci = 0.95, nrep = 1000)
 # Ver los resultados
 print(ne_results)
 
-
 library(PopGenome)
 
 # Cargar datos desde un archivo VCF
