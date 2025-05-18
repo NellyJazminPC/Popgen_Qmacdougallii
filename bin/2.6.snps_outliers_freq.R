@@ -90,7 +90,6 @@ variants_wide <- variants_long %>%
 
 # Exportar el data frame a un archivo Excel
 write_xlsx(variants_wide, "../results/SNPs_outliers_variants_per_locus.xlsx")
-
 # Mensaje de confirmación
 cat("El archivo con las variantes por locus (en formato ancho) se ha exportado a '../results/SNPs_out_variants_per_locus.xlsx'.\n")
 
@@ -190,8 +189,8 @@ supplementary_file <- "../doc/Supplementary_2.xlsx"
 supplementary_data <- read_xlsx(supplementary_file, sheet = "TS3")
 
 # Filtrar las filas no repetidas por la columna "locus_name_clean"
-supplementary_data <- supplementary_data %>%
-  distinct(locus_name_clean, .keep_all = TRUE)
+#supplementary_data <- supplementary_data %>%
+#  distinct(locus_name_clean, .keep_all = TRUE)
 
 # Filtrar las filas que tienen "Yes" en la columna "plot"
 filtered_data <- supplementary_data %>%
@@ -278,8 +277,8 @@ supplementary_file <- "../doc/Supplementary_2.xlsx"
 supplementary_data <- read_xlsx(supplementary_file, sheet = "TS3")
 
 # Filtrar las filas no repetidas por la columna "locus_name_clean"
-supplementary_data <- supplementary_data %>%
-  distinct(locus_name_clean, .keep_all = TRUE)
+#supplementary_data <- supplementary_data %>%
+#  distinct(locus_name_clean, .keep_all = TRUE)
 
 # Filtrar las filas que tienen "Yes" en la columna "plot"
 filtered_data <- supplementary_data %>%
