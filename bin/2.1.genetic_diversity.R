@@ -29,8 +29,6 @@ pop(qmacd_genlight_pop) <- pop.metadata$ZONE  # Assign POP as population
 qmacd_genind <- gl2gi(qmacd_genlight, v=1)
 qmacd_genclone <- as.genclone(qmacd_genind)
 
-pop(qmacd_genind) <- pop.metadata$SITE_NAME
-
 # For POP
 qmacd_genind_pop <- gl2gi(qmacd_genlight_pop, v=1)
 qmacd_genclone_pop <- as.genclone(qmacd_genind_pop)
@@ -58,7 +56,7 @@ t.test(snps_divers$Hexp,snps_divers$Hobs,pair=T,var.equal=TRUE,alter="greater")
 
 
 #----------------
-# FIS
+# FIS (inbreeding coefficient) and Heterozygosis
 #----------------
 # Cargar librerías
 library(adegenet) # Para manejar datos genéticos
@@ -152,26 +150,49 @@ plot_FIS
 pop(qmacd_vcf) <- pop.metadata$SITE_NAME
 
 
+#-------------- 
+# Alelos privados y totales por sitio 
+#--------------
 
-# Diversidad equivalente a π (Hs = heterocigosidad esperada)
-pi_por_poblacion <- apply(stats$Hs, 2, mean, na.rm = TRUE)
-print(pi_por_poblacion)
+library(ggplot2)
+library(dplyr)
+library(adegenet)
+
+# Alelos privados por población (sitio)
+priv_al <- private_alleles(qmacd_genclone_pop, report = "data.frame", level = "population")
+
+# Guardar tabla de alelos privados
+#write.csv(priv_al, "private_allele_ref.gen.qrob.csv", row.names = FALSE)
+
+# Visualización de alelos privados
+plot_priv_ale <- ggplot(priv_al) + 
+  geom_tile(aes(x = population, y = allele, fill = count)) +
+  labs(title = "Alelos privados por población", x = "Población", y = "Alelo")
+print(plot_priv_ale)
+
+# Resumen: número de alelos privados por sitio
+private_alleles_por_sitio <- priv_al %>%
+  group_by(population) %>%
+  summarise(private_alleles = sum(count))
+print(private_alleles_por_sitio)
+
+# Alelos totales por sitio
+tab_alleles <- tab(qmacd_genind_pop, NA.method = "zero")
+pops <- pop(qmacd_genind_pop)
+total_alleles_por_sitio <- data.frame(
+  population = levels(pops),
+  total_alleles = sapply(levels(pops), function(pop_name) {
+    inds <- which(pops == pop_name)
+    sum(colSums(tab_alleles[inds, , drop = FALSE]) > 0)
+  })
+)
+print(total_alleles_por_sitio)
 
 
+# Obtener la matriz de alelos por individuo
+tab_alleles <- tab(qmacd_genind_pop, NA.method = "zero")
 
-# Función aproximada de Tajima's D para datos genotípicos
-tajimaD_approx <- function(genind_obj) {
-  # Requiere el paquete pegas
-  if (!require("pegas")) install.packages("pegas")
-  library(pegas)
-  
-  # Convertir a formato DNAbin (aproximación)
-  dna <- genind2DNAbin(genind_obj)
-  
-  # Calcular Tajima's D (puede dar advertencias)
-  tajima.test(dna)
-}
+# Contar el número de alelos presentes en toda la muestra
+total_alleles_global <- sum(colSums(tab_alleles) > 0)
 
-# Ejecutar con precaución (puede no ser perfecto para SNPs)
-tajima_result <- tajimaD_approx(qmacd_genind)
-print(tajima_result)
+cat("Número total de alelos en toda la muestra:", total_alleles_global, "\n")
