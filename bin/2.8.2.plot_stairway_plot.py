@@ -1,81 +1,92 @@
-# Load the stairway plot results file and inspect the first few rows
+# Compute minimum year and minimum Ne_median for each demography summary file
 import pandas as pd
 
-# Read the file, skipping any comment lines if present
-with open('/home/n311pc/bioinfo/Popgen_Qmacdougallii/data/1.8.demography/stairway/one_pop/pop1_demography_analysis.final.summary', 'r') as f:
-    lines = f.readlines()
+files = [
+    '/home/n311pc/bioinfo/Popgen_Qmacdougallii/data/1.8.demography/stairway/pop1_4.2e8_100y_demography_analysis.final.summary',
+    '/home/n311pc/bioinfo/Popgen_Qmacdougallii/data/1.8.demography/stairway/pop1_1.01e8_100y_demography_analysis.final.summary',
+    '/home/n311pc/bioinfo/Popgen_Qmacdougallii/data/1.8.demography/stairway/pop1_5.2e8_100y_demography_analysis.final.summary',
+    '/home/n311pc/bioinfo/Popgen_Qmacdougallii/data/1.8.demography/stairway/pop1_4.2e8_50y_demography_analysis.final.summary',
+    '/home/n311pc/bioinfo/Popgen_Qmacdougallii/data/1.8.demography/stairway/pop1_5.2e8_50y_demography_analysis.final.summary',
+    '/home/n311pc/bioinfo/Popgen_Qmacdougallii/data/1.8.demography/stairway/pop1_1.01e8_50y_demography_analysis.final.summary'
+]
 
-# Find the first non-comment line (header)
-header_idx = 0
-for i, line in enumerate(lines):
-    if not line.startswith('#') and line.strip() != '':
-        header_idx = i
-        break
+results = []
+for f in files:
+    df = pd.read_csv(f, sep='\t', comment='#')
+    min_year = df['year'].min()
+    min_ne = df['Ne_median'].min()
+    label = f.split('/')[-1].replace('pop1_','').replace('_demography_analysis.final.summary','')
+    results.append({'file': label, 'min_year': min_year, 'min_Ne_median': min_ne})
 
-# Load the dataframe from the correct header
-summary_df = pd.read_csv('/home/n311pc/bioinfo/Popgen_Qmacdougallii/data/1.8.demography/stairway/one_pop/pop1_demography_analysis.final.summary', sep='\t', header=header_idx)
-# Show the head of the dataframe to confirm correct loading
-print(summary_df.head())
+summary_df = pd.DataFrame(results)
+print(summary_df)
+
+# Exportar el DataFrame a CSV en el directorio especificado
+summary_df.to_csv('/home/n311pc/bioinfo/Popgen_Qmacdougallii/results/demography/min_Ne_summary.csv', index=False)
+print('Resumen exportado como min_Ne_summary.csv en results/demography')
+
+#######
+# Plot six lines with additional paleo events (Bølling–Allerød, Younger Dryas, Clovis, Megafauna extinction)
+
+import pandas as pd, matplotlib.pyplot as plt
+
+files = [
+    '/home/n311pc/bioinfo/Popgen_Qmacdougallii/data/1.8.demography/stairway/pop1_1.01e8_50y_demography_analysis.final.summary',
+    '/home/n311pc/bioinfo/Popgen_Qmacdougallii/data/1.8.demography/stairway/pop1_1.01e8_100y_demography_analysis.final.summary',
+    '/home/n311pc/bioinfo/Popgen_Qmacdougallii/data/1.8.demography/stairway/pop1_4.2e8_50y_demography_analysis.final.summary',
+    '/home/n311pc/bioinfo/Popgen_Qmacdougallii/data/1.8.demography/stairway/pop1_4.2e8_100y_demography_analysis.final.summary',
+    '/home/n311pc/bioinfo/Popgen_Qmacdougallii/data/1.8.demography/stairway/pop1_5.2e8_50y_demography_analysis.final.summary',
+    '/home/n311pc/bioinfo/Popgen_Qmacdougallii/data/1.8.demography/stairway/pop1_5.2e8_100y_demography_analysis.final.summary'
+]
+
+# color mapping consistent with previous
+color_map = {
+    '/home/n311pc/bioinfo/Popgen_Qmacdougallii/data/1.8.demography/stairway/pop1_1.01e8_50y_demography_analysis.final.summary': 'firebrick',
+    '/home/n311pc/bioinfo/Popgen_Qmacdougallii/data/1.8.demography/stairway/pop1_1.01e8_100y_demography_analysis.final.summary': 'darkred',
+    '/home/n311pc/bioinfo/Popgen_Qmacdougallii/data/1.8.demography/stairway/pop1_4.2e8_50y_demography_analysis.final.summary': 'gold',
+    '/home/n311pc/bioinfo/Popgen_Qmacdougallii/data/1.8.demography/stairway/pop1_4.2e8_100y_demography_analysis.final.summary': 'goldenrod',
+    '/home/n311pc/bioinfo/Popgen_Qmacdougallii/data/1.8.demography/stairway/pop1_5.2e8_50y_demography_analysis.final.summary': 'royalblue',
+    '/home/n311pc/bioinfo/Popgen_Qmacdougallii/data/1.8.demography/stairway/pop1_5.2e8_100y_demography_analysis.final.summary': 'navy'
+}
+
+plt.figure(figsize=(13,8))
+for f in files:
+    df = pd.read_csv(f, sep='\t', comment='#')
+    x = df['year']/1000
+    ne = df['Ne_median']/1000
+    ci_low = df['Ne_2.5%']/1000
+    ci_up = df['Ne_97.5%']/1000
+    # Extraer solo el nombre del archivo y construir la etiqueta corta
+    label_core = f.split('/')[-1].replace('pop1_','').replace('_demography_analysis.final.summary','')
+    parts = label_core.split('_')
+    mu, gen = parts[0], parts[1]
+    mu_fmt = mu.replace('1.01e8', r'1.01$\times 10^{-8}$') \
+               .replace('4.2e8', r'4.2$\times 10^{-8}$') \
+               .replace('5.2e8', r'5.2$\times 10^{-8}$')    
+    label = f"{mu_fmt}_{gen}"
+    c = color_map[f]
+    plt.fill_between(x, ci_low, ci_up, color=c, alpha=0.15)
+    plt.plot(x, ne, lw=2, color=c, alpha=0.8, label=label)
+
+# Existing markers: LGM and Holocene start
+plt.axvspan(19,26, color='grey', alpha=0.2, label='LGM')
+plt.axvline(11.7, color='green', ls='--', lw=2, alpha=0.7, label='Holocene start (11.7 ka)')
 
 
-# Prepare and plot the stairway plot results in the style of the reference image
-import matplotlib.pyplot as plt
-import numpy as np
-
-# Extract relevant columns
-x = summary_df['year'] / 1000  # Convert years to ka (thousands of years)
-y = summary_df['Ne_median'] / 1000  # Convert Ne to thousands
-ci_lower = summary_df['Ne_2.5%'] / 1000
-ci_upper = summary_df['Ne_97.5%'] / 1000
-
-# Set up the plot
-plt.figure(figsize=(7, 6))
-
-# Plot confidence interval as a filled area
-plt.fill_between(x, ci_lower, ci_upper, color='mediumpurple', alpha=0.3, label='95% CI')
-
-# Plot the median Ne line
-plt.plot(x, y, color='purple', lw=2, label='Median $N_e$')
-
-# Add vertical reference line at 20 ka BP
-#plt.axvline(20, color='blue', linestyle='--', lw=2)
-
-# Add annotation for SNPs (using the value from your image)
-plt.text(0.08, 0.4, '5426 SNPs', fontsize=12, color='black', transform=plt.gca().transAxes)
-
-# Add panel label and title
-#plt.text(-0.15, 1.05, '(c)', fontsize=16, fontweight='bold', transform=plt.gca().transAxes)
-plt.title('One single pop', fontsize=16, pad=20)
-
-# Franja del LGM (26-19 ka BP)
-plt.axvspan(19, 26, color='gray', alpha=0.3, label='LGM (26-19 ka BP)')
-plt.text(22.5, plt.ylim()[1]/2, 'LGM', color='black', fontsize=13, ha='center', va='center', rotation=90, alpha=0.7)
-
-
-# Set log-log axes
 plt.xscale('log')
 plt.yscale('log')
+plt.xlim(0.05, 20000)
+plt.ylim(0.1, 300000)
+plt.xlabel('ka Before Present', fontsize=15)
+plt.ylabel('$N_e$ ($\ x10^{3}$)', fontsize=15)
 
-# Set axis labels
-plt.xlabel('Years before present', fontsize=14)
-plt.ylabel('$N_e$ ($\	x 10^3$)', fontsize=14)
+# Ejes con números completos
+plt.xticks([0.1, 1, 10, 100, 1000, 10000], ['0.1', '1', '10', '100', '1000', '10000'])
+plt.yticks([0.1, 1, 10, 100, 1000, 10000, 100000], ['0.1', '1', '10', '100', '1000', '10000', '100000'])
 
-# Set axis limits and ticks to match the reference
-plt.xlim(0.05, 1000000)
-plt.ylim(0.25, 20000)
-plt.xticks([0.5, 2, 10, 100, 500, 1000000], ['0.5k', '2k', '10k','100k','500k','1M'])
-plt.yticks([0.25, 1, 4, 16, 30, 40, 64, 256, 4000], ['0.25', '1', '4', '16', '30', '40', '64', '256', '4000'])
-
-# Remove top and right spines for a cleaner look
-plt.gca().spines['top'].set_visible(False)
-plt.gca().spines['right'].set_visible(False)
-
-# Add grid for better readability
+plt.legend(fontsize=12, loc='upper left', ncol=2, framealpha=0.95)
 plt.tight_layout()
-# Guardar la figura en el directorio especificado
-plt.savefig('/home/n311pc/bioinfo/Popgen_Qmacdougallii/results/demography/one_single_pop.png', dpi=300)
-plt.show()
 
-print('Stairway plot styled, displayed y exportado como one_single_pop.png en results/demography')
-# ...existing code...
-print('Stairway plot styled and displayed as in the reference image from paper Ortego et al., 2023')
+# Exportar el gráfico al directorio de resultados
+plt.savefig('/home/n311pc/bioinfo/Popgen_Qmacdougallii/results/demography/demography_paleo_events.png', dpi=300)
+plt.show()
