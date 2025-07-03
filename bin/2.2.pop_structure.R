@@ -29,7 +29,7 @@ ploidy(qmacd_genlight) <- 2
 qmacd_genlight@ploidy
 
 # Add population levels using SITE and ZONE metadata
-pop(qmacd_genlight) <- pop.metadata$SITE  # Assign SITE as population
+pop(qmacd_genlight) <- pop.metadata$SITE_NAME  # Assign SITE as population
 qmacd_genlight_pop <- qmacd_genlight  # Create a copy to use POP
 pop(qmacd_genlight_pop) <- pop.metadata$POP  # Assign POP as population
 
@@ -82,7 +82,7 @@ pop_labels <- pop_labels[order(unique(qmacd_pca_scores$pop))]
 # Create the plot
 set.seed(12345)
 qmacd_PCA_plot <- ggplot(qmacd_pca_scores, aes(x=PC1, y=PC2, colour=as.factor(pop), shape=as.factor(zone), fill=as.factor(pop))) + 
-  geom_point(size=4, alpha=0.7) + 
+  geom_point(size=7, alpha=0.7) + 
   scale_color_manual(values=cols, name="Populations", labels=pop_labels) +  # Use edited labels
   scale_fill_manual(values=cols, name="Populations", labels=pop_labels) +  # Use edited labels
   scale_shape_manual(name="Zones", values=c(21, 24, 25), labels=c("North", "South")) +  # Change legend labels for zone
@@ -103,6 +103,7 @@ print(qmacd_PCA_plot)
 
 # Save the plot in TIFF format (high resolution, widely accepted)
 ggsave("../results/qmacd_PCA_plot.tiff", qmacd_PCA_plot, width=10, height=8, dpi=300, compression="lzw")
+ggsave("../results/qmacd_PCA_plot.png", qmacd_PCA_plot, width=10, height=8, dpi=300)
 
 #################
 # DAPC Analysis
@@ -152,7 +153,7 @@ pramx <- xvalDapc(tab(qmacd_genclone, NA.method = "mean"), pop(qmacd_genclone))
 # n.pca is the number of different number of PCA axes to be retained for the cross-validation
 set.seed(999)
 system.time(pramx <- xvalDapc(tab(qmacd_genclone, NA.method = "mean"), 
-                              pop(qmacd_genclone), n.pca = 5:25, n.rep = 30, 
+                              pop(qmacd_genclone), n.pca = 5:30, n.rep = 30, 
                               parallel = "multicore", ncpus = 6))
 
 names(pramx) # The first element are all the samples
@@ -466,12 +467,12 @@ min_span_net <- poppr.msn(qmacd_genclone_sub, qmacd_genclone_dist, showplot = T,
 tiff("../results/msn_plot.tiff", width = 10, height = 8, units = "in", res = 300, compression = "lzw")
 
 # Plot the MSN with Kamada-Kawai layout
+# c("CR_01", "CR_02", "CR_03", "IT_01", "IT_02", "IT_03", "CY_02", "CY_08", "MT_05", "MB_03", "MC_05", "MT_06", "LS_01", "LS_02", "LS_03", "LS_04"),
+
 set.seed(69)
 plot_poppr_msn(qmacd_genclone,
                min_span_net,
-               inds = c("CR_01", "CR_02", "IT_01", "IT_02", "IT_03", 
-                        "CY_02", "CY_08", "MT_05", "MB_03", "MC_05", 
-                        "MT_06", "LS_01", "LS_02", "LS_03", "LS_04"),
+               inds = "ALL",
                mlg = FALSE,
                gadj = 25,
                nodescale = 51,
