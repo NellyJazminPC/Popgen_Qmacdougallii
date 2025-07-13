@@ -10,7 +10,7 @@ library(dartR)      # For working with genomic data in genlight format
 library(ggplot2)    # For high-quality graphics
 library(adegenet)   # For DAPC analysis and other genetic functions
 library(parallel)   # For parallel processing (used in xvalDapc)
-
+library(poppr)
 # Load the VCF file into R
 qmacd_vcf <- read.vcfR("../data/1.3.assembly_variant_calling/ref_gen_qrob_trim01_1_sorted.vcf")
 
@@ -42,7 +42,19 @@ qmacd_genind_pop <- gl2gi(qmacd_genlight_pop, v=1)
 qmacd_genclone_pop <- as.genclone(qmacd_genind_pop)
 
 # Define a consistent color palette
-cols <- c("#00B1E8", "#075277", "#E7298A", "#E07E34", "#F15858", "#E6AB02", "#7570B3", "#1FC944", "red")
+#cols <- c("#00B1E8", "#075277", "#E7298A", "#E07E34", "#F15858", "#E6AB02", "#7570B3", "#1FC944", "red")
+
+cols <- c(
+  "#D55E00",  # vermillion
+  "#000000",  # black
+  "#56B4E9",  # sky blue
+  "#009E73",  # bluish green
+  "#F0E442",  # yellow
+  "#999999",   # grey
+  "#0072B2",  # blue
+  "#CC79A7",  # reddish purple
+  "#E69F00"  # orange
+)
 
 # PCA #
 #################
@@ -82,7 +94,7 @@ pop_labels <- pop_labels[order(unique(qmacd_pca_scores$pop))]
 # Create the plot
 set.seed(12345)
 qmacd_PCA_plot <- ggplot(qmacd_pca_scores, aes(x=PC1, y=PC2, colour=as.factor(pop), shape=as.factor(zone), fill=as.factor(pop))) + 
-  geom_point(size=7, alpha=0.7) + 
+  geom_point(size=5, alpha=0.6) + 
   scale_color_manual(values=cols, name="Populations", labels=pop_labels) +  # Use edited labels
   scale_fill_manual(values=cols, name="Populations", labels=pop_labels) +  # Use edited labels
   scale_shape_manual(name="Zones", values=c(21, 24, 25), labels=c("North", "South")) +  # Change legend labels for zone
@@ -101,9 +113,34 @@ qmacd_PCA_plot <- ggplot(qmacd_pca_scores, aes(x=PC1, y=PC2, colour=as.factor(po
 # Display the plot
 print(qmacd_PCA_plot)
 
+
 # Save the plot in TIFF format (high resolution, widely accepted)
-ggsave("../results/qmacd_PCA_plot.tiff", qmacd_PCA_plot, width=10, height=8, dpi=300, compression="lzw")
-ggsave("../results/qmacd_PCA_plot.png", qmacd_PCA_plot, width=10, height=8, dpi=300)
+ggsave("../results/qmacd_PCA_plot_daltonic_friendly.tiff", qmacd_PCA_plot, width=10, height=8, dpi=300, compression="lzw")
+ggsave("../results/qmacd_PCA_plot_daltonic_friendly.png", qmacd_PCA_plot, width=10, height=8, dpi=300)
+
+
+set.seed(12345)
+qmacd_PCA_plot <- ggplot(qmacd_pca_scores, aes(x=PC1, y=PC2, fill=as.factor(pop), shape=as.factor(zone))) + 
+  geom_point(size=6, alpha=0.6, color="black") +  # color="black" para el borde
+  scale_fill_manual(values=cols, name="Populations", labels=pop_labels) +
+  scale_shape_manual(name="Zones", values=c(21, 24, 25), labels=c("North", "South")) +
+  geom_hline(yintercept=0) + 
+  geom_vline(xintercept=0) + 
+  theme_bw() +
+  theme(legend.title=element_blank(), 
+        legend.text=element_text(size=16),
+        axis.title.x=element_text(size=18), 
+        axis.text.x=element_text(size=14),
+        axis.title.y=element_text(size=18), 
+        axis.text.y=element_text(size=16)) + 
+  xlab("PC1 %4.62") + 
+  ylab("PC2 %2.76")
+
+print(qmacd_PCA_plot)
+# Save the plot in TIFF format (high resolution, widely accepted)
+ggsave("../results/qmacd_PCA_plot_daltonic_friendly_borders.tiff", qmacd_PCA_plot, width=10, height=8, dpi=300, compression="lzw")
+ggsave("../results/qmacd_PCA_plot_daltonic_friendly_borders.png", qmacd_PCA_plot, width=10, height=8, dpi=300)
+
 
 #################
 # DAPC Analysis
@@ -190,15 +227,15 @@ dev.off()
 # DAPC plot en scatter - 2 pop - North and South
 #######
 # Define a consistent color palette for the 9 sites
-site_cols <- c("CZ" = "#FFA500",  # Orange for CZ
-               "MT" = "#FFA500",  # Orange for MT
-               "MC" = "#FFA500",  # Orange for MC
-               "MB" = "#FFA500",  # Orange for MB
-               "CY" = "#FFA500",  # Orange for CY
-               "LS" = "#008000",  # Green for LS
-               "PZ" = "#008000",  # Green for PZ
-               "CR" = "#008000",  # Green for CR
-               "IT" = "#008000")  # Green for IT
+site_cols <- c("CZ" = "#E69F00",  # Orange for CZ
+               "MT" = "#E69F00",  # Orange for MT
+               "MC" = "#E69F00",  # Orange for MC
+               "MB" = "#E69F00",  # Orange for MB
+               "CY" = "#E69F00",  # Orange for CY
+               "LS" = "#0072B2",  # Green for LS
+               "PZ" = "#0072B2",  # Green for PZ
+               "CR" = "#0072B2",  # Green for CR
+               "IT" = "#0072B2")  # Green for IT
 
 # Ensure pramx$DAPC$grp is a factor
 pramx$DAPC$grp <- factor(pramx$DAPC$grp)
@@ -274,9 +311,9 @@ dapc_plot <- ggplot(dapc_coords, aes(x = LD1, y = LD2, color = group, fill = gro
   # Plot individual points with shapes based on site
   geom_point(size = 8, alpha = 0.5) +  # Larger and more translucent points
   # Define colors for groups
-  scale_color_manual(values = c("South" = "#FFA500", "North" = "#008000"), 
+  scale_color_manual(values = c("South" = "#0072B2", "North" = "#E69F00"), 
                      labels = c("South", "North")) +  # Update legend labels
-  scale_fill_manual(values = c("South" = "#FFA500", "North" = "#008000")) +  # Fill for shapes
+  scale_fill_manual(values = c("South" = "#0072B2", "North" = "#E69F00")) +  # Fill for shapes
   # Define shapes for sites
   scale_shape_manual(values = site_shapes) +
   # Highlight X and Y axes at 0
@@ -299,10 +336,10 @@ dapc_plot <- ggplot(dapc_coords, aes(x = LD1, y = LD2, color = group, fill = gro
 print(dapc_plot)
 
 # Save the DAPC plot in TIFF format (high resolution, widely accepted)
-ggsave("../results/qmacd_DAPC_plot_2pop_ggplot.tiff", dapc_plot, width = 10, height = 8, dpi = 300, compression = "lzw")
+ggsave("../results/qmacd_DAPC_plot_2pop_ggplot_daltonic_friendly.tiff", dapc_plot, width = 10, height = 8, dpi = 300, compression = "lzw")
 
 # Save the DAPC plot in PNG format (high resolution, widely supported)
-ggsave("../results/qmacd_DAPC_plot_2pop_ggplot.png", dapc_plot, width = 10, height = 8, dpi = 300)
+ggsave("../results/qmacd_DAPC_plot_2pop_ggplot_daltonic_friendly.png", dapc_plot, width = 10, height = 8, dpi = 300)
 
 #####
 # DAPC con Elipse de confianza (Confidence Ellipse) en ggplot
@@ -319,43 +356,41 @@ dapc_coords$site <- pramx$DAPC$grp  # Assign site information (e.g., CZ, MC, MB)
 site_shapes <- c("CZ" = 21, "MT" = 22, "MC" = 23, "MB" = 24, "CY" = 25, 
                  "LS" = 21, "PZ" = 22, "CR" = 23, "IT" = 24)
 
-# Create the DAPC plot with ggplot2
-dapc_plot <- ggplot(dapc_coords, aes(x = LD1, y = LD2, color = group, fill = group)) +
-  # Add confidence ellipses with no fill and marked borders
-  stat_ellipse(aes(group = group), type = "norm", level = 0.95, 
-               geom = "path", size = 1, linetype = "solid") +  # No fill, only border
-  # Plot individual points with shapes based on site
-  geom_point(aes(shape = site), size = 4, alpha = 0.5) +  # Larger and more translucent points
-  # Define colors for groups
-  scale_color_manual(values = c("South" = "#FFA500", "North" = "#008000"), 
-                     labels = c("South", "North")) +  # Update legend labels
-  scale_fill_manual(values = c("South" = "#FFA500", "North" = "#008000")) +  # Fill for points
-  # Define shapes for sites
+dapc_plot <- ggplot(dapc_coords, aes(x = LD1, y = LD2, fill = group, shape = site)) +
+  # Elipse de confianza (solo borde)
+  stat_ellipse(aes(group = group, color = group), type = "norm", level = 0.95, 
+               geom = "path", size = 1, linetype = "solid") +
+  # Puntos con borde negro
+  geom_point(size = 6, alpha = 0.5, color = "black") +
+  # Colores de relleno para los grupos
+  scale_fill_manual(values = c("South" = "#0072B2", "North" = "#E69F00")) +
+  # Colores de borde para las elipses
+  scale_color_manual(values = c("South" = "#0072B2", "North" = "#E69F00"), 
+                     labels = c("South", "North")) +
+  # Formas para los sitios
   scale_shape_manual(values = site_shapes) +
-  # Highlight X and Y axes at 0
-  geom_hline(yintercept = 0, linetype = "solid", color = "black", size = 1) +  # Highlight Y axis
-  geom_vline(xintercept = 0, linetype = "solid", color = "black", size = 1) +  # Highlight X axis
-  # Customize the theme
-  theme_bw() +  # Apply theme_bw()
-  theme(panel.grid = element_blank(),  # Remove internal grid lines
+  # Ejes y tema
+  geom_hline(yintercept = 0, linetype = "solid", color = "black", size = 1) +
+  geom_vline(xintercept = 0, linetype = "solid", color = "black", size = 1) +
+  theme_bw() +
+  theme(panel.grid = element_blank(),
         legend.title = element_blank(), 
-        legend.position = "right",  # Move the legend to the right
+        legend.position = "right",
         legend.text = element_text(size = 14),
         axis.title.x = element_text(size = 16),
         axis.text.x = element_text(size = 14),
         axis.title.y = element_text(size = 16),
         axis.text.y = element_text(size = 14),
-        plot.title = element_blank()) +  # Remove the title
-  labs(x = "LD1", y = "LD2")  # Add axis labels
-
+        plot.title = element_blank()) +
+  labs(x = "LD1", y = "LD2")
 # Print the plot
 print(dapc_plot)
 
 # Save the DAPC plot in TIFF format (high resolution, widely accepted)
-ggsave("../results/qmacd_DAPC_plot_with_ellipses_2pop_ggplot.tiff", dapc_plot, width = 10, height = 8, dpi = 300, compression = "lzw")
+ggsave("../results/qmacd_DAPC_plot_with_ellipses_2pop_ggplot_daltonic_friendly_borders.tiff", dapc_plot, width = 10, height = 8, dpi = 300, compression = "lzw")
 
 # Save the DAPC plot in PNG format (high resolution, widely supported)
-ggsave("../results/qmacd_DAPC_plot_with_ellipses_2pop_ggplot.png", dapc_plot, width = 10, height = 8, dpi = 300)
+ggsave("../results/qmacd_DAPC_plot_with_ellipses_2pop_ggplot_daltonic_friendly_borders.png", dapc_plot, width = 10, height = 8, dpi = 300)
 
 
 #####

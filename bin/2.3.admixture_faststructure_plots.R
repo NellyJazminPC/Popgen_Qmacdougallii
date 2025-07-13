@@ -22,7 +22,7 @@ tbl_cv_parsed <- data.frame(
 print(tbl_cv_parsed)
 
 # Cross validation error plot
-CV_error <- ggplot(data=tbl_cv, aes(x=K, y=V3)) +  # Usar la columna K en lugar de V2
+CV_error <- ggplot(data=tbl_cv_parsed, aes(x=V2, y=V3)) +  # Usar la columna K en lugar de V2
   geom_line(size=1) + geom_point(size=3, alpha=1) +
   theme_bw() + ylab("CV error") + xlab("K") + scale_x_continuous(breaks=seq(0, 10, 1)) +
   theme(axis.title.x = element_text(size=18), axis.title.y = element_text(size=18), 
@@ -81,7 +81,7 @@ tail(admix2.3_gather)
 # K = 1
 
 plot_admix2.1 <- ggplot(data=admix2.1_gather, aes(x=NUM_SAMPLE, y=admixture, fill=K)) + 
-  geom_bar(stat="identity") + scale_fill_manual("K", values = c("K1" = "#E07E34")) + 
+  geom_bar(stat="identity") + scale_fill_manual("K", values = c("K1" = "#0072B2")) + 
   ylab("")+ xlab("SITE")+ theme_bw() +
   theme(axis.title.x = element_text(size=16), 
         axis.title.y =element_text(size=16),
@@ -97,7 +97,7 @@ plot_admix2.1
 ## K = 2
 
 plot_admix2.2 <- ggplot(data=admix2.2_gather, aes(x=NUM_SAMPLE, y=admixture, fill=K)) + 
-  geom_bar(stat="identity") + scale_fill_manual("K", values = c("K2" = "#40B95B", "K1" = "#E07E34")) + 
+  geom_bar(stat="identity") + scale_fill_manual("K", values = c("K2" = "#E69F00", "K1" = "#0072B2")) + 
   ylab("")+ xlab("SITE")+ theme_bw() +
   theme(axis.title.x = element_text(size=16), 
         axis.title.y =element_text(size=16),
@@ -112,7 +112,7 @@ plot_admix2.2
 ## K = 3
 
 plot_admix2.3 <- ggplot(data=admix2.3_gather, aes(x=NUM_SAMPLE, y=admixture, fill=K)) + 
-  geom_bar(stat="identity") + scale_fill_manual("K", values = c("K1" = "#00B1E8", "K3" = "#E07E34", "K2" = "#40B95B")) + 
+  geom_bar(stat="identity") + scale_fill_manual("K", values = c("K1" = "#0072B2", "K3" = "#E69F00", "K2" = "#40B95B")) + 
   ylab("")+ xlab("SITE")+ theme_bw() +
   theme(axis.title.x = element_text(size=16), 
         axis.title.y =element_text(size=16),
@@ -264,7 +264,7 @@ tail(fast_1.3_log_gather)
 # We can change from "_log_" to "_simple_" to obtain the plot from the simple mode with K=1
 
 plot_fast_1.1 <- ggplot(data=fast_1.1_log_gather, aes(x=NUM_SAMPLE, y=admixture, fill=K)) + 
-  geom_bar(stat="identity") + scale_fill_manual("K", values = c("K1" ="#E07E34" )) + 
+  geom_bar(stat="identity") + scale_fill_manual("K", values = c("K1" ="#0072B2" )) + 
   ylab(" ")+ xlab("SITES")+ theme_bw() +
   theme(axis.title.x = element_text(size=18), 
         axis.title.y =element_blank(),
@@ -280,7 +280,7 @@ plot_fast_1.1
 # We can change from "_log_" to "_simple_" to obtain the plot from the simple mode with K=2
 
 plot_fast_1.2 <- ggplot(data=fast_1.2_log_gather, aes(x=NUM_SAMPLE, y=admixture, fill=K)) + 
-  geom_bar(stat="identity") + scale_fill_manual("K", values = c("K1" ="#E07E34" , "K2" = "#40B95B")) + 
+  geom_bar(stat="identity") + scale_fill_manual("K", values = c("K1" ="#0072B2" , "K2" = "#E69F00")) + 
   ylab(" ")+ xlab("SITES")+ theme_bw() +
   theme(axis.title.x = element_text(size=18), 
         axis.title.y =element_blank(),
@@ -297,7 +297,7 @@ plot_fast_1.2
 # We can change from "_log_" to "_simple_" to obtain the plot from the simple mode with K=3
 
 plot_fast_1.3 <- ggplot(data=fast_1.3_log_gather, aes(x=NUM_SAMPLE, y=admixture, fill=K)) + 
-  geom_bar(stat="identity") + scale_fill_manual("K", values = c("K1" = "#00B1E8", "K3" = "#E07E34", "K2" = "#40B95B")) + 
+  geom_bar(stat="identity") + scale_fill_manual("K", values = c("K1" = "#0072B2", "K3" = "#E69F00", "K2" = "#40B95B")) + 
   ylab(" ")+ xlab("SITES")+ theme_bw() +
   theme(axis.title.x = element_text(size=18), 
         axis.title.y =element_blank(),
@@ -332,3 +332,199 @@ print(combined_fast_plot)
 
 # Exportar el gráfico combinado
 ggsave(filename = "../results/combined_fast_structure_plots.png", plot = combined_fast_plot, width = 8, height = 18, dpi = 300)
+
+
+
+
+# -------------------------------
+# Plot fastStructure K=2 with scatterpie on a map
+# -------------------------------
+
+library(dplyr)
+library(tidyr)
+library(scatterpie)
+library(ggplot2)
+
+# Crear los gráficos de pastel para cada sitio.
+
+
+# Calcular el promedio por sitio de K1 y K2
+site_props_avg <- fast_1.2_log_gather %>%
+  group_by(SITE_NAME) %>%
+  summarise(
+    Q1 = mean(admixture[K == "K1"], na.rm = TRUE),
+    Q2 = mean(admixture[K == "K2"], na.rm = TRUE)
+  )
+
+# Convertir a formato largo para ggplot2
+site_props_long <- site_props_avg %>%
+  pivot_longer(cols = c(Q1, Q2), names_to = "Cluster", values_to = "Prop")
+
+# Guardar cada gráfico de pastel como PNG transparente
+unique_sites <- unique(site_props_long$SITE_NAME)
+
+for (site in unique_sites) {
+  pie_data <- filter(site_props_long, SITE_NAME == site)
+  pie_plot <- ggplot(pie_data, aes(x = "", y = Prop, fill = Cluster)) +
+    geom_bar(stat = "identity", width = 1, color = "white") +
+    coord_polar(theta = "y") +
+    scale_fill_manual(values = c("Q1" = "#0072B2", "Q2" = "#E69F00")) +
+    theme_void() +
+    theme(legend.position = "none", plot.background = element_rect(fill = "transparent", color = NA)) +
+    labs(title = site)
+  
+  ggsave(
+    filename = paste0("../results/piechart_", site, ".png"),
+    plot = pie_plot,
+    width = 3, height = 3, dpi = 300, bg = "transparent"
+  )
+}
+
+library(ggplot2)
+library(ggspatial)
+
+ggplot(qmacd, aes(x = long, y = lat)) +
+  annotation_map_tile(type = "esri", zoom = 5) +  # Fondo satelital ESRI
+  geom_point(aes(color = SITE_NAME), size = 3, alpha = 0.8) +
+  geom_text(aes(label = SITE_NAME), vjust = -1, size = 3, color = "white") +
+  scale_color_manual(values = c(
+    "#D55E00", "#56B4E9", "#009E73", "#F0E442", "#0072B2", "#CC79A7", "#E69F00", "#000000", "#999999"
+  )) +
+  theme_minimal() +
+  labs(title = "Localización de individuos", x = "Longitud", y = "Latitud", color = "Sitio")
+
+
+
+  library(ggplot2)
+  library(ggspatial)
+  
+  ggplot(qmacd, aes(x = long, y = lat)) +
+    annotation_map_tile(type = "stamen", zoom = 10, source = "terrain") +  # Fondo de relieve
+    geom_point(aes(color = SITE_NAME), size = 3, alpha = 0.8) +
+    geom_text(aes(label = SITE_NAME), vjust = -1, size = 3, color = "black") +
+    scale_color_manual(values = c(
+      "#D55E00", "#56B4E9", "#009E73", "#F0E442", "#0072B2", "#CC79A7", "#E69F00", "#000000", "#999999"
+    )) +
+    theme_minimal() +
+    labs(title = "Localización de individuos", x = "Longitud", y = "Latitud", color = "Sitio")
+
+
+
+    expand <- 0.05
+    xlim <- c(min(qmacd$long) - expand, max(qmacd$long) + expand)
+    ylim <- c(min(qmacd$lat) - expand, max(qmacd$lat) + expand)
+    
+    ggplot(qmacd, aes(x = long, y = lat)) +
+      annotation_map_tile(type = "esri", zoom = 7) +
+      geom_point(aes(color = SITE_NAME), size = 3, alpha = 0.8) +
+      geom_text(aes(label = SITE_NAME), vjust = -1, size = 3, color = "white") +
+      scale_color_manual(values = c(
+        "#D55E00", "#56B4E9", "#009E73", "#F0E442", "#0072B2", "#CC79A7", "#E69F00", "#000000", "#999999"
+      )) +
+      coord_sf(xlim = xlim, ylim = ylim, expand = FALSE) +
+      theme_minimal() +
+      labs(title = "Localización de individuos", x = "Longitud", y = "Latitud", color = "Sitio")
+
+
+library(ggplot2)
+library(ggspatial)
+
+# Ejemplo de coordenadas en CDMX
+cdmx_df <- data.frame(
+  SITE_NAME = c("Sitio1", "Sitio2", "Sitio3"),
+  long = c(-99.1332, -99.1450, -99.1200),
+  lat = c(19.4326, 19.4400, 19.4200)
+)
+
+# Fondo satelital ESRI
+ggplot(cdmx_df, aes(x = long, y = lat)) +
+  annotation_map_tile(type = "esri", zoom = 12) +
+  geom_point(aes(color = SITE_NAME), size = 4) +
+  geom_text(aes(label = SITE_NAME), vjust = -1, size = 4, color = "white") +
+  scale_color_manual(values = c("#E69F00", "#0072B2", "#56B4E9")) +
+  theme_minimal() +
+  labs(title = "Ejemplo: Sitios en Ciudad de México", x = "Longitud", y = "Latitud", color = "Sitio")
+
+
+    library(ggplot2)
+  library(ggspatial)
+  
+  cdmx_df <- data.frame(
+    SITE_NAME = c("Sitio1", "Sitio2", "Sitio3"),
+    long = c(-99.1332, -99.1450, -99.1200),
+    lat = c(19.4326, 19.4400, 19.4200)
+  )
+  
+  ggplot(cdmx_df, aes(x = long, y = lat)) +
+    annotation_map_tile(type = "esri", zoom = 12) +
+    geom_point(aes(color = SITE_NAME), size = 4) +
+    geom_text(aes(label = SITE_NAME), vjust = -1, size = 4, color = "white") +
+    scale_color_manual(values = c("#E69F00", "#0072B2", "#56B4E9")) +
+    coord_sf(crs = 4326, datum = NA) +
+    theme_minimal() +
+    labs(title = "Ejemplo: Sitios en Ciudad de México", x = "Longitud", y = "Latitud", color = "Sitio")
+
+
+# -------------------------------
+library(ggplot2)
+library(ggspatial)
+
+cdmx_df <- data.frame(
+  SITE_NAME = c("Sitio1", "Sitio2", "Sitio3"),
+  long = c(-99.1332, -99.1450, -99.1200),
+  lat = c(19.4326, 19.4400, 19.4200)
+)
+
+ggplot(cdmx_df, aes(x = long, y = lat)) +
+  annotation_map_tile(type = "esri", zoom = 12) +
+  geom_point(aes(color = SITE_NAME), size = 4) +
+  geom_text(aes(label = SITE_NAME), vjust = -1, size = 4, color = "white") +
+  scale_color_manual(values = c("#E69F00", "#0072B2", "#56B4E9")) +
+  coord_sf(crs = 4326, datum = NA) +
+  theme_minimal() +
+  labs(title = "Ejemplo: Sitios en Ciudad de México", x = "Longitud", y = "Latitud", color = "Sitio")
+
+# -------------------------------
+ggplot(cdmx_df, aes(x = long, y = lat)) +
+  annotation_map_tile(type = "stamen", zoom = 12, source = "terrain") +
+  geom_point(aes(color = SITE_NAME), size = 4) +
+  geom_text(aes(label = SITE_NAME), vjust = -1, size = 4, color = "black") +
+  scale_color_manual(values = c("#E69F00", "#0072B2", "#56B4E9")) +
+  coord_sf(crs = 4326, datum = NA) +
+  theme_minimal() +
+  labs(title = "Ejemplo: Sitios en Ciudad de México", x = "Longitud", y = "Latitud", color = "Sitio")
+
+
+# -------------------------------
+
+
+# Librerías necesarias
+libs <- c("sf", "terra", "elevatr", "rayshader", "httr", "jsonlite", "png")
+invisible(lapply(libs, require, character.only = TRUE))
+
+# 1. Bounding box como polígono sf
+bbox <- st_as_sfc(st_bbox(c(xmin = -96.6, xmax = -96.2,
+                            ymin = 17.4, ymax = 17.8),
+                          crs = 4326))
+bbox_sf <- st_sf(geometry = bbox)
+
+# 2. Descarga el DEM
+dem <- get_elev_raster(bbox_sf, z = 10, clip = "locations")
+
+# 3. Convierte el raster a matriz para rayshader
+elmat <- raster_to_matrix(dem)
+
+# Reemplaza NA o valores fuera de rango por 0
+elmat[is.na(elmat)] <- 0
+elmat[elmat < 0] <- 0
+
+# 4. Sombrea y renderiza en 3D
+hill <- sphere_shade(elmat, texture = "desert")
+plot_3d(elmat, hill, zscale = 12, windowsize = c(1200, 800))
+render_snapshot("sierra_juarez_3d.png", title_text = "Study area")
+# Si quieres cerrar la ventana 3D después:
+# rgl::rgl.close()
+
+
+str(hill)
+range(hill)

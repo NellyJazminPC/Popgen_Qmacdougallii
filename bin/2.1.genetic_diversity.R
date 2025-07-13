@@ -196,3 +196,121 @@ tab_alleles <- tab(qmacd_genind_pop, NA.method = "zero")
 total_alleles_global <- sum(colSums(tab_alleles) > 0)
 
 cat("Número total de alelos en toda la muestra:", total_alleles_global, "\n")
+
+
+# -------------------------------
+# Estadisticos de FST
+# -------------------------------
+
+#### FST ####  
+
+# Cargar las librerías necesarias
+library(hierfstat)
+library(vegan)
+library(ape)
+library(dartR)
+
+# Asegúrate de que las poblaciones estén asignadas al objeto genlight
+#pop(qmacd_genlight) <- as.factor(pop.metadata$SITE_NAME)  # Usar la columna SITE como población
+
+# Convertir el objeto genlight a genind (necesario para hierfstat)
+#qmacd_genind <- gl2gi(qmacd_genlight, v = 1)  # Convertir genlight a genind
+
+# -------------------------------
+# 1. Pairwise FST
+# -------------------------------
+# Calcular FST por pares entre las poblaciones
+pairwise_fst <- genet.dist(qmacd_genind, method = "WC84")  # Usa el método de Weir & Cockerham (1984)
+
+# Imprimir los resultados de FST por pares
+print(pairwise_fst)
+
+
+### Gráfico
+# Convertir la matriz de pairwise FST a un data frame
+pairwise_fst_df <- as.data.frame(as.table(as.matrix(pairwise_fst)))
+
+# Renombrar las columnas para claridad
+colnames(pairwise_fst_df) <- c("Population1", "Population2", "FST")
+
+# Filtrar para mantener solo la mitad triangular inferior (sin duplicados)
+pairwise_fst_df <- pairwise_fst_df[as.numeric(pairwise_fst_df$Population1) > as.numeric(pairwise_fst_df$Population2), ]
+
+# Crear el heatmap triangular con ggplot2
+library(viridis)
+
+heatmap_plot <- ggplot(pairwise_fst_df, aes(x = Population1, y = Population2, fill = FST)) +
+  geom_tile(color = "white") +
+  geom_text(aes(label = sprintf("%.2f", FST)), size = 4, color = "white") +
+  scale_fill_viridis_c(option = "viridis", name = "FST", direction = 1) +  # Paleta viridis
+  scale_x_discrete(labels = c("MT", "MC", "MB", "CY", "LS", "PZ", "CR", "IT")) +
+  scale_y_discrete(labels = c("CZ", "MT", "MC", "MB", "CY", "LS", "PZ", "CR")) +
+  theme_minimal() +
+  theme(
+    axis.text.x = element_text(angle = 45, hjust = 1),
+    axis.title.x = element_blank(),
+    axis.title.y = element_blank()
+  ) +
+  labs(title = "Pairwise FST (9 Sites)")
+
+# Mostrar el heatmap
+print(heatmap_plot)
+
+# Guardar el heatmap en un archivo
+ggsave("../results/pairwise_fst_heatmap.tiff", heatmap_plot, width = 8, height = 6, dpi = 300, compression = "lzw")
+ggsave("../results/pairwise_fst_heatmap.png", heatmap_plot, width = 8, height = 6, dpi = 300)
+
+
+# -------------------------------
+# 2. Global FST - 9 sites
+# -------------------------------
+
+# Calcular estadísticas básicas, incluyendo el FST global
+fst_results <- basic.stats(qmacd_genind)
+
+# Extraer el FST global
+fst_global <- fst_results$overall["Fst"]
+
+# Imprimir el FST global
+cat("Global FST:", fst_global, "\n")
+
+# -------------------------------
+# 2. Pairwise FST entre la zona norte y la zona sur
+# -------------------------------
+# Asegúrate de que las zonas estén asignadas correctamente
+pop.metadata$POP <- as.factor(pop.metadata$POP)  # Convertir ZONE a factor
+pop(qmacd_genind) <- pop.metadata$POP  # Asignar ZONE como población en el objeto genind
+
+# Calcular FST por pares entre las zonas
+pairwise_fst_zones <- genet.dist(qmacd_genind, method = "WC84")  # Método de Weir & Cockerham (1984)
+
+# Imprimir los resultados de FST por pares entre las zonas
+print(pairwise_fst_zones)
+
+
+# -------------------------------
+# Exportar datos
+# -------------------------------
+
+# Preparar los datos para exportar
+# 1. Global FST
+global_fst_df <- data.frame(Metric = "Global FST", Value = fst_global)
+
+# 2. Pairwise FST entre zonas
+pairwise_fst_zones_df <- as.data.frame(as.table(as.matrix(pairwise_fst_zones)))
+colnames(pairwise_fst_zones_df) <- c("Zone1", "Zone2", "FST")
+
+# 3. Pairwise FST entre sitios
+pairwise_fst_df <- as.data.frame(as.table(as.matrix(pairwise_fst)))
+colnames(pairwise_fst_df) <- c("Site1", "Site2", "FST")
+# Crear un archivo Excel con múltiples hojas
+writexl::write_xlsx(
+  list(
+    "Global FST" = global_fst_df,
+    "Pairwise FST Zones" = pairwise_fst_zones_df,
+    "Pairwise FST Sites" = pairwise_fst_df
+  ),
+  path = "../results/fst_results.xlsx"
+)
+
+

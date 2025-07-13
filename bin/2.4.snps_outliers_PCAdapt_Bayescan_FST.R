@@ -1,6 +1,4 @@
-#
-#
-#
+# Script to analyze SNP outliers using Bayescan and PCAdapt
 
 # -------------------------------
 # Bayescan; 9 sites
