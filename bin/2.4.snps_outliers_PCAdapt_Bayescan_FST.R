@@ -60,11 +60,49 @@ plot_bayescan_results <- plot_bayescan(
   "../data/1.6.snps_outliers/bayescan_output/bayescan_qmacd_ref_gen_qrob_9pop/bayescan_qmacd_ref_gen_qrob__fst.txt", 
   FDR = alpha
 )
-
 # Guardar el gráfico generado por plot_bayescan
 jpeg("../results/plot_bayescan_results.jpg", width = 800, height = 600, res = 300)
 plot_bayescan_results
 dev.off()
+
+#-------
+# Gráfico de Bayescan con ggplot2
+#-------
+library(ggplot2)
+
+# Leer los resultados de BayeScan
+bayes <- read.table("../data/1.6.snps_outliers/bayescan_output/bayescan_qmacd_ref_gen_qrob_9pop/bayescan_qmacd_ref_gen_qrob__fst.txt", header = TRUE)
+
+# Añadir columna para destacar outliers
+bayes$Outlier <- bayes$qval < alpha
+
+# Calcular el valor mínimo de log10.PO. para los SNPs outliers
+limite_x <- min(bayes$log10.PO.[bayes$qval < alpha], na.rm = TRUE)
+
+#Plot
+plot_bayescan_results <- ggplot(bayes, aes(x = log10.PO., y = fst, color = Outlier)) +
+  geom_point(size = 5, alpha = 0.7) +
+  scale_color_manual(values = c("FALSE" = "black", "TRUE" = "red")) +
+  geom_vline(xintercept = limite_x, linetype = "dashed", color = "black", linewidth = 0.3) +
+  theme_minimal() +
+  theme(
+    legend.position = "none",
+    axis.text = element_text(size = 16),      # Tamaño de los números en los ejes
+    axis.title = element_text(size = 20)      # Tamaño de los títulos de los ejes
+  ) +
+  labs(
+    title = "",
+    x = expression(log[10]~"(PO)"),
+    y = expression(F[ST])
+  )
+print(plot_bayescan_results)
+#Guardar el gráfico generado por ggplot2
+ggsave(
+  filename = "../results/plot_bayescan_results.png",
+  plot = plot_bayescan_results,
+  width = 8, height = 6, dpi = 300
+)
+
 
 # Identificar outliers según el nivel de significancia
 outliers <- bayes[bayes$qval < alpha, ]
@@ -201,6 +239,9 @@ cat("Los outliers de BayeScan para PZ como un clúster aparte se han exportado a
 # -------------------------------
 # PCAdapt
 # -------------------------------
+if (!requireNamespace("BiocManager", quietly = TRUE))
+    install.packages("BiocManager")
+BiocManager::install("qvalue")
 
 library(pcadapt)
 library(qvalue)
@@ -256,6 +297,28 @@ manhattan_plot
 # Exportar el gráfico Manhattan con outliers a un archivo PNG
 ggsave("../results/pcadapt_manhattan_outliers.png", plot = manhattan_plot, width = 10, height = 6, dpi = 300)
 
+# Personalizar el gráfico Manhattan
+manhattan_plot <- plot(pcadapt, option = "manhattan") +
+  geom_point(data = outliers, aes(x = as.numeric(rownames(outliers)), y = -log10(pval)), color = "red", size = 3, alpha = 0.7) +
+  theme_minimal() +
+  theme(
+    legend.position = "none",
+    axis.text = element_text(size = 16),
+    axis.title = element_text(size = 18)
+  ) +
+  labs(
+    title = "",
+    x = "SNP (with mAF > 0.05)",
+    y = expression(-log[10](p-values))
+  )
+
+print(manhattan_plot)
+
+# Exportar el gráfico Manhattan personalizado a un archivo PNG
+ggsave("../results/pcadapt_manhattan_outliers.png", 
+       plot = manhattan_plot, 
+       width = 10, height = 8, dpi = 300)
+
 # Exportar los SNPs outliers a un archivo de texto
 write.table(outliers, "../results/pcadapt_outliers.txt", row.names = TRUE, quote = FALSE)
 
@@ -270,9 +333,11 @@ cat("El análisis de PCAdapt se completó. Los resultados se han exportado a '..
 #  install.packages("BiocManager")
 
 # Instalar y cargar el paquete snpStats
-#BiocManager::install("snpStats")
+#BiocManager::install("snpStats", force = T)
+# Cargar la biblioteca
 library(snpStats)
-
+library(adegenet)
+library(ggplot2)
 # Definir el directorio de trabajo y las rutas de los archivos PLINK
 WD <- "/Users/nelly/bioinfo/Popgen_Qmacdougallii/data/structure_formats/"
 bed <- paste(WD, "/qmacd_ref_gen_rob.bed", sep = "")
@@ -319,7 +384,7 @@ cat("Weighted mean FST (PZ cluster):", weighted.mean(fpop$Fst), "\n")
 fst.alta <- function (snpsfst, percent){ ## snpsfst=resultado de fst por snp para cierto agrupamiento, percent=.99 i.e 99%
   alta <- quantile(snpsfst,probs=percent) ## obtener valor de Fst para el percent deseado
   fst.snp <- data.frame (SNPs=c(1:length(snpsfst[snpsfst>=0])), Fst = snpsfst[snpsfst>=0], Dif = snpsfst[snpsfst>=0]>alta) # armar matriz con snps(Fst>=0), sus valores de Fst y su condicion(>/< percent)
-  grafica <- ggplot(fst.snp, aes(x=SNPs, y=Fst, colour=Dif, label=)) + geom_point(shape=19, size= 4, alpha=0.6)+scale_colour_brewer(palette="Set1")+guides(colour=FALSE)+ theme_bw()+ ylab(expression(paste("F"[ST],sep=""))) # scatterplot Fst < percent
+  grafica <- ggplot(fst.snp, aes(x=SNPs, y=Fst, colour=Dif, label=)) + geom_point(shape=19, size= 4, alpha=0.6)+scale_colour_brewer(palette="Set1")+guides(colour="none")+ theme_bw()+ ylab(expression(paste("F"[ST],sep=""))) # scatterplot Fst < percent
   snps.alta <- snpsfst[snpsfst>alta] #lista de snps Fst > treshold
   return(list(Fst.value=alta, snp.info=snps.alta,fst.snp=fst.snp, grafica=grafica))
 }
@@ -374,6 +439,125 @@ write.csv(pop3.99$fst.snp[pop3.99$fst.snp$Dif, ], "../results/fst_outliers_9site
 
 # Exportar la gráfica generada por ggplot2
 ggsave("../results/fst_outliers_9sites_plot.png", plot = pop3.99$grafica, width = 10, height = 6, dpi = 300)
+
+#-----------------------------
+# FST outliers en un solo grafico
+#-----------------------------
+library(ggplot2)
+# Combina los data frames de los tres análisis, agregando una columna "grupo"
+fst_9sites <- pop3.99$fst.snp
+fst_9sites$grupo <- "9 sitios"
+
+fst_ns <- pop2.99$fst.snp
+fst_ns$grupo <- "Norte-Sur"
+
+fst_pz <- pop.99$fst.snp
+fst_pz$grupo <- "PZ"
+
+# Añade un índice de fila para cada data frame antes de combinar
+fst_9sites$index <- seq_len(nrow(fst_9sites))
+fst_ns$index     <- seq_len(nrow(fst_ns))
+fst_pz$index     <- seq_len(nrow(fst_pz))
+
+# Unir todos en un solo data frame
+fst_todos <- rbind(fst_9sites, fst_ns, fst_pz)
+
+#-------
+# Prueba con colores azul, verde y naranja
+#-------
+library(ggplot2)
+# Añadir columna para colorear según FST
+fst_todos$color_fst <- ifelse(fst_todos$Fst < 0.085, "Menor", fst_todos$grupo)
+
+# Definir colores: negro para FST < 0.085, colores para los grupos
+colores <- c(
+  "9 sitios" = "#0072B2",
+  "Norte-Sur" = "#D55E00",
+  "PZ" = "#009E73",
+  "Menor" = "black"
+)
+
+# Graficar usando la nueva columna de color
+fst_combined_plot <- ggplot(fst_todos, aes(x = index, y = Fst, color = color_fst)) +
+  geom_point(size = 2, alpha = 0.7) +
+  scale_color_manual(values = colores, name = "Análisis") +
+  theme_minimal() +
+  labs(
+    title = "FST SNPs Outliers (tres agrupamientos)",
+    x = "Índice SNP",
+    y = expression(F[ST])
+  ) +
+  theme(
+    axis.text = element_text(size = 14),
+    axis.title = element_text(size = 16)
+  )
+
+print(fst_combined_plot)
+
+
+#------------
+# Gráfico combinado de las pruebas de FST con paleta de colores de Viridis
+#------------
+
+# Instala viridis si no lo tienes
+#if (!requireNamespace("viridis", quietly = TRUE)) {
+#  install.packages("viridis")
+#}
+
+# Cargar bibliotecas
+library(viridis)
+library(dplyr)
+
+# Renombrar los grupos para la leyenda
+fst_todos$color_fst <- recode(fst_todos$color_fst,
+  "9 sitios" = "9 sites",
+  "Norte-Sur" = "North-South",
+  "PZ" = "PZ",
+  "Menor" = "FST < 0.085"
+)
+
+# Especificar el orden de la leyenda
+fst_todos$color_fst <- factor(
+  fst_todos$color_fst,
+  levels = c("9 sites", "North-South", "PZ", "FST < 0.085")
+)
+
+# Asignar colores manualmente
+colores_custom <- c(
+  "9 sites" = "#440154",        # morado oscuro
+  "North-South" = "#21908C",    # verde azulado
+  "PZ" = "#FDE725",             # amarillo
+  "FST < 0.085" = "#31688E"       # negro
+)
+
+# Graficar con bordes negros y alpha especial para FST < 0.085
+fst_combined_plot <- ggplot(fst_todos, aes(x = index, y = Fst)) +
+  geom_point(
+    aes(fill = color_fst, alpha = ifelse(color_fst == "FST < 0.085", 0.5, 0.7)),
+    shape = 21, size = 4, color = "black", stroke = 1
+  ) +
+  scale_fill_manual(values = colores_custom, name = " ") +
+  scale_alpha_identity() +
+  theme_minimal() +
+  labs(
+    title = " ",
+    x = "SNP",
+    y = expression(F[ST])
+  ) +
+  theme(
+    axis.text = element_text(size = 16),
+    axis.title = element_text(size = 18),
+    legend.text = element_text(size = 18),      # Agranda el texto de la leyenda
+    legend.title = element_text(size = 20)      # Agranda el título de la
+)
+print(fst_combined_plot)
+
+# Exportar la figura
+ggsave(
+  filename = "../results/fst_outliers_combined_custom.png",
+  plot = fst_combined_plot,
+  width = 10, height = 8, dpi = 300
+)
 
 #-----------------------------
 # Venn diagramas Bayescan + PCAdapt + FST
@@ -472,8 +656,10 @@ write.csv(shared_fst_values, "../results/shared_fst_snps_with_values.csv", row.n
 # Mensaje de confirmación
 cat("Los SNPs compartidos y sus valores de FST se han exportado a '../results/shared_fst_snps_with_values.csv'.\n")#-----------------------------
 
-
+#--------
 # FST SNPs outliers and PCAdapt SNPs
+#--------
+
 # Crear una lista con los conjuntos de SNPs
 snps_list <- list(
   PCAdapt = pcadapt_snps,
@@ -482,7 +668,10 @@ snps_list <- list(
   FST_9Sites = fst_9sites_snps
 )
 
-# Generar el diagrama de Venn
+
+# Paleta Okabe-Ito (daltónicos friendly)
+venn_colors <- c("#E69F00", "#56B4E9", "#009E73", "#F0E442") # naranja, azul, verde, amarillo
+
 venn_plot <- venn.diagram(
   x = snps_list,
   category.names = c("PCAdapt", "FST_PZ", "FST_NS", "FST_9Sites"),
@@ -493,10 +682,10 @@ venn_plot <- venn.diagram(
   compression = "lzw",
   lwd = 1,
   lty = "blank",
-  fill = c("#F5AC2E", "#8BC34A", "#FF5722", "#9C27B0"),
-  cex = 1.25,
+  fill = venn_colors,
+  cex = 2.5,                # Tamaño del número dentro de los círculos
   fontfamily = "sans",
-  cat.cex = 1,
+  cat.cex = 1.5,            # Tamaño de las etiquetas de los grupos
   cat.fontfamily = "sans",
   cat.default.pos = "outer"
 )

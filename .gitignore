@@ -20,3 +20,4 @@ bin/software/easySFS/
 bin/software/stairway_plot_v2.1.1/
 bin/.RDataTm*
 .vscode/
+results/*.log
