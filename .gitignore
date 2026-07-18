@@ -31,3 +31,11 @@ data/1.3.assembly_variant_calling/ref_gen_qrob_trim01_1_sorted.vcf.gz
 data/1.3.assembly_variant_calling/ref_gen_qrob_trim01_1_sorted.vcf.gz.tbi
 data/1.3.assembly_variant_calling/ref_gen_rob_trim01_1.loci_callables
 results/pi_by_site_snp_based.csv
+# FASTQ files and local symbolic links used during preprocessing
+data/1.1.filter/*.fastq
+data/1.1.filter/*.fastq.gz
+# FASTQ files and local symbolic links used during preprocessing
+*.fastq
+*.fastq.gz
+
+
