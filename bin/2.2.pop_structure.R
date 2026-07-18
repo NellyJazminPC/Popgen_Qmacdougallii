@@ -555,17 +555,19 @@ plot_poppr_msn(qmacd_genclone, qmacd_msn,
 # Interactive mode (optional)
 # imsn()
 
-# Subset the data (if needed)
-qmacd_genclone_sub <- popsub(qmacd_genclone, exclude = character(0))
+# Subset the data (if needed) No hubo necesidad
+#qmacd_genclone_sub <- popsub(qmacd_genclone, exclude = character(0))
 
-# Handle missing data by imputing with mean
-qmacd_genclone_nomiss <- missingno(qmacd_genclone, type = 'mean')
+# Handle missing data by imputing with mean - No hubo necesidad
+#qmacd_genclone_nomiss <- missingno(qmacd_genclone, type = 'mean')
 
 # Calculate Nei's genetic distance
-qmacd_genclone_dist <- nei.dist(qmacd_genclone_nomiss, warning = TRUE)
+#qmacd_genclone_dist <- nei.dist(qmacd_genclone_nomiss, warning = TRUE)
+qmacd_genclone_dist <- nei.dist(qmacd_genclone, warning = TRUE)
 
 # Generate another MSN with the subsetted data
-min_span_net <- poppr.msn(qmacd_genclone_sub, qmacd_genclone_dist, showplot = T, include.ties = TRUE)
+#min_span_net <- poppr.msn(qmacd_genclone_sub, qmacd_genclone_dist, showplot = T, include.ties = TRUE)
+min_span_net <- poppr.msn(qmacd_genclone, qmacd_genclone_dist, showplot = T, include.ties = TRUE)
 
 # Open a TIFF device to save the MSN plot with high resolution
 tiff("../results/msn_plot_nei_distances.tiff", width = 10, height = 8, units = "in", res = 300, compression = "lzw")

@@ -21,3 +21,13 @@ bin/software/stairway_plot_v2.1.1/
 bin/.RDataTm*
 .vscode/
 results/*.log
+results/*.tiff
+results/*.png
+results/*.jpg
+doc/
+bin/test_500.vcf.gz.tbi
+bin/test_500.vcf.gz
+data/1.3.assembly_variant_calling/ref_gen_qrob_trim01_1_sorted.vcf.gz
+data/1.3.assembly_variant_calling/ref_gen_qrob_trim01_1_sorted.vcf.gz.tbi
+data/1.3.assembly_variant_calling/ref_gen_rob_trim01_1.loci_callables
+results/pi_by_site_snp_based.csv

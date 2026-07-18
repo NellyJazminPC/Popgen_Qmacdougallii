@@ -52,8 +52,12 @@ cat("El resumen de Bayescan se ha exportado a '../results/summary_bayescan_snps_
 bayes <- cbind(bayes, loci[,c(1,2,4)])
 colnames(bayes) <- c(colnames(bayes)[1:5], "CHR", "SNP", "Pos")
 
-# Definir el nivel de significancia
-alpha <- 0.05
+# Definir el nivel de significancia (FDR threshold)
+# Nota importante:
+# Este "alpha" NO corresponde al parámetro α de BayeScan (efecto del locus),
+# sino al umbral de tasa de falsos descubrimientos (FDR) aplicado a los q-values.
+# En el manuscrito, esto se reporta como: q-value < 0.05 (FDR = 5%).
+alpha <- 0.05 # FDR
 
 # Generar el gráfico de BayeScan
 plot_bayescan_results <- plot_bayescan(
@@ -212,7 +216,7 @@ outliers_count <- sum(bayes_pz$qval < alpha, na.rm = TRUE)
 cat("Número de valores en bayes_pz$qval menores a", alpha, ":", outliers_count, "\n")
 
 # Definir el nivel de significancia
-alpha <- 0.5
+alpha <- 0.05
 
 # Generar el gráfico de BayeScan
 plot_bayescan_results_pz <- plot_bayescan(
@@ -462,37 +466,17 @@ fst_pz$index     <- seq_len(nrow(fst_pz))
 # Unir todos en un solo data frame
 fst_todos <- rbind(fst_9sites, fst_ns, fst_pz)
 
+
+
 #-------
 # Prueba con colores azul, verde y naranja
 #-------
 library(ggplot2)
-# Añadir columna para colorear según FST
-fst_todos$color_fst <- ifelse(fst_todos$Fst < 0.085, "Menor", fst_todos$grupo)
 
-# Definir colores: negro para FST < 0.085, colores para los grupos
-colores <- c(
-  "9 sitios" = "#0072B2",
-  "Norte-Sur" = "#D55E00",
-  "PZ" = "#009E73",
-  "Menor" = "black"
-)
-
-# Graficar usando la nueva columna de color
-fst_combined_plot <- ggplot(fst_todos, aes(x = index, y = Fst, color = color_fst)) +
-  geom_point(size = 2, alpha = 0.7) +
-  scale_color_manual(values = colores, name = "Análisis") +
-  theme_minimal() +
-  labs(
-    title = "FST SNPs Outliers (tres agrupamientos)",
-    x = "Índice SNP",
-    y = expression(F[ST])
-  ) +
-  theme(
-    axis.text = element_text(size = 14),
-    axis.title = element_text(size = 16)
-  )
-
-print(fst_combined_plot)
+# Clasificar loci según el criterio real:
+# TRUE = top 1% del FST empírico en cada escenario
+# FALSE = loci no candidatos
+fst_todos$color_fst <- ifelse(fst_todos$Dif, fst_todos$grupo, "Non-outliers")
 
 
 #------------
@@ -509,31 +493,34 @@ library(viridis)
 library(dplyr)
 
 # Renombrar los grupos para la leyenda
-fst_todos$color_fst <- recode(fst_todos$color_fst,
+fst_todos$color_fst <- as.character(fst_todos$color_fst)
+
+fst_todos$color_fst <- dplyr::recode(
+  fst_todos$color_fst,
   "9 sitios" = "9 sites",
   "Norte-Sur" = "North-South",
   "PZ" = "PZ",
-  "Menor" = "FST < 0.085"
+  "Non-outliers" = "Non-outliers"
 )
 
 # Especificar el orden de la leyenda
 fst_todos$color_fst <- factor(
   fst_todos$color_fst,
-  levels = c("9 sites", "North-South", "PZ", "FST < 0.085")
+  levels = c("9 sites", "North-South", "PZ", "Non-outliers")
 )
 
-# Asignar colores manualmente
+# Definir colores
 colores_custom <- c(
-  "9 sites" = "#440154",        # morado oscuro
-  "North-South" = "#21908C",    # verde azulado
-  "PZ" = "#FDE725",             # amarillo
-  "FST < 0.085" = "#31688E"       # negro
+  "9 sites" = "#440154",
+  "North-South" = "#21908C",
+  "PZ" = "#FDE725",
+  "Non-outliers" = "grey70"
 )
 
-# Graficar con bordes negros y alpha especial para FST < 0.085
+# Graficar
 fst_combined_plot <- ggplot(fst_todos, aes(x = index, y = Fst)) +
   geom_point(
-    aes(fill = color_fst, alpha = ifelse(color_fst == "FST < 0.085", 0.5, 0.7)),
+    aes(fill = color_fst, alpha = ifelse(color_fst == "Non-outliers", 0.5, 0.7)),
     shape = 21, size = 4, color = "black", stroke = 1
   ) +
   scale_fill_manual(values = colores_custom, name = " ") +
@@ -547,9 +534,10 @@ fst_combined_plot <- ggplot(fst_todos, aes(x = index, y = Fst)) +
   theme(
     axis.text = element_text(size = 16),
     axis.title = element_text(size = 18),
-    legend.text = element_text(size = 18),      # Agranda el texto de la leyenda
-    legend.title = element_text(size = 20)      # Agranda el título de la
-)
+    legend.text = element_text(size = 18),
+    legend.title = element_text(size = 20)
+  )
+
 print(fst_combined_plot)
 
 # Exportar la figura
@@ -558,7 +546,49 @@ ggsave(
   plot = fst_combined_plot,
   width = 10, height = 8, dpi = 300
 )
+#-----------------------------
+# Correcciones con gráfico de FST - tres escenarios
+#------------------------------
+# Crear una columna que identifique outliers reales (top 1%)
+fst_todos$outlier <- fst_todos$Dif
 
+# Crear una nueva columna de color basada en el criterio real
+fst_todos$color_fst <- ifelse(fst_todos$outlier, fst_todos$grupo, "Below threshold")
+
+#corregir colores
+colores_custom <- c(
+  "9 sites" = "#440154",
+  "North-South" = "#21908C",
+  "PZ" = "#FDE725",
+  "Below threshold" = "#31688E"
+)
+
+# factor leyenda
+fst_todos$color_fst <- factor(
+  fst_todos$color_fst,
+  levels = c("9 sites", "North-South", "PZ", "Below threshold")
+)
+
+fst_combined_plot <- ggplot(fst_todos, aes(x = index, y = Fst)) +
+  geom_point(
+    aes(fill = color_fst, alpha = ifelse(color_fst == "Below threshold", 0.5, 0.8)),
+    shape = 21, size = 4, color = "black", stroke = 1
+  ) +
+  scale_fill_manual(values = colores_custom, name = " ") +
+  scale_alpha_identity() +
+  theme_minimal() +
+  labs(
+    title = " ",
+    x = "SNP",
+    y = expression(F[ST])
+  ) +
+  theme(
+    axis.text = element_text(size = 16),
+    axis.title = element_text(size = 18),
+    legend.text = element_text(size = 18)
+  )
+
+print(fst_combined_plot)
 #-----------------------------
 # Venn diagramas Bayescan + PCAdapt + FST
 #------------------------------
