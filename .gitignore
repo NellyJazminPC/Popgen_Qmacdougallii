@@ -38,4 +38,23 @@ data/1.1.filter/*.fastq.gz
 *.fastq
 *.fastq.gz
 
+# Local/private project files
+doc/
+metadata/
+results/
 
+# Data files that should not be tracked directly
+*.csv
+*.tsv
+*.xlsx
+*.xls
+*.vcf
+*.vcf.gz
+*.fastq
+*.fastq.gz
+
+# Temporary or test files
+*test*
+*prueba*
+*.tmp
+.DS_Store
