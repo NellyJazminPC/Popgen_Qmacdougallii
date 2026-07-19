@@ -1,3 +1,7 @@
+# Population genomics of *Quercus macdougallii*
+
+This repository contains the scripts, Jupyter notebooks, and supporting documentation used for the population genomic analyses of the endangered microendemic oak *Quercus macdougallii*.
+
 ## Workflow overview
 
 The genomic-data preprocessing and variant-calling workflow was organized into the following stages.
