@@ -1,60 +1,106 @@
+# --------------------------------------------------
+# Operating system and editor files
+# --------------------------------------------------
+
 .DS_Store
-data/vcf_files/*.vcf
-bin/*.Rproj*
-bin/.Rhistory
-.Rproj.user
-data/reference_genomes/Qlobata*
-data/reference_genomes/Qrob*
-data/1.3.assembly_variant_calling/*.vcf
-bin/.RData
-bin/test_*.R
-archive/
-data/1.4.population_stacks/
-bin/software/admixture_macosx-1.3.0/
-bin/software/admixture_linux-1.3.0/
-bin/software/plink-1.07-x86_64/
-bin/software/fastStructure/
-bin/software/PGDSpider_3.0.0.0/
-bin/software/BayeScan2.1/
-bin/software/easySFS/
-bin/software/stairway_plot_v2.1.1/
-bin/.RDataTm*
 .vscode/
-results/*.log
-results/*.tiff
-results/*.png
-results/*.jpg
+*.code-workspace
+
+# --------------------------------------------------
+# R and RStudio local files
+# --------------------------------------------------
+
+.Rhistory
+.RData
+.RDataTmp*
+.Rproj.user/
+*.Rproj
+
+# --------------------------------------------------
+# Jupyter and Python temporary files
+# --------------------------------------------------
+
+.ipynb_checkpoints/
+__pycache__/
+*.py[cod]
+
+# --------------------------------------------------
+# Private and local project materials
+# --------------------------------------------------
+
+archive/
 doc/
-bin/test_500.vcf.gz.tbi
-bin/test_500.vcf.gz
-data/1.3.assembly_variant_calling/ref_gen_qrob_trim01_1_sorted.vcf.gz
-data/1.3.assembly_variant_calling/ref_gen_qrob_trim01_1_sorted.vcf.gz.tbi
-data/1.3.assembly_variant_calling/ref_gen_rob_trim01_1.loci_callables
-results/pi_by_site_snp_based.csv
-# FASTQ files and local symbolic links used during preprocessing
-data/1.1.filter/*.fastq
-data/1.1.filter/*.fastq.gz
-# FASTQ files and local symbolic links used during preprocessing
+metadata/private/
+
+# --------------------------------------------------
+# Raw sequencing and large genomic data
+# --------------------------------------------------
+
 *.fastq
 *.fastq.gz
+*.fq
+*.fq.gz
 
-# Local/private project files
-doc/
-metadata/
-results/
-
-# Data files that should not be tracked directly
-*.csv
-*.tsv
-*.xlsx
-*.xls
 *.vcf
 *.vcf.gz
-*.fastq
-*.fastq.gz
+*.bcf
 
-# Temporary or test files
-*test*
-*prueba*
+*.bam
+*.bai
+*.tbi
+
+# --------------------------------------------------
+# Downloaded reference genomes
+# Retain only their documentation
+# --------------------------------------------------
+
+data/reference_genomes/*
+!data/reference_genomes/README.md
+
+# --------------------------------------------------
+# Third-party software
+# Retain only its documentation
+# --------------------------------------------------
+
+bin/software/*
+!bin/software/README.md
+
+# --------------------------------------------------
+# Large or disposable intermediate outputs
+# --------------------------------------------------
+
+
+data/raw/*
+!data/raw/README.md
+
+data/1.0.quality_analysis/*
+!data/1.0.quality_analysis/README.md
+
+data/1.1.filter/*
+!data/1.1.filter/README.md
+
+data/1.2.post-filter_quality_analysis/*
+!data/1.2.post-filter_quality_analysis/README.md
+
+data/1.4.population_stacks/*
+!data/1.4.population_stacks/README.md
+
+data/1.3.assembly_variant_calling/*.loci_callables
+
+results/*
+!results/README.md
+
+
+# --------------------------------------------------
+# Specific local test files
+# --------------------------------------------------
+
+bin/test_*.R
+bin/test_500.vcf.gz
+bin/test_500.vcf.gz.tbi
+
+# --------------------------------------------------
+# Temporary files
+# --------------------------------------------------
+
 *.tmp
-.DS_Store
