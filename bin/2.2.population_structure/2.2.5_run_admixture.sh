@@ -20,7 +20,7 @@ set -euo pipefail
 # Example with custom parameters:
 #
 #   THREADS=4 K_MIN=1 K_MAX=5 \
-#     bash bin/1.5.structure/admixture_qmacd.sh
+#     bash bin/2.2.population_structure/2.2.5_run_admixture.sh
 #
 # A specific ADMIXTURE executable can be provided through ADMIXTURE_BIN.
 

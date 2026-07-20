@@ -21,7 +21,7 @@ data/structure_formats/qmacd_ref_gen_rob.plk.ped
 data/structure_formats/qmacd_ref_gen_rob.plk.map
 ```
 
-The script `convert2plinkformat.sh` uses these files to generate:
+The script `2.2.4_prepare_plink.sh` uses these files to generate:
 
 ```text
 qmacd_ref_gen_rob.raw
@@ -35,23 +35,45 @@ The `.raw` file is an additive/dominance genotype matrix produced with PLINK `--
 To run the conversion when PLINK is available in `PATH`:
 
 ```bash
-bash bin/1.5.structure/convert2plinkformat.sh
+bash bin/2.2.population_structure/2.2.4_prepare_plink.sh
 ```
 
 A specific PLINK executable can be supplied with:
 
 ```bash
 PLINK_BIN=/path/to/plink \
-  bash bin/1.5.structure/convert2plinkformat.sh
+  bash bin/2.2.population_structure/2.2.4_prepare_plink.sh
 ```
 
 ## Model-based population structure
 
-- `admixture_qmacd.sh` runs ADMIXTURE for K = 1–10 with cross-validation.
-- `faststructure_qmacd.sh` runs fastStructure for K = 1–10 using the simple and logistic prior models.
-- `../2.3.admixture_faststructure_plots.R` visualizes ancestry proportions and model-selection results.
+- `2.2.5_run_admixture.sh` runs ADMIXTURE for K = 1-10 using cross-validation.
+- `2.2.6_run_faststructure.sh` runs fastStructure for K = 1-10 using the simple and logistic prior models.
+- `2.2.7_plot_admixture_faststructure.R` visualizes the retained ancestry proportions and ADMIXTURE model-selection results.
 
-These scripts will be cleaned and renamed as part of the final repository organization.
+The retained ADMIXTURE `.Q` files, fastStructure `.meanQ` files, and model-selection summaries are stored in:
+
+```text
+data/1.4.population_structure/
+```
+
+Auxiliary allele-frequency, variance, and log files are excluded from the public repository because they can be regenerated using the corresponding analysis scripts.
+
+## Multivariate analyses
+
+The following scripts will contain the multivariate population-structure analyses:
+
+```text
+2.2.1_pca.R
+2.2.2_dapc.R
+2.2.3_msn.R
+```
+
+These analyses are currently being separated from the original combined R workflow.
+
+## Geographic panel
+
+The geographic panel of the population-structure figure is not reproduced by the public plotting script because the coordinates of this threatened microendemic species are not included in the public metadata file.
 
 ## Exploratory conversions
 

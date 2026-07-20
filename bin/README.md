@@ -49,18 +49,6 @@ Three trimming datasets were evaluated using three assembly strategies:
 
 The nine analyses were executed independently and are retained as separate notebooks. The reference-based assembly using the *Q. robur* genome and the `trim01` dataset was selected for downstream analyses.
 
-## 1.5 Population structure
-
-### `1.5.structure/`
-
-Preparation and analysis of population structure using multiple approaches:
-
-* `admixture_qmacd.sh`: Runs ADMIXTURE for ancestry estimation.
-* `faststructure_qmacd.sh`: Runs fastStructure for population structure inference.
-* `convert2plinkformat.sh`: Converts genotype data to PLINK format for compatibility with various tools.
-* `workflow_pop_structure_analysis.md`: Documentation of the population structure analysis workflow.
-* `faststructure_convert.spid`: Configuration file for data conversion.
-
 ## 1.6 Outlier SNP detection
 
 ### `1.6.snps_outliers/`
@@ -86,17 +74,30 @@ northern and southern geographic zones.
 Calculates nucleotide diversity (π), Watterson's theta (θW), and
 Tajima's D by sampling site, geographic zone, and across all individuals.
 
-## 2.2 Population structure in R
+## 2.2 Population structure
 
-### `2.2.pop_structure.R`
+### `2.2.population_structure/`
 
-R script for analyzing population structure using various methods.
+Contains the scripts used to prepare genotype files and evaluate population
+structure using multivariate and model-based approaches.
 
-## 2.3 ADMIXTURE and fastStructure plots
+Current scripts include:
 
-### `2.3.admixture_faststructure_plots.R`
+* `2.2.4_prepare_plink.sh`: Generates additive/dominance and binary PLINK files.
+* `2.2.5_run_admixture.sh`: Runs ADMIXTURE for K = 1-10 using cross-validation.
+* `2.2.6_run_faststructure.sh`: Runs fastStructure for K = 1-10 using the simple and logistic prior models.
+* `2.2.7_plot_admixture_faststructure.R`: Generates the ADMIXTURE cross-validation plot and ancestry-proportion plots used in the manuscript.
 
-R script for generating plots of ADMIXTURE and fastStructure results.
+The retained ADMIXTURE `.Q` files, fastStructure `.meanQ` files, and
+model-selection summaries are stored in:
+
+```text
+data/1.4.population_structure/
+```
+
+PCA, DAPC, and minimum spanning network analyses are being separated from
+the original combined R workflow into dedicated scripts documented in the
+directory README.
 
 ## 2.4 Outlier SNP analyses
 

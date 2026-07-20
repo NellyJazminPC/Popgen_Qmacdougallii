@@ -25,7 +25,7 @@ set -euo pipefail
 #
 #   FASTSTRUCTURE_DIR=/path/to/fastStructure \
 #   PYTHON_BIN=python \
-#     bash bin/1.5.structure/faststructure_qmacd.sh
+#     bash bin/2.2.population_structure/2.2.6_run_faststructure.sh
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 REPO_ROOT="$(cd "${SCRIPT_DIR}/../.." && pwd)"
