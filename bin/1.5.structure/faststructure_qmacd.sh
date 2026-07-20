@@ -1,44 +1,137 @@
-#!/bin/bash
-# This script runs fastStructure with two different priors (simple and logistic) for a range of K values (1 to 10).
-# It then selects the best K value using chooseK.py and moves the output files to a final output directory.
+#!/usr/bin/env bash
 
-# Define paths
-ruta_faststructure=/fastStructure-1.0
-ruta_rel_bed=/workspace/data/structure_formats
-ruta_output=/workspace/data/1.5.structure
-ruta_final_output=/workspace/data/1.5.structure/faststructure_output
+set -euo pipefail
 
-# Number of processors
-num_procesadores=10
+# Run fastStructure for K = 1–10 using the simple and logistic priors.
+#
+# Input:
+#   data/structure_formats/qmacd_ref_gen_rob.bed
+#   data/structure_formats/qmacd_ref_gen_rob.bim
+#   data/structure_formats/qmacd_ref_gen_rob.fam
+#
+# Output:
+#   data/1.4.population_structure/faststructure_output/
+#
+# Default parameters:
+#   K range: 1–10
+#   Random seed: 20
+#   Priors: simple and logistic
+#
+# The fastStructure installation directory must contain:
+#   structure.py
+#   chooseK.py
+#
+# Example:
+#
+#   FASTSTRUCTURE_DIR=/path/to/fastStructure \
+#   PYTHON_BIN=python \
+#     bash bin/1.5.structure/faststructure_qmacd.sh
 
-# Change to the fastStructure directory
-cd $ruta_faststructure
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+REPO_ROOT="$(cd "${SCRIPT_DIR}/../.." && pwd)"
 
-##### S I M P L E  #######
+PLINK_PREFIX="${REPO_ROOT}/data/structure_formats/qmacd_ref_gen_rob"
+OUTPUT_DIR="${REPO_ROOT}/data/1.4.population_structure/faststructure_output"
 
-for i in {1..10}; 
-do 
-    python structure.py -K $i --input=$ruta_rel_bed/qmacd_ref_gen_rob --output=$ruta_output/qmacd_ref_gen_rob.simple --full --seed=20 --prior=simple --format=bed
+FASTSTRUCTURE_DIR="${FASTSTRUCTURE_DIR:-}"
+PYTHON_BIN="${PYTHON_BIN:-python}"
+SEED="${SEED:-20}"
+K_MIN="${K_MIN:-1}"
+K_MAX="${K_MAX:-10}"
+
+for variable_name in SEED K_MIN K_MAX; do
+    value="${!variable_name}"
+
+    if [[ ! "$value" =~ ^[0-9]+$ ]]; then
+        echo "${variable_name} must be a non-negative integer." >&2
+        exit 1
+    fi
 done
 
-python chooseK.py --input=$ruta_output/qmacd_ref_gen_rob.simple > $ruta_output/chooseK_qmacd_ref_gen_rob.simple.txt
+if (( K_MIN < 1 || K_MAX < K_MIN )); then
+    echo "Invalid K range: K_MIN=${K_MIN}, K_MAX=${K_MAX}." >&2
+    exit 1
+fi
 
-cat $ruta_output/chooseK_qmacd_ref_gen_rob.simple.txt
+for extension in bed bim fam; do
+    input_file="${PLINK_PREFIX}.${extension}"
 
-###### L O G I S T I C #######################
-
-for i in {1..10}; 
-do 
-    python structure.py -K $i --input=$ruta_rel_bed/qmacd_ref_gen_rob --output=$ruta_output/qmacd_ref_gen_rob.logistic --full --seed=20 --prior=logistic --format=bed
+    if [[ ! -f "$input_file" ]]; then
+        echo "Missing PLINK input file: $input_file" >&2
+        exit 1
+    fi
 done
 
-python chooseK.py --input=$ruta_output/qmacd_ref_gen_rob.logistic > $ruta_output/chooseK_qmacd_ref_gen_rob.logistic.txt
+if [[ -z "$FASTSTRUCTURE_DIR" ]]; then
+    echo "FASTSTRUCTURE_DIR is not set." >&2
+    echo "Set it to the directory containing structure.py and chooseK.py." >&2
+    exit 1
+fi
 
-cat $ruta_output/chooseK_qmacd_ref_gen_rob.logistic.txt
+if [[ "$FASTSTRUCTURE_DIR" != /* ]]; then
+    FASTSTRUCTURE_DIR="${REPO_ROOT}/${FASTSTRUCTURE_DIR#./}"
+fi
 
-# Create the final output directory if it does not exist
-mkdir -p $ruta_final_output
+STRUCTURE_SCRIPT="${FASTSTRUCTURE_DIR}/structure.py"
+CHOOSE_K_SCRIPT="${FASTSTRUCTURE_DIR}/chooseK.py"
 
-# Move all output files to the final output directory
-mv $ruta_output/*.simple* $ruta_final_output/
-mv $ruta_output/*.logistic* $ruta_final_output/
+for script in "$STRUCTURE_SCRIPT" "$CHOOSE_K_SCRIPT"; do
+    if [[ ! -f "$script" ]]; then
+        echo "Required fastStructure script not found: $script" >&2
+        exit 1
+    fi
+done
+
+if [[ "$PYTHON_BIN" == */* ]]; then
+    if [[ ! -x "$PYTHON_BIN" ]]; then
+        echo "Python executable not found: $PYTHON_BIN" >&2
+        exit 1
+    fi
+elif ! command -v "$PYTHON_BIN" >/dev/null 2>&1; then
+    echo "Python was not found in PATH." >&2
+    echo "Set PYTHON_BIN to the required Python executable." >&2
+    exit 1
+else
+    PYTHON_BIN="$(command -v "$PYTHON_BIN")"
+fi
+
+mkdir -p "$OUTPUT_DIR"
+
+echo "Running fastStructure"
+echo "Input prefix: $PLINK_PREFIX"
+echo "Output directory: $OUTPUT_DIR"
+echo "K range: ${K_MIN}–${K_MAX}"
+echo "Random seed: $SEED"
+
+for prior in simple logistic; do
+    OUTPUT_PREFIX="${OUTPUT_DIR}/qmacd_ref_gen_rob.${prior}"
+
+    echo
+    echo "Prior: $prior"
+
+    for (( K = K_MIN; K <= K_MAX; K++ )); do
+        echo "Running K=${K}..."
+
+        "$PYTHON_BIN" "$STRUCTURE_SCRIPT" \
+            -K "$K" \
+            --input="$PLINK_PREFIX" \
+            --output="$OUTPUT_PREFIX" \
+            --full \
+            --seed="$SEED" \
+            --prior="$prior" \
+            --format=bed
+    done
+
+    CHOOSE_K_FILE="${OUTPUT_DIR}/chooseK_qmacd_ref_gen_rob.${prior}.txt"
+
+    "$PYTHON_BIN" "$CHOOSE_K_SCRIPT" \
+        --input="$OUTPUT_PREFIX" \
+        > "$CHOOSE_K_FILE"
+
+    echo
+    echo "Model-selection summary for prior '${prior}':"
+    cat "$CHOOSE_K_FILE"
+done
+
+echo
+echo "fastStructure analysis completed."

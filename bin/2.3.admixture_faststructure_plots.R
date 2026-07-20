@@ -4,12 +4,12 @@ library(ggplot2)
 library(tidyr)
 setwd("/Users/nelly/bioinfo/Popgen_Qmacdougallii/bin")
 #Load the results from ADMIXTURE
-tbl_cv <- read.table("../data/1.5.structure/admixture_output/chooseK.txt", 
+tbl_cv <- read.table("../data/1.4.population_structure/admixture_output/chooseK.txt", 
                      header = F)
 tbl_cv
 
 # Cargar el archivo de texto
-tbl_cv <- read.table("../data/1.5.structure/admixture_output/chooseK.txt", header = FALSE, sep = "\n", stringsAsFactors = FALSE)
+tbl_cv <- read.table("../data/1.4.population_structure/admixture_output/chooseK.txt", header = FALSE, sep = "\n", stringsAsFactors = FALSE)
 
 # Extraer los valores de K y CV error usando expresiones regulares
 tbl_cv_parsed <- data.frame(
@@ -43,9 +43,9 @@ ggsave(filename = "../results/CV_error_plot.png", plot = CV_error, width = 8, he
 
 # Load the Q files from ADMIXTURE
 
-admix2.1=read.table(paste0("../data/1.5.structure/admixture_output/qmacd_ref_gen_rob.1.Q"))
-admix2.2=read.table(paste0("../data/1.5.structure/admixture_output/qmacd_ref_gen_rob.2.Q"))
-admix2.3=read.table(paste0("../data/1.5.structure/admixture_output/qmacd_ref_gen_rob.3.Q"))
+admix2.1=read.table(paste0("../data/1.4.population_structure/admixture_output/qmacd_ref_gen_rob.1.Q"))
+admix2.2=read.table(paste0("../data/1.4.population_structure/admixture_output/qmacd_ref_gen_rob.2.Q"))
+admix2.3=read.table(paste0("../data/1.4.population_structure/admixture_output/qmacd_ref_gen_rob.3.Q"))
 
 # Load the metadata
 qmacd=read.csv("../metadata/Qmacdougalli_79ind_.csv")
@@ -186,14 +186,14 @@ ggsave(filename = "../results/plot_pop_alt_3.png", plot = plot_pop_alt_3, width 
 
 # Load databases 
 # Simple mode
-fast_1.1_simple=read.table(paste0("../data/1.5.structure/faststructure_output/qmacd_ref_gen_rob.simple.1.meanQ"))
-fast_1.2_simple=read.table(paste0("../data/1.5.structure/faststructure_output/qmacd_ref_gen_rob.simple.2.meanQ"))
-fast_1.3_simple=read.table(paste0("../data/1.5.structure/faststructure_output/qmacd_ref_gen_rob.simple.3.meanQ"))
+fast_1.1_simple=read.table(paste0("../data/1.4.population_structure/faststructure_output/qmacd_ref_gen_rob.simple.1.meanQ"))
+fast_1.2_simple=read.table(paste0("../data/1.4.population_structure/faststructure_output/qmacd_ref_gen_rob.simple.2.meanQ"))
+fast_1.3_simple=read.table(paste0("../data/1.4.population_structure/faststructure_output/qmacd_ref_gen_rob.simple.3.meanQ"))
 
 # Logistic mode
-fast_1.1_log=read.table(paste0("../data/1.5.structure/faststructure_output/qmacd_ref_gen_rob.logistic.1.meanQ"))
-fast_1.2_log=read.table(paste0("../data/1.5.structure/faststructure_output/qmacd_ref_gen_rob.logistic.2.meanQ"))
-fast_1.3_log=read.table(paste0("../data/1.5.structure/faststructure_output/qmacd_ref_gen_rob.logistic.3.meanQ"))
+fast_1.1_log=read.table(paste0("../data/1.4.population_structure/faststructure_output/qmacd_ref_gen_rob.logistic.1.meanQ"))
+fast_1.2_log=read.table(paste0("../data/1.4.population_structure/faststructure_output/qmacd_ref_gen_rob.logistic.2.meanQ"))
+fast_1.3_log=read.table(paste0("../data/1.4.population_structure/faststructure_output/qmacd_ref_gen_rob.logistic.3.meanQ"))
 
 
 # Load the metadata

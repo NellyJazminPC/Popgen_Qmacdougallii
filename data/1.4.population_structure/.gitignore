@@ -1,0 +1,9 @@
+# ADMIXTURE auxiliary outputs
+admixture_output/*.P
+admixture_output/log*.out
+
+# fastStructure auxiliary outputs
+faststructure_output/*.meanP
+faststructure_output/*.varP
+faststructure_output/*.varQ
+faststructure_output/*.log
