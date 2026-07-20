@@ -4,6 +4,13 @@ This directory contains the scripts, Jupyter notebooks, configuration files, and
 
 The workflow is organized into numbered stages. Each stage corresponds to a script or subdirectory and follows the general order in which the analyses were performed.
 
+## Running the R analyses
+
+The R scripts use relative paths assuming that `bin/` is the working directory. For reproducibility, users are advised to create an RStudio project inside the `bin/` directory before running the analyses, or to manually set `bin/` as the working directory.
+
+The local `.Rproj` file used during the original analyses is not included in the repository because it may contain machine-specific settings. 
+Input files are read from `../data/` and `../metadata/`, and generated outputs are written to `../results/`.
+
 ## 1.0 Initial quality assessment
 
 ### `1.0.quality_analysis.sh`
@@ -60,11 +67,24 @@ Preparation and analysis of population structure using multiple approaches:
 
 Detection of candidate loci under selection using tools such as BayeScan, and preparation of files for selection analyses.
 
-## 2.1 Genetic diversity
+## 2.1 Genetic diversity and differentiation
 
-### `2.1.genetic_diversity.R`
+### `2.1.genetic_diversity/`
 
-R script for calculating genetic diversity statistics across populations.
+Contains the R scripts used to estimate genetic diversity and
+differentiation from the final *Quercus robur*-based SNP dataset.
+
+#### `2.1.1_heterozygosity_fstatistics.R`
+
+Calculates observed heterozygosity (Ho), expected heterozygosity (He),
+inbreeding coefficients (FIS), observed and private alleles, global FST,
+pairwise FST among sampling sites, and differentiation between the
+northern and southern geographic zones.
+
+#### `2.1.2_snp_diversity_tajimasD.R`
+
+Calculates nucleotide diversity (π), Watterson's theta (θW), and
+Tajima's D by sampling site, geographic zone, and across all individuals.
 
 ## 2.2 Population structure in R
 
