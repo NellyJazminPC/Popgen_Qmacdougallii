@@ -61,16 +61,13 @@ Auxiliary allele-frequency, variance, and log files are excluded from the public
 
 ## Multivariate analyses
 
-The following scripts will contain the multivariate population-structure analyses:
+- `2.2.1_pca.R` performs principal component analysis and exports the PCA scores, explained variance, and Figure 4. The final analysis retained biallelic SNPs and explained 7.31% of the total variation across PC1 and PC2.
 
-```text
-2.2.1_pca.R
-2.2.2_dapc.R
-2.2.3_msn.R
-```
+- `2.2.2_dapc.R` performs discriminant analysis of principal components using the nine sampling sites as a priori groups. The optional `find.clusters` exploration is retained as a disabled block. Cross-validation is performed first across 5-50 PCs and then across 5-30 PCs. The focused analysis uses 100 serial replicates, a training proportion of 0.90, eight discriminant axes, and a random seed of 999. Seven PCs are retained based on the lowest root mean squared error.
 
-These analyses are currently being separated from the original combined R workflow.
+- `2.2.3_msn.R` calculates Nei's genetic distances among individuals and generates a minimum spanning network using a Kamada-Kawai layout.
 
+Conversion of the VCF to a `genlight` object excludes 41 multiallelic loci, leaving 5,385 biallelic SNPs for PCA, DAPC, and the minimum spanning network. Each script validates sample identifiers against the public metadata file before running the analysis.
 ## Geographic panel
 
 The geographic panel of the population-structure figure is not reproduced by the public plotting script because the coordinates of this threatened microendemic species are not included in the public metadata file.
