@@ -1,5 +1,19 @@
 # Script to analyze SNP outliers using Bayescan and PCAdapt
 
+# Resolve paths relative to the repository, regardless of the
+# directory from which this script is launched.
+command_args <- commandArgs(trailingOnly = FALSE)
+file_arg <- grep("^--file=", command_args, value = TRUE)
+
+if (length(file_arg) >= 1L) {
+  script_path <- normalizePath(
+    sub("^--file=", "", file_arg[1])
+  )
+  bin_dir <- dirname(dirname(script_path))
+  setwd(bin_dir)
+}
+
+
 # -------------------------------
 # Bayescan; 9 sites
 # -------------------------------
@@ -10,9 +24,9 @@ library(coda)
 source("software/bayescan_distributed_2.01/R functions/plot_R.r")
 # For the nine sites
 # Load results
-sel <- read.table("../data/1.6.snps_outliers/bayescan_output/bayescan_qmacd_ref_gen_qrob_9pop/bayescan_qmacd_ref_gen_qrob_.sel",
+sel <- read.table("../data/1.6.snp_outlier_detection/bayescan_output/bayescan_qmacd_ref_gen_qrob_9pop/bayescan_qmacd_ref_gen_qrob_.sel",
                   colClasses ="numeric")
-bayes <- read.table("../data/1.6.snps_outliers/bayescan_output/bayescan_qmacd_ref_gen_qrob_9pop/bayescan_qmacd_ref_gen_qrob__fst.txt")
+bayes <- read.table("../data/1.6.snp_outlier_detection/bayescan_output/bayescan_qmacd_ref_gen_qrob_9pop/bayescan_qmacd_ref_gen_qrob__fst.txt")
 loci <- read.delim("../data/structure_formats/qmacd_ref_gen_rob.bim", header = F)
 
 ##Verificar que convergieron las cadenas
@@ -42,7 +56,7 @@ summary_df <- as.data.frame(summary_results$statistics)
 summary_df <- cbind(Parameter = rownames(summary_df), summary_df)
 
 # Exportar a un archivo Excel
-write_xlsx(summary_df, "../results/summary_bayescan_snps_detected.xlsx")
+write_xlsx(summary_df, "../results/summary_bayescan_snps_detected_9sites.xlsx")
 
 # Mensaje de confirmación
 cat("El resumen de Bayescan se ha exportado a '../results/summary_bayescan_snps_detected_9sites.xlsx'\n")
@@ -61,7 +75,7 @@ alpha <- 0.05 # FDR
 
 # Generar el gráfico de BayeScan
 plot_bayescan_results <- plot_bayescan(
-  "../data/1.6.snps_outliers/bayescan_output/bayescan_qmacd_ref_gen_qrob_9pop/bayescan_qmacd_ref_gen_qrob__fst.txt", 
+  "../data/1.6.snp_outlier_detection/bayescan_output/bayescan_qmacd_ref_gen_qrob_9pop/bayescan_qmacd_ref_gen_qrob__fst.txt",
   FDR = alpha
 )
 # Guardar el gráfico generado por plot_bayescan
@@ -75,7 +89,14 @@ dev.off()
 library(ggplot2)
 
 # Leer los resultados de BayeScan
-bayes <- read.table("../data/1.6.snps_outliers/bayescan_output/bayescan_qmacd_ref_gen_qrob_9pop/bayescan_qmacd_ref_gen_qrob__fst.txt", header = TRUE)
+bayes <- read.table("../data/1.6.snp_outlier_detection/bayescan_output/bayescan_qmacd_ref_gen_qrob_9pop/bayescan_qmacd_ref_gen_qrob__fst.txt", header = TRUE)
+stopifnot(nrow(bayes) == nrow(loci))
+bayes <- cbind(
+  bayes,
+  CHR = loci[, 1],
+  SNP = loci[, 2],
+  Pos = loci[, 4]
+)
 
 # Añadir columna para destacar outliers
 bayes$Outlier <- bayes$qval < alpha
@@ -116,136 +137,17 @@ write.table(outliers, "../results/bayes_outliers_9sites.txt", row.names = FALSE,
 
 
 # -------------------------------
-# BayeScan; 2 sites (Zona norte y zona sur)
-# -------------------------------
+# Exploratory BayeScan scenarios
+# --------------------------------
+# BayeScan runs based on North-South and PZ-versus-remaining-site
+# groupings were evaluated during development but were not retained
+# in the final candidate-locus workflow. Their inputs, outputs, and
+# original code are preserved locally under:
+# archive/legacy_outlier_workflows/
 
-# Cargar funciones de BayeScan
-source("software/bayescan_distributed_2.01/R functions/plot_R.r")
-
-# Cargar resultados de BayeScan para 2 sitios
-sel_2pop <- read.table("../data/1.6.snps_outliers/bayescan_output/bayescan_qmacd_ref_gen_qrob_2pop/bayescan_qmacd_ref_gen_qrob_.sel",
-                       colClasses = "numeric")
-bayes_2pop <- read.table("../data/1.6.snps_outliers/bayescan_output/bayescan_qmacd_ref_gen_qrob_2pop/bayescan_qmacd_ref_gen_qrob__fst.txt")
-loci_2pop <- read.delim("../data/structure_formats/qmacd_ref_gen_rob.bim", header = FALSE)
-
-# Verificar convergencia de las cadenas
-chain_2pop <- mcmc(sel_2pop, thin = 10)
-
-# Graficar y analizar la convergencia
-par(mar = c(4, 4, 4, 4))
-plot(chain_2pop)
-summary(chain_2pop)
-autocorr.diag(chain_2pop)
-autocorr.plot(chain_2pop)
-effectiveSize(chain_2pop)
-geweke.diag(chain_2pop, frac1 = 0.1, frac2 = 0.5)
-
-# Exportar el resumen de la cadena a un archivo Excel
-summary_results_2pop <- summary(chain_2pop)
-summary_df_2pop <- as.data.frame(summary_results_2pop$statistics)
-summary_df_2pop <- cbind(Parameter = rownames(summary_df_2pop), summary_df_2pop)
-write_xlsx(summary_df_2pop, "../results/summary_bayescan_snps_detected_2pop.xlsx")
-cat("El resumen de BayeScan para 2 sitios se ha exportado a '../results/summary_bayescan_snps_detected_2pop.xlsx'\n")
-
-# Unir información de SNP con resultados de BayeScan
-bayes_2pop <- cbind(bayes_2pop, loci_2pop[, c(1, 2, 4)])
-colnames(bayes_2pop) <- c(colnames(bayes_2pop)[1:5], "CHR", "SNP", "Pos")
-
-# Definir el nivel de significancia
-alpha <- 0.05
-
-# Generar el gráfico de BayeScan
-plot_bayescan_results_2pop <- plot_bayescan(
-  "../data/1.6.snps_outliers/bayescan_output/bayescan_qmacd_ref_gen_qrob_2pop/bayescan_qmacd_ref_gen_qrob__fst.txt", 
-  FDR = alpha
-)
-
-# Guardar el gráfico generado por BayeScan
-jpeg("../results/plot_bayescan_results_2pop.jpg", width = 800, height = 600, res = 300)
-plot_bayescan_results_2pop
-dev.off()
-
-# Identificar outliers según el nivel de significancia
-outliers_2pop <- bayes_2pop[bayes_2pop$qval < alpha, ]
-
-# Exportar los outliers a un archivo de texto
-write.table(outliers_2pop, "../results/bayes_outliers_2pop.txt", row.names = FALSE, quote = FALSE)
-cat("Los outliers de BayeScan para 2 sitios se han exportado a '../results/bayes_outliers_2pop.txt'\n")
-
-# -------------------------------
-# BayeScan; PZ como un clúster aparte
-# -------------------------------
-library(coda)
-library(writexl)
-
-# Cargar funciones de BayeScan
-source("software/bayescan_distributed_2.01/R functions/plot_R.r")
-
-# Cargar resultados de BayeScan para PZ como un clúster aparte
-sel_pz <- read.table("../data/1.6.snps_outliers/bayescan_output/bayescan_qmacd_ref_gen_qrob_2pop_PZ/bayescan_qmacd_ref_gen_qrob_2po.sel",
-                     colClasses = "numeric")
-bayes_pz <- read.table("../data/1.6.snps_outliers/bayescan_output/bayescan_qmacd_ref_gen_qrob_2pop_PZ/bayescan_qmacd_ref_gen_qrob_2po_fst.txt")
-loci_pz <- read.delim("../data/structure_formats/qmacd_ref_gen_rob.bim", header = FALSE)
-
-# Verificar convergencia de las cadenas
-chain_pz <- mcmc(sel_pz, thin = 10)
-
-# Graficar y analizar la convergencia
-par(mar = c(4, 4, 4, 4))
-plot(chain_pz)
-summary(chain_pz)
-autocorr.diag(chain_pz)
-autocorr.plot(chain_pz)
-effectiveSize(chain_pz)
-geweke.diag(chain_pz, frac1 = 0.1, frac2 = 0.5)
-
-# Exportar el resumen de la cadena a un archivo Excel
-summary_results_pz <- summary(chain_pz)
-summary_df_pz <- as.data.frame(summary_results_pz$statistics)
-summary_df_pz <- cbind(Parameter = rownames(summary_df_pz), summary_df_pz)
-write_xlsx(summary_df_pz, "../results/summary_bayescan_snps_detected_pz.xlsx")
-cat("El resumen de BayeScan para PZ como un clúster aparte se ha exportado a '../results/summary_bayescan_snps_detected_pz.xlsx'\n")
-
-# Unir información de SNP con resultados de BayeScan
-bayes_pz <- cbind(bayes_pz, loci_pz[, c(1, 2, 4)])
-colnames(bayes_pz) <- c(colnames(bayes_pz)[1:5], "CHR", "SNP", "Pos")
-
-# Contar cuántos valores son menores a un umbral (por ejemplo, alpha = 0.05)
-alpha <- 0.05
-outliers_count <- sum(bayes_pz$qval < alpha, na.rm = TRUE)
-cat("Número de valores en bayes_pz$qval menores a", alpha, ":", outliers_count, "\n")
-
-# Definir el nivel de significancia
-alpha <- 0.05
-
-# Generar el gráfico de BayeScan
-plot_bayescan_results_pz <- plot_bayescan(
-  "../data/1.6.snps_outliers/bayescan_output/bayescan_qmacd_ref_gen_qrob_2pop_PZ/bayescan_qmacd_ref_gen_qrob_2po_fst.txt", 
-  FDR = alpha
-)
-
-# Guardar el gráfico generado por BayeScan
-jpeg("../results/plot_bayescan_results_pz.jpg", width = 800, height = 600, res = 300)
-plot_bayescan_results_pz
-dev.off()
-
-# Identificar outliers según el nivel de significancia
-outliers_pz <- bayes_pz[bayes_pz$qval < alpha, ]
-
-# Exportar los outliers a un archivo de texto
-write.table(outliers_pz, "../results/bayes_outliers_pz.txt", row.names = FALSE, quote = FALSE)
-cat("Los outliers de BayeScan para PZ como un clúster aparte se han exportado a '../results/bayes_outliers_pz.txt'\n")
-
-
-
-
-
-# -------------------------------
 # PCAdapt
 # -------------------------------
-if (!requireNamespace("BiocManager", quietly = TRUE))
-    install.packages("BiocManager")
-BiocManager::install("qvalue")
+# Install qvalue separately before running this script.
 
 library(pcadapt)
 library(qvalue)
@@ -295,7 +197,7 @@ nrow(outliers)  # Número de SNPs outliers identificados
 
 # Graficar el Manhattan plot con los outliers resaltados en rojo
 library(ggplot2)
-manhattan_plot <- plot(pcadapt, option = "manhattan") + 
+manhattan_plot <- plot(pcadapt, option = "manhattan") +
   geom_point(data = outliers, aes(x = as.numeric(rownames(outliers)), y = -log10(pval)), color = "red")
 manhattan_plot
 # Exportar el gráfico Manhattan con outliers a un archivo PNG
@@ -319,8 +221,8 @@ manhattan_plot <- plot(pcadapt, option = "manhattan") +
 print(manhattan_plot)
 
 # Exportar el gráfico Manhattan personalizado a un archivo PNG
-ggsave("../results/pcadapt_manhattan_outliers.png", 
-       plot = manhattan_plot, 
+ggsave("../results/pcadapt_manhattan_outliers.png",
+       plot = manhattan_plot,
        width = 10, height = 8, dpi = 300)
 
 # Exportar los SNPs outliers a un archivo de texto
@@ -343,7 +245,7 @@ library(snpStats)
 library(adegenet)
 library(ggplot2)
 # Definir el directorio de trabajo y las rutas de los archivos PLINK
-WD <- "/Users/nelly/bioinfo/Popgen_Qmacdougallii/data/structure_formats/"
+WD <- "../data/structure_formats/"
 bed <- paste(WD, "/qmacd_ref_gen_rob.bed", sep = "")
 bim <- paste(WD, "/qmacd_ref_gen_rob.bim", sep = "")
 fam <- paste(WD, "/qmacd_ref_gen_rob.fam", sep = "")
@@ -351,7 +253,7 @@ raw <- paste(WD, "/qmacd_ref_gen_rob.raw", sep = "")
 map <- paste(WD, "/qmacd_ref_gen_rob.plk.map", sep = "")
 
 # Cargar los datos de muestra
-subject.support <- read.csv(paste("/Users/nelly/bioinfo/Popgen_Qmacdougallii/metadata/Qmacdougalli_79ind_.csv", sep = ""), header = TRUE)
+subject.support <- read.csv("../metadata/Qmacdougalli_79ind_.csv", header = TRUE)
 
 # Integrar datos SNP para el manejo con snpStats
 quercus <- read.plink(bed, bim, fam)
@@ -590,58 +492,106 @@ fst_combined_plot <- ggplot(fst_todos, aes(x = index, y = Fst)) +
 
 print(fst_combined_plot)
 #-----------------------------
-# Venn diagramas Bayescan + PCAdapt + FST
-#------------------------------
+# Candidate SNP sets used in Venn diagrams
+# --------------------------------------------
 
-# Cargar la librería necesaria
 library(VennDiagram)
 
-# Cargar los nombres de los SNPs identificados en cada análisis
-# Asegúrate de que los archivos contengan los nombres de los SNPs en una columna específica
-bayescan_snps <- read.table("../results/bayes_outliers_9sites.txt", header = TRUE)$SNP
-pcadapt_snps <- read.table("../results/pcadapt_outliers.txt", header = TRUE)$SNP
-fst_pz_snps <- read.csv("../results/fst_outliers_2pop_PZ.csv")$SNPs
-fst_ns_snps <- read.csv("../results/fst_outliers_2pop_NS.csv")$SNPs
-fst_9sites_snps <- read.csv("../results/fst_outliers_9sites.csv")$SNPs
+bayescan_snps <- read.table(
+  "../results/bayes_outliers_9sites.txt",
+  header = TRUE
+)$SNP
+
+pcadapt_snps <- read.table(
+  "../results/pcadapt_outliers.txt",
+  header = TRUE
+)$SNP
+
+fst_pz_snps <- read.csv(
+  "../results/fst_outliers_2pop_PZ.csv"
+)$SNPs
+
+fst_ns_snps <- read.csv(
+  "../results/fst_outliers_2pop_NS.csv"
+)$SNPs
+
+fst_9sites_snps <- read.csv(
+  "../results/fst_outliers_9sites.csv"
+)$SNPs
+
+clean_snp_set <- function(x) {
+  unique(na.omit(as.character(x)))
+}
+
+bayescan_snps <- clean_snp_set(bayescan_snps)
+pcadapt_snps <- clean_snp_set(pcadapt_snps)
+fst_pz_snps <- clean_snp_set(fst_pz_snps)
+fst_ns_snps <- clean_snp_set(fst_ns_snps)
+fst_9sites_snps <- clean_snp_set(fst_9sites_snps)
+
+# Main manuscript Venn diagram: pcadapt and three FST scenarios
+#--------
 
 # Crear una lista con los conjuntos de SNPs
 snps_list <- list(
-  BayeScan = bayescan_snps,
   PCAdapt = pcadapt_snps,
   FST_PZ = fst_pz_snps,
   FST_NS = fst_ns_snps,
   FST_9Sites = fst_9sites_snps
 )
 
-# Generar el diagrama de Venn
+# Generar el diagrama de Venn principal (el del manuscrito)
 venn_plot <- venn.diagram(
   x = snps_list,
-  category.names = c("BayeScan", "PCAdapt", "FST_PZ", "FST_NS", "FST_9Sites"),
-  filename = "../results/venn_snps_analysis.png",
+  category.names = c(
+    "pcadapt",
+    "FST: PZ vs.\nremaining sites",
+    "FST: North–South",
+    "FST: nine sites"
+  ),
+  filename = "../results/venn_pcadapt_fst_outliers.png",
   output = TRUE,
   imagetype = "png",
   resolution = 300,
   compression = "lzw",
   lwd = 1,
   lty = "blank",
-  fill = c("#5BACED", "#F5AC2E", "#8BC34A", "#FF5722", "#9C27B0"),
-  cex = 1.25,
+  fill = c("#E5B96A", "#6FA8D6", "#66B39B", "#D9CF6A"),
+  alpha = 0.55,
+  cex = 1.8,
   fontfamily = "sans",
-  cat.cex = 1,
+  cat.cex = 1.2,
   cat.fontfamily = "sans",
   cat.default.pos = "outer"
 )
 
-# Identificar los SNPs compartidos entre todos los análisis
+# Identificar los SNPs compartidos entre PCAdapt y los análisis de FST
 shared_snps <- Reduce(intersect, snps_list)
 
+# Crear un data frame con los SNPs compartidos, sus valores de FST y p-values
+shared_snps_values <- data.frame(
+  SNPs = shared_snps,
+  FST_PZ = fpop$Fst[shared_snps],
+  FST_NS = fpopZONE$Fst[shared_snps],
+  FST_9Sites = fpopSITE$Fst[shared_snps],
+  PCAdapt_pval = pcadapt$pvalues[shared_snps]
+)
+
+# Ordenar los SNPs compartidos por el p-value de PCAdapt (de mayor a menor)
+shared_snps_values <- shared_snps_values[order(-shared_snps_values$PCAdapt_pval), ]
+
+# Exportar los SNPs compartidos y sus valores a un archivo CSV
+write.csv(shared_snps_values, "../results/shared_pcadapt_fst_snps_with_values.csv", row.names = FALSE)
+
 # Exportar los SNPs compartidos a un archivo de texto
-write.table(shared_snps, "../results/shared_snps_across_analyses.txt", row.names = FALSE, col.names = FALSE, quote = FALSE)
+write.table(shared_snps, "../results/shared_pcadapt_fst_snps.txt", row.names = FALSE, col.names = FALSE, quote = FALSE)
 
 # Mensaje de confirmación
-cat("El diagrama de Venn se ha guardado en '../results/venn_snps_analysis.png'.\n")
-cat("Los SNPs compartidos entre todos los análisis se han exportado a '../results/shared_snps_across_analyses.txt'.\n")
+cat("El diagrama de Venn se ha guardado en '../results/venn_pcadapt_fst_outliers.png'.\n")
+cat("Los SNPs compartidos entre PCAdapt y los análisis de FST se han exportado a '../results/shared_pcadapt_fst_snps.txt'.\n")
+cat("Los SNPs compartidos con sus valores de FST y p-values se han exportado a '../results/shared_pcadapt_fst_snps_with_values.csv'.\n")
 
+#-----------------------------
 ### FST outliers
 # Crear una lista con los conjuntos de SNPs
 fst_snps_list <- list(
@@ -687,66 +637,58 @@ write.csv(shared_fst_values, "../results/shared_fst_snps_with_values.csv", row.n
 cat("Los SNPs compartidos y sus valores de FST se han exportado a '../results/shared_fst_snps_with_values.csv'.\n")#-----------------------------
 
 #--------
-# FST SNPs outliers and PCAdapt SNPs
-#--------
+# Exploratory Venn diagram: BayeScan, pcadapt, and three FST scenarios
+#------------------------------
 
 # Crear una lista con los conjuntos de SNPs
 snps_list <- list(
+  BayeScan = bayescan_snps,
   PCAdapt = pcadapt_snps,
   FST_PZ = fst_pz_snps,
   FST_NS = fst_ns_snps,
   FST_9Sites = fst_9sites_snps
 )
 
-
-# Paleta Okabe-Ito (daltónicos friendly)
-venn_colors <- c("#E69F00", "#56B4E9", "#009E73", "#F0E442") # naranja, azul, verde, amarillo
-
-venn_plot <- venn.diagram(
+# Generar el diagrama de Venn
+venn_plot <- tryCatch(
+  venn.diagram(
   x = snps_list,
-  category.names = c("PCAdapt", "FST_PZ", "FST_NS", "FST_9Sites"),
-  filename = "../results/venn_pcadapt_fst_outliers.png",
+  category.names = c("BayeScan", "PCAdapt", "FST_PZ", "FST_NS", "FST_9Sites"),
+  filename = "../results/venn_all_methods_exploratory.png",
   output = TRUE,
   imagetype = "png",
   resolution = 300,
   compression = "lzw",
   lwd = 1,
   lty = "blank",
-  fill = venn_colors,
-  cex = 2.5,                # Tamaño del número dentro de los círculos
+  fill = c("#5BACED", "#F5AC2E", "#8BC34A", "#FF5722", "#9C27B0"),
+  cex = 1.25,
   fontfamily = "sans",
-  cat.cex = 1.5,            # Tamaño de las etiquetas de los grupos
+  cat.cex = 1,
   cat.fontfamily = "sans",
   cat.default.pos = "outer"
+  ),
+  error = function(e) {
+    warning(
+      "The exploratory BayeScan-inclusive Venn diagram was not generated: ",
+      conditionMessage(e)
+    )
+    NULL
+  }
 )
 
-# Identificar los SNPs compartidos entre PCAdapt y los análisis de FST
-shared_snps <- Reduce(intersect, snps_list)
+# Identificar los SNPs compartidos entre todos los análisis
+shared_snps_all_methods <- Reduce(intersect, snps_list)
 
-# Crear un data frame con los SNPs compartidos, sus valores de FST y p-values
-shared_snps_values <- data.frame(
-  SNPs = shared_snps,
-  FST_PZ = fpop$Fst[shared_snps],
-  FST_NS = fpopZONE$Fst[shared_snps],
-  FST_9Sites = fpopSITE$Fst[shared_snps],
-  PCAdapt_pval = pcadapt$pvalues[shared_snps]
-)
-
-# Ordenar los SNPs compartidos por el p-value de PCAdapt (de mayor a menor)
-shared_snps_values <- shared_snps_values[order(-shared_snps_values$PCAdapt_pval), ]
-
-# Exportar los SNPs compartidos y sus valores a un archivo CSV
-write.csv(shared_snps_values, "../results/shared_pcadapt_fst_snps_with_values.csv", row.names = FALSE)
-
-# Exportar los SNPs compartidos a un archivo de texto
-write.table(shared_snps, "../results/shared_pcadapt_fst_snps.txt", row.names = FALSE, col.names = FALSE, quote = FALSE)
+# Exportar los SNPs compartidos entre todos los métodos.
+# This vector is expected to be empty because BayeScan outliers
+# do not overlap with the other candidate sets.
+write.table(shared_snps_all_methods, "../results/shared_snps_across_analyses.txt", row.names = FALSE, col.names = FALSE, quote = FALSE)
 
 # Mensaje de confirmación
-cat("El diagrama de Venn se ha guardado en '../results/venn_pcadapt_fst_outliers.png'.\n")
-cat("Los SNPs compartidos entre PCAdapt y los análisis de FST se han exportado a '../results/shared_pcadapt_fst_snps.txt'.\n")
-cat("Los SNPs compartidos con sus valores de FST y p-values se han exportado a '../results/shared_pcadapt_fst_snps_with_values.csv'.\n")
+cat("El diagrama exploratorio se ha guardado en '../results/venn_all_methods_exploratory.png'.\n")
+cat("Los SNPs compartidos entre todos los análisis se han exportado a '../results/shared_snps_across_analyses.txt'.\n")
 
-#-----------------------------
 # SNPs outliers identificados por BayeScan, PCAdapt y FST. Compartidos y unicos
 #-----------------------------
 # Crear listas con los datos de cada análisis
@@ -795,8 +737,11 @@ all_snps <- rbind(
 )
 
 # Identificar SNPs compartidos (shared) a partir de los análisis de Venn
-shared_snps <- read.table("../results/shared_snps_across_analyses.txt", header = FALSE, col.names = "locus_name")
-all_snps$shared <- ifelse(all_snps$locus_name %in% shared_snps$locus_name, "yes", "no")
+all_snps$shared <- ifelse(
+  all_snps$locus_name %in% shared_snps_all_methods,
+  "yes",
+  "no"
+)
 
 # EXTRA
 # Crear una lista con los conjuntos de SNPs

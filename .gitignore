@@ -104,3 +104,6 @@ bin/test_500.vcf.gz.tbi
 # --------------------------------------------------
 
 *.tmp
+
+# Base R plot device
+Rplots.pdf
