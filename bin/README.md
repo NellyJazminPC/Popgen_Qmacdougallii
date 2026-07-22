@@ -161,11 +161,38 @@ documented in:
 
 `bin/2.5.sequence_annotation/README.md`
 
-## 2.6 Outlier allele frequencies
+## 2.6 Outlier allele plots
 
-### `2.6.snps_outliers_freq.R`
+### `2.6.outlier_allele_frequencies/`
 
-Analyzes allele frequencies of candidate outlier SNPs.
+Contains the scripts used to prepare candidate variant tables and
+generate individual allele plots for the 11 coding SNPs retained after
+manual inspection.
+
+#### `2.6.1_prepare_outlier_variant_table.R`
+
+Extracts candidate genotypes from the filtered VCF, translates genotype
+codes into nucleotide alleles, joins REF and ALT information, and
+classifies single-nucleotide substitutions as transitions or
+transversions.
+
+#### `2.6.2_plot_outlier_allele_frequencies.R`
+
+Generates two individual plots for each retained SNP: a mean
+allele-dosage representation on a 0–2 scale and an allele-frequency
+representation on a 0–1 scale.
+
+The selected SNP table is stored in:
+
+`data/1.8.outlier_allele_frequencies/manuscript_outlier_snps_for_plotting.csv`
+
+Detailed inputs, outputs, selection criteria, and plotting information
+are documented in:
+
+`bin/2.6.outlier_allele_frequencies/README.md`
+
+Generated tables and plots are written under `results/`, which is
+excluded from version control.
 
 ## 2.7 Effective population size
 
