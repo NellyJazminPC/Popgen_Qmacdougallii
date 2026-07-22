@@ -143,11 +143,23 @@ bin/2.4.snp_outlier_detection/README.md
 
 ## 2.5 Sequence searches and outlier annotation
 
-### `2.5.seq_search_blast.sh`
+### `2.5.sequence_annotation/`
 
-### `2.5.snps_outliers_sequences.R`
+Contains the workflow used to prepare representative sequences for
+candidate outlier loci, document the NCBI BLAST searches, compare
+alternative taxonomic search scopes, and compile the annotation tables.
 
-Searches SNP-associated sequences with BLAST and performs downstream analyses of candidate outlier sequences.
+The workflow includes manual steps for retrieving candidate sequences
+from the ipyrad `.loci` output and inspecting selected alignments in
+Geneious.
+
+Magnoliopsida was retained for the final annotation and biological
+interpretation.
+
+Detailed inputs, scripts, manual steps, and expected outputs are
+documented in:
+
+`bin/2.5.sequence_annotation/README.md`
 
 ## 2.6 Outlier allele frequencies
 
