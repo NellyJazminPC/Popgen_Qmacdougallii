@@ -194,12 +194,6 @@ are documented in:
 Generated tables and plots are written under `results/`, which is
 excluded from version control.
 
-## 2.7 Effective population size
-
-### `2.7.Ne.R`
-
-Estimates effective population size (Ne) from filtered genotype data.
-
 ## 3.1 Demographic history
 
 ### `3.1.demography.md`
