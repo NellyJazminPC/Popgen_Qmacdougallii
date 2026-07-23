@@ -1,23 +1,45 @@
-# Genomas de referencia
+# Reference genomes
 
-Se utilizaron los genomas publicados de _Quercus lobata_ y _Q. robur_
+Reference-based assemblies were evaluated using published genomes of
+*Quercus lobata* and *Quercus robur*.
 
-## _Quercus lobata_
+The genome sequence files are retained locally and are not distributed
+through GitHub.
 
-**File name**: Qlobata.v3.0.RptMsk4.0.6.on-RptMdl1.0.8.softmasked.fasta 
+## *Quercus lobata*
 
-El genoma de _Q. lobata_ se descargó en la página [Genomic Resources de Valley Oak](https://valleyoak.ucla.edu/genomic-resources/), The University of California, Los Angeles (UCLA).
+**File name:**  
+`Qlobata.v3.0.RptMsk4.0.6.on-RptMdl1.0.8.softmasked.fasta`
 
-Esta página ofrece acceso a diversos recursos genómicos relacionados con el encino de los valles (_Q. lobata_). Incluye enlaces para descargar ensamblajes del genoma, modelos de genes codificantes de proteínas, secuencias de RNA y datos de metilación, así como archivos relacionados con la repetición de elementos y alineamientos genómicos. 
+The *Q. lobata* genome was downloaded from the
+[Valley Oak Genomic Resources](https://valleyoak.ucla.edu/genomic-resources/)
+website maintained by the University of California, Los Angeles.
 
-> Sork, V. L., Cokus, S. J., Fitz-Gibbon, S. T., Zimin, A. V., Puiu, D., Garcia, J. A., ... & Salzberg, S. L. (2022). [High-quality genome and methylomes illustrate features underlying evolutionary success of oaks](https://www.nature.com/articles/s41467-022-29584-y). Nature communications, 13(1), 2047.
+The website provides genome assemblies, gene models, RNA sequences,
+methylation data, repeat annotations, and other genomic resources for
+valley oak.
 
-## _Quercus robur_
+Reference:
 
-**File name**: Qrob_PM1N.fa
+Sork VL, Cokus SJ, Fitz-Gibbon ST, et al. (2022).
+[High-quality genome and methylomes illustrate features underlying evolutionary success of oaks](https://www.nature.com/articles/s41467-022-29584-y).
+*Nature Communications* 13:2047.
 
-El genoma de _Quercus robur_ se descargó de la página [Oak Genome Sequencing](https://www.oakgenome.fr/index8568.html?page_id=587). El sitio web pertenece a un proyecto internacional de secuenciación del genoma del roble europeo (_Q. robur_). El proyecto está asociado con instituciones como INRAE (Institut National de la Recherche pour l'Agriculture, l'Alimentation et l'Environnement) en Francia.
+## *Quercus robur*
 
-En esta página podemos hay enlaces para descargar varios ensamblajes del genoma de _Q. robur_, transcriptomas, secuencias codificantes de proteínas, archivos GFF para predicciones de genes y elementos transponibles, así como archivos VCF que contienen información sobre mutaciones somáticas y heterocigosidad. También incluye ensamblajes intermedios y scripts de Bash para estimaciones de heterocigosidad.
+**File name:**  
+`Qrob_PM1N.fa`
 
-> Plomion, C., Aury, J. M., Amselem, J., Leroy, T., Murat, F., Duplessis, S., ... & Salse, J. (2018). [Oak genome reveals facets of long lifespan](https://www.nature.com/articles/s41477-018-0172-3). Nature plants, 4(7), 440-452.
+The *Q. robur* genome was downloaded from the
+[Oak Genome Sequencing](https://www.oakgenome.fr/index8568.html?page_id=587)
+website.
+
+The website provides genome assemblies, transcriptomes, protein-coding
+sequences, gene and transposable-element annotations, and related
+genomic resources for European oak.
+
+Reference:
+
+Plomion C, Aury J-M, Amselem J, et al. (2018).
+[Oak genome reveals facets of long lifespan](https://www.nature.com/articles/s41477-018-0172-3).
+*Nature Plants* 4:440–452.

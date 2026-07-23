@@ -31,7 +31,7 @@ The filtered VCF is available from Zenodo:
 
 Selected easySFS files are stored under:
 
-`data/1.8.demography/easy_sfs_one_pop/`
+`data/1.5.demography/easy_sfs_one_pop/`
 
 ### 2. Stairway Plot
 
@@ -63,13 +63,13 @@ The six scenarios combined:
   substitutions per site per generation;
 - generation times of 50 and 100 years.
 
-The retained final summary files are stored under:
+The generated final summary files are expected under:
 
-`data/1.8.demography/stairway/`
+`data/1.5.demography/stairway/`
 
-Only the final summary files used for downstream visualization are
-distributed through GitHub. The complete Stairway Plot working
-directories are retained locally.
+The final summary files and complete Stairway Plot working directories
+are retained locally and are not distributed through GitHub because
+they are generated analysis outputs.
 
 ### 3. Combined visualization
 

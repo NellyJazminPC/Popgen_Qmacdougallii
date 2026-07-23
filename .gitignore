@@ -115,3 +115,5 @@ data/structure_formats/qmacd_ref_gen_rob.bed
 data/structure_formats/qmacd_ref_gen_rob.bim
 data/structure_formats/qmacd_ref_gen_rob.fam
 data/structure_formats/qmacd_ref_gen_rob.raw
+# Demographic-history outputs
+data/1.5.demography/stairway/

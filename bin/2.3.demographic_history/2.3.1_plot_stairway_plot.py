@@ -10,7 +10,7 @@ import pandas as pd
 
 REPOSITORY_ROOT = Path(__file__).resolve().parents[2]
 DATA_DIRECTORY = (
-    REPOSITORY_ROOT / "data" / "1.8.demography" / "stairway"
+    REPOSITORY_ROOT / "data" / "1.5.demography" / "stairway"
 )
 RESULT_DIRECTORY = REPOSITORY_ROOT / "results" / "demography"
 

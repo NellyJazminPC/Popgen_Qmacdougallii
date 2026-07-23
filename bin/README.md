@@ -143,7 +143,7 @@ summary table, and generates the combined demographic-history figure.
 
 Associated files are stored under:
 
-`data/1.8.demography/`
+`data/1.5.demography/`
 
 Detailed settings, inputs, and outputs are documented in:
 

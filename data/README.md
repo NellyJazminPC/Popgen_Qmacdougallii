@@ -56,7 +56,7 @@ detection.
 Contains representative sequences and BLAST query sequences for the
 candidate loci.
 
-### `1.8.demography/`
+### `1.5.demography/`
 
 Contains site-frequency-spectrum files and Stairway Plot outputs used
 in the demographic-history analyses.
