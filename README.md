@@ -1,88 +1,91 @@
 # Population genomics of *Quercus macdougallii*
 
-This repository contains the scripts, Jupyter notebooks, and supporting documentation used for the population genomic analyses of the endangered microendemic oak *Quercus macdougallii*.
+This repository contains the scripts, Jupyter notebooks, selected
+lightweight data products, and supporting documentation used for the
+population genomic analyses of the endangered microendemic oak
+*Quercus macdougallii*.
+
+The study includes 79 individuals sampled across nine sites in the
+Sierra Juárez of Oaxaca, Mexico.
+
+## Data availability
+
+The filtered Variant Call Format (VCF) dataset used in the study is
+available from Zenodo:
+
+[https://doi.org/10.5281/zenodo.20548053](https://doi.org/10.5281/zenodo.20548053)
+
+Raw sequencing reads, reference genomes, large assembly outputs,
+locally generated genotype formats, and generated analysis results are
+not distributed through GitHub.
+
+## Repository structure
+
+| Directory | Contents |
+|---|---|
+| [`bin/`](bin/) | Analysis scripts, notebooks, software documentation, and workflow instructions |
+| [`data/`](data/) | Selected inputs, intermediate files, retained outputs, and data documentation |
+| [`metadata/`](metadata/) | Public metadata for the 79 sampled individuals |
+| [`results/`](results/) | Local destination for generated tables, figures, logs, and intermediate outputs |
 
 ## Workflow overview
 
-The genomic-data preprocessing and variant-calling workflow was organized into the following stages.
+### Sequence processing and variant calling
 
-### 1.0 Initial quality assessment
+1. **Initial quality assessment**  
+   Evaluation of the raw genotyping-by-sequencing reads with FastQC.
 
-Raw single-end GBS reads from 79 *Quercus macdougallii* individuals were evaluated using FastQC v0.11.9.
+2. **Read trimming**  
+   Processing of the sequencing reads with alternative Trimmomatic
+   parameter combinations.
 
-```text
-Script:
-bin/1.0.quality_analysis.sh
+3. **Post-filter quality assessment**  
+   Evaluation of the trimmed-read datasets with FastQC.
 
-Input:
-data/raw/
+4. **Assembly and variant calling**  
+   Comparison of de novo and reference-based ipyrad assemblies,
+   followed by variant filtering for downstream analyses.
 
-Documented output:
-data/1.0.quality_analysis/
-```
+### Population genomic analyses
 
-The raw sequencing files and individual FastQC reports are not included because of their size and because the reports can be regenerated from the original reads.
+1. **Genetic diversity and differentiation**  
+   Estimation of heterozygosity, inbreeding, genetic differentiation,
+   nucleotide diversity, Watterson's theta, and Tajima's D.
 
-### 1.1 Read trimming
+2. **Population structure**  
+   Principal component analysis, discriminant analysis of principal
+   components, minimum spanning networks, ADMIXTURE, and fastStructure.
 
-The raw reads were processed with Trimmomatic v0.39 using three alternative trimming strategies:
+3. **Demographic history**  
+   Site-frequency-spectrum preparation and Stairway Plot analyses.
 
-```text
-trim01
-trim02
-trim03
-```
+4. **SNP outlier detection**  
+   Identification and comparison of putative candidate SNPs using
+   BayeScan, pcadapt, and locus-specific FST analyses.
 
-```text
-Script:
-bin/1.1.filter_trimmomatic.sh
+5. **Sequence searches and annotation**  
+   Preparation of candidate-locus sequences, BLAST searches, and
+   compilation of annotation information.
 
-Documented output:
-data/1.1.filter/
-```
+6. **Candidate SNP allele plots**  
+   Preparation of coding candidate SNP tables and generation of
+   allele-dosage and allele-frequency plots.
 
-The three datasets represent independent parameter combinations applied to the same raw reads.
+Detailed descriptions of the scripts, required inputs, generated
+outputs, and execution steps are provided in
+[`bin/README.md`](bin/README.md) and in the README for each analysis
+module.
 
-### 1.2 Post-filter quality assessment
+## Reproducibility notes
 
-The quality of the three trimmed-read datasets was evaluated independently using FastQC v0.11.9.
+The repository documents the workflow used for the analyses presented
+in the associated manuscript. Some stages include manual steps carried
+out with external software; these steps are identified in the relevant
+module documentation.
 
-```text
-Script:
-bin/1.2.post-filter_quality_analysis.sh
+Generated files under `results/` and large local working files are
+excluded from version control.
 
-Input:
-data/1.1.filter/
+## License
 
-Documented output:
-data/1.2.post-filter_quality_analysis/
-```
-
-The individual HTML reports are treated as reproducible intermediate outputs and are not included in the repository.
-
-### 1.3 Assembly and variant calling
-
-Variant discovery was performed with ipyrad using three trimming datasets and three assembly strategies:
-
-```text
-                  trim01    trim02    trim03
-De novo              ✓         ✓         ✓
-Q. lobata genome     ✓         ✓         ✓
-Q. robur genome      ✓         ✓         ✓
-```
-
-The corresponding notebooks are available in:
-
-```text
-bin/1.3.assembly_variant_calling_ipyrad/
-```
-
-The reference-based assembly using the *Q. robur* genome and the `trim01` dataset was selected for downstream analyses. After filtering in TASSEL v5.2.93, the final dataset contained 5,426 SNPs.
-
-Assembly summaries and documentation are provided in:
-
-```text
-data/1.3.assembly_variant_calling/
-```
-
-Large intermediate assembly files are not included in the public repository.
+Licensing information is provided in [`LICENSE`](LICENSE).
