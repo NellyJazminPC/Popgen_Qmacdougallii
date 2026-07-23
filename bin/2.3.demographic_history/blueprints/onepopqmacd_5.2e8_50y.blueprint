@@ -1,0 +1,26 @@
+#example blueprint file
+#input setting
+popid: pop1 # id of the population (no white space)
+nseq: 158 # number of sequences
+L: 5426 # total number of observed nucleic sites, including polymorphic and monomorphic
+whether_folded: true # whethr the SFS is folded (true or false)
+SFS: 35.1313391921318 1583.304603724826 685.146254938117 409.0775618801085 306.2230105619486 202.6454889945735 165.6760461178534 159.2101910828059 132.0764331210111 115.2825122954002 76.87406272675591 69.26993469321059 65.46746754816715 65.21269047810578 72.30452309924608 42.903249213892 49.01032008384026 50.36483108925311 48.52737240990049 42.88599532370291 35.95331774570368 41.38014996371228 31.88470531322442 30.71402080141604 31.87865838909517 32.05885672821297 27.85213254857753 24.85995323711724 25.42634846407857 23.95936466983729 23.19696847536616 20.12029347738109 26.4818995404286 25.81754414254263 24.0244295734914 16.42804160283642 21.43755543013348 22.31073127469056 22.43166975731492 19.36144481173714 17.88220591792209 16.046843505604 13.65790534547912 13.56276707248031 16.00814319116176 19.28799483995738 13.62033379021114 15.76820124163231 17.83423365314718 16.59058292348496 15.95057647343312 14.24244134483462 10.12738853503092 10.60630492622627 13.56849149399154 18.45182617108631 18.51350479722426 14.22542933161137 10.89558977666593 8.692090623235478 10.62001128759043 11.68048052890352 10.21760864306917 9.617753769248203 11.09562202692745 11.43981294847918 9.819237281302534 9.845359993549486 11.11763283076528 11.56026767717296 12.53164556961936 11.90857050713437 9.280657905344439 8.10191082802436 8.561477062000055 9.814560993307087 11.59872611464841 13.89147786825676 7.592356687897189 # snp frequency spectrum: number of singleton, number of doubleton, etc. (separated by white space)
+#smallest_size_of_SFS_bin_used_for_estimation: 1 # default is 1; to ignore singletons, uncomment this line and change this number to 2
+#largest_size_of_SFS_bin_used_for_estimation: 79 # default is n-1; to ignore singletons, uncomment this line and change this number to nseq-2
+pct_training: 0.67 # percentage of sites for training
+nrand: 39 78 117 156 # number of random break points for each try (separated by white space)
+project_dir: ../../../data/1.8.demography/stairway/one_pop_5.2e8_50y # project directory
+stairway_plot_dir: stairway_plot_es # directory to the stairway plot files
+ninput: 200 # number of input files to be created for each estimation
+#random_seed: 6
+#output setting
+mu: 5.2e-8 # assumed mutation rate per site per generation
+year_per_generation: 50 # assumed generation time (in years)
+#plot setting
+plot_title: pop1_demography_analysis # title of the plot
+xrange: 0.1,10000 # Time (1k year) range; format: xmin,xmax; "0,0" for default
+yrange: 0,0 # Ne (1k individual) range; format: xmin,xmax; "0,0" for default
+xspacing: 2 # X axis spacing
+yspacing: 2 # Y axis spacing
+fontsize: 12 # Font size
+

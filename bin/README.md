@@ -128,19 +128,26 @@ Detailed requirements and execution instructions are provided in:
 
 ## 2.3 Demographic history
 
-### `2.8.demography.md`
+### `2.3.demographic_history/`
 
-Documents the preparation of site-frequency spectra and the Stairway
-Plot analyses used to reconstruct demographic history.
+Contains the documentation and plotting script for the demographic-
+history analyses performed with easySFS and Stairway Plot 2.
 
-### `2.8.2.plot_stairway_plot.py`
+All individuals were analyzed as a single population under six
+scenarios combining three mutation rates and two generation times.
 
-Generates demographic-history plots from the retained Stairway Plot
-outputs.
+#### `2.3.1_plot_stairway_plot.py`
+
+Reads the six retained Stairway Plot summary files, exports a scenario
+summary table, and generates the combined demographic-history figure.
 
 Associated files are stored under:
 
 `data/1.8.demography/`
+
+Detailed settings, inputs, and outputs are documented in:
+
+`bin/2.3.demographic_history/README.md`
 
 ## 2.4 SNP outlier detection
 
