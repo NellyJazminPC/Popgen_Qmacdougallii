@@ -6,7 +6,7 @@ set -euo pipefail
 #
 # Prerequisite
 # ------------
-# The final filtered VCF was exported with the TASSEL v5.2.93 graphical
+# The final filtered VCF was exported with the TASSEL v5.2.95 graphical
 # interface in PLINK PED/MAP format, producing:
 #
 #   qmacd_ref_gen_rob.plk.ped

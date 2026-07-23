@@ -56,7 +56,7 @@ The exact file structure, delimiters, and population assignments will be documen
 
 The resulting VCF files were compared among assembly strategies and trimming datasets. The reference-based assembly using the *Q. robur* genome and the `trim01` reads was selected for downstream analyses.
 
-This assembly initially contained 7,611 SNPs. After site-level filtering and the removal of indels and minor SNP states in TASSEL v5.2.93, the final dataset contained 5,426 SNPs.
+This assembly initially contained 7,611 SNPs. After site-level filtering and the removal of indels and minor SNP states in TASSEL v5.2.95, the final dataset contained 5,426 SNPs.
 
 ## Outputs
 

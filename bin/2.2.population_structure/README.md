@@ -14,7 +14,7 @@ This VCF contains 5,426 filtered SNPs obtained using the *Quercus robur* referen
 
 ## Preparing PLINK files
 
-The final filtered VCF was opened in TASSEL v5.2.93 and exported through the graphical interface in PLINK PED/MAP format. The conversion produced:
+The final filtered VCF was opened in TASSEL v5.2.95 and exported through the graphical interface in PLINK PED/MAP format. The conversion produced:
 
 ```text
 data/structure_formats/qmacd_ref_gen_rob.plk.ped
