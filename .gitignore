@@ -107,3 +107,11 @@ bin/test_500.vcf.gz.tbi
 
 # Base R plot device
 Rplots.pdf
+
+# Local derived structure formats
+data/structure_formats/qmacd_ref_gen_rob.plk.ped
+data/structure_formats/qmacd_ref_gen_rob.plk.map
+data/structure_formats/qmacd_ref_gen_rob.bed
+data/structure_formats/qmacd_ref_gen_rob.bim
+data/structure_formats/qmacd_ref_gen_rob.fam
+data/structure_formats/qmacd_ref_gen_rob.raw
